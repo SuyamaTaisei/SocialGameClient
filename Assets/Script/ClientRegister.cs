@@ -62,4 +62,8 @@ public class ClientRegister : MonoBehaviour
             warningText.text = warnCheck;
         }
     }
+    public void RsgisterComplete()
+    {
+
+    }
 }

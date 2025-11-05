@@ -36,11 +36,18 @@ public class ApiConnect : MonoBehaviour
                 }
                 yield break;
             }
-            Debug.Log(serverData);
 
             //SQLiteへ保存。JSONデータをオブジェクトに変換
             UsersModel userModel = JsonUtility.FromJson<UsersModel>(serverData);
-            if (!string.IsNullOrEmpty(userModel.id)) UsersTable.Insert(userModel);
+            if (!string.IsNullOrEmpty(userModel.id))
+            {
+                Debug.Log("SQLiteへINSERTした");
+                UsersTable.Insert(userModel);
+            }
+            else
+            {
+                Debug.Log("SQLiteへINSERTできなかった");
+            }
 
             //レスポンス成功時に、関数があれば実行
             if (action != null)

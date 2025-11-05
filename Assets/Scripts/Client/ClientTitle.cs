@@ -18,8 +18,10 @@ public class ClientTitle : MonoBehaviour
     [SerializeField] TextMeshProUGUI warningText;
     [SerializeField] ApiConnect apiConnect;
 
-    private const string columnUserName = "user_name";
-    private const string endPoint = "register";
+    private const string column_UserName   = "user_name";
+    private const string column_id         = "id";
+    private const string endPoint_register = "register";
+    private const string endPoint_login    = "login";
 
     //DBモデル
     private UsersModel userModel;
@@ -91,14 +93,14 @@ public class ClientTitle : MonoBehaviour
         else
         {
             RegisterView.SetActive(false);
-            string userName = inputUserName.text;
             Action action = new(() => RegisterComplete(true));
-            //POST送信用のフォームを作成
-            List<IMultipartFormSection> form = new()
+
+            string userName = inputUserName.text;
+            List<IMultipartFormSection> form = new() //POST送信用のフォームを作成
             {
-                new MultipartFormDataSection(columnUserName, userName)
+                new MultipartFormDataSection(column_UserName, userName)
             };
-            StartCoroutine(apiConnect.Send(endPoint, form, action));
+            StartCoroutine(apiConnect.Send(endPoint_register, form, action));
         }
     }
 
@@ -109,8 +111,16 @@ public class ClientTitle : MonoBehaviour
         userModel = UsersTable.Select();
         if (!string.IsNullOrEmpty(userModel.id))
         {
+            Action action = new(() => SceneTransition());
+
             //そのままログイン
-            Debug.Log("ログイン成功後、ホームシーン遷移");
+            string id = userModel.id;
+            List<IMultipartFormSection> form = new()
+            {
+                new MultipartFormDataSection(column_id, id)
+            };
+            StartCoroutine(apiConnect.Send(endPoint_login, form, action));
+
             StartView.SetActive(true);
             RegisterView.SetActive(false);
         }
@@ -131,4 +141,7 @@ public class ClientTitle : MonoBehaviour
         StartView.SetActive(true);
         RegisterComplete(false);
     }
+
+    //シーン遷移
+    public void SceneTransition() => LoadingManager.Instance.LoadScene("HomeScene");
 }

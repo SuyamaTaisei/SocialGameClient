@@ -5,12 +5,6 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
-[Serializable]
-public class ResponseObjects
-{
-    public UsersModel usersModel;
-}
-
 public class ApiConnect : MonoBehaviour
 {
     private const int timeOut = 10;
@@ -44,10 +38,9 @@ public class ApiConnect : MonoBehaviour
             }
             Debug.Log(serverData);
 
-            //SQLiteへ保存
-            ResponseObjects responseObjects = JsonUtility.FromJson<ResponseObjects>(serverData);
-            if (!string.IsNullOrEmpty(responseObjects.usersModel.id))
-                UsersTable.Insert(responseObjects.usersModel);
+            //SQLiteへ保存。JSONデータをオブジェクトに変換
+            UsersModel userModel = JsonUtility.FromJson<UsersModel>(serverData);
+            if (!string.IsNullOrEmpty(userModel.id)) UsersTable.Insert(userModel);
 
             //レスポンス成功時に、関数があれば実行
             if (action != null)

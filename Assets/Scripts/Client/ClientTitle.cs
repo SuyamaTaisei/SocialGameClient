@@ -12,6 +12,7 @@ public class ClientTitle : MonoBehaviour
     [SerializeField] GameObject RegisterCompleteView;
 
     [SerializeField] TextMeshProUGUI showUserName;
+    [SerializeField] TextMeshProUGUI showId;
 
     [SerializeField] TMP_InputField inputUserName;
     [SerializeField] TextMeshProUGUI warningText;
@@ -26,10 +27,11 @@ public class ClientTitle : MonoBehaviour
     private void Awake()
     {
         // SQLiteのDBファイル作成
-        string DBPath = Application.dataPath + "/StreamingAssets/" + GameUtility.Const.SQLITE_DB_NAME;
+        string DBPath = Application.persistentDataPath + "/" + GameUtility.Const.SQLITE_DB_NAME;
         if (!File.Exists(DBPath))
         {
-            File.Create(DBPath);
+            Debug.Log(DBPath);
+            File.Create(DBPath).Close();
         }
         // テーブル作成処理
         UsersTable.CreateTable();
@@ -46,11 +48,30 @@ public class ClientTitle : MonoBehaviour
         if (!string.IsNullOrEmpty(userModel.id))
         {
             showUserName.text = "ユーザー：" + userModel.user_name;
+            showId.text = "ID : " + userModel.id;
         }
         //無ければ表示しない
         else
         {
             showUserName.text = "ユーザー：";
+            showId.text = "ID : ";
+        }
+    }
+
+    private void Update()
+    {
+        userModel = UsersTable.Select();
+        //既にユーザー情報があれば情報表示
+        if (!string.IsNullOrEmpty(userModel.id))
+        {
+            showUserName.text = "ユーザー：" + userModel.user_name;
+            showId.text = "ID : " + userModel.id;
+        }
+        //無ければ表示しない
+        else
+        {
+            showUserName.text = "ユーザー：";
+            showId.text = "ID : ";
         }
     }
 
@@ -89,6 +110,7 @@ public class ClientTitle : MonoBehaviour
         if (!string.IsNullOrEmpty(userModel.id))
         {
             //そのままログイン
+            Debug.Log("ログイン成功後、ホームシーン遷移");
             StartView.SetActive(true);
             RegisterView.SetActive(false);
         }

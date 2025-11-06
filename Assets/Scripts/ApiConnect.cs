@@ -5,6 +5,13 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.Networking;
 
+[Serializable]
+public class RegisterApi
+{
+    public UsersModel usersModel;
+    public WalletsModel walletsModel;
+}
+
 public class ApiConnect : MonoBehaviour
 {
     private const int timeOut = 10;
@@ -38,11 +45,12 @@ public class ApiConnect : MonoBehaviour
             }
 
             //SQLiteへ保存。JSONデータをオブジェクトに変換
-            UsersModel userModel = JsonUtility.FromJson<UsersModel>(serverData);
-            if (!string.IsNullOrEmpty(userModel.id))
+            RegisterApi registerApi = JsonUtility.FromJson<RegisterApi>(serverData);
+            if (!string.IsNullOrEmpty(registerApi.usersModel.id))
             {
                 Debug.Log("SQLiteへINSERTした");
-                UsersTable.Insert(userModel);
+                UsersTable.Insert(registerApi.usersModel);
+                WalletsTable.Insert(registerApi.walletsModel);
             }
             else
             {

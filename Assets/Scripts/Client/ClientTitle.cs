@@ -37,6 +37,7 @@ public class ClientTitle : MonoBehaviour
         }
         // テーブル作成処理
         UsersTable.CreateTable();
+        WalletsTable.CreateTable();
     }
 
     void Start()

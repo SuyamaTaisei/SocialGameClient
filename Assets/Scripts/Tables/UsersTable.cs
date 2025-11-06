@@ -3,7 +3,7 @@
 [Serializable]
 public class UsersModel
 {
-    public string manage_id;
+    public int manage_id;
     public string id;
     public string user_name;
     public int max_stamina;
@@ -18,7 +18,7 @@ public static class UsersTable
     public static void CreateTable()
     {
         string query = "create table if not exists users(" +
-            "manage_id varchar," +
+            "manage_id int," +
             "id varchar," +
             "user_name varchar," +
             "max_stamina int," +
@@ -42,7 +42,7 @@ public static class UsersTable
             "stamina_updated," +
             "last_login" +
             ")" +
-            "values (\"" + userModel.manage_id + "\", \"" + userModel.id + "\", \"" + userModel.user_name + "\", " + userModel.max_stamina + ", " + userModel.last_stamina + ", \"" + userModel.stamina_updated + "\", \"" + userModel.last_login + "\")";
+            "values (" + userModel.manage_id + ", \"" + userModel.id + "\", \"" + userModel.user_name + "\", " + userModel.max_stamina + ", " + userModel.last_stamina + ", \"" + userModel.stamina_updated + "\", \"" + userModel.last_login + "\")";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         sqlDB.ExecuteNonQuery(query);
     }
@@ -56,7 +56,7 @@ public static class UsersTable
         UsersModel userModel = new UsersModel();
         foreach (DataRow record in dataTable.Rows)
         {
-            userModel.manage_id = record["manage_id"].ToString();
+            userModel.manage_id = int.Parse(record["manage_id"].ToString());
             userModel.id = record["id"].ToString();
             userModel.user_name = record["user_name"].ToString();
             userModel.max_stamina = int.Parse(record["max_stamina"].ToString());

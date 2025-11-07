@@ -6,10 +6,10 @@ using UnityEngine;
 using UnityEngine.Networking;
 
 [Serializable]
-public class RegisterApi
+public class ResponseObjects
 {
-    public UsersModel usersModel;
-    public WalletsModel walletsModel;
+    public UsersModel users;
+    public WalletsModel wallets;
 }
 
 public class ApiConnect : MonoBehaviour
@@ -45,12 +45,12 @@ public class ApiConnect : MonoBehaviour
             }
 
             //SQLiteへ保存。JSONデータをオブジェクトに変換
-            RegisterApi registerApi = JsonUtility.FromJson<RegisterApi>(serverData);
-            if (!string.IsNullOrEmpty(registerApi.usersModel.id))
+            ResponseObjects responseObjects = JsonUtility.FromJson<ResponseObjects>(serverData);
+            if (!string.IsNullOrEmpty(responseObjects.users.id))
             {
                 Debug.Log("SQLiteへINSERTした");
-                UsersTable.Insert(registerApi.usersModel);
-                WalletsTable.Insert(registerApi.walletsModel);
+                UsersTable.Insert(responseObjects.users);
+                WalletsTable.Insert(responseObjects.wallets);
             }
             else
             {

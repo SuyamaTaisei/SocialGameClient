@@ -14,12 +14,50 @@ public class ResponseObjects
 
 public class ApiConnect : MonoBehaviour
 {
-    private const int timeOut = 10;
+    public void ExecuteRegister(ResponseObjects responseObjects)
+    {
+        if (!string.IsNullOrEmpty(responseObjects.users.id))
+        {
+            Debug.Log("SQLiteへINSERTした");
+            UsersTable.Insert(responseObjects.users);
+            WalletsTable.Insert(responseObjects.wallets);
+        }
+        else
+        {
+            Debug.Log("SQLiteへINSERTできなかった");
+        }
+    }
 
-    public IEnumerator Send(string endPoint, List<IMultipartFormSection> form, Action action = null)
+    public void ExecuteLogin(ResponseObjects responseObjects)
+    {
+        if (!string.IsNullOrEmpty(responseObjects.users.id))
+        {
+            Debug.Log("SQLiteへINSERTした");
+            UsersTable.Insert(responseObjects.users);
+        }
+        else
+        {
+            Debug.Log("SQLiteへINSERTできなかった");
+        }
+    }
+
+    public void ExecuteObjects(string endPoint, ResponseObjects responseObjects)
+    {
+        switch(endPoint)
+        {
+            case GameUtility.Const.REGISTER_URL:
+                ExecuteRegister(responseObjects);
+                break;
+            case GameUtility.Const.LOGIN_URL:
+                ExecuteLogin(responseObjects);
+                break;
+        }
+    }
+
+    public IEnumerator Send(string endPoint, List<IMultipartFormSection> form, Action action = null, int timeOut = 10)
     {
         //POSTでデータを送信
-        UnityWebRequest request = UnityWebRequest.Post(GameUtility.Const.SERVER_URL + endPoint, form);
+        UnityWebRequest request = UnityWebRequest.Post(endPoint, form);
         request.timeout = timeOut;
         yield return request.SendWebRequest();
 
@@ -46,16 +84,7 @@ public class ApiConnect : MonoBehaviour
 
             //SQLiteへ保存。JSONデータをオブジェクトに変換
             ResponseObjects responseObjects = JsonUtility.FromJson<ResponseObjects>(serverData);
-            if (!string.IsNullOrEmpty(responseObjects.users.id))
-            {
-                Debug.Log("SQLiteへINSERTした");
-                UsersTable.Insert(responseObjects.users);
-                WalletsTable.Insert(responseObjects.wallets);
-            }
-            else
-            {
-                Debug.Log("SQLiteへINSERTできなかった");
-            }
+            ExecuteObjects(endPoint, responseObjects);
 
             //レスポンス成功時に、関数があれば実行
             if (action != null)

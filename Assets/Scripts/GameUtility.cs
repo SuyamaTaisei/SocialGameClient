@@ -2,7 +2,9 @@
 {
     public static class Const
     {
-        public const string SERVER_URL     = "http://localhost/api/";
+        //エンドポイント
+        public const string REGISTER_URL   = "http://localhost/api/register";
+        public const string LOGIN_URL      = "http://localhost/api/login";
         public const string SQLITE_DB_NAME = "SocialGameServer.db";
 
         //エラーID

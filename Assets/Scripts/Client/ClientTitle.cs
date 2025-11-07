@@ -20,8 +20,6 @@ public class ClientTitle : MonoBehaviour
 
     private const string column_UserName   = "user_name";
     private const string column_id         = "id";
-    private const string endPoint_register = "register";
-    private const string endPoint_login    = "login";
 
     //DBモデル
     private UsersModel userModel;
@@ -101,7 +99,7 @@ public class ClientTitle : MonoBehaviour
             {
                 new MultipartFormDataSection(column_UserName, userName)
             };
-            StartCoroutine(apiConnect.Send(endPoint_register, form, action));
+            StartCoroutine(apiConnect.Send(GameUtility.Const.REGISTER_URL, form, action));
         }
     }
 
@@ -120,7 +118,7 @@ public class ClientTitle : MonoBehaviour
             {
                 new MultipartFormDataSection(column_id, id)
             };
-            StartCoroutine(apiConnect.Send(endPoint_login, form, action));
+            StartCoroutine(apiConnect.Send(GameUtility.Const.LOGIN_URL, form, action));
 
             StartView.SetActive(true);
             RegisterView.SetActive(false);

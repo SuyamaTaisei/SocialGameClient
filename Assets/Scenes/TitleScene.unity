@@ -302,8 +302,8 @@ MonoBehaviour:
   StartView: {fileID: 825632019}
   RegisterView: {fileID: 1320171812}
   RegisterCompleteView: {fileID: 816921663}
-  showUserName: {fileID: 806827285}
-  showId: {fileID: 2026494460}
+  userNameText: {fileID: 806827285}
+  idText: {fileID: 2026494460}
   inputUserName: {fileID: 1177073478}
   warningText: {fileID: 1875894050}
   apiConnect: {fileID: 1672812954}
@@ -888,7 +888,7 @@ GameObject:
   - component: {fileID: 806827286}
   - component: {fileID: 806827285}
   m_Layer: 5
-  m_Name: ShowUserName
+  m_Name: UserNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3233,7 +3233,7 @@ GameObject:
   - component: {fileID: 2026494461}
   - component: {fileID: 2026494460}
   m_Layer: 5
-  m_Name: ShowId
+  m_Name: IdText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -11,15 +11,16 @@ public class ClientTitle : MonoBehaviour
     [SerializeField] GameObject RegisterView;
     [SerializeField] GameObject RegisterCompleteView;
 
-    [SerializeField] TextMeshProUGUI showUserName;
-    [SerializeField] TextMeshProUGUI showId;
+    [SerializeField] TextMeshProUGUI userNameText;
+    [SerializeField] TextMeshProUGUI idText;
 
     [SerializeField] TMP_InputField inputUserName;
     [SerializeField] TextMeshProUGUI warningText;
+
     [SerializeField] ApiConnect apiConnect;
 
-    private const string column_UserName   = "user_name";
-    private const string column_id         = "id";
+    private const string column_UserName = "user_name";
+    private const string column_id       = "id";
 
     //DBモデル
     private UsersModel userModel;
@@ -33,9 +34,7 @@ public class ClientTitle : MonoBehaviour
             Debug.Log(DBPath);
             File.Create(DBPath).Close();
         }
-        // テーブル作成処理
-        UsersTable.CreateTable();
-        WalletsTable.CreateTable();
+        CreateTables();
     }
 
     void Start()
@@ -44,39 +43,15 @@ public class ClientTitle : MonoBehaviour
         RegisterView.SetActive(false);
         RegisterCompleteView.SetActive(false);
 
-        userModel = UsersTable.Select();
-        //既にユーザー情報があれば情報表示
-        if (!string.IsNullOrEmpty(userModel.id))
-        {
-            showUserName.text = "ユーザー：" + userModel.user_name;
-            showId.text = "ID : " + userModel.id;
-        }
-        //無ければ表示しない
-        else
-        {
-            showUserName.text = "ユーザー：";
-            showId.text = "ID : ";
-        }
+        ShowUserInfo();
     }
 
     private void Update()
     {
-        userModel = UsersTable.Select();
-        //既にユーザー情報があれば情報表示
-        if (!string.IsNullOrEmpty(userModel.id))
-        {
-            showUserName.text = "ユーザー：" + userModel.user_name;
-            showId.text = "ID : " + userModel.id;
-        }
-        //無ければ表示しない
-        else
-        {
-            showUserName.text = "ユーザー：";
-            showId.text = "ID : ";
-        }
+        ShowUserInfo();
     }
 
-    //登録ボタン押下
+    //アカウント登録ボタン
     public void RegisterButton()
     {
         if (string.IsNullOrEmpty(inputUserName.text))
@@ -103,7 +78,7 @@ public class ClientTitle : MonoBehaviour
         }
     }
 
-    //スタートボタン押下
+    //スタートボタン
     public void StartButton()
     {
         //ユーザー情報の取得
@@ -131,14 +106,39 @@ public class ClientTitle : MonoBehaviour
         }
     }
 
-    //アカウント登録完了画面
-    public void RegisterComplete(bool enabled) => RegisterCompleteView.SetActive(enabled);
-
     //アカウント登録完了ボタン
     public void RegisterCompleteButton()
     {
         StartView.SetActive(true);
         RegisterComplete(false);
+    }
+
+    //アカウント登録完了画面
+    public void RegisterComplete(bool enabled) => RegisterCompleteView.SetActive(enabled);
+
+    //ユーザー情報表示
+    public void ShowUserInfo()
+    {
+        userModel = UsersTable.Select();
+        //既にユーザー情報があれば情報表示
+        if (!string.IsNullOrEmpty(userModel.id))
+        {
+            userNameText.text = "ユーザー：" + userModel.user_name;
+            idText.text = "ID : " + userModel.id;
+        }
+        //無ければ表示しない
+        else
+        {
+            userNameText.text = "ユーザー：";
+            idText.text = "ID : ";
+        }
+    }
+
+    //テーブル作成
+    public void CreateTables()
+    {
+        UsersTable.CreateTable();
+        WalletsTable.CreateTable();
     }
 
     //シーン遷移

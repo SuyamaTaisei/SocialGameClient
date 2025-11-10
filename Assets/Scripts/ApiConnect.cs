@@ -41,6 +41,19 @@ public class ApiConnect : MonoBehaviour
         }
     }
 
+    public void ExecuteHome(ResponseObjects responseObjects)
+    {
+        if (!string.IsNullOrEmpty(responseObjects.users.id))
+        {
+            Debug.Log("SQLiteへINSERTした");
+            WalletsTable.Insert(responseObjects.wallets);
+        }
+        else
+        {
+            Debug.Log("SQLiteへINSERTできなかった");
+        }
+    }
+
     public void ExecuteObjects(string endPoint, ResponseObjects responseObjects)
     {
         switch(endPoint)
@@ -50,6 +63,9 @@ public class ApiConnect : MonoBehaviour
                 break;
             case GameUtility.Const.LOGIN_URL:
                 ExecuteLogin(responseObjects);
+                break;
+            case GameUtility.Const.HOME_URL:
+                ExecuteHome(responseObjects);
                 break;
         }
     }

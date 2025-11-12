@@ -18,6 +18,7 @@ public class ClientTitle : MonoBehaviour
     [SerializeField] TextMeshProUGUI warningText;
 
     [SerializeField] ApiConnect apiConnect;
+    [SerializeField] ClientMasterData clientMasterData;
 
     private const string column_UserName = "user_name";
     private const string column_id       = "id";
@@ -85,7 +86,7 @@ public class ClientTitle : MonoBehaviour
         userModel = UsersTable.Select();
         if (!string.IsNullOrEmpty(userModel.id))
         {
-            Action action = new(() => SceneTransition());
+            Action action = new(() => clientMasterData.MasterDataCheck());
 
             //そのままログイン
             string id = userModel.id;
@@ -139,8 +140,7 @@ public class ClientTitle : MonoBehaviour
     {
         UsersTable.CreateTable();
         WalletsTable.CreateTable();
+        ShopCategoriesTable.CreateTable();
+        ShopDataTable.CreateTable();
     }
-
-    //シーン遷移
-    public void SceneTransition() => LoadingManager.Instance.LoadScene("HomeScene");
 }

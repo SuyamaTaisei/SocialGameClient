@@ -10,21 +10,11 @@ public class ClientMasterData : MonoBehaviour
     [SerializeField] TextMeshProUGUI masterCheckText;
     [SerializeField] GameObject masterCheckButton;
     [SerializeField] ApiConnect apiConnect;
+    [SerializeField] ClientTitle clientTitle;
 
     private const string masterData_key = "client_master_version";
 
     public static ClientMasterData Instance { get; private set; }
-
-    private void Awake()
-    {
-        if (Instance != null && Instance != this)
-        {
-            Destroy(gameObject);
-            return;
-        }
-        Instance = this;
-        DontDestroyOnLoad(gameObject);
-    }
 
     private void Start()
     {
@@ -55,11 +45,12 @@ public class ClientMasterData : MonoBehaviour
     //マスタデータ取得処理
     public void MasterDataGet()
     {
+        clientTitle.StartView.SetActive(false);
         masterCheckView.SetActive(true);
         masterCheckText.text = "ゲームを更新中...";
         Action action = () =>
         {
-            masterCheckText.text = "更新しました。";
+            masterCheckText.text = "ゲームを更新しました。";
             masterCheckButton.SetActive(true);
         };
         StartCoroutine(apiConnect.Send(GameUtility.Const.MASTER_DATA_GET_URL, null, action));
@@ -68,7 +59,15 @@ public class ClientMasterData : MonoBehaviour
     //マスタデータ更新完了ボタン
     public void MasterDataUpdateComplete()
     {
-        masterCheckView.SetActive(false);
-        LoadingManager.Instance.LoadScene("HomeScene");
+        string masterDataNumber = MasterDataManager.GetMasterDataVersion().ToString();
+        if (GameUtility.Const.MASTER_DATA_VERSION == masterDataNumber)
+        {
+            masterCheckView.SetActive(false);
+            LoadingManager.Instance.LoadScene("HomeScene");
+        }
+        else
+        {
+            MasterDataCheck();
+        }
     }
 }

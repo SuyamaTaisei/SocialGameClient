@@ -7,9 +7,9 @@ using UnityEngine.Networking;
 
 public class ClientTitle : MonoBehaviour
 {
-    [SerializeField] GameObject StartView;
-    [SerializeField] GameObject RegisterView;
-    [SerializeField] GameObject RegisterCompleteView;
+    [SerializeField] GameObject startView;
+    [SerializeField] GameObject registerView;
+    [SerializeField] GameObject registerCompleteView;
 
     [SerializeField] TextMeshProUGUI userNameText;
     [SerializeField] TextMeshProUGUI idText;
@@ -19,6 +19,8 @@ public class ClientTitle : MonoBehaviour
 
     [SerializeField] ApiConnect apiConnect;
     [SerializeField] ClientMasterData clientMasterData;
+
+    public GameObject StartView => startView;
 
     private const string column_UserName = "user_name";
     private const string column_id       = "id";
@@ -41,8 +43,8 @@ public class ClientTitle : MonoBehaviour
     void Start()
     {
         StartView.SetActive(true);
-        RegisterView.SetActive(false);
-        RegisterCompleteView.SetActive(false);
+        registerView.SetActive(false);
+        registerCompleteView.SetActive(false);
 
         ShowUserInfo();
     }
@@ -67,7 +69,7 @@ public class ClientTitle : MonoBehaviour
         }
         else
         {
-            RegisterView.SetActive(false);
+            registerView.SetActive(false);
             Action action = new(() => RegisterComplete(true));
 
             string userName = inputUserName.text;
@@ -97,13 +99,13 @@ public class ClientTitle : MonoBehaviour
             StartCoroutine(apiConnect.Send(GameUtility.Const.LOGIN_URL, form, action));
 
             StartView.SetActive(true);
-            RegisterView.SetActive(false);
+            registerView.SetActive(false);
         }
         else
         {
             //アカウント登録画面表示
             StartView.SetActive(false);
-            RegisterView.SetActive(true);
+            registerView.SetActive(true);
         }
     }
 
@@ -115,7 +117,7 @@ public class ClientTitle : MonoBehaviour
     }
 
     //アカウント登録完了画面
-    public void RegisterComplete(bool enabled) => RegisterCompleteView.SetActive(enabled);
+    public void RegisterComplete(bool enabled) => registerCompleteView.SetActive(enabled);
 
     //ユーザー情報表示
     public void ShowUserInfo()

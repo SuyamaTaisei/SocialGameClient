@@ -299,9 +299,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9428e75c975c3be40b03f3ed09c32dde, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartView: {fileID: 825632019}
-  RegisterView: {fileID: 1320171812}
-  RegisterCompleteView: {fileID: 816921663}
+  startView: {fileID: 825632019}
+  registerView: {fileID: 1320171812}
+  registerCompleteView: {fileID: 816921663}
   userNameText: {fileID: 806827285}
   idText: {fileID: 2026494460}
   inputUserName: {fileID: 1177073478}
@@ -1269,6 +1269,7 @@ MonoBehaviour:
   masterCheckText: {fileID: 348663147}
   masterCheckButton: {fileID: 465215901}
   apiConnect: {fileID: 1672812954}
+  clientTitle: {fileID: 46352197}
 --- !u!1 &806827283
 GameObject:
   m_ObjectHideFlags: 0

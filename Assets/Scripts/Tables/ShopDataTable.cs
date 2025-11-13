@@ -4,7 +4,7 @@
 public class ShopDataModel
 {
     public int product_id;
-    public string shop_category;
+    public int shop_category;
     public string name;
     public int price;
 }
@@ -16,7 +16,7 @@ public static class ShopDataTable
     {
         string query = "create table if not exists shop_data(" +
             "product_id int," +
-            "shop_category string," +
+            "shop_category int," +
             "name string," +
             "price int," +
             "primary key(product_id))";
@@ -25,17 +25,20 @@ public static class ShopDataTable
     }
 
     //レコード挿入
-    public static void Insert(ShopDataModel shopDataModel)
+    public static void Insert(ShopDataModel[] shopDataModel)
     {
-        string query = "insert or replace into shop_data (" +
-            "product_id," +
-            "shop_category," +
-            "name," +
-            "price" +
-            ")" +
-            "values (" + shopDataModel.product_id + ", \"" + shopDataModel.shop_category + "\", \"" + shopDataModel.name + "\", " + shopDataModel.price + ")";
-        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-        sqlDB.ExecuteNonQuery(query);
+        foreach (ShopDataModel item in shopDataModel)
+        {
+            string query = "insert or replace into shop_data (" +
+                "product_id," +
+                "shop_category," +
+                "name," +
+                "price" +
+                ")" +
+                "values (" + item.product_id + ", " + item.shop_category + ", \"" + item.name + "\", " + item.price + ")";
+            SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+            sqlDB.ExecuteNonQuery(query);
+        }
     }
 
     //レコード取得
@@ -48,7 +51,7 @@ public static class ShopDataTable
         foreach (DataRow record in dataTable.Rows)
         {
             shopDataModel.product_id    = int.Parse(record["product_id"].ToString());
-            shopDataModel.shop_category = record["shop_category"].ToString();
+            shopDataModel.shop_category = int.Parse(record["shop_category"].ToString());
             shopDataModel.name          = record["name"].ToString();
             shopDataModel.price         = int.Parse(record["price"].ToString());
         }

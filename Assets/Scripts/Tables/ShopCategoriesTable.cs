@@ -3,7 +3,7 @@
 [Serializable]
 public class ShopCategoryModel
 {
-    public string category;
+    public int category;
     public string name;
 }
 
@@ -13,7 +13,7 @@ public static class ShopCategoriesTable
     public static void CreateTable()
     {
         string query = "create table if not exists shop_categories(" +
-            "category string," +
+            "category int," +
             "name string," +
             "primary key(category))";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
@@ -21,15 +21,18 @@ public static class ShopCategoriesTable
     }
 
     //レコード挿入
-    public static void Insert(ShopCategoryModel shopCategoryModel)
+    public static void Insert(ShopCategoryModel[] shopCategoryModel)
     {
-        string query = "insert or replace into shop_categories (" +
-            "category," +
-            "name" +
-            ")" +
-            "values (\"" + shopCategoryModel.category + "\", \"" + shopCategoryModel.name + "\")";
-        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-        sqlDB.ExecuteNonQuery(query);
+        foreach (ShopCategoryModel item in shopCategoryModel)
+        {
+            string query = "insert or replace into shop_categories (" +
+                "category," +
+                "name" +
+                ")" +
+                "values (" + item.category + ", \"" + item.name + "\")";
+            SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+            sqlDB.ExecuteNonQuery(query);
+        }
     }
 
     //レコード取得
@@ -41,8 +44,8 @@ public static class ShopCategoriesTable
         ShopCategoryModel shopCategoryModel = new ShopCategoryModel();
         foreach (DataRow record in dataTable.Rows)
         {
-            shopCategoryModel.category = record["manage_id"].ToString();
-            shopCategoryModel.name     = record["coin_amount"].ToString();
+            shopCategoryModel.category = int.Parse(record["category"].ToString());
+            shopCategoryModel.name     = record["name"].ToString();
         }
         return shopCategoryModel;
     }

@@ -11,8 +11,8 @@ public class ResponseObjects
     public int master_data_version;
     public UsersModel users;
     public WalletsModel wallets;
-    public ShopCategoryModel shop_category;
-    public ShopDataModel shop_data;
+    public ShopCategoryModel[] shop_category;
+    public ShopDataModel[] shop_data;
 }
 
 public class ApiConnect : MonoBehaviour
@@ -167,6 +167,7 @@ public class ApiConnect : MonoBehaviour
                 }
                 yield break;
             }
+            Debug.Log(serverData);
 
             //SQLiteへ保存。JSONデータをオブジェクトに変換
             ResponseObjects responseObjects = JsonUtility.FromJson<ResponseObjects>(serverData);

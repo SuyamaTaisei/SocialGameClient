@@ -5,7 +5,11 @@ public class ShopDataModel
 {
     public int product_id;
     public int shop_category;
+    public string type;
     public string name;
+    public int paid_currency;
+    public int free_currency;
+    public int coin_currency;
     public int price;
 }
 
@@ -17,7 +21,11 @@ public static class ShopDataTable
         string query = "create table if not exists shop_data(" +
             "product_id int," +
             "shop_category int," +
+            "type string," +
             "name string," +
+            "paid_currency int," +
+            "free_currency int," +
+            "coin_currency int," +
             "price int," +
             "primary key(product_id))";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
@@ -32,10 +40,14 @@ public static class ShopDataTable
             string query = "insert or replace into shop_data (" +
                 "product_id," +
                 "shop_category," +
+                "type," +
                 "name," +
+                "paid_currency," +
+                "free_currency," +
+                "coin_currency," +
                 "price" +
                 ")" +
-                "values (" + item.product_id + ", " + item.shop_category + ", \"" + item.name + "\", " + item.price + ")";
+                "values (" + item.product_id + ", " + item.shop_category + ", \"" + item.type + "\", \"" + item.name + "\", " + item.paid_currency + ", " + item.free_currency + ", " + item.coin_currency + ", " + item.price + ")";
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
             sqlDB.ExecuteNonQuery(query);
         }
@@ -52,7 +64,11 @@ public static class ShopDataTable
         {
             shopDataModel.product_id    = int.Parse(record["product_id"].ToString());
             shopDataModel.shop_category = int.Parse(record["shop_category"].ToString());
+            shopDataModel.type          = record["type"].ToString();
             shopDataModel.name          = record["name"].ToString();
+            shopDataModel.paid_currency = int.Parse(record["paid_currency"].ToString());
+            shopDataModel.free_currency = int.Parse(record["free_currency"].ToString());
+            shopDataModel.coin_currency = int.Parse(record["coin_currency"].ToString());
             shopDataModel.price         = int.Parse(record["price"].ToString());
         }
         return shopDataModel;

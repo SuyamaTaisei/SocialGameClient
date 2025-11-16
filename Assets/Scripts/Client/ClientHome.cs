@@ -10,7 +10,7 @@ public class ClientHome : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemPaidText;
     [SerializeField] TextMeshProUGUI userNameText;
 
-    [SerializeField] ApiConnect apiConnect;
+    private ApiConnect apiConnect;
 
     private const string column_id = "id";
 
@@ -20,7 +20,8 @@ public class ClientHome : MonoBehaviour
 
     private void Start()
     {
-        userModel = UsersTable.Select();
+        apiConnect  = FindFirstObjectByType<ApiConnect>();
+        userModel   = UsersTable.Select();
         walletModel = WalletsTable.Select();
 
         if (!string.IsNullOrEmpty(userModel.id))

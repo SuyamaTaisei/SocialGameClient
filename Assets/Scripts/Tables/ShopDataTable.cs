@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class ShopDataModel
@@ -53,15 +54,42 @@ public static class ShopDataTable
         }
     }
 
-    //レコード取得
+    //レコード1件取得
     public static ShopDataModel Select()
     {
         string query = "select * from shop_data";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
+
         ShopDataModel shopDataModel = new ShopDataModel();
+
         foreach (DataRow record in dataTable.Rows)
         {
+            shopDataModel.product_id = int.Parse(record["product_id"].ToString());
+            shopDataModel.shop_category = int.Parse(record["shop_category"].ToString());
+            shopDataModel.type = record["type"].ToString();
+            shopDataModel.name = record["name"].ToString();
+            shopDataModel.paid_currency = int.Parse(record["paid_currency"].ToString());
+            shopDataModel.free_currency = int.Parse(record["free_currency"].ToString());
+            shopDataModel.coin_currency = int.Parse(record["coin_currency"].ToString());
+            shopDataModel.price = int.Parse(record["price"].ToString());
+        }
+
+        return shopDataModel;
+    }
+
+    //全レコード取得
+    public static List<ShopDataModel> SelectAll()
+    {
+        string query = "select * from shop_data";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<ShopDataModel> result = new List<ShopDataModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            ShopDataModel shopDataModel = new ShopDataModel();
             shopDataModel.product_id    = int.Parse(record["product_id"].ToString());
             shopDataModel.shop_category = int.Parse(record["shop_category"].ToString());
             shopDataModel.type          = record["type"].ToString();
@@ -70,7 +98,10 @@ public static class ShopDataTable
             shopDataModel.free_currency = int.Parse(record["free_currency"].ToString());
             shopDataModel.coin_currency = int.Parse(record["coin_currency"].ToString());
             shopDataModel.price         = int.Parse(record["price"].ToString());
+
+            result.Add(shopDataModel);
         }
-        return shopDataModel;
+
+        return result;
     }
 }

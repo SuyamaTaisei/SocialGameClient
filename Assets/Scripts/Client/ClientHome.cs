@@ -39,4 +39,15 @@ public class ClientHome : MonoBehaviour
             userNameText.text = userModel.user_name;
         }
     }
+
+    private void Update()
+    {
+        if (!string.IsNullOrEmpty(userModel.id))
+        {
+            walletModel = WalletsTable.Select();
+            coinText.text = walletModel.coin_amount.ToString();
+            gemFreeText.text = walletModel.gem_free_amount.ToString();
+            gemPaidText.text = walletModel.gem_paid_amount.ToString();
+        }
+    }
 }

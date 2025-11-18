@@ -128,6 +128,9 @@ public class ResponseManager : MonoBehaviour
                 ExecuteShopCategory(responseObjects);
                 ExecuteShopData(responseObjects);
                 break;
+            case GameUtility.Const.PAYMENT_URL:
+                ExecuteHome(responseObjects);
+                break;
         }
     }
 }

@@ -2,13 +2,12 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
-using UnityEngine.UI;
 
 public class ClientShop : MonoBehaviour
 {
     [SerializeField] GameObject shopView;
-    [SerializeField] Transform content;
-    [SerializeField] GameObject itemPrefab;
+    [SerializeField] GameObject itemListView;
+    [SerializeField] GameObject gemListView;
 
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI gemFreeText;
@@ -17,7 +16,6 @@ public class ClientShop : MonoBehaviour
     private ApiConnect apiConnect;
     private const string column_id = "id";
     private const string column_product_id = "product_id";
-    private const int maxCount = 4;
 
     //DBモデル
     private UsersModel userModel;
@@ -28,29 +26,7 @@ public class ClientShop : MonoBehaviour
         userModel = UsersTable.Select();
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
-
-        List<ShopDataModel> list = ShopDataTable.SelectAll();
-
-        for (int i = 0; i < list.Count && i < maxCount; i++)
-        {
-            GameObject item = Instantiate(itemPrefab, content);
-
-            //ボタンの取得
-            Button button = item.GetComponentInChildren<Button>();
-
-            //選択されたボタンの番号をセット
-            int index = list[i].product_id;
-
-            //生成されたリストからセットする
-            ShopItemView view = item.GetComponent<ShopItemView>();
-            if (view != null)
-            {
-                view.Set(list[i]);
-            }
-
-            //ボタン押下処理
-            button.onClick.AddListener(() => PaymentButton(index));
-        }
+        OpenGemListButton();
     }
 
     private void Update()
@@ -65,15 +41,27 @@ public class ClientShop : MonoBehaviour
     }
 
     //ボタン押下処理
-    public void PaymentButton(int index)
+    public void PaymentButton(int index1)
     {
         userModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(column_id, userModel.id),
-            new MultipartFormDataSection(column_product_id, index.ToString())
+            new MultipartFormDataSection(column_product_id, index1.ToString())
         };
         StartCoroutine(apiConnect.Send(GameUtility.Const.PAYMENT_URL, form));
+    }
+
+    public void OpenItemListButton()
+    {
+        itemListView.SetActive(true);
+        gemListView.SetActive(false);
+    }
+
+    public void OpenGemListButton()
+    {
+        gemListView.SetActive(true);
+        itemListView.SetActive(false);
     }
 
     //ショップ開く

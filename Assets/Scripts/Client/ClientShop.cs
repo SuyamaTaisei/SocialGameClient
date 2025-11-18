@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -9,6 +10,10 @@ public class ClientShop : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject itemPrefab;
 
+    [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] TextMeshProUGUI gemFreeText;
+    [SerializeField] TextMeshProUGUI gemPaidText;
+
     private ApiConnect apiConnect;
     private const string column_id = "id";
     private const string column_product_id = "product_id";
@@ -16,9 +21,11 @@ public class ClientShop : MonoBehaviour
 
     //DBモデル
     private UsersModel userModel;
+    private WalletsModel walletModel;
 
     private void Start()
     {
+        userModel = UsersTable.Select();
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
 
@@ -36,10 +43,24 @@ public class ClientShop : MonoBehaviour
 
             //生成されたリストからセットする
             ShopItemView view = item.GetComponent<ShopItemView>();
-            view.Set(list[i]);
+            if (view != null)
+            {
+                view.Set(list[i]);
+            }
 
             //ボタン押下処理
             button.onClick.AddListener(() => PaymentButton(index));
+        }
+    }
+
+    private void Update()
+    {
+        if (!string.IsNullOrEmpty(userModel.id))
+        {
+            walletModel = WalletsTable.Select();
+            coinText.text = walletModel.coin_amount.ToString();
+            gemFreeText.text = walletModel.gem_free_amount.ToString();
+            gemPaidText.text = walletModel.gem_paid_amount.ToString();
         }
     }
 

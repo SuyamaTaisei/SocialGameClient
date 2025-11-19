@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class ShopList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject itemPrefab;
+    [SerializeField] GameObject templateView;
     [SerializeField] ClientShop clientShop;
 
     [SerializeField] int startCount;
@@ -19,12 +19,12 @@ public class ShopList : MonoBehaviour
 
         for (int i = startCount; i < list.Count && i <= maxCount; i++)
         {
-            GameObject item = Instantiate(itemPrefab, content);
+            GameObject item = Instantiate(templateView, content);
 
             //ボタンの取得
             Button button = item.GetComponentInChildren<Button>();
 
-            //選択されたボタンの番号をセット
+            //選択されたボタンの番号をセット(index1は現金、index1とindex2はコインとジェム)
             int index1 = product_id1 + i;
             int index2 = product_id2 + i;
 

@@ -60,12 +60,12 @@ public class ClientTitle : MonoBehaviour
         if (string.IsNullOrEmpty(inputUserName.text))
         {
             //ユーザ名未入力
-            warningText.text = "正しく入力してください";
+            warningText.text = GameUtility.Const.ERROR_VALIDATE_1;
         }
         else if (inputUserName.text.Length <= 3)
         {
             //ユーザ名が指定文字数以上の場合
-            warningText.text = "4文字以上で入力してください";
+            warningText.text = GameUtility.Const.ERROR_VALIDATE_2;
         }
         else
         {
@@ -126,14 +126,14 @@ public class ClientTitle : MonoBehaviour
         //既にユーザー情報があれば情報表示
         if (!string.IsNullOrEmpty(userModel.id))
         {
-            userNameText.text = "ユーザー：" + userModel.user_name;
-            idText.text = "ID : " + userModel.id;
+            userNameText.text = GameUtility.Const.SHOW_USER + userModel.user_name;
+            idText.text = GameUtility.Const.SHOW_ID + userModel.id;
         }
         //無ければ表示しない
         else
         {
-            userNameText.text = "ユーザー：";
-            idText.text = "ID : ";
+            userNameText.text = GameUtility.Const.SHOW_USER;
+            idText.text = GameUtility.Const.SHOW_ID;
         }
     }
 

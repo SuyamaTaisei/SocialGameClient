@@ -49,7 +49,7 @@ public class ApiConnect : MonoBehaviour
                 {
                     case GameUtility.Const.ERROR_MASTER_DATA_UPDATE:
                         Debug.LogError("ゲームをアップデートしてください。");
-                        clientMasterData.MasterDataWarningUpdate("ゲームをアップデートしてください。");
+                        clientMasterData.MasterDataWarningUpdate(GameUtility.Const.ERROR_MASTER_DATA_VERSION_TEXT);
                         break;
                     case GameUtility.Const.ERROR_DB_UPDATE:
                         Debug.LogError("サーバーでエラーが発生しました。[データベース更新エラー]");

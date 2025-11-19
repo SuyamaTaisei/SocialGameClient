@@ -47,10 +47,10 @@ public class ClientMasterData : MonoBehaviour
     {
         clientTitle.StartView.SetActive(false);
         masterCheckView.SetActive(true);
-        masterCheckText.text = "ゲームを更新中...";
+        masterCheckText.text = GameUtility.Const.SHOW_MASTER_TEXT_1;
         Action action = () =>
         {
-            masterCheckText.text = "ゲームを更新しました。";
+            masterCheckText.text = GameUtility.Const.SHOW_MASTER_TEXT_2;
             masterCheckButton.SetActive(true);
         };
         StartCoroutine(apiConnect.Send(GameUtility.Const.MASTER_DATA_GET_URL, null, action));
@@ -63,7 +63,7 @@ public class ClientMasterData : MonoBehaviour
         if (GameUtility.Const.MASTER_DATA_VERSION == masterDataNumber)
         {
             masterCheckView.SetActive(false);
-            LoadingManager.Instance.LoadScene("HomeScene");
+            LoadingManager.Instance.LoadScene(GameUtility.Const.SCENE_NAME_HOMESCENE);
         }
         else
         {

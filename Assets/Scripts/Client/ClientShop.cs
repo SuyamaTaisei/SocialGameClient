@@ -86,7 +86,7 @@ public class ClientShop : MonoBehaviour
 
         //表記
         productName.text = data1.name;
-        priceMoneyText.text = data1.price.ToString() + "円";
+        priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();
         priceGemText.text = data2.price.ToString();
 

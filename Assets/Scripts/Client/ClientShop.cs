@@ -2,16 +2,30 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ClientShop : MonoBehaviour
 {
     [SerializeField] GameObject shopView;
     [SerializeField] GameObject itemListView;
     [SerializeField] GameObject gemListView;
+    [SerializeField] GameObject shopConfirmCover;
 
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
+
+    [SerializeField] TextMeshProUGUI productName;
+
+    //価格表示
+    [SerializeField] TextMeshProUGUI priceMoneyText;
+    [SerializeField] TextMeshProUGUI priceCoinText;
+    [SerializeField] TextMeshProUGUI priceGemText;
+
+    //購入ボタン
+    [SerializeField] Button buyMoneyButton;
+    [SerializeField] Button buyItemButtonCoin;
+    [SerializeField] Button buyItemButtonGem;
 
     private ApiConnect apiConnect;
     private const string column_id = "id";
@@ -26,6 +40,7 @@ public class ClientShop : MonoBehaviour
         userModel = UsersTable.Select();
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
+        shopConfirmCover.SetActive(false);
         OpenGemListButton();
     }
 
@@ -52,15 +67,52 @@ public class ClientShop : MonoBehaviour
         StartCoroutine(apiConnect.Send(GameUtility.Const.PAYMENT_URL, form));
     }
 
+    //購入確認画面
+    public void OpenConfirmButton(int index1, int index2)
+    {
+        //必ず購入状態をリセット
+        buyMoneyButton.onClick.RemoveAllListeners();
+        buyItemButtonCoin.onClick.RemoveAllListeners();
+        buyItemButtonGem.onClick.RemoveAllListeners();
+
+        //product_idが一致するレコードを取得
+        ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
+        ShopDataModel data2 = ShopDataTable.SelectProductId(index2);
+
+        //表記
+        productName.text = data1.name;
+        priceMoneyText.text = data1.price.ToString() + "円";
+        priceCoinText.text = data1.price.ToString();
+        priceGemText.text = data2.price.ToString();
+
+        //購入ボタン処理
+        buyMoneyButton.onClick.AddListener(() => PaymentButton(index1));
+        buyItemButtonCoin.onClick.AddListener(() => PaymentButton(index1));
+        buyItemButtonGem.onClick.AddListener(() => PaymentButton(index2));
+
+        shopConfirmCover.SetActive(true);
+    }
+
+    public void CloseConfirmButton()
+    {
+        shopConfirmCover.SetActive(false);
+    }
+
     public void OpenItemListButton()
     {
         itemListView.SetActive(true);
+        buyItemButtonCoin.gameObject.SetActive(true);
+        buyItemButtonGem.gameObject.SetActive(true);
+        buyMoneyButton.gameObject.SetActive(false);
         gemListView.SetActive(false);
     }
 
     public void OpenGemListButton()
     {
         gemListView.SetActive(true);
+        buyMoneyButton.gameObject.SetActive(true);
+        buyItemButtonCoin.gameObject.SetActive(false);
+        buyItemButtonGem.gameObject.SetActive(false);
         itemListView.SetActive(false);
     }
 

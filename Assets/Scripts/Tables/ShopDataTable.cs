@@ -104,4 +104,31 @@ public static class ShopDataTable
 
         return result;
     }
+
+    //商品IDの一致するレコードを取得
+    public static ShopDataModel SelectProductId(int productId)
+    {
+        string query = "select * from shop_data where product_id = " + productId;
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        ShopDataModel shopDataModel = null;
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            //必ずインスタンスを生成
+            shopDataModel = new ShopDataModel();
+            shopDataModel.product_id = int.Parse(record["product_id"].ToString());
+            shopDataModel.shop_category = int.Parse(record["shop_category"].ToString());
+            shopDataModel.type = record["type"].ToString();
+            shopDataModel.name = record["name"].ToString();
+            shopDataModel.paid_currency = int.Parse(record["paid_currency"].ToString());
+            shopDataModel.free_currency = int.Parse(record["free_currency"].ToString());
+            shopDataModel.coin_currency = int.Parse(record["coin_currency"].ToString());
+            shopDataModel.price = int.Parse(record["price"].ToString());
+            break;
+        }
+
+        return shopDataModel;
+    }
 }

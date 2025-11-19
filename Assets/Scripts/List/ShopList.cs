@@ -36,7 +36,7 @@ public class ShopList : MonoBehaviour
             }
 
             //ボタン押下処理
-            button.onClick.AddListener(() => clientShop.PaymentButton(index1));
+            button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2));
         }
     }
 }

@@ -64,6 +64,9 @@ public class ApiConnect : MonoBehaviour
 
             //SQLiteへ保存。JSONデータをオブジェクトに変換
             ResponseObjects responseObjects = JsonUtility.FromJson<ResponseObjects>(serverData);
+
+            //ここでもう一度確実に取得
+            responseManager = FindFirstObjectByType<ResponseManager>();
             responseManager.ExecuteObjects(endPoint, responseObjects);
 
             //レスポンス成功時に、関数があれば実行

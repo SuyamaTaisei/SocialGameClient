@@ -17,15 +17,21 @@
         public const string MASTER_DATA_VERSION = "1";
         public const string SHOW_MASTER_TEXT_1 = "ゲームを更新中...";
         public const string SHOW_MASTER_TEXT_2 = "ゲームを更新しました";
-
-        //システムエラー
-        public const string ERROR_DB_UPDATE = "1";
-        public const string ERROR_MASTER_DATA_UPDATE = "0";
         public const string ERROR_MASTER_DATA_VERSION_TEXT = "ゲームをアップデートしてください";
+
+        //エラーID
+        public const string ERRCODE_DB_UPDATE = "1";
+        public const string ERRCODE_MASTER_DATA_UPDATE = "0";
+        public const string ERRCODE_NOT_PAYMENT = "510";
+        public const string ERRCODE_LIMIT_WALLETS = "511";
 
         //アカウント登録時エラー
         public const string ERROR_VALIDATE_1 = "正しく入力してください";
         public const string ERROR_VALIDATE_2 = "4文字以上で入力してください";
+
+        //支払い時エラー
+        public const string ERROR_PAYMENT_1 = "残高が不足しています";
+        public const string ERROR_PAYMENT_2 = "ウォレット上限に達しました";
 
         //ログイン表記
         public const string SHOW_USER = "ユーザー：";

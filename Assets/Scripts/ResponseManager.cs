@@ -5,6 +5,7 @@ using UnityEngine;
 public class ResponseObjects
 {
     public int master_data_version;
+    public int errcode;
     public UsersModel users;
     public WalletsModel wallets;
     public ShopCategoryModel[] shop_category;
@@ -13,6 +14,7 @@ public class ResponseObjects
 
 public class ResponseManager : MonoBehaviour
 {
+    private ClientShop clientShop;
     public static ResponseManager Instance { get; private set; }
 
     private void Awake()
@@ -70,7 +72,7 @@ public class ResponseManager : MonoBehaviour
     public void ExecuteMasterDataCheck(ResponseObjects responseObjects)
     {
         Debug.Log(responseObjects.master_data_version);
-        int error_number = int.Parse(GameUtility.Const.ERROR_MASTER_DATA_UPDATE);
+        int error_number = int.Parse(GameUtility.Const.ERRCODE_MASTER_DATA_UPDATE);
         if (responseObjects.master_data_version != error_number)
         {
             Debug.Log("マスターデータバージョンを保存");
@@ -108,6 +110,25 @@ public class ResponseManager : MonoBehaviour
         }
     }
 
+    public void ExecutePaymentError(ResponseObjects responseObjects)
+    {
+        clientShop = FindAnyObjectByType<ClientShop>();
+        if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_NOT_PAYMENT))
+        {
+            Debug.Log("残高不足");
+            clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_1);
+        }
+        else if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_LIMIT_WALLETS))
+        {
+            Debug.Log("これ以上ウォレットを増やせない");
+            clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
+        }
+        else
+        {
+            clientShop.WarningMessage("");
+        }
+    }
+
     public void ExecuteObjects(string endPoint, ResponseObjects responseObjects)
     {
         switch (endPoint)
@@ -130,6 +151,7 @@ public class ResponseManager : MonoBehaviour
                 break;
             case GameUtility.Const.PAYMENT_URL:
                 ExecuteHome(responseObjects);
+                ExecutePaymentError(responseObjects);
                 break;
         }
     }

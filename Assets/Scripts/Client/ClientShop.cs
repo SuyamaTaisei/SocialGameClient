@@ -30,6 +30,9 @@ public class ClientShop : MonoBehaviour
     [SerializeField] Button buyItemButtonCoin;
     [SerializeField] Button buyItemButtonGem;
 
+    //購入警告
+    [SerializeField] TextMeshProUGUI warningText;
+
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
@@ -45,6 +48,7 @@ public class ClientShop : MonoBehaviour
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
         shopConfirmCover.SetActive(false);
+        warningText.text = "";
         OpenGemListButton();
     }
 
@@ -102,6 +106,7 @@ public class ClientShop : MonoBehaviour
     public void CloseConfirmButton()
     {
         shopConfirmCover.SetActive(false);
+        warningText.text = "";
     }
 
     //販売アイテム一覧表示
@@ -134,5 +139,11 @@ public class ClientShop : MonoBehaviour
     public void CloseShopButton()
     {
         shopView.SetActive(false);
+    }
+
+    //購入警告
+    public void WarningMessage(string message)
+    {
+        warningText.text = message;
     }
 }

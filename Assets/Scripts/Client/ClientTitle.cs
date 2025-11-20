@@ -144,5 +144,13 @@ public class ClientTitle : MonoBehaviour
         WalletsTable.CreateTable();
         ShopCategoriesTable.CreateTable();
         ShopDataTable.CreateTable();
+        
+        CharacterCategoriesTable.CreateTable();
+        CharacterDataTable.CreateTable();
+        CharacterRaritiesTable.CreateTable();
+
+        ItemCategoriesTable.CreateTable();
+        ItemDataTable.CreateTable();
+        ItemRaritiesTable.CreateTable();
     }
 }

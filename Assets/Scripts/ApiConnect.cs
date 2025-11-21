@@ -25,7 +25,7 @@ public class ApiConnect : MonoBehaviour
 
     private void Start()
     {
-        responseManager  = FindFirstObjectByType<ResponseManager>();
+        responseManager = FindFirstObjectByType<ResponseManager>();
         clientMasterData = FindFirstObjectByType<ClientMasterData>();
     }
 

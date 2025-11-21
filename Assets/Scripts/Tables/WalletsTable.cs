@@ -47,8 +47,8 @@ public static class WalletsTable
         WalletsModel walletsModel = new WalletsModel();
         foreach (DataRow record in dataTable.Rows)
         {
-            walletsModel.manage_id       = int.Parse(record["manage_id"].ToString());
-            walletsModel.coin_amount     = int.Parse(record["coin_amount"].ToString());
+            walletsModel.manage_id = int.Parse(record["manage_id"].ToString());
+            walletsModel.coin_amount = int.Parse(record["coin_amount"].ToString());
             walletsModel.gem_free_amount = int.Parse(record["gem_free_amount"].ToString());
             walletsModel.gem_paid_amount = int.Parse(record["gem_paid_amount"].ToString());
         }

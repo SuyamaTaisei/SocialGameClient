@@ -90,14 +90,14 @@ public static class ShopDataTable
         foreach (DataRow record in dataTable.Rows)
         {
             ShopDataModel shopDataModel = new ShopDataModel();
-            shopDataModel.product_id    = int.Parse(record["product_id"].ToString());
+            shopDataModel.product_id = int.Parse(record["product_id"].ToString());
             shopDataModel.shop_category = int.Parse(record["shop_category"].ToString());
-            shopDataModel.type          = record["type"].ToString();
-            shopDataModel.name          = record["name"].ToString();
+            shopDataModel.type = record["type"].ToString();
+            shopDataModel.name = record["name"].ToString();
             shopDataModel.paid_currency = int.Parse(record["paid_currency"].ToString());
             shopDataModel.free_currency = int.Parse(record["free_currency"].ToString());
             shopDataModel.coin_currency = int.Parse(record["coin_currency"].ToString());
-            shopDataModel.price         = int.Parse(record["price"].ToString());
+            shopDataModel.price = int.Parse(record["price"].ToString());
 
             result.Add(shopDataModel);
         }

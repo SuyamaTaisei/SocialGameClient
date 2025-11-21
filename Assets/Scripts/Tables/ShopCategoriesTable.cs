@@ -45,7 +45,7 @@ public static class ShopCategoriesTable
         foreach (DataRow record in dataTable.Rows)
         {
             shopCategoriesModel.category = int.Parse(record["category"].ToString());
-            shopCategoriesModel.name     = record["name"].ToString();
+            shopCategoriesModel.name = record["name"].ToString();
         }
         return shopCategoriesModel;
     }

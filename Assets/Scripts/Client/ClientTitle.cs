@@ -23,7 +23,7 @@ public class ClientTitle : MonoBehaviour
     public GameObject StartView => startView;
 
     private const string column_UserName = "user_name";
-    private const string column_id       = "id";
+    private const string column_id = "id";
 
     //DBモデル
     private UsersModel usersModel;

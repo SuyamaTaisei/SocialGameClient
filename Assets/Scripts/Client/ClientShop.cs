@@ -10,7 +10,7 @@ public class ClientShop : MonoBehaviour
     [SerializeField] GameObject shopView;
     [SerializeField] GameObject itemListView;
     [SerializeField] GameObject gemListView;
-    [SerializeField] GameObject shopConfirmCover;
+    [SerializeField] GameObject shopConfirmView;
 
     //現在所持ウォレット表示
     [SerializeField] TextMeshProUGUI coinText;
@@ -47,7 +47,7 @@ public class ClientShop : MonoBehaviour
         usersModel = UsersTable.Select();
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
-        shopConfirmCover.SetActive(false);
+        shopConfirmView.SetActive(false);
         warningText.text = "";
         OpenGemListButton();
     }
@@ -99,13 +99,13 @@ public class ClientShop : MonoBehaviour
         buyItemButtonCoin.onClick.AddListener(() => PaymentButton(index1));
         buyItemButtonGem.onClick.AddListener(() => PaymentButton(index2));
 
-        shopConfirmCover.SetActive(true);
+        shopConfirmView.SetActive(true);
     }
 
     //購入確認画面閉じる
     public void CloseConfirmButton()
     {
-        shopConfirmCover.SetActive(false);
+        shopConfirmView.SetActive(false);
         warningText.text = "";
     }
 

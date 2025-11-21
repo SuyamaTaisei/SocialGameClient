@@ -2162,7 +2162,7 @@ GameObject:
   - component: {fileID: 1177073479}
   - component: {fileID: 1177073478}
   m_Layer: 5
-  m_Name: InputField
+  m_Name: InputUserName
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2514,7 +2514,7 @@ GameObject:
   - component: {fileID: 1372611483}
   - component: {fileID: 1372611482}
   m_Layer: 5
-  m_Name: Label
+  m_Name: CheckLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2593,7 +2593,7 @@ GameObject:
   - component: {fileID: 1501398074}
   - component: {fileID: 1501398073}
   m_Layer: 5
-  m_Name: ButtonText
+  m_Name: SendText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3032,7 +3032,7 @@ GameObject:
   - component: {fileID: 1781982540}
   - component: {fileID: 1781982539}
   m_Layer: 5
-  m_Name: ButtonText
+  m_Name: ComfirmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3168,7 +3168,7 @@ GameObject:
   - component: {fileID: 1854792018}
   - component: {fileID: 1854792017}
   m_Layer: 5
-  m_Name: ButtonText
+  m_Name: MasterCheckText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3982,7 +3982,7 @@ GameObject:
   - component: {fileID: 2032090357}
   - component: {fileID: 2032090356}
   m_Layer: 5
-  m_Name: CompleteText
+  m_Name: RegisterCompleteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

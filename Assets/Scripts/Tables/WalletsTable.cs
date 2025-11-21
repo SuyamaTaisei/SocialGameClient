@@ -25,7 +25,7 @@ public static class WalletsTable
     }
 
     //レコード挿入
-    public static void Insert(WalletsModel walletModel)
+    public static void Insert(WalletsModel walletsModel)
     {
         string query = "insert or replace into wallets (" +
             "manage_id," +
@@ -33,7 +33,7 @@ public static class WalletsTable
             "gem_free_amount," +
             "gem_paid_amount" +
             ")" +
-            "values (" + walletModel.manage_id + ", " + walletModel.coin_amount + ", " + walletModel.gem_free_amount + ", " + walletModel.gem_paid_amount + ")";
+            "values (" + walletsModel.manage_id + ", " + walletsModel.coin_amount + ", " + walletsModel.gem_free_amount + ", " + walletsModel.gem_paid_amount + ")";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         sqlDB.ExecuteNonQuery(query);
     }
@@ -44,14 +44,14 @@ public static class WalletsTable
         string query = "select * from wallets";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
-        WalletsModel walletModel = new WalletsModel();
+        WalletsModel walletsModel = new WalletsModel();
         foreach (DataRow record in dataTable.Rows)
         {
-            walletModel.manage_id       = int.Parse(record["manage_id"].ToString());
-            walletModel.coin_amount     = int.Parse(record["coin_amount"].ToString());
-            walletModel.gem_free_amount = int.Parse(record["gem_free_amount"].ToString());
-            walletModel.gem_paid_amount = int.Parse(record["gem_paid_amount"].ToString());
+            walletsModel.manage_id       = int.Parse(record["manage_id"].ToString());
+            walletsModel.coin_amount     = int.Parse(record["coin_amount"].ToString());
+            walletsModel.gem_free_amount = int.Parse(record["gem_free_amount"].ToString());
+            walletsModel.gem_paid_amount = int.Parse(record["gem_paid_amount"].ToString());
         }
-        return walletModel;
+        return walletsModel;
     }
 }

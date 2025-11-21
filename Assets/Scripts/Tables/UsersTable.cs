@@ -31,7 +31,7 @@ public static class UsersTable
     }
 
     //レコード挿入
-    public static void Insert(UsersModel userModel)
+    public static void Insert(UsersModel usersModel)
     {
         string query = "insert or replace into users (" +
             "manage_id," +
@@ -42,7 +42,7 @@ public static class UsersTable
             "stamina_updated," +
             "last_login" +
             ")" +
-            "values (" + userModel.manage_id + ", \"" + userModel.id + "\", \"" + userModel.user_name + "\", " + userModel.max_stamina + ", " + userModel.last_stamina + ", \"" + userModel.stamina_updated + "\", \"" + userModel.last_login + "\")";
+            "values (" + usersModel.manage_id + ", \"" + usersModel.id + "\", \"" + usersModel.user_name + "\", " + usersModel.max_stamina + ", " + usersModel.last_stamina + ", \"" + usersModel.stamina_updated + "\", \"" + usersModel.last_login + "\")";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         sqlDB.ExecuteNonQuery(query);
     }
@@ -53,17 +53,17 @@ public static class UsersTable
         string query = "select * from users";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
-        UsersModel userModel = new UsersModel();
+        UsersModel usersModel = new UsersModel();
         foreach (DataRow record in dataTable.Rows)
         {
-            userModel.manage_id = int.Parse(record["manage_id"].ToString());
-            userModel.id = record["id"].ToString();
-            userModel.user_name = record["user_name"].ToString();
-            userModel.max_stamina = int.Parse(record["max_stamina"].ToString());
-            userModel.last_stamina = int.Parse(record["last_stamina"].ToString());
-            userModel.stamina_updated = record["stamina_updated"].ToString();
-            userModel.last_login = record["last_login"].ToString();
+            usersModel.manage_id = int.Parse(record["manage_id"].ToString());
+            usersModel.id = record["id"].ToString();
+            usersModel.user_name = record["user_name"].ToString();
+            usersModel.max_stamina = int.Parse(record["max_stamina"].ToString());
+            usersModel.last_stamina = int.Parse(record["last_stamina"].ToString());
+            usersModel.stamina_updated = record["stamina_updated"].ToString();
+            usersModel.last_login = record["last_login"].ToString();
         }
-        return userModel;
+        return usersModel;
     }
 }

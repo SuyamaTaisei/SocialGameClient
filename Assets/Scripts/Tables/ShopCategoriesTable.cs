@@ -1,7 +1,7 @@
 ﻿using System;
 
 [Serializable]
-public class ShopCategoryModel
+public class ShopCategoriesModel
 {
     public int category;
     public string name;
@@ -21,9 +21,9 @@ public static class ShopCategoriesTable
     }
 
     //レコード挿入
-    public static void Insert(ShopCategoryModel[] shopCategoryModel)
+    public static void Insert(ShopCategoriesModel[] shopCategoriesModel)
     {
-        foreach (ShopCategoryModel item in shopCategoryModel)
+        foreach (ShopCategoriesModel item in shopCategoriesModel)
         {
             string query = "insert or replace into shop_categories (" +
                 "category," +
@@ -36,17 +36,17 @@ public static class ShopCategoriesTable
     }
 
     //レコード取得
-    public static ShopCategoryModel Select()
+    public static ShopCategoriesModel Select()
     {
         string query = "select * from shop_categories";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
-        ShopCategoryModel shopCategoryModel = new ShopCategoryModel();
+        ShopCategoriesModel shopCategoriesModel = new ShopCategoriesModel();
         foreach (DataRow record in dataTable.Rows)
         {
-            shopCategoryModel.category = int.Parse(record["category"].ToString());
-            shopCategoryModel.name     = record["name"].ToString();
+            shopCategoriesModel.category = int.Parse(record["category"].ToString());
+            shopCategoriesModel.name     = record["name"].ToString();
         }
-        return shopCategoryModel;
+        return shopCategoriesModel;
     }
 }

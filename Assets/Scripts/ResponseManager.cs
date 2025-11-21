@@ -8,16 +8,16 @@ public class ResponseObjects
     public int errcode;
     public UsersModel users;
     public WalletsModel wallets;
-    public ShopCategoryModel[] shop_category;
+    public ShopCategoriesModel[] shop_categories;
     public ShopDataModel[] shop_data;
 
-    public CharacterCategoriesModel[] character_category;
+    public CharacterCategoriesModel[] character_categories;
     public CharacterDataModel[] character_data;
-    public CharacterRaritiesModel[] character_rarity;
+    public CharacterRaritiesModel[] character_rarities;
 
-    public ItemCategoriesModel[] item_category;
+    public ItemCategoriesModel[] item_categories;
     public ItemDataModel[] item_data;
-    public ItemRaritiesModel[] item_rarity;
+    public ItemRaritiesModel[] item_rarities;
 }
 
 public class ResponseManager : MonoBehaviour
@@ -94,10 +94,10 @@ public class ResponseManager : MonoBehaviour
 
     public void ExecuteMasterData(ResponseObjects responseObjects)
     {
-        if (responseObjects.shop_category != null)
+        if (responseObjects.shop_categories != null)
         {
             Debug.Log("SQLiteへINSERTした");
-            ShopCategoriesTable.Insert(responseObjects.shop_category);
+            ShopCategoriesTable.Insert(responseObjects.shop_categories);
         }
         if (responseObjects.shop_data != null)
         {
@@ -105,36 +105,36 @@ public class ResponseManager : MonoBehaviour
             ShopDataTable.Insert(responseObjects.shop_data);
         }
 
-        if (responseObjects.character_category != null)
+        if (responseObjects.character_categories != null)
         {
             Debug.Log("SQLiteへINSERTした");
-            CharacterCategoriesTable.Insert(responseObjects.character_category);
+            CharacterCategoriesTable.Insert(responseObjects.character_categories);
         }
         if (responseObjects.character_data != null)
         {
             Debug.Log("SQLiteへINSERTした");
             CharacterDataTable.Insert(responseObjects.character_data);
         }
-        if (responseObjects.character_rarity != null)
+        if (responseObjects.character_rarities != null)
         {
             Debug.Log("SQLiteへINSERTした");
-            CharacterRaritiesTable.Insert(responseObjects.character_rarity);
+            CharacterRaritiesTable.Insert(responseObjects.character_rarities);
         }
 
-        if (responseObjects.item_category != null)
+        if (responseObjects.item_categories != null)
         {
             Debug.Log("SQLiteへINSERTした");
-            ItemCategoriesTable.Insert(responseObjects.item_category);
+            ItemCategoriesTable.Insert(responseObjects.item_categories);
         }
         if (responseObjects.item_data != null)
         {
             Debug.Log("SQLiteへINSERTした");
             ItemDataTable.Insert(responseObjects.item_data);
         }
-        if (responseObjects.item_rarity != null)
+        if (responseObjects.item_rarities != null)
         {
             Debug.Log("SQLiteへINSERTした");
-            ItemRaritiesTable.Insert(responseObjects.item_rarity);
+            ItemRaritiesTable.Insert(responseObjects.item_rarities);
         }
     }
 

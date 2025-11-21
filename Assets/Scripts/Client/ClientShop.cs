@@ -39,12 +39,12 @@ public class ClientShop : MonoBehaviour
     private const string column_product_id = "product_id";
 
     //DBモデル
-    private UsersModel userModel;
-    private WalletsModel walletModel;
+    private UsersModel usersModel;
+    private WalletsModel walletsModel;
 
     private void Start()
     {
-        userModel = UsersTable.Select();
+        usersModel = UsersTable.Select();
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
         shopConfirmCover.SetActive(false);
@@ -55,22 +55,22 @@ public class ClientShop : MonoBehaviour
     //表記のリアルタイム更新
     private void Update()
     {
-        if (!string.IsNullOrEmpty(userModel.id))
+        if (!string.IsNullOrEmpty(usersModel.id))
         {
-            walletModel = WalletsTable.Select();
-            coinText.text = walletModel.coin_amount.ToString();
-            gemFreeText.text = walletModel.gem_free_amount.ToString();
-            gemPaidText.text = walletModel.gem_paid_amount.ToString();
+            walletsModel = WalletsTable.Select();
+            coinText.text = walletsModel.coin_amount.ToString();
+            gemFreeText.text = walletsModel.gem_free_amount.ToString();
+            gemPaidText.text = walletsModel.gem_paid_amount.ToString();
         }
     }
 
     //購入処理
     public void PaymentButton(int index)
     {
-        userModel = UsersTable.Select();
+        usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {
-            new MultipartFormDataSection(column_id, userModel.id),
+            new MultipartFormDataSection(column_id, usersModel.id),
             new MultipartFormDataSection(column_product_id, index.ToString())
         };
         StartCoroutine(apiConnect.Send(GameUtility.Const.PAYMENT_URL, form));

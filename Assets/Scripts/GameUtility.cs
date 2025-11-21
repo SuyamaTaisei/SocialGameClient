@@ -25,9 +25,10 @@
         public const string ERRCODE_NOT_PAYMENT = "510";
         public const string ERRCODE_LIMIT_WALLETS = "511";
 
-        //アカウント登録時エラー
+        //アカウント登録時バリデーション
         public const string ERROR_VALIDATE_1 = "正しく入力してください";
         public const string ERROR_VALIDATE_2 = "4文字以上で入力してください";
+        public const int NUMBER_VALIDATE_1 = 3;
 
         //支払い時エラー
         public const string ERROR_PAYMENT_1 = "残高が不足しています";

@@ -9,6 +9,6 @@ public class ShopItemView : MonoBehaviour
     public void Set(ShopDataModel data)
     {
         if (productNameText) productNameText.text = data.name;
-        if (priceText) priceText.text = data.price.ToString() + "円";
+        if (priceText) priceText.text = data.price.ToString() + GameUtility.Const.SHOW_YEN;
     }
 }

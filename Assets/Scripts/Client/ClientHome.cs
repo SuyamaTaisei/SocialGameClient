@@ -15,39 +15,39 @@ public class ClientHome : MonoBehaviour
     private const string column_id = "id";
 
     //DBモデル
-    private UsersModel userModel;
-    private WalletsModel walletModel;
+    private UsersModel usersModel;
+    private WalletsModel walletsModel;
 
     private void Start()
     {
         apiConnect  = FindFirstObjectByType<ApiConnect>();
-        userModel   = UsersTable.Select();
-        walletModel = WalletsTable.Select();
+        usersModel   = UsersTable.Select();
+        walletsModel = WalletsTable.Select();
 
-        if (!string.IsNullOrEmpty(userModel.id))
+        if (!string.IsNullOrEmpty(usersModel.id))
         {
-            string id = userModel.id;
+            string id = usersModel.id;
             List<IMultipartFormSection> form = new()
             {
                 new MultipartFormDataSection(column_id, id)
             };
             StartCoroutine(apiConnect.Send(GameUtility.Const.HOME_URL, form));
 
-            coinText.text     = walletModel.coin_amount.ToString();
-            gemFreeText.text  = walletModel.gem_free_amount.ToString();
-            gemPaidText.text  = walletModel.gem_paid_amount.ToString();
-            userNameText.text = userModel.user_name;
+            coinText.text     = walletsModel.coin_amount.ToString();
+            gemFreeText.text  = walletsModel.gem_free_amount.ToString();
+            gemPaidText.text  = walletsModel.gem_paid_amount.ToString();
+            userNameText.text = usersModel.user_name;
         }
     }
 
     private void Update()
     {
-        if (!string.IsNullOrEmpty(userModel.id))
+        if (!string.IsNullOrEmpty(usersModel.id))
         {
-            walletModel = WalletsTable.Select();
-            coinText.text = walletModel.coin_amount.ToString();
-            gemFreeText.text = walletModel.gem_free_amount.ToString();
-            gemPaidText.text = walletModel.gem_paid_amount.ToString();
+            walletsModel = WalletsTable.Select();
+            coinText.text = walletsModel.coin_amount.ToString();
+            gemFreeText.text = walletsModel.gem_free_amount.ToString();
+            gemPaidText.text = walletsModel.gem_paid_amount.ToString();
         }
     }
 }

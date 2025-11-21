@@ -26,7 +26,7 @@ public class ClientTitle : MonoBehaviour
     private const string column_id       = "id";
 
     //DBモデル
-    private UsersModel userModel;
+    private UsersModel usersModel;
 
     private void Awake()
     {
@@ -62,7 +62,7 @@ public class ClientTitle : MonoBehaviour
             //ユーザ名未入力
             warningText.text = GameUtility.Const.ERROR_VALIDATE_1;
         }
-        else if (inputUserName.text.Length <= 3)
+        else if (inputUserName.text.Length <= GameUtility.Const.NUMBER_VALIDATE_1)
         {
             //ユーザ名が指定文字数以上の場合
             warningText.text = GameUtility.Const.ERROR_VALIDATE_2;
@@ -85,13 +85,13 @@ public class ClientTitle : MonoBehaviour
     public void StartButton()
     {
         //ユーザー情報の取得
-        userModel = UsersTable.Select();
-        if (!string.IsNullOrEmpty(userModel.id))
+        usersModel = UsersTable.Select();
+        if (!string.IsNullOrEmpty(usersModel.id))
         {
             Action action = new(() => clientMasterData.MasterDataCheck());
 
             //そのままログイン
-            string id = userModel.id;
+            string id = usersModel.id;
             List<IMultipartFormSection> form = new()
             {
                 new MultipartFormDataSection(column_id, id)
@@ -122,12 +122,12 @@ public class ClientTitle : MonoBehaviour
     //ユーザー情報表示
     public void ShowUserInfo()
     {
-        userModel = UsersTable.Select();
+        usersModel = UsersTable.Select();
         //既にユーザー情報があれば情報表示
-        if (!string.IsNullOrEmpty(userModel.id))
+        if (!string.IsNullOrEmpty(usersModel.id))
         {
-            userNameText.text = GameUtility.Const.SHOW_USER + userModel.user_name;
-            idText.text = GameUtility.Const.SHOW_ID + userModel.id;
+            userNameText.text = GameUtility.Const.SHOW_USER + usersModel.user_name;
+            idText.text = GameUtility.Const.SHOW_ID + usersModel.id;
         }
         //無ければ表示しない
         else

@@ -2,6 +2,7 @@
 using System.Runtime.InteropServices;
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Networking;
 
 /*
  * please don't use this code for sell a asset
@@ -102,13 +103,15 @@ public class SqliteDatabase
 			
 			if (sourcePath.Contains ("://")) {
 				// Android	
-				WWW www = new WWW (sourcePath);
+				UnityWebRequest request = UnityWebRequest.Get(sourcePath);
+
+				request.SendWebRequest();
 				// Wait for download to complete - not pretty at all but easy hack for now 
 				// and it would not take long since the data is on the local device.
-				while (!www.isDone) {;}
+				while (!request.isDone) {;}
 				
-				if (String.IsNullOrEmpty(www.error)) { 					
-					System.IO.File.WriteAllBytes(pathDB, www.bytes);
+				if (String.IsNullOrEmpty(request.error)) { 					
+					System.IO.File.WriteAllBytes(pathDB, request.downloadHandler.data);
 				} else {
 					CanExQuery = false;										
 				}	

@@ -18,6 +18,9 @@ public class ResponseObjects
     public ItemCategoriesModel[] item_categories;
     public ItemDataModel[] item_data;
     public ItemRaritiesModel[] item_rarities;
+
+    public GachaPeriodsModel[] gacha_periods;
+    public GachaDataModel[] gacha_data;
 }
 
 public class ResponseManager : MonoBehaviour
@@ -135,6 +138,17 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("SQLiteへINSERTした");
             ItemRaritiesTable.Insert(responseObjects.item_rarities);
+        }
+
+        if (responseObjects.gacha_periods != null)
+        {
+            Debug.Log("SQLiteへINSERTした");
+            GachaPeriodsTable.Insert(responseObjects.gacha_periods);
+        }
+        if (responseObjects.gacha_data != null)
+        {
+            Debug.Log("SQLiteへINSERTした");
+            GachaDataTable.Insert(responseObjects.gacha_data);
         }
     }
 

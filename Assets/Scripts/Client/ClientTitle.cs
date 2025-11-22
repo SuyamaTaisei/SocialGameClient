@@ -155,5 +155,8 @@ public class ClientTitle : MonoBehaviour
         ItemCategoriesTable.CreateTable();
         ItemDataTable.CreateTable();
         ItemRaritiesTable.CreateTable();
+
+        GachaPeriodsTable.CreateTable();
+        GachaDataTable.CreateTable();
     }
 }

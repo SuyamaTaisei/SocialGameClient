@@ -27,8 +27,8 @@ public class ClientShop : MonoBehaviour
 
     //購入ボタン
     [SerializeField] Button buyMoneyButton;
-    [SerializeField] Button buyItemButtonCoin;
-    [SerializeField] Button buyItemButtonGem;
+    [SerializeField] Button buyItemCoinButton;
+    [SerializeField] Button buyItemGemButton;
 
     //購入警告
     [SerializeField] TextMeshProUGUI warningText;
@@ -81,8 +81,8 @@ public class ClientShop : MonoBehaviour
     {
         //必ず購入状態をリセット
         buyMoneyButton.onClick.RemoveAllListeners();
-        buyItemButtonCoin.onClick.RemoveAllListeners();
-        buyItemButtonGem.onClick.RemoveAllListeners();
+        buyItemCoinButton.onClick.RemoveAllListeners();
+        buyItemGemButton.onClick.RemoveAllListeners();
 
         //product_idが一致するレコードを取得
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
@@ -96,8 +96,8 @@ public class ClientShop : MonoBehaviour
 
         //購入ボタン処理
         buyMoneyButton.onClick.AddListener(() => PaymentButton(index1));
-        buyItemButtonCoin.onClick.AddListener(() => PaymentButton(index1));
-        buyItemButtonGem.onClick.AddListener(() => PaymentButton(index2));
+        buyItemCoinButton.onClick.AddListener(() => PaymentButton(index1));
+        buyItemGemButton.onClick.AddListener(() => PaymentButton(index2));
 
         shopConfirmView.SetActive(true);
     }
@@ -113,8 +113,8 @@ public class ClientShop : MonoBehaviour
     public void OpenItemListButton()
     {
         itemListView.SetActive(true);
-        buyItemButtonCoin.gameObject.SetActive(true);
-        buyItemButtonGem.gameObject.SetActive(true);
+        buyItemCoinButton.gameObject.SetActive(true);
+        buyItemGemButton.gameObject.SetActive(true);
         buyMoneyButton.gameObject.SetActive(false);
         gemListView.SetActive(false);
     }
@@ -124,8 +124,8 @@ public class ClientShop : MonoBehaviour
     {
         gemListView.SetActive(true);
         buyMoneyButton.gameObject.SetActive(true);
-        buyItemButtonCoin.gameObject.SetActive(false);
-        buyItemButtonGem.gameObject.SetActive(false);
+        buyItemCoinButton.gameObject.SetActive(false);
+        buyItemGemButton.gameObject.SetActive(false);
         itemListView.SetActive(false);
     }
 

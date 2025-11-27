@@ -80,6 +80,18 @@ public class ResponseManager : MonoBehaviour
         }
     }
 
+    public void ExecuteGacha(ResponseObjects responseObjects)
+    {
+        if (!string.IsNullOrEmpty(responseObjects.users.id))
+        {
+            Debug.Log("ガチャSQLiteへINSERTした");
+        }
+        else
+        {
+            Debug.Log("SQLiteへINSERTできなかった");
+        }
+    }
+
     public void ExecuteMasterDataCheck(ResponseObjects responseObjects)
     {
         Debug.Log(responseObjects.master_data_version);
@@ -193,6 +205,9 @@ public class ResponseManager : MonoBehaviour
             case GameUtility.Const.PAYMENT_URL:
                 ExecuteHome(responseObjects);
                 ExecutePaymentError(responseObjects);
+                break;
+            case GameUtility.Const.GACHA_EXECUTE_URL:
+                ExecuteGacha(responseObjects);
                 break;
         }
     }

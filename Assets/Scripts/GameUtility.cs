@@ -9,6 +9,7 @@
         public const string MASTER_DATA_CHECK_URL = "http://localhost/api/check_master_data";
         public const string MASTER_DATA_GET_URL = "http://localhost/api/get_master_data";
         public const string PAYMENT_URL = "http://localhost/api/payment";
+        public const string GACHA_EXECUTE_URL = "http://localhost/api/gacha_execute";
 
         //DB
         public const string SQLITE_DB_NAME = "SocialGameServer.db";
@@ -33,6 +34,13 @@
         //支払い時エラー
         public const string ERROR_PAYMENT_1 = "残高が不足しています";
         public const string ERROR_PAYMENT_2 = "ウォレット上限に達しました";
+
+        //ガチャ回数
+        public const int GACHA_SINGLE_COUNT = 1;
+        public const int GACHA_MULTI_COUNT = 10;
+
+        //スタート時ガチャ種類デフォルトリスト
+        public const int GACHA_START_DEFAULT_LIST = 1001;
 
         //ログイン表記
         public const string SHOW_USER = "ユーザー：";

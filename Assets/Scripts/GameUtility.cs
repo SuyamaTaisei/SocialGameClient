@@ -42,12 +42,19 @@
         //スタート時ガチャ種類デフォルトリスト
         public const int GACHA_START_DEFAULT_LIST = 1001;
 
+        //ガチャ画面テキスト
+        public const string SHOW_GACHA_CONFIRM_TEXT = "ジェムでガチャを実行しますか？";
+        public const string SHOW_GACHA_PERIOD_TEXT_1 = "期限 : ";
+        public const string SHOW_GACHA_PERIOD_TEXT_2 = " まで";
+        public const string SHOW_GACHA_COUNT = "回引く";
+
         //ログイン表記
         public const string SHOW_USER = "ユーザー：";
         public const string SHOW_ID = "ID : ";
 
         //通貨表記
         public const string SHOW_YEN = "円";
+        public const string SHOW_GEM = "ジェム";
 
         //シーン名
         public const string SCENE_NAME_HOMESCENE = "HomeScene";

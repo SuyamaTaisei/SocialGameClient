@@ -46,4 +46,29 @@ public class GachaPeriodsTable
             sqlDB.ExecuteNonQuery(query);
         }
     }
+
+    //ガチャ期間IDの一致するレコードを取得
+    public static GachaPeriodsModel SelectId(int id)
+    {
+        string query = "select * from gacha_periods where id = " + id;
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        GachaPeriodsModel gachaPeriodsModel = null;
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            //必ずインスタンスを生成
+            gachaPeriodsModel = new GachaPeriodsModel();
+            gachaPeriodsModel.id = int.Parse(record["id"].ToString());
+            gachaPeriodsModel.name = record["name"].ToString();
+            gachaPeriodsModel.single_cost = int.Parse(record["single_cost"].ToString());
+            gachaPeriodsModel.multi_cost = int.Parse(record["multi_cost"].ToString());
+            gachaPeriodsModel.start = record["start"].ToString();
+            gachaPeriodsModel.end = record["end"].ToString();
+            break;
+        }
+
+        return gachaPeriodsModel;
+    }
 }

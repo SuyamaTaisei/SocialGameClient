@@ -26,6 +26,7 @@ public class ResponseObjects
 public class ResponseManager : MonoBehaviour
 {
     private ClientShop clientShop;
+    private ClientGacha clientGacha;
     public static ResponseManager Instance { get; private set; }
 
     private void Awake()
@@ -167,15 +168,19 @@ public class ResponseManager : MonoBehaviour
     public void ExecutePaymentError(ResponseObjects responseObjects)
     {
         clientShop = FindAnyObjectByType<ClientShop>();
+        clientGacha = FindAnyObjectByType<ClientGacha>();        
+
         if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_NOT_PAYMENT))
         {
             Debug.Log("残高不足");
             clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_1);
+            clientGacha.WarningMessage(GameUtility.Const.ERROR_PAYMENT_1);
         }
         else if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_LIMIT_WALLETS))
         {
             Debug.Log("これ以上ウォレットを増やせない");
             clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
+            clientGacha.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
         }
         else
         {
@@ -207,7 +212,9 @@ public class ResponseManager : MonoBehaviour
                 ExecutePaymentError(responseObjects);
                 break;
             case GameUtility.Const.GACHA_EXECUTE_URL:
+                ExecuteHome(responseObjects);
                 ExecuteGacha(responseObjects);
+                ExecutePaymentError(responseObjects);
                 break;
         }
     }

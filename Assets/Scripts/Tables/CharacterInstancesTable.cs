@@ -25,16 +25,19 @@ public class CharacterInstancesTable
     }
 
     //レコード挿入
-    public static void Insert(CharacterInstancesModel characterInstancesModel)
+    public static void Insert(CharacterInstancesModel[] characterInstancesModel)
     {
-        string query = "insert or replace into character_Instances (" +
-            "id," +
-            "manage_id," +
-            "character_id," +
-            "level" +
-            ")" +
-            "values (" + characterInstancesModel.id + ", " + characterInstancesModel.manage_id + ", " + characterInstancesModel.character_id + ", " + characterInstancesModel.level + ")";
-        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-        sqlDB.ExecuteNonQuery(query);
+        foreach (CharacterInstancesModel item in characterInstancesModel)
+        {
+            string query = "insert or replace into character_Instances (" +
+                "id," +
+                "manage_id," +
+                "character_id," +
+                "level" +
+                ")" +
+                "values (" + item.id + ", " + item.manage_id + ", " + item.character_id + ", " + item.level + ")";
+            SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+            sqlDB.ExecuteNonQuery(query);
+        }
     }
 }

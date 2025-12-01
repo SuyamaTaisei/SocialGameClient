@@ -6,8 +6,12 @@ public class ResponseObjects
 {
     public int master_data_version;
     public int errcode;
+
     public UsersModel users;
     public WalletsModel wallets;
+    public CharacterInstancesModel[] character_instances;
+    public ItemInstancesModel[] item_instances;
+
     public ShopCategoriesModel[] shop_categories;
     public ShopDataModel[] shop_data;
 
@@ -74,6 +78,8 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("SQLiteへINSERTした");
             WalletsTable.Insert(responseObjects.wallets);
+            ItemInstacesTable.Insert(responseObjects.item_instances);
+            CharacterInstancesTable.Insert(responseObjects.character_instances);
         }
         else
         {
@@ -86,6 +92,8 @@ public class ResponseManager : MonoBehaviour
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
             Debug.Log("ガチャSQLiteへINSERTした");
+            CharacterInstancesTable.Insert(responseObjects.character_instances);
+            ItemInstacesTable.Insert(responseObjects.item_instances);
         }
         else
         {

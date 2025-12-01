@@ -25,16 +25,19 @@ public class ItemInstacesTable
     }
 
     //レコード挿入
-    public static void Insert(ItemInstancesModel itemInstancesModel)
+    public static void Insert(ItemInstancesModel[] itemInstancesModel)
     {
-        string query = "insert or replace into item_Instances (" +
-            "id," +
-            "manage_id," +
-            "item_id," +
-            "amount" +
-            ")" +
-            "values (" + itemInstancesModel.id + ", " + itemInstancesModel.manage_id + ", " + itemInstancesModel.item_id + ", " + itemInstancesModel.amount + ")";
-        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-        sqlDB.ExecuteNonQuery(query);
+        foreach (ItemInstancesModel item in itemInstancesModel)
+        {
+            string query = "insert or replace into item_Instances (" +
+                "id," +
+                "manage_id," +
+                "item_id," +
+                "amount" +
+                ")" +
+                "values (" + item.id + ", " + item.manage_id + ", " + item.item_id + ", " + item.amount + ")";
+            SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+            sqlDB.ExecuteNonQuery(query);
+        }
     }
 }

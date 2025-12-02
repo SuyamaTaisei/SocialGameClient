@@ -14,6 +14,7 @@ public class ResponseObjects
 
     public ShopCategoriesModel[] shop_categories;
     public ShopDataModel[] shop_data;
+    public ShopRewardsModel[] shop_rewards;
 
     public CharacterCategoriesModel[] character_categories;
     public CharacterDataModel[] character_data;
@@ -127,6 +128,11 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("SQLiteへINSERTした");
             ShopDataTable.Insert(responseObjects.shop_data);
+        }
+        if (responseObjects.shop_rewards != null)
+        {
+            Debug.Log("SQLiteへINSERTした");
+            ShopRewardsTable.Insert(responseObjects.shop_rewards);
         }
 
         if (responseObjects.character_categories != null)

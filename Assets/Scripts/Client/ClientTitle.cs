@@ -147,7 +147,8 @@ public class ClientTitle : MonoBehaviour
 
         ShopCategoriesTable.CreateTable();
         ShopDataTable.CreateTable();
-        
+        ShopRewardsTable.CreateTable();        
+
         CharacterCategoriesTable.CreateTable();
         CharacterDataTable.CreateTable();
         CharacterRaritiesTable.CreateTable();

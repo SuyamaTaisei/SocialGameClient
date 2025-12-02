@@ -4486,7 +4486,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 659044964}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6a8dbe7580c9003499db473e1c92f453, type: 3}
+  m_Script: {fileID: 11500000, guid: f6fe5042042bfa744ad51ade6559c3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   gachaResultView: {fileID: 340842833}
@@ -13231,7 +13231,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1978471381}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 659044970}
+        m_TargetAssemblyTypeName: GachaResultList, Assembly-CSharp
+        m_MethodName: CloseButton
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &1978471381
 MonoBehaviour:
   m_ObjectHideFlags: 0

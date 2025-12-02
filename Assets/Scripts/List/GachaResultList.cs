@@ -24,6 +24,7 @@ public class GachaResultList : MonoBehaviour
         }
     }
 
+    //ガチャ結果表示処理
     public void ShowGachaResult(GachaResultsModel[] gachaResultsModel)
     {
         gachaResultView.SetActive(true);

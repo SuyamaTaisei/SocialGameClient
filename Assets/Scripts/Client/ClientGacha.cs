@@ -32,6 +32,8 @@ public class ClientGacha : MonoBehaviour
     private int gacha_id;
     private int gacha_count;
 
+    public int GachaCount => gacha_count;
+
     private ApiConnect apiConnect;
 
     private const string column_id = "id";

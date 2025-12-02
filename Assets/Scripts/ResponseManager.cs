@@ -26,12 +26,15 @@ public class ResponseObjects
 
     public GachaPeriodsModel[] gacha_periods;
     public GachaDataModel[] gacha_data;
+
+    public GachaResultsModel[] gacha_results;
 }
 
 public class ResponseManager : MonoBehaviour
 {
     private ClientShop clientShop;
     private ClientGacha clientGacha;
+    private GachaResultList gachaResultList;
     public static ResponseManager Instance { get; private set; }
 
     private void Awake()
@@ -95,6 +98,13 @@ public class ResponseManager : MonoBehaviour
             Debug.Log("ガチャSQLiteへINSERTした");
             CharacterInstancesTable.Insert(responseObjects.character_instances);
             ItemInstacesTable.Insert(responseObjects.item_instances);
+
+            //ガチャ結果の表示(非アクティブ状態でも取得)
+            gachaResultList = FindAnyObjectByType<GachaResultList>(FindObjectsInactive.Include);
+            if(gachaResultList != null && responseObjects.gacha_results != null)
+            {
+                gachaResultList.ShowGachaResult(responseObjects.gacha_results);
+            }
         }
         else
         {

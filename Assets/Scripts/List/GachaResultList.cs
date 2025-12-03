@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using TMPro;
 using System.Collections.Generic;
 
 public class GachaResultList : MonoBehaviour
@@ -7,10 +6,6 @@ public class GachaResultList : MonoBehaviour
     [SerializeField] GameObject gachaResultView;
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
-
-    [SerializeField] TextMeshProUGUI nameText;
-    [SerializeField] TextMeshProUGUI rarityText;
-    [SerializeField] TextMeshProUGUI newText;
 
     private ClientGacha clientGacha;
 
@@ -31,7 +26,6 @@ public class GachaResultList : MonoBehaviour
         foreach (Transform child in content)
         {
             Destroy(child.gameObject);
-            newText.text = "";
         }
     }
 
@@ -47,6 +41,11 @@ public class GachaResultList : MonoBehaviour
         {
             //ガチャ回数分全てを取得
             var gachaResult = gachaResults[i];
+
+            //雛形をもとにリストを生成
+            GameObject item = Instantiate(templateView, content);
+            //ガチャ用viewの取得
+            var view = item.GetComponent<GachaResultItemView>();
 
             //ガチャ回数分の内、新規で出たキャラクターIDのみ
             bool isNew = false;
@@ -64,36 +63,29 @@ public class GachaResultList : MonoBehaviour
             //新規入手
             if (isNew)
             {
-                newText.text = GameUtility.Const.SHOW_GACHA_NEW;
+                view.NewText.text = GameUtility.Const.SHOW_GACHA_NEW;
             }
             //所持済み
             else
             {
-                newText.text = "";
+                view.NewText.text = "";
             }
 
-            //idが一致するレコードを取得
+            //idが一致するデータを取得
             characterDataModel = CharacterDataTable.SelectId(gachaResult.character_id);
-            nameText.text = characterDataModel.name;
-
-            //レアリティIDをキャプチャ
-            int rarityId = characterDataModel.rarity_id;
-            characterRaritiesModel = CharacterRaritiesTable.SelectId(rarityId);
-            rarityText.text = characterRaritiesModel.name;
-
-            //ガチャ結果のキャラクターid画像を取得
+            characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
             string imagePath = $"Images/Characters/{gachaResult.character_id}";
+
+            //表記
+            view.NameText.text = characterDataModel.name;
+            view.RarityText.text = characterRaritiesModel.name;
             Sprite sprite = Resources.Load<Sprite>(imagePath);
 
-            //雛形をもとにリストを生成
-            GameObject item = Instantiate(templateView, content);
-
-            //キャラクター画像の取得
-            var image = item.GetComponent<GachaResultItemView>();
-            if (image != null)
+            //画像設定
+            if (view != null)
             {
-                image.CharacterImage.sprite = sprite;
-                image.CharacterImage.preserveAspect = true;
+                view.CharacterImage.sprite = sprite;
+                view.CharacterImage.preserveAspect = true;
             }
         }
     }

@@ -452,7 +452,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &84480099
 RectTransform:
   m_ObjectHideFlags: 0
@@ -4845,9 +4845,6 @@ MonoBehaviour:
   gachaResultView: {fileID: 340842833}
   content: {fileID: 127755025}
   templateView: {fileID: 494383125}
-  nameText: {fileID: 797010334}
-  rarityText: {fileID: 356031599}
-  newText: {fileID: 292862454}
 --- !u!1 &660667503
 GameObject:
   m_ObjectHideFlags: 0

@@ -40,4 +40,27 @@ public class CharacterDataTable
             sqlDB.ExecuteNonQuery(query);
         }
     }
+
+    //キャラクターIDが一致するレコードを取得
+    public static CharacterDataModel SelectId(int character_id)
+    {
+        string query = "select * from character_data where id = " + character_id;
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        CharacterDataModel characterDataModel = null;
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            //必ずインスタンスを生成
+            characterDataModel = new CharacterDataModel();
+            characterDataModel.id = int.Parse(record["id"].ToString());
+            characterDataModel.rarity_id = int.Parse(record["rarity_id"].ToString());
+            characterDataModel.character_category = int.Parse(record["character_category"].ToString());
+            characterDataModel.name = record["name"].ToString();
+            break;
+        }
+
+        return characterDataModel;
+    }
 }

@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using TMPro;
 
 public class GachaResultList : MonoBehaviour
 {
@@ -6,7 +7,14 @@ public class GachaResultList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
 
+    [SerializeField] TextMeshProUGUI nameText;
+    [SerializeField] TextMeshProUGUI rarityText;
+
     private ClientGacha clientGacha;
+
+    //DBモデル
+    private CharacterDataModel characterDataModel;
+    private CharacterRaritiesModel characterRaritiesModel;
 
     private void Start()
     {
@@ -32,6 +40,15 @@ public class GachaResultList : MonoBehaviour
         for (int i = 0; i < clientGacha.GachaCount; i++)
         {
             var gachaResult = gachaResultsModel[i];
+
+            //idが一致するレコードを取得
+            characterDataModel = CharacterDataTable.SelectId(gachaResult.character_id);
+            nameText.text = characterDataModel.name;
+
+            //レアリティIDをキャプチャ
+            int rarityId = characterDataModel.rarity_id;
+            characterRaritiesModel = CharacterRaritiesTable.SelectId(rarityId);
+            rarityText.text = characterRaritiesModel.name;
 
             //ガチャ結果のキャラクターid画像を取得
             string imagePath = $"Images/Characters/{gachaResult.character_id}";

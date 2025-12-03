@@ -47,6 +47,7 @@
         public const string SHOW_GACHA_PERIOD_TEXT_1 = "期限 : ";
         public const string SHOW_GACHA_PERIOD_TEXT_2 = " まで";
         public const string SHOW_GACHA_COUNT = "回引く";
+        public const string SHOW_GACHA_NEW = "NEW CHARACTER";
 
         //ログイン表記
         public const string SHOW_USER = "ユーザー：";

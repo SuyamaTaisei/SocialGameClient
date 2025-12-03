@@ -28,6 +28,7 @@ public class ResponseObjects
     public GachaDataModel[] gacha_data;
 
     public GachaResultsModel[] gacha_results;
+    public GachaResultsModel[] new_characters;
 }
 
 public class ResponseManager : MonoBehaviour
@@ -103,7 +104,7 @@ public class ResponseManager : MonoBehaviour
             gachaResultList = FindAnyObjectByType<GachaResultList>(FindObjectsInactive.Include);
             if(gachaResultList != null && responseObjects.gacha_results != null)
             {
-                gachaResultList.ShowGachaResult(responseObjects.gacha_results);
+                gachaResultList.ShowGachaResult(responseObjects.gacha_results, responseObjects.new_characters);
             }
         }
         else

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using TMPro;
+using System.Collections.Generic;
 
 public class GachaResultList : MonoBehaviour
 {
@@ -9,6 +10,7 @@ public class GachaResultList : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI rarityText;
+    [SerializeField] TextMeshProUGUI newText;
 
     private ClientGacha clientGacha;
 
@@ -29,17 +31,46 @@ public class GachaResultList : MonoBehaviour
         foreach (Transform child in content)
         {
             Destroy(child.gameObject);
+            newText.text = "";
         }
     }
 
     //ガチャ結果表示処理
-    public void ShowGachaResult(GachaResultsModel[] gachaResultsModel)
+    public void ShowGachaResult(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults)
     {
         gachaResultView.SetActive(true);
 
+        //新規キャラクターIDの重複防止
+        HashSet<int> existCharacterId = new HashSet<int>();
+
         for (int i = 0; i < clientGacha.GachaCount; i++)
         {
-            var gachaResult = gachaResultsModel[i];
+            //ガチャ回数分全てを取得
+            var gachaResult = gachaResults[i];
+
+            //ガチャ回数分の内、新規で出たキャラクターIDのみ
+            bool isNew = false;
+            for (int j = 0; j < newGachaResults.Length; j++)
+            {
+                //新規キャラのみで走査し、ガチャ結果と一致かつHashSetのインスタンスに含まれていなければ新規追加
+                if (gachaResult.character_id == newGachaResults[j].character_id && !existCharacterId.Contains(gachaResult.character_id))
+                {
+                    isNew = true;
+                    existCharacterId.Add(gachaResult.character_id);
+                    break;
+                }
+            }
+
+            //新規入手
+            if (isNew)
+            {
+                newText.text = GameUtility.Const.SHOW_GACHA_NEW;
+            }
+            //所持済み
+            else
+            {
+                newText.text = "";
+            }
 
             //idが一致するレコードを取得
             characterDataModel = CharacterDataTable.SelectId(gachaResult.character_id);

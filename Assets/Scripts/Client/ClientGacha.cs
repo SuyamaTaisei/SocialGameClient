@@ -51,9 +51,13 @@ public class ClientGacha : MonoBehaviour
     private CharacterDataModel characterDataModel;
     private CharacterRaritiesModel characterRaritiesModel;
 
-    void Start()
+    private void Awake()
     {
         GachaPeriodList(GameUtility.Const.GACHA_START_DEFAULT_LIST);
+    }
+
+    void Start()
+    {
         apiConnect = FindFirstObjectByType<ApiConnect>();
         yesButton.onClick.AddListener(() => GachaExecuteButton(gacha_id, gacha_count));
         usersModel = UsersTable.Select();
@@ -110,16 +114,24 @@ public class ClientGacha : MonoBehaviour
     //ピックアップ表示
     public void ShowGachaUI(GachaPickUpTempView viewGacha, int index)
     {
-        //idが一致するデータを取得
-        characterDataModel = CharacterDataTable.SelectId(index);
-        characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-        string imagePath = $"Images/Characters/{index}";
+        List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gacha_id);
 
-        //表記
-        viewGacha.NameText.text = characterDataModel.name;
-        viewGacha.RarityText.text = characterRaritiesModel.name;
-        viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
-        viewGacha.CharacterImage.preserveAspect = true;
+        foreach (var list in gachaDataModel)
+        {
+            if (list.character_id == index)
+            {
+                //ガチャ期間idが同じcharacter_id全部と、任意のピックアップガチャの値が一致するデータのみを取得
+                characterDataModel = CharacterDataTable.SelectId(index);
+                characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+                string imagePath = $"Images/Characters/{index}";
+
+                //表記
+                viewGacha.NameText.text = characterDataModel.name;
+                viewGacha.RarityText.text = characterRaritiesModel.name;
+                viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
+                viewGacha.CharacterImage.preserveAspect = true;
+            }
+        }
     }
 
     //単発

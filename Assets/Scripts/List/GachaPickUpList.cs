@@ -12,6 +12,7 @@ public class GachaPickUpList : MonoBehaviour
 
     private void Start()
     {
+        //ガチャピックアップ表示を切り替えるために、Updateで何かしらの条件をもとに随時更新する必要がある
         for (int i = startCount; i <= maxCount; i++)
         {
             GameObject item = Instantiate(templateView, content);

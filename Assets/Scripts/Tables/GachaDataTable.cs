@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class GachaDataModel
@@ -36,5 +37,27 @@ public class GachaDataTable
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
             sqlDB.ExecuteNonQuery(query);
         }
+    }
+
+    //ガチャ期間IDの一致するレコード一覧を取得
+    public static List<GachaDataModel> SelectAllGachaId(int gachaId)
+    {
+        string query = "select * from gacha_data where gacha_id = " + gachaId;
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<GachaDataModel> list = new();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            //必ずインスタンスを生成
+            GachaDataModel gachaDataModel = new();
+            gachaDataModel.gacha_id = int.Parse(record["gacha_id"].ToString());
+            gachaDataModel.character_id = int.Parse(record["character_id"].ToString());
+            gachaDataModel.weight = int.Parse(record["weight"].ToString());
+            list.Add(gachaDataModel);
+        }
+
+        return list;
     }
 }

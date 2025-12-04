@@ -29,7 +29,7 @@ public class GachaResultList : MonoBehaviour
             //雛形をもとにリストを生成
             GameObject item = Instantiate(templateView, content);
             //ガチャ用viewの取得
-            var view = item.GetComponent<GachaResultItemView>();
+            var view = item.GetComponent<GachaResultTempView>();
 
             //ガチャ回数分の内、新規で出たキャラクターIDのみ
             bool isNew = false;

@@ -30,7 +30,7 @@ public class ShopList : MonoBehaviour
             int index2 = this.index2 + i;
 
             //生成されたリストから商品名や価格をセットする
-            ShopItemView view = item.GetComponent<ShopItemView>();
+            ShopTempView view = item.GetComponent<ShopTempView>();
             if (view != null) view.Set(shopList[i]);
 
             //ボタン押下処理

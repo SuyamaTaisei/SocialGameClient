@@ -108,7 +108,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ピックアップ表示
-    public void ShowGachaUI(GachaPickUpItemView viewGacha, int index)
+    public void ShowGachaUI(GachaPickUpTempView viewGacha, int index)
     {
         //idが一致するデータを取得
         characterDataModel = CharacterDataTable.SelectId(index);

@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GachaPickUpItemView : MonoBehaviour
+public class GachaPickUpTempView : MonoBehaviour
 {
     [SerializeField] Image characterImage;
     [SerializeField] TextMeshProUGUI nameText;

@@ -1,7 +1,7 @@
 ﻿using TMPro;
 using UnityEngine;
 
-public class ShopItemView : MonoBehaviour
+public class ShopTempView : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI productNameText;
     [SerializeField] private TextMeshProUGUI priceText;

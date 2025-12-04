@@ -2,17 +2,16 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ListManager : MonoBehaviour
+public class ShopList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientShop clientShop;
-    [SerializeField] ClientGacha clientGacha;
 
     [SerializeField] int startCount;
     [SerializeField] int maxCount;
-    [SerializeField] int product_id1;
-    [SerializeField] int product_id2;
+    [SerializeField] int index1;
+    [SerializeField] int index2;
 
     private void Start()
     {
@@ -27,8 +26,8 @@ public class ListManager : MonoBehaviour
             Button button = item.GetComponentInChildren<Button>();
 
             //選択されたボタンの番号をセット
-            int index1 = product_id1 + i;
-            int index2 = product_id2 + i;
+            int index1 = this.index1 + i;
+            int index2 = this.index2 + i;
 
             //生成されたリストから商品名や価格をセットする
             ShopItemView view = item.GetComponent<ShopItemView>();
@@ -36,7 +35,6 @@ public class ListManager : MonoBehaviour
 
             //ボタン押下処理
             if (clientShop) button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2));
-            if (clientGacha) button.onClick.AddListener(() => clientGacha.GachaPeriodList(index1));
         }
     }
 }

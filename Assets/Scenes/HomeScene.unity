@@ -3773,7 +3773,7 @@ GameObject:
   - component: {fileID: 432129396}
   - component: {fileID: 432129395}
   m_Layer: 5
-  m_Name: GachaListPeriodTempView
+  m_Name: GachaPeriodTempView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6025,11 +6025,10 @@ MonoBehaviour:
   content: {fileID: 1499128405}
   templateView: {fileID: 1894198015}
   clientShop: {fileID: 2025727311}
-  clientGacha: {fileID: 0}
   startCount: 0
   maxCount: 3
-  product_id1: 10001
-  product_id2: 10005
+  index1: 10001
+  index2: 10005
 --- !u!114 &778621573 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6929876141952669222, guid: e028e2bf8f73ee7459ae630860bb1b9d, type: 3}
@@ -11729,11 +11728,10 @@ MonoBehaviour:
   content: {fileID: 480185484}
   templateView: {fileID: 202819306}
   clientShop: {fileID: 2025727311}
-  clientGacha: {fileID: 0}
   startCount: 4
   maxCount: 7
-  product_id1: 10001
-  product_id2: 10005
+  index1: 10001
+  index2: 10005
 --- !u!1 &1433828547
 GameObject:
   m_ObjectHideFlags: 0
@@ -14303,9 +14301,9 @@ GameObject:
   - component: {fileID: 1867080573}
   - component: {fileID: 1867080572}
   - component: {fileID: 1867080571}
-  - component: {fileID: 1867080570}
+  - component: {fileID: 1867080574}
   m_Layer: 5
-  m_Name: GachaListView
+  m_Name: GachaPeriodListView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14331,26 +14329,6 @@ RectTransform:
   m_AnchoredPosition: {x: -741.1, y: -102.500015}
   m_SizeDelta: {x: 440, y: 954.8}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &1867080570
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1867080568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 150e61b2c3213e645b54042a682ca50d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  content: {fileID: 834725412}
-  templateView: {fileID: 432129392}
-  clientShop: {fileID: 0}
-  clientGacha: {fileID: 1605318034}
-  startCount: 0
-  maxCount: 0
-  product_id1: 1001
-  product_id2: 0
 --- !u!114 &1867080571
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14419,6 +14397,24 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1867080568}
   m_CullTransparentMesh: 1
+--- !u!114 &1867080574
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1867080568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 67863579e73c62d4b9a19ce24690f4d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  content: {fileID: 834725412}
+  templateView: {fileID: 432129392}
+  clientGacha: {fileID: 1605318034}
+  startCount: 0
+  maxCount: 0
+  index: 1001
 --- !u!1 &1875579663
 GameObject:
   m_ObjectHideFlags: 0

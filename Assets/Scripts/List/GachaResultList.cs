@@ -3,36 +3,20 @@ using System.Collections.Generic;
 
 public class GachaResultList : MonoBehaviour
 {
-    [SerializeField] GameObject gachaResultView;
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] ClientGacha clientGacha;
 
-    private ClientGacha clientGacha;
+    public Transform Content => content;
 
     //DBモデル
     private CharacterDataModel characterDataModel;
     private CharacterRaritiesModel characterRaritiesModel;
 
-    private void Start()
-    {
-        gachaResultView.SetActive(false);
-        clientGacha = FindFirstObjectByType<ClientGacha>();
-    }
-
-    //戻った時は、再度ガチャ結果を表示するためにリセット
-    public void CloseButton()
-    {
-        gachaResultView.SetActive(false);
-        foreach (Transform child in content)
-        {
-            Destroy(child.gameObject);
-        }
-    }
-
     //ガチャ結果表示処理
     public void ShowGachaResult(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults)
     {
-        gachaResultView.SetActive(true);
+        clientGacha.GachaResultView.SetActive(true);
 
         //新規キャラクターIDの重複防止
         HashSet<int> existCharacterId = new HashSet<int>();

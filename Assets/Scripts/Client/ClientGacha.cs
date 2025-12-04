@@ -9,6 +9,7 @@ public class ClientGacha : MonoBehaviour
     //ガチャ画面表示
     [SerializeField] GameObject gachaView;
     [SerializeField] GameObject gachaConfirmView;
+    [SerializeField] GameObject gachaResultView;
     [SerializeField] Button yesButton;
     [SerializeField] Button noButton;
     [SerializeField] TextMeshProUGUI gachaPeriodTitle;
@@ -29,10 +30,13 @@ public class ClientGacha : MonoBehaviour
     //購入警告
     [SerializeField] TextMeshProUGUI warningText;
 
+    [SerializeField] GachaResultList gachaResultList;
+
     private int gacha_id;
     private int gacha_count;
 
     public int GachaCount => gacha_count;
+    public GameObject GachaResultView => gachaResultView;
 
     private ApiConnect apiConnect;
 
@@ -56,6 +60,7 @@ public class ClientGacha : MonoBehaviour
         warningText.text = "";
         gachaView.SetActive(false);
         gachaConfirmView.SetActive(false);
+        gachaResultView.SetActive(false);
     }
 
     //表記リアルタイム更新
@@ -155,6 +160,16 @@ public class ClientGacha : MonoBehaviour
     {
         gachaConfirmView.SetActive(false);
         warningText.text = "";
+    }
+
+    //戻った時は、再度ガチャ結果を表示するためにリセット
+    public void GachaResultCloseButton()
+    {
+        gachaResultView.SetActive(false);
+        foreach (Transform child in gachaResultList.Content)
+        {
+            Destroy(child.gameObject);
+        }
     }
 
     //購入警告

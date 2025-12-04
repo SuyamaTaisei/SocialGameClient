@@ -5537,9 +5537,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6fe5042042bfa744ad51ade6559c3cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gachaResultView: {fileID: 340842833}
   content: {fileID: 127755025}
   templateView: {fileID: 494383125}
+  clientGacha: {fileID: 1605318034}
 --- !u!1 &660667503
 GameObject:
   m_ObjectHideFlags: 0
@@ -12517,6 +12517,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gachaView: {fileID: 1655934738}
   gachaConfirmView: {fileID: 1361025735}
+  gachaResultView: {fileID: 340842833}
   yesButton: {fileID: 1890462556}
   noButton: {fileID: 958917729}
   gachaPeriodTitle: {fileID: 1158041302}
@@ -12532,6 +12533,7 @@ MonoBehaviour:
   gemFreeText: {fileID: 33144344}
   gemPaidText: {fileID: 33144343}
   warningText: {fileID: 1014642881}
+  gachaResultList: {fileID: 659044970}
 --- !u!1 &1640061954
 GameObject:
   m_ObjectHideFlags: 0
@@ -15136,9 +15138,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 659044970}
-        m_TargetAssemblyTypeName: GachaResultList, Assembly-CSharp
-        m_MethodName: CloseButton
+      - m_Target: {fileID: 1605318034}
+        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
+        m_MethodName: GachaResultCloseButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

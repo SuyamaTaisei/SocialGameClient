@@ -44,6 +44,8 @@ public class ClientGacha : MonoBehaviour
     private UsersModel usersModel;
     private WalletsModel walletsModel;
     private GachaPeriodsModel gachaPeriodsModel;
+    private CharacterDataModel characterDataModel;
+    private CharacterRaritiesModel characterRaritiesModel;
 
     void Start()
     {
@@ -98,6 +100,21 @@ public class ClientGacha : MonoBehaviour
         multiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
         singleText.text = GameUtility.Const.GACHA_SINGLE_COUNT.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
         multiText.text = GameUtility.Const.GACHA_MULTI_COUNT.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
+    }
+
+    //ピックアップ表示
+    public void ShowGachaUI(GachaPickUpItemView viewGacha, int index)
+    {
+        //idが一致するデータを取得
+        characterDataModel = CharacterDataTable.SelectId(index);
+        characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+        string imagePath = $"Images/Characters/{index}";
+
+        //表記
+        viewGacha.NameText.text = characterDataModel.name;
+        viewGacha.RarityText.text = characterRaritiesModel.name;
+        viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
+        viewGacha.CharacterImage.preserveAspect = true;
     }
 
     //単発

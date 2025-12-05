@@ -17,6 +17,10 @@ public class GachaRewardList : MonoBehaviour
         //変換された個数分走査
         for (int i = 0; i < gachaReward.Length; i++)
         {
+            //何もガチャ報酬がなければ警告メッセージ表示
+            if (gachaReward.Length < 0) clientGacha.NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
+            else { clientGacha.NothingMessage(""); }
+
             var exhange = gachaReward[i];
         
             GameObject item = Instantiate(templateView, content);

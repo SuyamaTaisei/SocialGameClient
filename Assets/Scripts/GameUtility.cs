@@ -50,6 +50,7 @@
         public const string SHOW_GACHA_PERIOD_TEXT_2 = " まで";
         public const string SHOW_GACHA_COUNT = "回引く";
         public const string SHOW_GACHA_NEW = "NEW CHARACTER";
+        public const string SHOW_GACHA_REWARD_NOTHING = "ガチャ報酬が何もありません";
 
         //ログイン表記
         public const string SHOW_USER = "ユーザー：";

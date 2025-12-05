@@ -28,8 +28,9 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
 
-    //購入警告
+    //警告文
     [SerializeField] TextMeshProUGUI warningText;
+    [SerializeField] TextMeshProUGUI nothingText;
 
     [SerializeField] GachaResultList gachaResultList;
     [SerializeField] GachaRewardList gachaRewardList;
@@ -68,6 +69,7 @@ public class ClientGacha : MonoBehaviour
         gachaConfirmView.SetActive(false);
         gachaResultView.SetActive(false);
         gachaRewardView.SetActive(false);
+        NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
     }
 
     //表記リアルタイム更新
@@ -181,6 +183,7 @@ public class ClientGacha : MonoBehaviour
     public void GachaResultCloseButton()
     {
         gachaResultView.SetActive(false);
+        NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
         foreach (Transform child in gachaResultList.Content)
         {
             Destroy(child.gameObject);
@@ -209,6 +212,12 @@ public class ClientGacha : MonoBehaviour
         var color = view.CharacterImage.color;
         color.a = value;
         view.CharacterImage.color = color;
+    }
+
+    //ガチャ報酬無し警告
+    public void NothingMessage(string message)
+    {
+        nothingText.text = message;
     }
 
     //購入警告

@@ -10,6 +10,7 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] GameObject gachaView;
     [SerializeField] GameObject gachaConfirmView;
     [SerializeField] GameObject gachaResultView;
+    [SerializeField] GameObject gachaRewardView;
     [SerializeField] Button yesButton;
     [SerializeField] Button noButton;
     [SerializeField] TextMeshProUGUI gachaPeriodTitle;
@@ -31,6 +32,7 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI warningText;
 
     [SerializeField] GachaResultList gachaResultList;
+    [SerializeField] GachaRewardList gachaRewardList;
 
     private int gacha_id;
     private int gacha_count;
@@ -65,6 +67,7 @@ public class ClientGacha : MonoBehaviour
         gachaView.SetActive(false);
         gachaConfirmView.SetActive(false);
         gachaResultView.SetActive(false);
+        gachaRewardView.SetActive(false);
     }
 
     //表記リアルタイム更新
@@ -174,7 +177,7 @@ public class ClientGacha : MonoBehaviour
         warningText.text = "";
     }
 
-    //戻った時は、再度ガチャ結果を表示するためにリセット
+    //戻った時は、再度ガチャ結果とガチャ報酬を表示するためにリセット
     public void GachaResultCloseButton()
     {
         gachaResultView.SetActive(false);
@@ -182,6 +185,22 @@ public class ClientGacha : MonoBehaviour
         {
             Destroy(child.gameObject);
         }
+        foreach (Transform child in gachaRewardList.Content)
+        {
+            Destroy(child.gameObject);
+        }
+    }
+
+    //ガチャ報酬開くボタン
+    public void GachaRewardOpenButton()
+    {
+        gachaRewardView.SetActive(true);
+    }
+
+    //ガチャ報酬閉じるボタン
+    public void GachaRewardCloseButton()
+    {
+        gachaRewardView.SetActive(false);
     }
 
     //新規と所持済みで透明度を変更

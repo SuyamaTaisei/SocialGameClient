@@ -48,11 +48,13 @@ public class GachaResultList : MonoBehaviour
             if (isNew)
             {
                 view.NewText.text = GameUtility.Const.SHOW_GACHA_NEW;
+                clientGacha.GachaResultColorChange(view, GameUtility.Const.GACHA_COLOR_NEW);
             }
             //所持済み
             else
             {
                 view.NewText.text = "";
+                clientGacha.GachaResultColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
             }
 
             //idが一致するデータを取得

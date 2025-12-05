@@ -38,6 +38,8 @@
         //ガチャ回数
         public const int GACHA_SINGLE_COUNT = 1;
         public const int GACHA_MULTI_COUNT = 10;
+        public const float GACHA_COLOR_NEW = 1;
+        public const float GACHA_COLOR_EXIST = 0.15f;
 
         //スタート時ガチャ種類デフォルトリスト
         public const int GACHA_START_DEFAULT_LIST = 1001;

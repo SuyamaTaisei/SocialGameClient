@@ -184,6 +184,14 @@ public class ClientGacha : MonoBehaviour
         }
     }
 
+    //新規と所持済みで透明度を変更
+    public void GachaResultColorChange(GachaResultTempView view, float value)
+    {
+        var color = view.CharacterImage.color;
+        color.a = value;
+        view.CharacterImage.color = color;
+    }
+
     //購入警告
     public void WarningMessage(string message)
     {

@@ -29,6 +29,7 @@ public class ResponseObjects
 
     public GachaResultsModel[] gacha_results;
     public GachaResultsModel[] new_characters;
+    public GachaResultsModel[] exchange_items;
 }
 
 public class ResponseManager : MonoBehaviour
@@ -36,6 +37,7 @@ public class ResponseManager : MonoBehaviour
     private ClientShop clientShop;
     private ClientGacha clientGacha;
     private GachaResultList gachaResultList;
+    private GachaRewardList gachaRewardList;
     public static ResponseManager Instance { get; private set; }
 
     private void Awake()
@@ -102,9 +104,15 @@ public class ResponseManager : MonoBehaviour
 
             //ガチャ結果の表示(非アクティブ状態でも取得)
             gachaResultList = FindAnyObjectByType<GachaResultList>(FindObjectsInactive.Include);
+            gachaRewardList = FindAnyObjectByType<GachaRewardList>(FindObjectsInactive.Include);
             if(gachaResultList != null && responseObjects.gacha_results != null)
             {
                 gachaResultList.ShowGachaResult(responseObjects.gacha_results, responseObjects.new_characters);
+            }
+            //変換されたガチャ報酬の表示
+            if(gachaRewardList != null && responseObjects.exchange_items != null)
+            {
+                gachaRewardList.ShowGachaReward(responseObjects.exchange_items);
             }
         }
         else

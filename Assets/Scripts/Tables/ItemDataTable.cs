@@ -46,4 +46,29 @@ public class ItemDataTable
             sqlDB.ExecuteNonQuery(query);
         }
     }
+
+    //アイテムIDが一致するレコードを取得
+    public static ItemDataModel SelectId(int item_id)
+    {
+        string query = "select * from item_data where id = " + item_id;
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        ItemDataModel itemDataModel = null;
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            //必ずインスタンスを生成
+            itemDataModel = new ItemDataModel();
+            itemDataModel.id = int.Parse(record["id"].ToString());
+            itemDataModel.rarity_id = int.Parse(record["rarity_id"].ToString());
+            itemDataModel.item_category = int.Parse(record["item_category"].ToString());
+            itemDataModel.name = record["name"].ToString();
+            itemDataModel.description = record["description"].ToString();
+            itemDataModel.value = int.Parse(record["value"].ToString());
+            break;
+        }
+
+        return itemDataModel;
+    }
 }

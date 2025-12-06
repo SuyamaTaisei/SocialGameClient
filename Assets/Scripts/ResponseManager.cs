@@ -30,6 +30,7 @@ public class ResponseObjects
     public GachaResultsModel[] gacha_results;
     public GachaResultsModel[] new_characters;
     public GachaResultsModel[] exchange_items;
+    public GachaResultsModel[] single_exchange_items;
 }
 
 public class ResponseManager : MonoBehaviour
@@ -107,7 +108,7 @@ public class ResponseManager : MonoBehaviour
             gachaRewardList = FindAnyObjectByType<GachaRewardList>(FindObjectsInactive.Include);
             if(gachaResultList != null && responseObjects.gacha_results != null)
             {
-                gachaResultList.ShowGachaResult(responseObjects.gacha_results, responseObjects.new_characters);
+                gachaResultList.ShowGachaResult(responseObjects.gacha_results, responseObjects.new_characters, responseObjects.single_exchange_items);
             }
             //変換されたガチャ報酬の表示
             if(gachaRewardList != null && responseObjects.exchange_items != null)

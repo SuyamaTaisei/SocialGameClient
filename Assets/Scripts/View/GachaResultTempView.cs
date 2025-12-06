@@ -5,9 +5,9 @@ using UnityEngine.UI;
 public class GachaResultTempView : MonoBehaviour
 {
     [SerializeField] Image characterImage;
-    [SerializeField] TextMeshProUGUI nameText;
-    [SerializeField] TextMeshProUGUI rarityText;
-    [SerializeField] TextMeshProUGUI newText;
+    [SerializeField] TextMeshProUGUI characterNameText;
+    [SerializeField] TextMeshProUGUI characterRarityText;
+    [SerializeField] TextMeshProUGUI characterNewText;
 
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI itemNameText;
@@ -16,9 +16,9 @@ public class GachaResultTempView : MonoBehaviour
     [SerializeField] GameObject itemOtherObject;
 
     public Image CharacterImage => characterImage;
-    public TextMeshProUGUI NameText => nameText;
-    public TextMeshProUGUI RarityText => rarityText;
-    public TextMeshProUGUI NewText => newText;
+    public TextMeshProUGUI CharacterNameText => characterNameText;
+    public TextMeshProUGUI CharacterRarityText => characterRarityText;
+    public TextMeshProUGUI CharacterNewText => characterNewText;
 
     public Image ItemImage => itemImage;
     public TextMeshProUGUI ItemNameText => itemNameText;

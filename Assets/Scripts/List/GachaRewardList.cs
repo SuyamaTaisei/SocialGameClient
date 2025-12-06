@@ -12,29 +12,29 @@ public class GachaRewardList : MonoBehaviour
     ItemDataModel itemDataModel;
     ItemRaritiesModel itemRaritiesModel;
 
-    public void ShowGachaReward(GachaResultsModel[] gachaReward)
+    public void ShowGachaReward(GachaResultsModel[] totalExchangeItems)
     {
         //変換された個数分走査
-        for (int i = 0; i < gachaReward.Length; i++)
+        for (int i = 0; i < totalExchangeItems.Length; i++)
         {
             //何もガチャ報酬がなければ警告メッセージ表示
-            if (gachaReward.Length < 0) clientGacha.NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
+            if (totalExchangeItems.Length < 0) clientGacha.NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
             else { clientGacha.NothingMessage(""); }
 
-            var exhange = gachaReward[i];
+            var exchange = totalExchangeItems[i];
         
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaRewardTempView>();
 
             //アイテムidが一致するデータを取得
-            itemDataModel = ItemDataTable.SelectId(exhange.item_id);
+            itemDataModel = ItemDataTable.SelectId(exchange.item_id);
             itemRaritiesModel = ItemRaritiesTable.SelectId(itemDataModel.rarity_id);
-            string imagePath = $"Images/Items/{exhange.item_id}";
+            string imagePath = $"Images/Items/{exchange.item_id}";
 
             //表記
             view.NameText.text = itemDataModel.name;
             view.RarityText.text = itemRaritiesModel.name;
-            view.AmountText.text = exhange.amount.ToString();
+            view.AmountText.text = exchange.amount.ToString();
             Sprite sprite = Resources.Load<Sprite>(imagePath);
 
             //画像設定

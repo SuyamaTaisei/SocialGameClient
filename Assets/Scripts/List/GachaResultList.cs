@@ -49,7 +49,7 @@ public class GachaResultList : MonoBehaviour
             //新規入手
             if (isNew)
             {
-                view.NewText.text = GameUtility.Const.SHOW_GACHA_NEW;
+                view.CharacterNewText.text = GameUtility.Const.SHOW_GACHA_NEW;
                 view.ItemImage.gameObject.SetActive(false);
                 view.ItemNameText.text = "";
                 view.ItemRarityText.text = "";
@@ -60,7 +60,7 @@ public class GachaResultList : MonoBehaviour
             //所持済み
             else
             {
-                view.NewText.text = "";
+                view.CharacterNewText.text = "";
                 clientGacha.GachaResultColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
                 clientGacha.ShowGachaSingleRewardList(view, singleExchangeItems, ref singleExchangeIndex);
             }
@@ -71,8 +71,8 @@ public class GachaResultList : MonoBehaviour
             string imagePath = $"Images/Characters/{gachaResult.character_id}";
 
             //表記
-            view.NameText.text = characterDataModel.name;
-            view.RarityText.text = characterRaritiesModel.name;
+            view.CharacterNameText.text = characterDataModel.name;
+            view.CharacterRarityText.text = characterRaritiesModel.name;
             Sprite sprite = Resources.Load<Sprite>(imagePath);
 
             //画像設定

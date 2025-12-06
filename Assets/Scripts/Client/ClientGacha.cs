@@ -114,8 +114,8 @@ public class ClientGacha : MonoBehaviour
         gachaPeriodText.text = GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_1 + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_2;
         singleCostText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GEM;
         multiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
-        singleText.text = GameUtility.Const.GACHA_SINGLE_COUNT.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
-        multiText.text = GameUtility.Const.GACHA_MULTI_COUNT.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
+        singleText.text = gachaPeriodsModel.single_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
+        multiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
     }
 
     //ピックアップ表示
@@ -178,14 +178,14 @@ public class ClientGacha : MonoBehaviour
     //単発
     public void SingleGachaButton()
     {
-        gacha_count = GameUtility.Const.GACHA_SINGLE_COUNT;
+        gacha_count = gachaPeriodsModel.single_count;
         confirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }
 
     //連発
     public void MultiGachaButton()
     {
-        gacha_count = GameUtility.Const.GACHA_MULTI_COUNT;
+        gacha_count = gachaPeriodsModel.multi_count;
         confirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }
 

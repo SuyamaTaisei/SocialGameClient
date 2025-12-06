@@ -65,13 +65,13 @@ public class ClientGacha : MonoBehaviour
     {
         apiConnect = FindFirstObjectByType<ApiConnect>();
         yesButton.onClick.AddListener(() => GachaExecuteButton(gacha_id, gacha_count));
+        NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
         usersModel = UsersTable.Select();
         warningText.text = "";
         gachaView.SetActive(false);
         gachaConfirmView.SetActive(false);
         gachaResultView.SetActive(false);
         gachaRewardView.SetActive(false);
-        NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
     }
 
     //表記リアルタイム更新
@@ -86,19 +86,7 @@ public class ClientGacha : MonoBehaviour
         }
     }
 
-    //ガチャ開く
-    public void OpenButton()
-    {
-        gachaView.SetActive(true);
-    }
-
-    //ガチャ閉じる
-    public void CloseButton()
-    {
-        gachaView.SetActive(false);
-    }
-
-    //ガチャ種類
+    //ガチャ種類リスト
     public void GachaPeriodList(int index)
     {
         gacha_id = index;
@@ -118,7 +106,7 @@ public class ClientGacha : MonoBehaviour
         multiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
     }
 
-    //ピックアップ表示
+    //ピックアップ表示リスト
     public void ShowGachaUI(GachaPickUpTempView viewGacha, int index)
     {
         List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gacha_id);
@@ -141,7 +129,7 @@ public class ClientGacha : MonoBehaviour
         }
     }
 
-    //ガチャ結果で変換したガチャの単一報酬表示用
+    //ガチャ報酬単一表示リスト
     public void ShowGachaSingleRewardList(GachaResultTempView view, GachaResultsModel[] singleExchangeItems, ref int singleExchangeIndex)
     {
         //ガチャ報酬配列の有効範囲内のみ
@@ -175,27 +163,7 @@ public class ClientGacha : MonoBehaviour
         }
     }
 
-    //単発
-    public void SingleGachaButton()
-    {
-        gacha_count = gachaPeriodsModel.single_count;
-        confirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
-    }
-
-    //連発
-    public void MultiGachaButton()
-    {
-        gacha_count = gachaPeriodsModel.multi_count;
-        confirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
-    }
-
-    //確認画面開く
-    public void OpenConfirmButton()
-    {
-        gachaConfirmView.SetActive(true);
-    }
-
-    //はいボタン
+    //ガチャリクエスト送信
     public void GachaExecuteButton(int gacha_id, int gacha_count)
     {
         usersModel = UsersTable.Select();
@@ -206,13 +174,6 @@ public class ClientGacha : MonoBehaviour
             new MultipartFormDataSection(key_gacha_count, gacha_count.ToString())
         };
         StartCoroutine(apiConnect.Send(GameUtility.Const.GACHA_EXECUTE_URL, form));
-    }
-
-    //確認画面閉じる
-    public void CloseConfirmButton()
-    {
-        gachaConfirmView.SetActive(false);
-        warningText.text = "";
     }
 
     //戻った時は、再度ガチャ結果とガチャ報酬を表示するためにリセット
@@ -230,24 +191,55 @@ public class ClientGacha : MonoBehaviour
         }
     }
 
-    //ガチャ報酬開くボタン
+    //単発
+    public void SingleGachaButton()
+    {
+        gacha_count = gachaPeriodsModel.single_count;
+        confirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
+    }
+
+    //連発
+    public void MultiGachaButton()
+    {
+        gacha_count = gachaPeriodsModel.multi_count;
+        confirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
+    }
+
+    //ガチャ画面開く
+    public void OpenButton()
+    {
+        gachaView.SetActive(true);
+    }
+
+    //ガチャ画面閉じる
+    public void CloseButton()
+    {
+        gachaView.SetActive(false);
+    }
+
+    //ガチャ実行確認画面開く
+    public void OpenConfirmButton()
+    {
+        gachaConfirmView.SetActive(true);
+    }
+
+    //ガチャ実行確認画面閉じる
+    public void CloseConfirmButton()
+    {
+        gachaConfirmView.SetActive(false);
+        warningText.text = "";
+    }
+
+    //ガチャ報酬開く
     public void GachaRewardOpenButton()
     {
         gachaRewardView.SetActive(true);
     }
 
-    //ガチャ報酬閉じるボタン
+    //ガチャ報酬閉じる
     public void GachaRewardCloseButton()
     {
         gachaRewardView.SetActive(false);
-    }
-
-    //新規と所持済みで透明度を変更
-    public void GachaResultColorChange(GachaResultTempView view, float value)
-    {
-        var color = view.CharacterImage.color;
-        color.a = value;
-        view.CharacterImage.color = color;
     }
 
     //ガチャ報酬無し警告
@@ -260,5 +252,13 @@ public class ClientGacha : MonoBehaviour
     public void WarningMessage(string message)
     {
         warningText.text = message;
+    }
+
+    //新規と所持済みで透明度を変更
+    public void GachaResultColorChange(GachaResultTempView view, float value)
+    {
+        var color = view.CharacterImage.color;
+        color.a = value;
+        view.CharacterImage.color = color;
     }
 }

@@ -53,6 +53,8 @@ public class ClientGacha : MonoBehaviour
     private GachaPeriodsModel gachaPeriodsModel;
     private CharacterDataModel characterDataModel;
     private CharacterRaritiesModel characterRaritiesModel;
+    private ItemDataModel itemDataModel;
+    private ItemRaritiesModel itemRaritiesModel;
 
     private void Awake()
     {
@@ -135,6 +137,40 @@ public class ClientGacha : MonoBehaviour
                 viewGacha.RarityText.text = characterRaritiesModel.name;
                 viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
                 viewGacha.CharacterImage.preserveAspect = true;
+            }
+        }
+    }
+
+    //ガチャ結果で変換したガチャの単一報酬表示用
+    public void ShowGachaSingleRewardList(GachaResultTempView view, GachaResultsModel[] singleExchangeItems, ref int singleExchangeIndex)
+    {
+        //ガチャ報酬配列の有効範囲内のみ
+        if (singleExchangeItems != null && singleExchangeIndex < singleExchangeItems.Length)
+        {
+            //ガチャが被った時だけ、1要素ずつガチャ報酬(変換したアイテム)を表示
+            var exchange = singleExchangeItems[singleExchangeIndex];
+
+            //次の要素のガチャ報酬用にインクリメント
+            singleExchangeIndex++;
+
+            //アイテムidが一致するデータを取得
+            itemDataModel = ItemDataTable.SelectId(exchange.item_id);
+            itemRaritiesModel = ItemRaritiesTable.SelectId(itemDataModel.rarity_id);
+            string itemImagePath = $"Images/Items/{exchange.item_id}";
+
+            //表記
+            view.ItemNameText.text = itemDataModel.name;
+            view.ItemRarityText.text = itemRaritiesModel.name;
+            view.ItemAmountText.text = exchange.amount.ToString();
+            view.ItemOtherObject.SetActive(true);
+            Sprite imageSprite = Resources.Load<Sprite>(itemImagePath);
+
+            //画像設定
+            if (view != null)
+            {
+                view.ItemImage.gameObject.SetActive(true);
+                view.ItemImage.sprite = imageSprite;
+                view.ItemImage.preserveAspect = true;
             }
         }
     }

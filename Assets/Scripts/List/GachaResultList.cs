@@ -14,12 +14,14 @@ public class GachaResultList : MonoBehaviour
     private CharacterRaritiesModel characterRaritiesModel;
 
     //ガチャ結果表示処理
-    public void ShowGachaResult(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults)
+    public void ShowGachaResult(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
     {
         clientGacha.GachaResultView.SetActive(true);
 
         //新規キャラクターIDの重複防止
         HashSet<int> existCharacterId = new HashSet<int>();
+
+        int singleExchangeIndex = 0;
 
         for (int i = 0; i < clientGacha.GachaCount; i++)
         {
@@ -48,6 +50,11 @@ public class GachaResultList : MonoBehaviour
             if (isNew)
             {
                 view.NewText.text = GameUtility.Const.SHOW_GACHA_NEW;
+                view.ItemImage.gameObject.SetActive(false);
+                view.ItemNameText.text = "";
+                view.ItemRarityText.text = "";
+                view.ItemAmountText.text = "";
+                view.ItemOtherObject.SetActive(false);
                 clientGacha.GachaResultColorChange(view, GameUtility.Const.GACHA_COLOR_NEW);
             }
             //所持済み
@@ -55,6 +62,7 @@ public class GachaResultList : MonoBehaviour
             {
                 view.NewText.text = "";
                 clientGacha.GachaResultColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
+                clientGacha.ShowGachaSingleRewardList(view, singleExchangeItems, ref singleExchangeIndex);
             }
 
             //idが一致するデータを取得

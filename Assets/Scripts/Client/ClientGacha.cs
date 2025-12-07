@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
+//上から順に、リスト系、ボタン系、メッセージ系、エフェクト系の順で記述
 public class ClientGacha : MonoBehaviour
 {
     //ガチャ画面表示
@@ -11,10 +12,12 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] GameObject gachaConfirmView;
     [SerializeField] GameObject gachaResultView;
     [SerializeField] GameObject gachaRewardView;
+    [SerializeField] GameObject gachaOfferRateView;
     [SerializeField] Button yesButton;
     [SerializeField] Button noButton;
     [SerializeField] TextMeshProUGUI gachaPeriodTitle;
     [SerializeField] TextMeshProUGUI gachaPeriodText;
+    [SerializeField] TextMeshProUGUI gachaOfferRatePeriodText;
     [SerializeField] TextMeshProUGUI gachaListPeriodTitle;
     [SerializeField] TextMeshProUGUI gachaListPeriodText;
     [SerializeField] TextMeshProUGUI singleCostText;
@@ -72,6 +75,7 @@ public class ClientGacha : MonoBehaviour
         gachaConfirmView.SetActive(false);
         gachaResultView.SetActive(false);
         gachaRewardView.SetActive(false);
+        gachaOfferRateView.SetActive(false);
     }
 
     //表記リアルタイム更新
@@ -104,6 +108,8 @@ public class ClientGacha : MonoBehaviour
         multiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
         singleText.text = gachaPeriodsModel.single_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
         multiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
+
+        gachaOfferRatePeriodText.text = gachaPeriodsModel.name;
     }
 
     //ピックアップ表示リスト
@@ -123,6 +129,31 @@ public class ClientGacha : MonoBehaviour
                 //表記
                 viewGacha.NameText.text = characterDataModel.name;
                 viewGacha.RarityText.text = characterRaritiesModel.name;
+                viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
+                viewGacha.CharacterImage.preserveAspect = true;
+            }
+        }
+    }
+
+    //ガチャ提供割合リスト
+    public void ShowGachaOfferRateList(GachaOfferRateTempView viewGacha, int characterId)
+    {
+        List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gacha_id);
+
+        foreach (var list in gachaDataModel)
+        {
+            if (list.character_id == characterId)
+            {
+                //ガチャ期間idのcharacter_id全部と、任意のcharacter_idが一致する場合のみ
+                characterDataModel = CharacterDataTable.SelectId(characterId);
+                characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+                string imagePath = $"Images/Characters/{characterId}";
+                float rate = list.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+
+                //表記
+                viewGacha.NameText.text = characterDataModel.name;
+                viewGacha.RarityText.text = characterRaritiesModel.name;
+                viewGacha.RateText.text = rate.ToString("0.###") + "%";
                 viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
                 viewGacha.CharacterImage.preserveAspect = true;
             }
@@ -240,6 +271,18 @@ public class ClientGacha : MonoBehaviour
     public void GachaRewardCloseButton()
     {
         gachaRewardView.SetActive(false);
+    }
+
+    //ガチャ提供割合開く
+    public void GachaOfferRateOpenButton()
+    {
+        gachaOfferRateView.SetActive(true);
+    }
+
+    //ガチャ提供割合閉じる
+    public void GachaOfferRateCloseButton()
+    {
+        gachaOfferRateView.SetActive(false);
     }
 
     //ガチャ報酬無し警告

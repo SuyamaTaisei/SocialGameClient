@@ -41,6 +41,7 @@
 
         //スタート時ガチャ種類デフォルトリスト
         public const int GACHA_START_DEFAULT_LIST = 1001;
+        public const float GACHA_TOTAL_RATE = 1000f;
 
         //ガチャ画面テキスト
         public const string SHOW_GACHA_CONFIRM_TEXT = "ジェムでガチャを実行しますか？";

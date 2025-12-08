@@ -13,8 +13,8 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] GameObject gachaResultView;
     [SerializeField] GameObject gachaRewardView;
     [SerializeField] GameObject gachaOfferRateView;
-    [SerializeField] Button yesButton;
-    [SerializeField] Button noButton;
+
+    //ガチャ画面テキスト
     [SerializeField] TextMeshProUGUI gachaPeriodTitle;
     [SerializeField] TextMeshProUGUI gachaPeriodText;
     [SerializeField] TextMeshProUGUI gachaOfferRatePeriodText;
@@ -27,23 +27,26 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI multiText;
     [SerializeField] TextMeshProUGUI confirmText;
 
-    //現在所持ウォレット表示
+    //ウォレット表示
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
 
-    //警告文
-    [SerializeField] TextMeshProUGUI warningText;
-    [SerializeField] TextMeshProUGUI nothingText;
-
+    //リスト
     [SerializeField] GachaResultList gachaResultList;
     [SerializeField] GachaRewardList gachaRewardList;
+
+    //ボタン
+    [SerializeField] Button gachaExecuteButton;
+
+    //メッセージ
+    [SerializeField] TextMeshProUGUI warningText;
+    [SerializeField] TextMeshProUGUI nothingText;
 
     private float rateN = 0;
     private float rateR = 0;
     private float rateSR = 0;
     private float rateSSR = 0;
-
     private int gacha_id;
     private int gacha_count;
 
@@ -74,7 +77,7 @@ public class ClientGacha : MonoBehaviour
     void Start()
     {
         apiConnect = FindFirstObjectByType<ApiConnect>();
-        yesButton.onClick.AddListener(() => GachaExecuteButton(gacha_id, gacha_count));
+        gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gacha_id, gacha_count));
         NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
         usersModel = UsersTable.Select();
         warningText.text = "";
@@ -234,27 +237,27 @@ public class ClientGacha : MonoBehaviour
     }
 
     //単発
-    public void SingleGachaButton()
+    public void GachaSingleButton()
     {
         gacha_count = gachaPeriodsModel.single_count;
         confirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }
 
     //連発
-    public void MultiGachaButton()
+    public void GachaMultiButton()
     {
         gacha_count = gachaPeriodsModel.multi_count;
         confirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }
 
     //ガチャ画面開く
-    public void OpenButton()
+    public void OpenGachaButton()
     {
         gachaView.SetActive(true);
     }
 
     //ガチャ画面閉じる
-    public void CloseButton()
+    public void CloseGachaButton()
     {
         gachaView.SetActive(false);
     }

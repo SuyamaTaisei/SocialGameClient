@@ -62,7 +62,7 @@ public class ClientGacha : MonoBehaviour
 
     private void Awake()
     {
-        GachaPeriodList(GameUtility.Const.GACHA_START_DEFAULT_LIST);
+        ShowGachaPeriodList(GameUtility.Const.GACHA_START_DEFAULT_LIST);
     }
 
     void Start()
@@ -92,7 +92,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ種類リスト
-    public void GachaPeriodList(int index)
+    public void ShowGachaPeriodList(int index)
     {
         gacha_id = index;
 
@@ -114,7 +114,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ピックアップ表示リスト
-    public void ShowGachaUI(GachaPickUpTempView viewGacha, int index)
+    public void ShowGachaPickUpList(GachaPickUpTempView viewGacha, int index)
     {
         List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gacha_id);
 
@@ -205,7 +205,7 @@ public class ClientGacha : MonoBehaviour
         StartCoroutine(apiConnect.Send(GameUtility.Const.GACHA_EXECUTE_URL, form));
     }
 
-    //戻った時は、再度ガチャ結果とガチャ報酬を表示するためにリセット
+    //ガチャ結果、ガチャ報酬表示リセット
     public void GachaResultCloseButton()
     {
         gachaResultView.SetActive(false);

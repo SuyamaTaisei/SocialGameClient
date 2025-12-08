@@ -18,7 +18,7 @@ public class GachaPeriodList : MonoBehaviour
             GameObject item = Instantiate(templateView, content);
             Button button = item.GetComponentInChildren<Button>();
             int index = this.index + i;
-            if (clientGacha) button.onClick.AddListener(() => clientGacha.GachaPeriodList(index));
+            if (clientGacha) button.onClick.AddListener(() => clientGacha.ShowGachaPeriodList(index));
         }
     }
 }

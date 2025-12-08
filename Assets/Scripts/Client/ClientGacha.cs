@@ -71,7 +71,7 @@ public class ClientGacha : MonoBehaviour
 
     private void Awake()
     {
-        ShowGachaPeriodList(GameUtility.Const.GACHA_START_DEFAULT_LIST);
+        ShowGachaPeriodList(0);
     }
 
     void Start()
@@ -100,18 +100,22 @@ public class ClientGacha : MonoBehaviour
         }
     }
 
-    //ガチャ種類リスト
+    //ガチャ期間リスト
     public void ShowGachaPeriodList(int index)
     {
-        gacha_id = index;
+        //全ガチャ期間のレコード取得
+        List<GachaPeriodsModel> gachaDataList = GachaPeriodsTable.SelectAll();
+        var data = gachaDataList[index];
 
         //idが一致するレコードを取得
-        gachaPeriodsModel = GachaPeriodsTable.SelectId(index);
+        gacha_id = data.id;
+        gachaPeriodsModel = GachaPeriodsTable.SelectId(gacha_id);
 
-        //表記
+        //ガチャ期間リスト表記
         gachaListPeriodTitle.text = gachaPeriodsModel.name;
         gachaListPeriodText.text = GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_1 + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_2;
 
+        //各ガチャ期間内の表記
         gachaPeriodTitle.text = gachaPeriodsModel.name;
         gachaPeriodText.text = GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_1 + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_2;
         singleCostText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GEM;

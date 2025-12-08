@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class GachaPeriodsModel
@@ -78,5 +79,32 @@ public class GachaPeriodsTable
         }
 
         return gachaPeriodsModel;
+    }
+
+    //全レコード取得
+    public static List<GachaPeriodsModel> SelectAll()
+    {
+        string query = "select * from gacha_periods";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<GachaPeriodsModel> result = new List<GachaPeriodsModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            GachaPeriodsModel gachaPeriodsModel = new GachaPeriodsModel();
+            gachaPeriodsModel.id = int.Parse(record["id"].ToString());
+            gachaPeriodsModel.name = record["name"].ToString();
+            gachaPeriodsModel.single_count = int.Parse(record["single_count"].ToString());
+            gachaPeriodsModel.multi_count = int.Parse(record["multi_count"].ToString());
+            gachaPeriodsModel.single_cost = int.Parse(record["single_cost"].ToString());
+            gachaPeriodsModel.multi_cost = int.Parse(record["multi_cost"].ToString());
+            gachaPeriodsModel.start = record["start"].ToString();
+            gachaPeriodsModel.end = record["end"].ToString();
+
+            result.Add(gachaPeriodsModel);
+        }
+
+        return result;
     }
 }

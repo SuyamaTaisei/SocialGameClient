@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
+using System.Collections.Generic;
 
 public class GachaPeriodList : MonoBehaviour
 {
@@ -7,17 +8,17 @@ public class GachaPeriodList : MonoBehaviour
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
 
-    [SerializeField] int startCount;
-    [SerializeField] int maxCount;
-    [SerializeField] int index;
-
     private void Start()
     {
-        for (int i = startCount; i <= maxCount; i++)
+        List<GachaPeriodsModel> gachaPeriodsList = GachaPeriodsTable.SelectAll();
+
+        for (int i = 0; i < gachaPeriodsList.Count; i++)
         {
             GameObject item = Instantiate(templateView, content);
             Button button = item.GetComponentInChildren<Button>();
-            int index = this.index + i;
+            int index = i;
+
+            clientGacha.ShowGachaPeriodList(index);
             if (clientGacha) button.onClick.AddListener(() => clientGacha.ShowGachaPeriodList(index));
         }
     }

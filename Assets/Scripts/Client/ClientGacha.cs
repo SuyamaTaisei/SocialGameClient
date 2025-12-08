@@ -41,6 +41,7 @@ public class ClientGacha : MonoBehaviour
     private int gacha_id;
     private int gacha_count;
 
+    public int GachaId => gacha_id;
     public int GachaCount => gacha_count;
     public GameObject GachaResultView => gachaResultView;
 
@@ -136,28 +137,25 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ提供割合リスト
-    public void ShowGachaOfferRateList(GachaOfferRateTempView viewGacha, int characterId)
+    public void ShowGachaOfferRateList(GachaOfferRateTempView viewGacha, int index)
     {
-        List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gacha_id);
+        List<GachaDataModel> gachaDataList = GachaDataTable.SelectAllGachaId(gacha_id);
 
-        foreach (var list in gachaDataModel)
-        {
-            if (list.character_id == characterId)
-            {
-                //ガチャ期間idのcharacter_id全部と、任意のcharacter_idが一致する場合のみ
-                characterDataModel = CharacterDataTable.SelectId(characterId);
-                characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-                string imagePath = $"Images/Characters/{characterId}";
-                float rate = list.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        //そのガチャ期間IDと一致するレコードのindex番目を取得
+        var data = gachaDataList[index];
 
-                //表記
-                viewGacha.NameText.text = characterDataModel.name;
-                viewGacha.RarityText.text = characterRaritiesModel.name;
-                viewGacha.RateText.text = rate.ToString("0.###") + "%";
-                viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
-                viewGacha.CharacterImage.preserveAspect = true;
-            }
-        }
+        //ガチャ期間idのcharacter_id全部と、任意のcharacter_idが一致する場合のみ
+        characterDataModel = CharacterDataTable.SelectId(data.character_id);
+        characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+        string imagePath = $"Images/Characters/{data.character_id}";
+        float rate = data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+
+        //表記
+        viewGacha.NameText.text = characterDataModel.name;
+        viewGacha.RarityText.text = characterRaritiesModel.name;
+        viewGacha.RateText.text = rate.ToString("0.###") + "%";
+        viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
+        viewGacha.CharacterImage.preserveAspect = true;
     }
 
     //ガチャ報酬単一表示リスト

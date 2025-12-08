@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Collections.Generic;
 
 public class GachaOfferRateList : MonoBehaviour
 {
@@ -6,19 +7,17 @@ public class GachaOfferRateList : MonoBehaviour
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
 
-    [SerializeField] int startCount;
-    [SerializeField] int maxCount;
-    [SerializeField] int index;
-
     private void Start()
     {
+        List<GachaDataModel> gachaDataList = GachaDataTable.SelectAllGachaId(clientGacha.GachaId);
+
         //提供割合表示を切り替えるために、Updateで何かしらの条件をもとに随時更新する必要がある
-        for (int i = startCount; i <= maxCount; i++)
+        //ガチャ期間IDが一致するレコードのみで全件走査
+        for (int i = 0; i < gachaDataList.Count; i++)
         {
             GameObject item = Instantiate(templateView, content);
-            int index = this.index + i;
             var view = item.GetComponent<GachaOfferRateTempView>();
-            if (clientGacha) clientGacha.ShowGachaOfferRateList(view, index);
+            if (clientGacha) clientGacha.ShowGachaOfferRateList(view, i);
         }
     }
 }

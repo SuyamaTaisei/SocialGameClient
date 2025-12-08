@@ -18,6 +18,7 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI gachaPeriodTitle;
     [SerializeField] TextMeshProUGUI gachaPeriodText;
     [SerializeField] TextMeshProUGUI gachaOfferRatePeriodText;
+    [SerializeField] TextMeshProUGUI gachaOfferRateTotalText;
     [SerializeField] TextMeshProUGUI gachaListPeriodTitle;
     [SerializeField] TextMeshProUGUI gachaListPeriodText;
     [SerializeField] TextMeshProUGUI singleCostText;
@@ -37,6 +38,11 @@ public class ClientGacha : MonoBehaviour
 
     [SerializeField] GachaResultList gachaResultList;
     [SerializeField] GachaRewardList gachaRewardList;
+
+    private float rateN = 0;
+    private float rateR = 0;
+    private float rateSR = 0;
+    private float rateSSR = 0;
 
     private int gacha_id;
     private int gacha_count;
@@ -143,6 +149,13 @@ public class ClientGacha : MonoBehaviour
 
         //そのガチャ期間IDと一致するレコードのindex番目を取得
         var data = gachaDataList[index];
+
+        if (data.character_id >= GameUtility.Const.GACHA_1000_NUMBER && data.character_id <= GameUtility.Const.GACHA_1999_NUMBER) rateN += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        if (data.character_id >= GameUtility.Const.GACHA_2000_NUMBER && data.character_id <= GameUtility.Const.GACHA_2999_NUMBER) rateR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        if (data.character_id >= GameUtility.Const.GACHA_3000_NUMBER && data.character_id <= GameUtility.Const.GACHA_3999_NUMBER) rateSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        if (data.character_id >= GameUtility.Const.GACHA_4000_NUMBER && data.character_id <= GameUtility.Const.GACHA_4999_NUMBER) rateSSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+
+        gachaOfferRateTotalText.text = "N : " + rateN.ToString("0.###") + "%      " + "R : " + rateR.ToString("0.###") + "%      " + "SR : " + rateSR.ToString("0.###") + "%      " + "SSR : " + rateSSR.ToString("0.###") + "%";
 
         //ガチャ期間idのcharacter_id全部と、任意のcharacter_idが一致する場合のみ
         characterDataModel = CharacterDataTable.SelectId(data.character_id);

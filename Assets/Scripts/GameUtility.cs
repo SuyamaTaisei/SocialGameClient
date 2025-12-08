@@ -35,13 +35,21 @@
         public const string ERROR_PAYMENT_1 = "残高が不足しています";
         public const string ERROR_PAYMENT_2 = "ウォレット上限に達しました";
 
-        //ガチャ回数
+        //ガチャエフェクト数値
         public const float GACHA_COLOR_NEW = 1;
         public const float GACHA_COLOR_EXIST = 0.15f;
 
-        //スタート時ガチャ種類デフォルトリスト
+        //ガチャリスト数値
         public const int GACHA_START_DEFAULT_LIST = 1001;
         public const float GACHA_TOTAL_RATE = 1000f;
+        public const int GACHA_1000_NUMBER = 1000;
+        public const int GACHA_1999_NUMBER = 1999;
+        public const int GACHA_2000_NUMBER = 2000;
+        public const int GACHA_2999_NUMBER = 2999;
+        public const int GACHA_3000_NUMBER = 3000;
+        public const int GACHA_3999_NUMBER = 3999;
+        public const int GACHA_4000_NUMBER = 4000;
+        public const int GACHA_4999_NUMBER = 4999;
 
         //ガチャ画面テキスト
         public const string SHOW_GACHA_CONFIRM_TEXT = "ジェムでガチャを実行しますか？";

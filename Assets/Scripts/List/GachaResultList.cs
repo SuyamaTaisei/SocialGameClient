@@ -55,13 +55,13 @@ public class GachaResultList : MonoBehaviour
                 view.ItemRarityText.text = "";
                 view.ItemAmountText.text = "";
                 view.ItemOtherObject.SetActive(false);
-                clientGacha.GachaResultColorChange(view, GameUtility.Const.GACHA_COLOR_NEW);
+                clientGacha.GachaResultColorChangeEffect(view, GameUtility.Const.GACHA_COLOR_NEW);
             }
             //所持済み
             else
             {
                 view.CharacterNewText.text = "";
-                clientGacha.GachaResultColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
+                clientGacha.GachaResultColorChangeEffect(view, GameUtility.Const.GACHA_COLOR_EXIST);
                 clientGacha.ShowGachaSingleRewardList(view, singleExchangeItems, ref singleExchangeIndex);
             }
 

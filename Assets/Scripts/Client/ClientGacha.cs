@@ -206,7 +206,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ結果、ガチャ報酬表示リセット
-    public void GachaResultCloseButton()
+    public void CloseGachaResultResetButton()
     {
         gachaResultView.SetActive(false);
         NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
@@ -260,25 +260,25 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ報酬開く
-    public void GachaRewardOpenButton()
+    public void OpenGachaRewardButton()
     {
         gachaRewardView.SetActive(true);
     }
 
     //ガチャ報酬閉じる
-    public void GachaRewardCloseButton()
+    public void CloseGachaRewardButton()
     {
         gachaRewardView.SetActive(false);
     }
 
     //ガチャ提供割合開く
-    public void GachaOfferRateOpenButton()
+    public void OpenGachaOfferRateButton()
     {
         gachaOfferRateView.SetActive(true);
     }
 
     //ガチャ提供割合閉じる
-    public void GachaOfferRateCloseButton()
+    public void CloseGachaOfferRateButton()
     {
         gachaOfferRateView.SetActive(false);
     }
@@ -296,7 +296,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //新規と所持済みで透明度を変更
-    public void GachaResultColorChange(GachaResultTempView view, float value)
+    public void GachaResultColorChangeEffect(GachaResultTempView view, float value)
     {
         var color = view.CharacterImage.color;
         color.a = value;

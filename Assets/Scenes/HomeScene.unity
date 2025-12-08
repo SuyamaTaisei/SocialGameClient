@@ -1248,7 +1248,7 @@ GameObject:
   - component: {fileID: 138787081}
   - component: {fileID: 138787080}
   m_Layer: 5
-  m_Name: GachaHistoryButton
+  m_Name: OpenGachaHistoryButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5474,7 +5474,7 @@ GameObject:
   - component: {fileID: 502751418}
   - component: {fileID: 502751417}
   m_Layer: 5
-  m_Name: GachaRewardButton
+  m_Name: OpenGachaRewardButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5546,7 +5546,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1605318034}
         m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaRewardOpenButton
+        m_MethodName: OpenGachaRewardButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -6195,7 +6195,7 @@ GameObject:
   - component: {fileID: 543979790}
   - component: {fileID: 543979792}
   m_Layer: 5
-  m_Name: CloseButton
+  m_Name: CloseGachaOfferRateButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6304,7 +6304,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1605318034}
         m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaOfferRateCloseButton
+        m_MethodName: CloseGachaOfferRateButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -9985,7 +9985,7 @@ GameObject:
   - component: {fileID: 946292218}
   - component: {fileID: 946292217}
   m_Layer: 5
-  m_Name: GachaOfferRateButton
+  m_Name: OpenGachaOfferRateButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10057,7 +10057,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1605318034}
         m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaOfferRateOpenButton
+        m_MethodName: OpenGachaOfferRateButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -19951,7 +19951,7 @@ GameObject:
   - component: {fileID: 1962120558}
   - component: {fileID: 1962120557}
   m_Layer: 5
-  m_Name: CloseButton
+  m_Name: CloseGachaRewardButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20023,7 +20023,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1605318034}
         m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaRewardCloseButton
+        m_MethodName: CloseGachaRewardButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -20084,7 +20084,7 @@ GameObject:
   - component: {fileID: 1978471381}
   - component: {fileID: 1978471380}
   m_Layer: 5
-  m_Name: CloseButton
+  m_Name: CloseGachaResultResetButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20156,7 +20156,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 1605318034}
         m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaResultCloseButton
+        m_MethodName: CloseGachaResultResetButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

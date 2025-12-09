@@ -35,6 +35,8 @@ public class ClientShop : MonoBehaviour
     //購入警告
     [SerializeField] TextMeshProUGUI warningText;
 
+    private string imageFolderName;
+
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
@@ -43,6 +45,11 @@ public class ClientShop : MonoBehaviour
     //DBモデル
     private UsersModel usersModel;
     private WalletsModel walletsModel;
+
+    private void Awake()
+    {
+        ShowShopCategoryList(0);
+    }
 
     private void Start()
     {
@@ -109,11 +116,13 @@ public class ClientShop : MonoBehaviour
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
         ShopDataModel data2 = ShopDataTable.SelectProductId(index2);
         ItemDataModel data3 = ItemDataTable.SelectId(imageIndex);
+        ShopDataModel data4 = ShopDataTable.SelectProductId(imageIndex);
 
         //表記
         productName.text = data1.name;
-        productDescription.text = data3.description;
-        productImage.sprite = Resources.Load<Sprite>($"Images/Items/{data3.id}");
+        bool showText = (data3 != null);
+        productDescription.text = showText ? data3.description : $"購入後のウォレット\n\n有償ジェム{walletsModel.gem_paid_amount + data4.paid_currency}個\n無償ジェム{walletsModel.gem_free_amount + data4.free_currency}個";
+        productImage.sprite = Resources.Load<Sprite>($"Images/{imageFolderName}/{imageIndex}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();
         priceGemText.text = data2.price.ToString();
@@ -136,6 +145,7 @@ public class ClientShop : MonoBehaviour
     //販売アイテム一覧表示
     public void OpenItemListButton()
     {
+        imageFolderName = "Items";
         itemListView.SetActive(true);
         buyItemCoinButton.gameObject.SetActive(true);
         buyItemGemButton.gameObject.SetActive(true);
@@ -146,6 +156,7 @@ public class ClientShop : MonoBehaviour
     //販売ジェム一覧表示
     public void OpenGemListButton()
     {
+        imageFolderName = "Shops";
         gemListView.SetActive(true);
         buyMoneyButton.gameObject.SetActive(true);
         buyItemCoinButton.gameObject.SetActive(false);

@@ -64,6 +64,26 @@ public class ClientShop : MonoBehaviour
         }
     }
 
+    //ショップカテゴリ内の商品リスト
+    public void ShowShopCategoryList(int index)
+    {
+        //全カテゴリ期間のレコード取得
+        List<ShopCategoriesModel> shopCategoriesList = ShopCategoriesTable.SelectAll();
+        var data = shopCategoriesList[index];
+
+        //カテゴリIDが一致するレコードを取得
+        var category = data.category;
+        var shopCategoryModel = ShopCategoriesTable.SelectId(category);
+
+        switch(category)
+        {
+            case 1001: OpenGemListButton();
+                break;
+            case 1002: OpenItemListButton();
+                break;
+        }
+    }
+
     //購入処理
     public void PaymentButton(int index)
     {

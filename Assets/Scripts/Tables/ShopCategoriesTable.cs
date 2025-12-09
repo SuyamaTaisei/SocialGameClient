@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class ShopCategoriesModel
@@ -48,5 +49,47 @@ public static class ShopCategoriesTable
             shopCategoriesModel.name = record["name"].ToString();
         }
         return shopCategoriesModel;
+    }
+
+    //カテゴリの一致するレコードを取得
+    public static ShopCategoriesModel SelectId(int category)
+    {
+        string query = "select * from shop_categories where category = " + category;
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        ShopCategoriesModel shopCategoriesModel = null;
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            //必ずインスタンスを生成
+            shopCategoriesModel = new ShopCategoriesModel();
+            shopCategoriesModel.category = int.Parse(record["category"].ToString());
+            shopCategoriesModel.name = record["name"].ToString();
+            break;
+        }
+
+        return shopCategoriesModel;
+    }
+
+    //全レコード取得
+    public static List<ShopCategoriesModel> SelectAll()
+    {
+        string query = "select * from shop_categories";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<ShopCategoriesModel> result = new List<ShopCategoriesModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            ShopCategoriesModel shopCategoriesModel = new ShopCategoriesModel();
+            shopCategoriesModel.category = int.Parse(record["category"].ToString());
+            shopCategoriesModel.name = record["name"].ToString();
+
+            result.Add(shopCategoriesModel);
+        }
+
+        return result;
     }
 }

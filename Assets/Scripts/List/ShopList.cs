@@ -13,10 +13,12 @@ public class ShopList : MonoBehaviour
     [SerializeField] int index1;
     [SerializeField] int index2;
 
+    [SerializeField] string imageFolderName;
+    [SerializeField] int imageIndex;
+
     private void Start()
     {
         List<ShopDataModel> shopList = ShopDataTable.SelectAll();
-        int imageIndex = 1001;
 
         for (int i = startCount; i <= maxCount; i++)
         {
@@ -32,7 +34,7 @@ public class ShopList : MonoBehaviour
 
             //キャプチャしてから渡す
             int itemId = imageIndex;
-            string imagePath = $"Images/Items/{itemId}";
+            string imagePath = $"Images/{imageFolderName}/{itemId}";
 
             //処理
             if (clientShop) button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, itemId));

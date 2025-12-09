@@ -17,8 +17,10 @@ public class ClientShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
 
-    //商品名表示
+    //商品情報表示
     [SerializeField] TextMeshProUGUI productName;
+    [SerializeField] TextMeshProUGUI productDescription;
+    [SerializeField] Image productImage;
 
     //価格表示
     [SerializeField] TextMeshProUGUI priceMoneyText;
@@ -73,7 +75,6 @@ public class ClientShop : MonoBehaviour
 
         //カテゴリIDが一致するレコードを取得
         var category = data.category;
-        var shopCategoryModel = ShopCategoriesTable.SelectId(category);
 
         switch(category)
         {
@@ -97,7 +98,7 @@ public class ClientShop : MonoBehaviour
     }
 
     //購入確認画面
-    public void OpenConfirmButton(int index1, int index2)
+    public void OpenConfirmButton(int index1, int index2, int imageIndex)
     {
         //必ず購入状態をリセット
         buyMoneyButton.onClick.RemoveAllListeners();
@@ -107,9 +108,12 @@ public class ClientShop : MonoBehaviour
         //product_idが一致するレコードを取得
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
         ShopDataModel data2 = ShopDataTable.SelectProductId(index2);
+        ItemDataModel data3 = ItemDataTable.SelectId(imageIndex);
 
         //表記
         productName.text = data1.name;
+        productDescription.text = data3.description;
+        productImage.sprite = Resources.Load<Sprite>($"Images/Items/{data3.id}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();
         priceGemText.text = data2.price.ToString();

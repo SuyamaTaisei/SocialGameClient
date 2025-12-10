@@ -67,6 +67,12 @@
         public const string SHOW_YEN = "円";
         public const string SHOW_GEM = "ジェム";
 
+        //ショップ表記
+        public const int SHOP_GEMS = 1001;
+        public const string SHOP_GEMS_FOLDER_NAME = "Gems";
+        public const int SHOP_ITEMS = 1002;
+        public const string SHOP_ITEMS_FOLDER_NAME = "Items";
+
         //シーン名
         public const string SCENE_NAME_HOMESCENE = "HomeScene";
     }

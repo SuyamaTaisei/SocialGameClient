@@ -58,7 +58,7 @@ public class ClientShop : MonoBehaviour
         shopView.SetActive(false);
         shopConfirmView.SetActive(false);
         warningText.text = "";
-        OpenGemListButton();
+        OpenShopListButton(GameUtility.Const.SHOP_GEMS_FOLDER_NAME, false, true, false, false, true);
     }
 
     //表記のリアルタイム更新
@@ -85,9 +85,9 @@ public class ClientShop : MonoBehaviour
 
         switch(category)
         {
-            case 1001: OpenGemListButton();
+            case GameUtility.Const.SHOP_GEMS: OpenShopListButton(GameUtility.Const.SHOP_GEMS_FOLDER_NAME, false, true, false, false, true);
                 break;
-            case 1002: OpenItemListButton();
+            case GameUtility.Const.SHOP_ITEMS: OpenShopListButton(GameUtility.Const.SHOP_ITEMS_FOLDER_NAME, true, false, true, true, false);
                 break;
         }
     }
@@ -105,7 +105,7 @@ public class ClientShop : MonoBehaviour
     }
 
     //購入確認画面
-    public void OpenConfirmButton(int index1, int index2, int imageIndex)
+    public void OpenConfirmButton(int index1, int index2, int index)
     {
         //必ず購入状態をリセット
         buyMoneyButton.onClick.RemoveAllListeners();
@@ -115,14 +115,14 @@ public class ClientShop : MonoBehaviour
         //product_idが一致するレコードを取得
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
         ShopDataModel data2 = ShopDataTable.SelectProductId(index2);
-        ItemDataModel data3 = ItemDataTable.SelectId(imageIndex);
-        ShopDataModel data4 = ShopDataTable.SelectProductId(imageIndex);
+        ItemDataModel data3 = ItemDataTable.SelectId(index);
+        ShopDataModel data4 = ShopDataTable.SelectProductId(index);
 
         //表記
         productName.text = data1.name;
         bool showText = (data3 != null);
         productDescription.text = showText ? data3.description : $"購入後のウォレット\n\n有償ジェム{walletsModel.gem_paid_amount + data4.paid_currency}個\n無償ジェム{walletsModel.gem_free_amount + data4.free_currency}個";
-        productImage.sprite = Resources.Load<Sprite>($"Images/{imageFolderName}/{imageIndex}");
+        productImage.sprite = Resources.Load<Sprite>($"Images/{imageFolderName}/{index}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();
         priceGemText.text = data2.price.ToString();
@@ -142,26 +142,15 @@ public class ClientShop : MonoBehaviour
         warningText.text = "";
     }
 
-    //販売アイテム一覧表示
-    public void OpenItemListButton()
+    //販売一覧表示
+    public void OpenShopListButton(string isName, bool isItem, bool isGem, bool coinBtn, bool gemBtn, bool moneyBtn)
     {
-        imageFolderName = "Items";
-        itemListView.SetActive(true);
-        buyItemCoinButton.gameObject.SetActive(true);
-        buyItemGemButton.gameObject.SetActive(true);
-        buyMoneyButton.gameObject.SetActive(false);
-        gemListView.SetActive(false);
-    }
-
-    //販売ジェム一覧表示
-    public void OpenGemListButton()
-    {
-        imageFolderName = "Shops";
-        gemListView.SetActive(true);
-        buyMoneyButton.gameObject.SetActive(true);
-        buyItemCoinButton.gameObject.SetActive(false);
-        buyItemGemButton.gameObject.SetActive(false);
-        itemListView.SetActive(false);
+        imageFolderName = isName;
+        itemListView.SetActive(isItem);
+        gemListView.SetActive(isGem);
+        buyItemCoinButton.gameObject.SetActive(coinBtn);
+        buyItemGemButton.gameObject.SetActive(gemBtn);
+        buyMoneyButton.gameObject.SetActive(moneyBtn);
     }
 
     //ショップ開く

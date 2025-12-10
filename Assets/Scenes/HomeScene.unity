@@ -7544,7 +7544,7 @@ MonoBehaviour:
   maxCount: 3
   index1: 10001
   index2: 10005
-  imageFolderName: Shops
+  imageFolderName: Gems
   imageIndex: 10001
 --- !u!114 &778621573 stripped
 MonoBehaviour:
@@ -15251,7 +15251,7 @@ RectTransform:
   m_Father: {fileID: 1417886880}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
+  m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -17189,7 +17189,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1655090802
 RectTransform:
   m_ObjectHideFlags: 0
@@ -20420,7 +20420,7 @@ GameObject:
   - component: {fileID: 1909148639}
   - component: {fileID: 1909148638}
   m_Layer: 0
-  m_Name: Line (1)
+  m_Name: Line
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

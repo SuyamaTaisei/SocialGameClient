@@ -58,7 +58,7 @@ public class ClientShop : MonoBehaviour
         shopView.SetActive(false);
         shopConfirmView.SetActive(false);
         warningText.text = "";
-        OpenShopListButton(GameUtility.Const.SHOP_GEMS_FOLDER_NAME, false, true, false, false, true);
+        OpenShopListButton(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
     }
 
     //表記のリアルタイム更新
@@ -85,9 +85,9 @@ public class ClientShop : MonoBehaviour
 
         switch(category)
         {
-            case GameUtility.Const.SHOP_GEMS: OpenShopListButton(GameUtility.Const.SHOP_GEMS_FOLDER_NAME, false, true, false, false, true);
+            case GameUtility.Const.SHOP_GEMS: OpenShopListButton(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
                 break;
-            case GameUtility.Const.SHOP_ITEMS: OpenShopListButton(GameUtility.Const.SHOP_ITEMS_FOLDER_NAME, true, false, true, true, false);
+            case GameUtility.Const.SHOP_ITEMS: OpenShopListButton(GameUtility.Const.FOLDER_NAME_ITEMS, true, false, true, true, false);
                 break;
         }
     }
@@ -122,7 +122,7 @@ public class ClientShop : MonoBehaviour
         productName.text = data1.name;
         bool showText = (data3 != null);
         productDescription.text = showText ? data3.description : $"{GameUtility.Const.SHOW_AFTER_WALLET}{GameUtility.Const.SHOW_PAID_GEM}{walletsModel.gem_paid_amount + data4.paid_currency}{GameUtility.Const.SHOW_FREE_GEM}{walletsModel.gem_free_amount + data4.free_currency}";
-        productImage.sprite = Resources.Load<Sprite>($"Images/{imageFolderName}/{index}");
+        productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{index}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();
         priceGemText.text = data2.price.ToString();

@@ -18,7 +18,7 @@ public class ShopCategoryList : MonoBehaviour
             Button button = item.GetComponentInChildren<Button>();
             var view = item.GetComponent<ShopCategoryTempView>();
             int index = i;
-            string imagePath = $"Images/Items/{index}";
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{index}";
 
             //表記
             view.ShopCategoryText.text = shopCategoriesList[index].name;

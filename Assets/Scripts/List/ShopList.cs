@@ -34,7 +34,7 @@ public class ShopList : MonoBehaviour
 
             //キャプチャしてから渡す
             int itemId = imageIndex;
-            string imagePath = $"Images/{imageFolderName}/{itemId}";
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{itemId}";
 
             //処理
             if (clientShop) button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, itemId));

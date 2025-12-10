@@ -68,7 +68,7 @@ public class GachaResultList : MonoBehaviour
             //idが一致するデータを取得
             characterDataModel = CharacterDataTable.SelectId(gachaResult.character_id);
             characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-            string imagePath = $"Images/Characters/{gachaResult.character_id}";
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaResult.character_id}";
 
             //表記
             view.CharacterNameText.text = characterDataModel.name;

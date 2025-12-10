@@ -138,7 +138,7 @@ public class ClientGacha : MonoBehaviour
                 //ガチャ期間idが同じcharacter_id全部と、任意のピックアップガチャの値が一致するデータのみを取得
                 characterDataModel = CharacterDataTable.SelectId(index);
                 characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-                string imagePath = $"Images/Characters/{index}";
+                string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{index}";
 
                 //表記
                 viewGacha.NameText.text = characterDataModel.name;

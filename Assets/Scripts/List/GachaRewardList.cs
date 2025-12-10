@@ -29,7 +29,7 @@ public class GachaRewardList : MonoBehaviour
             //アイテムidが一致するデータを取得
             itemDataModel = ItemDataTable.SelectId(exchange.item_id);
             itemRaritiesModel = ItemRaritiesTable.SelectId(itemDataModel.rarity_id);
-            string imagePath = $"Images/Items/{exchange.item_id}";
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{exchange.item_id}";
 
             //表記
             view.NameText.text = itemDataModel.name;

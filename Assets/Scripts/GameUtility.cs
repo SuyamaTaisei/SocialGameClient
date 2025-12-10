@@ -72,6 +72,9 @@
         public const string SHOP_GEMS_FOLDER_NAME = "Gems";
         public const int SHOP_ITEMS = 1002;
         public const string SHOP_ITEMS_FOLDER_NAME = "Items";
+        public const string SHOW_AFTER_WALLET = "購入後のウォレット残高\n\n";
+        public const string SHOW_PAID_GEM = "有償ジェム";
+        public const string SHOW_FREE_GEM = "\n無償ジェム";
 
         //シーン名
         public const string SCENE_NAME_HOMESCENE = "HomeScene";

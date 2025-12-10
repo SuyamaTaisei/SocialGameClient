@@ -121,7 +121,7 @@ public class ClientShop : MonoBehaviour
         //表記
         productName.text = data1.name;
         bool showText = (data3 != null);
-        productDescription.text = showText ? data3.description : $"購入後のウォレット\n\n有償ジェム{walletsModel.gem_paid_amount + data4.paid_currency}個\n無償ジェム{walletsModel.gem_free_amount + data4.free_currency}個";
+        productDescription.text = showText ? data3.description : $"{GameUtility.Const.SHOW_AFTER_WALLET}{GameUtility.Const.SHOW_PAID_GEM}{walletsModel.gem_paid_amount + data4.paid_currency}{GameUtility.Const.SHOW_FREE_GEM}{walletsModel.gem_free_amount + data4.free_currency}";
         productImage.sprite = Resources.Load<Sprite>($"Images/{imageFolderName}/{index}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();

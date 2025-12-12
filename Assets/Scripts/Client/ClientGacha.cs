@@ -13,6 +13,7 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] GameObject gachaResultView;
     [SerializeField] GameObject gachaRewardView;
     [SerializeField] GameObject gachaOfferRateView;
+    [SerializeField] GameObject gachaLogView;
 
     //ガチャ画面テキスト
     [SerializeField] TextMeshProUGUI gachaPeriodTitle;
@@ -86,6 +87,7 @@ public class ClientGacha : MonoBehaviour
         gachaResultView.SetActive(false);
         gachaRewardView.SetActive(false);
         gachaOfferRateView.SetActive(false);
+        gachaLogView.SetActive(false);
     }
 
     //表記リアルタイム更新
@@ -301,6 +303,18 @@ public class ClientGacha : MonoBehaviour
     public void CloseGachaOfferRateButton()
     {
         gachaOfferRateView.SetActive(false);
+    }
+
+    //ガチャ履歴開く
+    public void OpenGachaLogButton()
+    {
+        gachaLogView.SetActive(true);
+    }
+
+    //ガチャ履歴閉じる
+    public void CloseGachaLogButton()
+    {
+        gachaLogView.SetActive(false);
     }
 
     //ガチャ報酬無し警告

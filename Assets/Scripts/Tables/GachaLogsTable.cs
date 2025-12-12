@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class GachaLogsModel
@@ -42,5 +43,29 @@ public class GachaLogsTable
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
             sqlDB.ExecuteNonQuery(query);
         }
+    }
+
+    //全レコード取得
+    public static List<GachaLogsModel> SelectAll()
+    {
+        string query = "select * from gacha_logs";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<GachaLogsModel> result = new List<GachaLogsModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            GachaLogsModel gachaLogsModel = new GachaLogsModel();
+            gachaLogsModel.id = int.Parse(record["id"].ToString());
+            gachaLogsModel.manage_id = int.Parse(record["manage_id"].ToString());
+            gachaLogsModel.gacha_id = int.Parse(record["gacha_id"].ToString());
+            gachaLogsModel.character_id = int.Parse(record["character_id"].ToString());
+            gachaLogsModel.created_at = record["created_at"].ToString();
+
+            result.Add(gachaLogsModel);
+        }
+
+        return result;
     }
 }

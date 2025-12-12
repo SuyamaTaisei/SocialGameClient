@@ -31,6 +31,8 @@ public class ResponseObjects
     public GachaResultsModel[] new_characters;
     public GachaResultsModel[] total_exchange_items;
     public GachaResultsModel[] single_exchange_items;
+
+    public GachaLogsModel[] gacha_logs;
 }
 
 public class ResponseManager : MonoBehaviour
@@ -114,6 +116,12 @@ public class ResponseManager : MonoBehaviour
             if(gachaRewardList != null && responseObjects.total_exchange_items != null)
             {
                 gachaRewardList.ShowGachaReward(responseObjects.total_exchange_items);
+            }
+            //ガチャログ実行
+            if (responseObjects.gacha_logs != null)
+            {
+                Debug.Log("ガチャログ実行");
+                GachaLogsTable.Insert(responseObjects.gacha_logs);
             }
         }
         else

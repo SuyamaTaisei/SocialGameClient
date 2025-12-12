@@ -159,5 +159,7 @@ public class ClientTitle : MonoBehaviour
 
         GachaPeriodsTable.CreateTable();
         GachaDataTable.CreateTable();
+
+        GachaLogsTable.CreateTable();
     }
 }

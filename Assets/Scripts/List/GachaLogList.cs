@@ -11,7 +11,12 @@ public class GachaLogList : MonoBehaviour
     private CharacterDataModel characterDataModel;
     private CharacterRaritiesModel characterRaritiesModel;
 
-    private void Start()
+    //ガチャ履歴ボタン押下で、履歴リスト更新と破棄
+    private void OnEnable() => Refresh();
+    private void OnDisable() => Destroy();
+
+    //開いて更新
+    private void Refresh()
     {
         List<GachaLogsModel> gachaLogsList = GachaLogsTable.SelectAll();
 
@@ -32,6 +37,15 @@ public class GachaLogList : MonoBehaviour
             view.RarityText.text = characterRaritiesModel.name;
             view.DateTimeText.text = gachaLogsList[i].created_at;
             view.GachaPeriodText.text = gachaPeriodsModel.name;
+        }
+    }
+
+    //閉じて破棄
+    private void Destroy()
+    {
+        foreach (Transform child in content)
+        {
+            Destroy(child.gameObject);
         }
     }
 }

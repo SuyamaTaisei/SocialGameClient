@@ -43,6 +43,7 @@ public class ClientGacha : MonoBehaviour
     //メッセージ
     [SerializeField] TextMeshProUGUI warningText;
     [SerializeField] TextMeshProUGUI nothingText;
+    [SerializeField] TextMeshProUGUI nothingTextGachaLog;
 
     private float rateN = 0;
     private float rateR = 0;
@@ -321,6 +322,12 @@ public class ClientGacha : MonoBehaviour
     public void NothingMessage(string message)
     {
         nothingText.text = message;
+    }
+
+    //ガチャ履歴無し警告
+    public void NothingGachaLogMessage(string message)
+    {
+        nothingTextGachaLog.text = message;
     }
 
     //購入警告

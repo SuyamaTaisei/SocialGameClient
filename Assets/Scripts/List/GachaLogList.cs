@@ -5,6 +5,7 @@ public class GachaLogList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] ClientGacha clientGacha;
 
     //DBモデル
     private GachaPeriodsModel gachaPeriodsModel;
@@ -19,6 +20,15 @@ public class GachaLogList : MonoBehaviour
     private void Refresh()
     {
         List<GachaLogsModel> gachaLogsList = GachaLogsTable.SelectLatest(GameUtility.Const.LOG_GACHA_LIMIT);
+
+        //何もガチャ履歴が無ければ
+        if (gachaLogsList.Count == 0)
+        {
+            clientGacha.NothingGachaLogMessage(GameUtility.Const.SHOW_GACHA_LOG_NOTHING);
+            return;
+        }
+
+        clientGacha.NothingGachaLogMessage("");
 
         for (int i = 0; i < gachaLogsList.Count; i++)
         {

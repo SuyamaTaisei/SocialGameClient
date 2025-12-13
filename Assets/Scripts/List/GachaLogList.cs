@@ -18,7 +18,7 @@ public class GachaLogList : MonoBehaviour
     //開いて更新
     private void Refresh()
     {
-        List<GachaLogsModel> gachaLogsList = GachaLogsTable.SelectAll();
+        List<GachaLogsModel> gachaLogsList = GachaLogsTable.SelectLatest(GameUtility.Const.LOG_GACHA_LIMIT);
 
         for (int i = 0; i < gachaLogsList.Count; i++)
         {

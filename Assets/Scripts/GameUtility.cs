@@ -39,7 +39,7 @@
         public const float GACHA_COLOR_NEW = 1;
         public const float GACHA_COLOR_EXIST = 0.15f;
 
-        //ガチャリスト数値
+        //ガチャ数値
         public const int GACHA_START_DEFAULT_LIST = 1001;
         public const float GACHA_TOTAL_RATE = 1000f;
         public const int GACHA_1000_NUMBER = 1000;
@@ -84,5 +84,8 @@
 
         //シーン名
         public const string SCENE_NAME_HOMESCENE = "HomeScene";
+
+        //ログ系
+        public const int LOG_GACHA_LIMIT = 150;
     }
 }

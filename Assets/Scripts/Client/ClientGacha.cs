@@ -160,23 +160,28 @@ public class ClientGacha : MonoBehaviour
         //そのガチャ期間IDと一致するレコードのindex番目を取得
         var data = gachaDataList[index];
 
+        //レアリティごとの合計排出率の表示
         if (data.character_id >= GameUtility.Const.GACHA_1000_NUMBER && data.character_id <= GameUtility.Const.GACHA_1999_NUMBER) rateN += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
         if (data.character_id >= GameUtility.Const.GACHA_2000_NUMBER && data.character_id <= GameUtility.Const.GACHA_2999_NUMBER) rateR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
         if (data.character_id >= GameUtility.Const.GACHA_3000_NUMBER && data.character_id <= GameUtility.Const.GACHA_3999_NUMBER) rateSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
         if (data.character_id >= GameUtility.Const.GACHA_4000_NUMBER && data.character_id <= GameUtility.Const.GACHA_4999_NUMBER) rateSSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
 
-        gachaOfferRateTotalText.text = "N : " + rateN.ToString("0.###") + "%      " + "R : " + rateR.ToString("0.###") + "%      " + "SR : " + rateSR.ToString("0.###") + "%      " + "SSR : " + rateSSR.ToString("0.###") + "%";
+        gachaOfferRateTotalText.text =
+                       GameUtility.Const.SHOW_GACHA_RARITY_N + rateN.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT +
+            "      " + GameUtility.Const.SHOW_GACHA_RARITY_R + rateR.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT +
+            "      " + GameUtility.Const.SHOW_GACHA_RARITY_SR + rateSR.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT +
+            "      " + GameUtility.Const.SHOW_GACHA_RARITY_SSR + rateSSR.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT;
 
         //ガチャ期間idのcharacter_id全部と、任意のcharacter_idが一致する場合のみ
         characterDataModel = CharacterDataTable.SelectId(data.character_id);
         characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-        string imagePath = $"Images/Characters/{data.character_id}";
+        string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
         float rate = data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
 
         //表記
         viewGacha.NameText.text = characterDataModel.name;
         viewGacha.RarityText.text = characterRaritiesModel.name;
-        viewGacha.RateText.text = rate.ToString("0.###") + "%";
+        viewGacha.RateText.text = rate.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT;
         viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
         viewGacha.CharacterImage.preserveAspect = true;
     }
@@ -196,7 +201,7 @@ public class ClientGacha : MonoBehaviour
             //アイテムidが一致するデータを取得
             itemDataModel = ItemDataTable.SelectId(exchange.item_id);
             itemRaritiesModel = ItemRaritiesTable.SelectId(itemDataModel.rarity_id);
-            string itemImagePath = $"Images/Items/{exchange.item_id}";
+            string itemImagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{exchange.item_id}";
 
             //表記
             view.ItemNameText.text = itemDataModel.name;

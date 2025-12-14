@@ -30,7 +30,7 @@ public class ShopList : MonoBehaviour
             GameObject item = Instantiate(templateView, content);
 
             Button button = item.GetComponentInChildren<Button>();
-            ShopTempView view = item.GetComponent<ShopTempView>();
+            ShopTemplateView view = item.GetComponent<ShopTemplateView>();
 
             //キャプチャしてから渡す
             int itemId = imageIndex;

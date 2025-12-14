@@ -16,7 +16,7 @@ public class ShopCategoryList : MonoBehaviour
         {
             GameObject item = Instantiate(templateView, content);
             Button button = item.GetComponentInChildren<Button>();
-            var view = item.GetComponent<ShopCategoryTempView>();
+            var view = item.GetComponent<ShopCategoryTemplateView>();
             int index = i;
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{index}";
 

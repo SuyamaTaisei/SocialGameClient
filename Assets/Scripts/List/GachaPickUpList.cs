@@ -17,7 +17,7 @@ public class GachaPickUpList : MonoBehaviour
         {
             GameObject item = Instantiate(templateView, content);
             int index = this.index + i;
-            var view = item.GetComponent<GachaPickUpTempView>();
+            var view = item.GetComponent<GachaPickUpTemplateView>();
             if (clientGacha) clientGacha.ShowGachaPickUpList(view, index);
         }
     }

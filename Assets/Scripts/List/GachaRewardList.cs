@@ -24,7 +24,7 @@ public class GachaRewardList : MonoBehaviour
             var exchange = totalExchangeItems[i];
         
             GameObject item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaRewardTempView>();
+            var view = item.GetComponent<GachaRewardTemplateView>();
 
             //アイテムidが一致するデータを取得
             itemDataModel = ItemDataTable.SelectId(exchange.item_id);

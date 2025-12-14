@@ -33,7 +33,7 @@ public class GachaLogList : MonoBehaviour
         for (int i = 0; i < gachaLogsList.Count; i++)
         {
             GameObject item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaLogTempView>();
+            var view = item.GetComponent<GachaLogTemplateView>();
             int index = i;
 
             characterDataModel = CharacterDataTable.SelectId(gachaLogsList[index].character_id);

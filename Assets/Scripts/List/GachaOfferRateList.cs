@@ -16,7 +16,7 @@ public class GachaOfferRateList : MonoBehaviour
         for (int i = 0; i < gachaDataList.Count; i++)
         {
             GameObject item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaOfferRateTempView>();
+            var view = item.GetComponent<GachaOfferRateTemplateView>();
             if (clientGacha) clientGacha.ShowGachaOfferRateList(view, i);
         }
     }

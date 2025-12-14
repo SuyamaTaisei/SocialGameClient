@@ -2,17 +2,15 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GachaLogTempView : MonoBehaviour
+public class GachaOfferRateTemplateView : MonoBehaviour
 {
     [SerializeField] Image characterImage;
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI rarityText;
-    [SerializeField] TextMeshProUGUI dateTimeText;
-    [SerializeField] TextMeshProUGUI gachaPeriodText;
+    [SerializeField] TextMeshProUGUI rateText;
 
     public Image CharacterImage => characterImage;
     public TextMeshProUGUI NameText => nameText;
     public TextMeshProUGUI RarityText => rarityText;
-    public TextMeshProUGUI DateTimeText => dateTimeText;
-    public TextMeshProUGUI GachaPeriodText => gachaPeriodText;
+    public TextMeshProUGUI RateText => rateText;
 }

@@ -130,7 +130,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ピックアップ表示リスト
-    public void ShowGachaPickUpList(GachaPickUpTempView viewGacha, int index)
+    public void ShowGachaPickUpList(GachaPickUpTemplateView viewGacha, int index)
     {
         List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gacha_id);
 
@@ -153,7 +153,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ提供割合リスト
-    public void ShowGachaOfferRateList(GachaOfferRateTempView viewGacha, int index)
+    public void ShowGachaOfferRateList(GachaOfferRateTemplateView viewGacha, int index)
     {
         List<GachaDataModel> gachaDataList = GachaDataTable.SelectAllGachaId(gacha_id);
 
@@ -182,7 +182,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ報酬単一表示リスト
-    public void ShowGachaSingleRewardList(GachaResultTempView view, GachaResultsModel[] singleExchangeItems, ref int singleExchangeIndex)
+    public void ShowGachaSingleRewardList(GachaResultTemplateView view, GachaResultsModel[] singleExchangeItems, ref int singleExchangeIndex)
     {
         //ガチャ報酬配列の有効範囲内のみ
         if (singleExchangeItems != null && singleExchangeIndex < singleExchangeItems.Length)
@@ -337,7 +337,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //新規と所持済みで透明度を変更
-    public void GachaResultColorChangeEffect(GachaResultTempView view, float value)
+    public void GachaResultColorChangeEffect(GachaResultTemplateView view, float value)
     {
         var color = view.CharacterImage.color;
         color.a = value;

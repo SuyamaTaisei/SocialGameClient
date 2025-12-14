@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopCategoryTempView : MonoBehaviour
+public class ShopCategoryTemplateView : MonoBehaviour
 {
     [SerializeField] Image shopCategoryIcon;
     [SerializeField] TextMeshProUGUI shopCategoryText;

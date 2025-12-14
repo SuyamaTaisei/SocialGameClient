@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ShopTempView : MonoBehaviour
+public class ShopTemplateView : MonoBehaviour
 {
     [SerializeField] Image itemImage;
     [SerializeField] TextMeshProUGUI productNameText;

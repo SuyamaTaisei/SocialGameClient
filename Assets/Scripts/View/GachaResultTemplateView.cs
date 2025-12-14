@@ -2,7 +2,7 @@
 using TMPro;
 using UnityEngine.UI;
 
-public class GachaResultTempView : MonoBehaviour
+public class GachaResultTemplateView : MonoBehaviour
 {
     [SerializeField] Image characterImage;
     [SerializeField] TextMeshProUGUI characterNameText;

@@ -396,7 +396,7 @@ GameObject:
   - component: {fileID: 115920310}
   - component: {fileID: 115920309}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: MasterCheckFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -550,7 +550,7 @@ GameObject:
   - component: {fileID: 176933427}
   - component: {fileID: 176933426}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: CompleteFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1158,7 +1158,7 @@ GameObject:
   - component: {fileID: 643822374}
   - component: {fileID: 643822373}
   m_Layer: 5
-  m_Name: Frame
+  m_Name: RegisterFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1436,8 +1436,8 @@ RectTransform:
   m_Children:
   - {fileID: 2032090355}
   - {fileID: 176933425}
-  - {fileID: 1753018557}
   - {fileID: 1239347228}
+  - {fileID: 1753018557}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -2340,7 +2340,7 @@ GameObject:
   - component: {fileID: 1239347230}
   - component: {fileID: 1239347229}
   m_Layer: 5
-  m_Name: ComfirmButton
+  m_Name: CompleteComfirmButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3007,12 +3007,12 @@ RectTransform:
   m_Children:
   - {fileID: 1860623664}
   - {fileID: 1642150251}
+  - {fileID: 806827284}
+  - {fileID: 2026494459}
   - {fileID: 1320171813}
   - {fileID: 825632020}
   - {fileID: 816921664}
   - {fileID: 2014884468}
-  - {fileID: 806827284}
-  - {fileID: 2026494459}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -3032,7 +3032,7 @@ GameObject:
   - component: {fileID: 1781982540}
   - component: {fileID: 1781982539}
   m_Layer: 5
-  m_Name: ComfirmText
+  m_Name: CompleteComfirmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3304,7 +3304,7 @@ GameObject:
   - component: {fileID: 1860623666}
   - component: {fileID: 1860623665}
   m_Layer: 5
-  m_Name: BG
+  m_Name: TitleBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3982,7 +3982,7 @@ GameObject:
   - component: {fileID: 2032090357}
   - component: {fileID: 2032090356}
   m_Layer: 5
-  m_Name: RegisterCompleteText
+  m_Name: CompleteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

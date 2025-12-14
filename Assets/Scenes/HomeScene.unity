@@ -166,7 +166,7 @@ GameObject:
   - component: {fileID: 15737427}
   - component: {fileID: 15737426}
   m_Layer: 5
-  m_Name: ConfirmText
+  m_Name: GachaConfirmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -602,16 +602,16 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 396636348}
-  - {fileID: 1875579664}
   - {fileID: 995881883}
-  - {fileID: 445234896}
   - {fileID: 1817171807}
+  - {fileID: 1875579664}
+  - {fileID: 445234896}
   - {fileID: 1007130450}
-  - {fileID: 1411209986}
   - {fileID: 957532796}
   - {fileID: 197218851}
   - {fileID: 1400259709}
   - {fileID: 769193378}
+  - {fileID: 1411209986}
   - {fileID: 1655090802}
   - {fileID: 528813425}
   - {fileID: 1909148637}
@@ -634,7 +634,7 @@ GameObject:
   - component: {fileID: 88794187}
   - component: {fileID: 88794186}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaPeriodBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -795,7 +795,7 @@ GameObject:
   - component: {fileID: 97559910}
   - component: {fileID: 97559909}
   m_Layer: 5
-  m_Name: NameText
+  m_Name: GachaPickUpNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1232,7 +1232,7 @@ GameObject:
   - component: {fileID: 116913622}
   - component: {fileID: 116913621}
   m_Layer: 5
-  m_Name: NameFrame
+  m_Name: GachaResultNameFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1896,7 +1896,7 @@ GameObject:
   - component: {fileID: 180215904}
   - component: {fileID: 180215905}
   m_Layer: 5
-  m_Name: ImageMask
+  m_Name: CharacterImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2312,7 +2312,7 @@ GameObject:
   - component: {fileID: 202143064}
   - component: {fileID: 202143063}
   m_Layer: 5
-  m_Name: SingleCostText
+  m_Name: GachaSingleCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2448,7 +2448,7 @@ GameObject:
   - component: {fileID: 202664987}
   - component: {fileID: 202664986}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2541,9 +2541,10 @@ RectTransform:
   m_ConstrainProportionsScale: 1
   m_Children:
   - {fileID: 1879994205}
-  - {fileID: 609548032}
   - {fileID: 1581128995}
+  - {fileID: 609548032}
   - {fileID: 1865711874}
+  - {fileID: 1044364958}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -3151,7 +3152,7 @@ GameObject:
   - component: {fileID: 233566561}
   - component: {fileID: 233566560}
   m_Layer: 5
-  m_Name: NameFrame
+  m_Name: GachaOfferRateNameFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3227,7 +3228,7 @@ GameObject:
   - component: {fileID: 250829201}
   - component: {fileID: 250829200}
   m_Layer: 5
-  m_Name: Frame
+  m_Name: GachaPeriodFrame2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3869,7 +3870,7 @@ GameObject:
   - component: {fileID: 305614063}
   - component: {fileID: 305614062}
   m_Layer: 5
-  m_Name: OfferText
+  m_Name: GachaOfferRateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4005,7 +4006,7 @@ GameObject:
   - component: {fileID: 305636879}
   - component: {fileID: 305636878}
   m_Layer: 5
-  m_Name: YesText
+  m_Name: GachaExecuteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4372,10 +4373,10 @@ RectTransform:
   - {fileID: 1433828548}
   - {fileID: 985850538}
   - {fileID: 1396391639}
-  - {fileID: 1481841258}
   - {fileID: 659044965}
-  - {fileID: 1978471379}
   - {fileID: 502751416}
+  - {fileID: 1978471379}
+  - {fileID: 1481841258}
   m_Father: {fileID: 1655934739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -4531,7 +4532,7 @@ GameObject:
   - component: {fileID: 365432705}
   - component: {fileID: 365432704}
   m_Layer: 5
-  m_Name: TitleName
+  m_Name: GachaOfferRateTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4923,7 +4924,7 @@ GameObject:
   - component: {fileID: 396636350}
   - component: {fileID: 396636349}
   m_Layer: 5
-  m_Name: BG
+  m_Name: ShopBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5072,8 +5073,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 432129393}
-  - component: {fileID: 432129396}
-  - component: {fileID: 432129395}
   m_Layer: 5
   m_Name: GachaPeriodTempView
   m_TagString: Untagged
@@ -5094,10 +5093,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2145235234}
+  - {fileID: 168616508}
+  - {fileID: 872842082}
   - {fileID: 250829199}
   - {fileID: 478836212}
   - {fileID: 926252791}
-  - {fileID: 168616508}
   - {fileID: 541624779}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -5106,44 +5106,6 @@ RectTransform:
   m_AnchoredPosition: {x: -735, y: 685}
   m_SizeDelta: {x: 350, y: 150}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &432129395
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432129392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_RaycastTarget: 1
-  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
-  m_Maskable: 1
-  m_OnCullStateChanged:
-    m_PersistentCalls:
-      m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 8d10461da2ef9614ebed3d5cfe56890b, type: 3}
-  m_Type: 1
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
---- !u!222 &432129396
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 432129392}
-  m_CullTransparentMesh: 1
 --- !u!1 &434312036
 GameObject:
   m_ObjectHideFlags: 0
@@ -5567,7 +5529,7 @@ GameObject:
   - component: {fileID: 466899333}
   - component: {fileID: 466899332}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaPickUpNameTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5642,7 +5604,7 @@ GameObject:
   - component: {fileID: 478836214}
   - component: {fileID: 478836213}
   m_Layer: 5
-  m_Name: GachaListPeriodTitle
+  m_Name: GachaPeriodTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5870,10 +5832,10 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1740653674}
-  - {fileID: 116913620}
   - {fileID: 1184388144}
   - {fileID: 749604121}
+  - {fileID: 1740653674}
+  - {fileID: 116913620}
   - {fileID: 1443803623}
   - {fileID: 1479351673}
   m_Father: {fileID: 1778367105}
@@ -5934,12 +5896,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 565704101}
-  - {fileID: 1080507115}
-  - {fileID: 927953689}
   - {fileID: 563937598}
   - {fileID: 926163745}
   - {fileID: 813458742}
   - {fileID: 97559908}
+  - {fileID: 1080507115}
+  - {fileID: 927953689}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -6107,7 +6069,7 @@ GameObject:
   - component: {fileID: 504548710}
   - component: {fileID: 504548709}
   m_Layer: 5
-  m_Name: RateText
+  m_Name: GachaOfferRateRateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6389,7 +6351,7 @@ GameObject:
   - component: {fileID: 517892469}
   - component: {fileID: 517892468}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaOfferRateBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6464,7 +6426,7 @@ GameObject:
   - component: {fileID: 525230959}
   - component: {fileID: 525230958}
   m_Layer: 0
-  m_Name: BG
+  m_Name: GachaConfirmBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6537,7 +6499,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526249027}
   m_Layer: 5
-  m_Name: CharacterFrame
+  m_Name: CharacterObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6651,7 +6613,7 @@ GameObject:
   - component: {fileID: 541624781}
   - component: {fileID: 541624780}
   m_Layer: 5
-  m_Name: SelectGachaPeriodButton
+  m_Name: GachaPeriodButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7101,7 +7063,7 @@ GameObject:
   m_Component:
   - component: {fileID: 565704101}
   m_Layer: 5
-  m_Name: CharacterFrame
+  m_Name: CharacterObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7311,7 +7273,7 @@ GameObject:
   - component: {fileID: 591015466}
   - component: {fileID: 591015465}
   m_Layer: 5
-  m_Name: GachaRewardTitle
+  m_Name: GachaRewardTitleFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7328,8 +7290,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children:
-  - {fileID: 784109468}
+  m_Children: []
   m_Father: {fileID: 783824677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -7387,7 +7348,7 @@ GameObject:
   - component: {fileID: 603154511}
   - component: {fileID: 603154510}
   m_Layer: 5
-  m_Name: AmountText
+  m_Name: GachaRewardAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7521,7 +7482,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609548032}
   m_Layer: 5
-  m_Name: ItemObject
+  m_Name: ProductObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7682,7 +7643,7 @@ GameObject:
   - component: {fileID: 678765090}
   - component: {fileID: 678765089}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaOfferRateBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7757,7 +7718,7 @@ GameObject:
   - component: {fileID: 715321088}
   - component: {fileID: 715321087}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: ProductFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8068,6 +8029,7 @@ RectTransform:
   - {fileID: 1922299724}
   - {fileID: 2069872097}
   - {fileID: 591015464}
+  - {fileID: 784109468}
   - {fileID: 1962120556}
   - {fileID: 948262061}
   m_Father: {fileID: 1655934739}
@@ -8089,7 +8051,7 @@ GameObject:
   - component: {fileID: 784109470}
   - component: {fileID: 784109469}
   m_Layer: 5
-  m_Name: GachaRewardText
+  m_Name: GachaRewardTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8107,12 +8069,12 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 591015464}
+  m_Father: {fileID: 783824677}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 422.5}
+  m_SizeDelta: {x: 150, y: -20}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &784109469
 MonoBehaviour:
@@ -8397,7 +8359,7 @@ GameObject:
   - component: {fileID: 797700912}
   - component: {fileID: 797700911}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaRewardBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8472,7 +8434,7 @@ GameObject:
   - component: {fileID: 798372561}
   - component: {fileID: 798372560}
   m_Layer: 5
-  m_Name: RarityText
+  m_Name: GachaRewardRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8608,7 +8570,7 @@ GameObject:
   - component: {fileID: 813458744}
   - component: {fileID: 813458743}
   m_Layer: 5
-  m_Name: NameFrame
+  m_Name: GachaPickUpNameFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9101,6 +9063,81 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 837604116}
   m_CullTransparentMesh: 1
+--- !u!1 &872842081
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 872842082}
+  - component: {fileID: 872842084}
+  - component: {fileID: 872842083}
+  m_Layer: 5
+  m_Name: GachaPeriodFrame1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &872842082
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872842081}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 432129393}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 350, y: 150}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &872842083
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872842081}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 8d10461da2ef9614ebed3d5cfe56890b, type: 3}
+  m_Type: 1
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &872842084
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 872842081}
+  m_CullTransparentMesh: 1
 --- !u!1 &875215305
 GameObject:
   m_ObjectHideFlags: 0
@@ -9113,7 +9150,7 @@ GameObject:
   - component: {fileID: 875215308}
   - component: {fileID: 875215307}
   m_Layer: 5
-  m_Name: RarityText
+  m_Name: GachaOfferRateRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9372,9 +9409,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 884381911}
-  - component: {fileID: 884381914}
-  - component: {fileID: 884381913}
-  - component: {fileID: 884381912}
+  - component: {fileID: 884381918}
+  - component: {fileID: 884381917}
+  - component: {fileID: 884381916}
   - component: {fileID: 884381915}
   m_Layer: 5
   m_Name: ShopCategoryTempView
@@ -9404,7 +9441,21 @@ RectTransform:
   m_AnchoredPosition: {x: 197.5, y: 807.5}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &884381912
+--- !u!114 &884381915
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884381910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35499676bc74eba4ea10108b1110009a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopCategoryIcon: {fileID: 1655187960}
+  shopCategoryText: {fileID: 1253401457}
+--- !u!114 &884381916
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9444,23 +9495,11 @@ MonoBehaviour:
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
   m_Interactable: 1
-  m_TargetGraphic: {fileID: 884381913}
+  m_TargetGraphic: {fileID: 884381917}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: OpenGemListButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
---- !u!114 &884381913
+      m_Calls: []
+--- !u!114 &884381917
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9490,7 +9529,7 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!222 &884381914
+--- !u!222 &884381918
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -9498,20 +9537,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884381910}
   m_CullTransparentMesh: 1
---- !u!114 &884381915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884381910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35499676bc74eba4ea10108b1110009a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopCategoryIcon: {fileID: 1655187960}
-  shopCategoryText: {fileID: 1253401457}
 --- !u!1 &884497071
 GameObject:
   m_ObjectHideFlags: 0
@@ -9524,7 +9549,7 @@ GameObject:
   - component: {fileID: 884497074}
   - component: {fileID: 884497073}
   m_Layer: 5
-  m_Name: SingleText
+  m_Name: GachaSingleText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9960,7 +9985,7 @@ GameObject:
   - component: {fileID: 914694343}
   - component: {fileID: 914694342}
   m_Layer: 5
-  m_Name: ShopIcon
+  m_Name: GachaIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10052,14 +10077,14 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1951198539}
   - {fileID: 526249027}
+  - {fileID: 1498599017}
+  - {fileID: 1951198539}
   - {fileID: 1712971540}
   - {fileID: 233566559}
   - {fileID: 2049230345}
   - {fileID: 875215306}
   - {fileID: 504548708}
-  - {fileID: 1498599017}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -10171,7 +10196,7 @@ GameObject:
   - component: {fileID: 926252793}
   - component: {fileID: 926252792}
   m_Layer: 5
-  m_Name: GachaListPeriodText
+  m_Name: GachaPeriodText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10307,7 +10332,7 @@ GameObject:
   - component: {fileID: 927953691}
   - component: {fileID: 927953690}
   m_Layer: 5
-  m_Name: RarityText
+  m_Name: GachaPickUpRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11277,7 +11302,7 @@ GameObject:
   - component: {fileID: 979968063}
   - component: {fileID: 979968062}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: GachaLogFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11475,7 +11500,7 @@ GameObject:
   - component: {fileID: 983678597}
   - component: {fileID: 983678596}
   m_Layer: 0
-  m_Name: GachaPeriodText
+  m_Name: GachaLogPeriodText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11611,7 +11636,7 @@ GameObject:
   - component: {fileID: 985850540}
   - component: {fileID: 985850539}
   m_Layer: 5
-  m_Name: Frame
+  m_Name: GachaResultFrame1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12482,11 +12507,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 1581128995}
+  m_Father: {fileID: 202819307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: -141.05005}
   m_SizeDelta: {x: 216.3, y: 42.8}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1044364959
@@ -12600,7 +12625,7 @@ GameObject:
   - component: {fileID: 1080507117}
   - component: {fileID: 1080507116}
   m_Layer: 5
-  m_Name: RarityTextBG
+  m_Name: GachaPickUpRarityFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13169,7 +13194,7 @@ GameObject:
   - component: {fileID: 1123570336}
   - component: {fileID: 1123570335}
   m_Layer: 5
-  m_Name: HistoryText
+  m_Name: GachaLogText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13304,7 +13329,7 @@ GameObject:
   - component: {fileID: 1134917005}
   - component: {fileID: 1134917006}
   m_Layer: 5
-  m_Name: ImageMask
+  m_Name: ProductImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13356,7 +13381,7 @@ GameObject:
   - component: {fileID: 1151508023}
   - component: {fileID: 1151508022}
   m_Layer: 5
-  m_Name: NothingTextGachaLog
+  m_Name: NothingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13628,7 +13653,7 @@ GameObject:
   - component: {fileID: 1163708529}
   - component: {fileID: 1163708528}
   m_Layer: 5
-  m_Name: Title
+  m_Name: GachaTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14519,7 +14544,7 @@ GameObject:
   - component: {fileID: 1210189726}
   - component: {fileID: 1210189725}
   m_Layer: 0
-  m_Name: ItemImage
+  m_Name: ProductIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14880,7 +14905,7 @@ GameObject:
   - component: {fileID: 1250795198}
   - component: {fileID: 1250795197}
   m_Layer: 5
-  m_Name: MultiCostText
+  m_Name: GachaMultiCostText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15174,9 +15199,9 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 90}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -522.5, y: -116.44}
-  m_SizeDelta: {x: 1080, y: 2}
-  m_Pivot: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: -522.50006, y: 423.06012}
+  m_SizeDelta: {x: 963, y: 2}
+  m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1254007633
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15545,7 +15570,7 @@ GameObject:
   - component: {fileID: 1285923172}
   - component: {fileID: 1285923171}
   m_Layer: 5
-  m_Name: GachaOfferText
+  m_Name: GachaOfferRateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16180,7 +16205,7 @@ GameObject:
   - component: {fileID: 1349828764}
   - component: {fileID: 1349828763}
   m_Layer: 0
-  m_Name: BG
+  m_Name: ShopConfirmBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16275,10 +16300,10 @@ RectTransform:
   m_Children:
   - {fileID: 525230957}
   - {fileID: 1592185165}
-  - {fileID: 1335050586}
   - {fileID: 15737425}
   - {fileID: 1890462555}
   - {fileID: 958917728}
+  - {fileID: 1335050586}
   - {fileID: 1014642880}
   m_Father: {fileID: 1655934739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -16471,7 +16496,7 @@ GameObject:
   - component: {fileID: 1396391641}
   - component: {fileID: 1396391640}
   m_Layer: 5
-  m_Name: Frame
+  m_Name: GachaResultFrame2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16945,7 +16970,7 @@ GameObject:
   - component: {fileID: 1417886880}
   - component: {fileID: 1417886881}
   m_Layer: 5
-  m_Name: ImageMask
+  m_Name: ProductImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16997,7 +17022,7 @@ GameObject:
   - component: {fileID: 1433828550}
   - component: {fileID: 1433828549}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaResultBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17111,7 +17136,7 @@ GameObject:
   - component: {fileID: 1446986336}
   - component: {fileID: 1446986335}
   m_Layer: 5
-  m_Name: MultiText
+  m_Name: GachaMultiText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17981,7 +18006,7 @@ GameObject:
   - component: {fileID: 1556948028}
   - component: {fileID: 1556948027}
   m_Layer: 5
-  m_Name: NameText
+  m_Name: GachaRewardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18117,7 +18142,7 @@ GameObject:
   - component: {fileID: 1581128997}
   - component: {fileID: 1581128996}
   m_Layer: 0
-  m_Name: TextFrame
+  m_Name: ProductTextFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18136,7 +18161,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1794500868}
-  - {fileID: 1044364958}
   m_Father: {fileID: 202819307}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -18194,7 +18218,7 @@ GameObject:
   - component: {fileID: 1592185167}
   - component: {fileID: 1592185166}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: GachaConfirmFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18339,7 +18363,7 @@ GameObject:
   - component: {fileID: 1608619002}
   - component: {fileID: 1608619001}
   m_Layer: 0
-  m_Name: RarityText
+  m_Name: GachaLogRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18846,7 +18870,6 @@ RectTransform:
   m_Children:
   - {fileID: 1349828762}
   - {fileID: 1901158294}
-  - {fileID: 283517415}
   - {fileID: 1653300511}
   - {fileID: 947684179}
   - {fileID: 225567422}
@@ -18855,6 +18878,7 @@ RectTransform:
   - {fileID: 896128338}
   - {fileID: 382553044}
   - {fileID: 2134832374}
+  - {fileID: 283517415}
   - {fileID: 2103633097}
   m_Father: {fileID: 84480099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19038,7 +19062,7 @@ GameObject:
   - component: {fileID: 1656818015}
   - component: {fileID: 1656818014}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaLogBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19248,7 +19272,7 @@ GameObject:
   - component: {fileID: 1670079445}
   - component: {fileID: 1670079446}
   m_Layer: 5
-  m_Name: ImageMask
+  m_Name: ItemImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19600,11 +19624,11 @@ RectTransform:
   - {fileID: 1656818013}
   - {fileID: 1277386150}
   - {fileID: 1927245078}
-  - {fileID: 1269409512}
   - {fileID: 52907291}
-  - {fileID: 1823626747}
-  - {fileID: 181599463}
   - {fileID: 395465822}
+  - {fileID: 181599463}
+  - {fileID: 1269409512}
+  - {fileID: 1823626747}
   - {fileID: 1151508021}
   m_Father: {fileID: 1655934739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -19625,7 +19649,7 @@ GameObject:
   - component: {fileID: 1712971542}
   - component: {fileID: 1712971541}
   m_Layer: 5
-  m_Name: Frame
+  m_Name: GachaOfferRateFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19700,7 +19724,7 @@ GameObject:
   - component: {fileID: 1729700031}
   - component: {fileID: 1729700030}
   m_Layer: 5
-  m_Name: ShopLabel
+  m_Name: GachaLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19958,7 +19982,7 @@ GameObject:
   - component: {fileID: 1740653676}
   - component: {fileID: 1740653675}
   m_Layer: 5
-  m_Name: Frame
+  m_Name: GachaResultFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20466,7 +20490,7 @@ GameObject:
   - component: {fileID: 1817171809}
   - component: {fileID: 1817171808}
   m_Layer: 5
-  m_Name: CategoryTitle
+  m_Name: ShopCategoryTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20903,7 +20927,7 @@ GameObject:
   - component: {fileID: 1835268712}
   - component: {fileID: 1835268711}
   m_Layer: 5
-  m_Name: OfferRateIcon
+  m_Name: GachaOfferRateIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20978,7 +21002,7 @@ GameObject:
   - component: {fileID: 1847146753}
   - component: {fileID: 1847146752}
   m_Layer: 5
-  m_Name: NoText
+  m_Name: CloseConfirmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21114,7 +21138,7 @@ GameObject:
   - component: {fileID: 1847558818}
   - component: {fileID: 1847558817}
   m_Layer: 0
-  m_Name: DateTimeText
+  m_Name: GachaLogDateTimeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21360,7 +21384,7 @@ GameObject:
   - component: {fileID: 1860623666}
   - component: {fileID: 1860623665}
   m_Layer: 5
-  m_Name: BG
+  m_Name: HomeBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21811,7 +21835,7 @@ GameObject:
   - component: {fileID: 1879994207}
   - component: {fileID: 1879994206}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: ProductFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22024,8 +22048,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 1210189724}
   - {fileID: 715321086}
+  - {fileID: 1210189724}
   - {fileID: 1740015961}
   - {fileID: 837604117}
   m_Father: {fileID: 1778367105}
@@ -22198,7 +22222,7 @@ GameObject:
   - component: {fileID: 1901158296}
   - component: {fileID: 1901158295}
   m_Layer: 0
-  m_Name: Frame
+  m_Name: ShopConfirmFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22328,14 +22352,14 @@ RectTransform:
   - {fileID: 678765088}
   - {fileID: 1835268710}
   - {fileID: 365432703}
-  - {fileID: 1814691403}
   - {fileID: 1824369990}
-  - {fileID: 1532250912}
   - {fileID: 1184428916}
   - {fileID: 1285923170}
-  - {fileID: 1314848577}
-  - {fileID: 543979789}
   - {fileID: 257925888}
+  - {fileID: 543979789}
+  - {fileID: 1814691403}
+  - {fileID: 1532250912}
+  - {fileID: 1314848577}
   m_Father: {fileID: 1655934739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -22549,7 +22573,7 @@ GameObject:
   - component: {fileID: 1922299726}
   - component: {fileID: 1922299725}
   m_Layer: 5
-  m_Name: Frame
+  m_Name: GachaRewardFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22624,7 +22648,7 @@ GameObject:
   - component: {fileID: 1927245080}
   - component: {fileID: 1927245079}
   m_Layer: 5
-  m_Name: TitleName
+  m_Name: GachaLogTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22964,7 +22988,7 @@ GameObject:
   - component: {fileID: 1955913628}
   - component: {fileID: 1955913627}
   m_Layer: 5
-  m_Name: ItemImage
+  m_Name: ProductImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23187,7 +23211,7 @@ GameObject:
   - component: {fileID: 1978471381}
   - component: {fileID: 1978471380}
   m_Layer: 5
-  m_Name: CloseGachaResultResetButton
+  m_Name: CloseGachaResultButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23319,7 +23343,7 @@ GameObject:
   - component: {fileID: 1984575608}
   - component: {fileID: 1984575607}
   m_Layer: 0
-  m_Name: NameText
+  m_Name: GachaLogNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23652,7 +23676,7 @@ GameObject:
   - component: {fileID: 2049230347}
   - component: {fileID: 2049230346}
   m_Layer: 5
-  m_Name: NameText
+  m_Name: GachaOfferRateNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24232,7 +24256,7 @@ GameObject:
   - component: {fileID: 2128144034}
   - component: {fileID: 2128144035}
   m_Layer: 5
-  m_Name: ImageMask
+  m_Name: CharacterImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24330,7 +24354,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2134832374}
   m_Layer: 5
-  m_Name: ItemObject
+  m_Name: ProductObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24445,7 +24469,7 @@ GameObject:
   - component: {fileID: 2145235236}
   - component: {fileID: 2145235235}
   m_Layer: 5
-  m_Name: BG
+  m_Name: GachaPeriodBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

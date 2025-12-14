@@ -2522,7 +2522,7 @@ GameObject:
   - component: {fileID: 202819307}
   - component: {fileID: 202819308}
   m_Layer: 0
-  m_Name: ItemShopTempView
+  m_Name: ItemShopTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2561,7 +2561,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 202819306}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a1bed4935db2d94ba3f36c53597e736, type: 3}
+  m_Script: {fileID: 11500000, guid: 88f2957990255d141ac63da8e294d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 1955913628}
@@ -5074,7 +5074,7 @@ GameObject:
   m_Component:
   - component: {fileID: 432129393}
   m_Layer: 5
-  m_Name: GachaPeriodTempView
+  m_Name: GachaPeriodTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5812,9 +5812,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 494383126}
-  - component: {fileID: 494383127}
+  - component: {fileID: 494383128}
   m_Layer: 5
-  m_Name: GachaResultTempView
+  m_Name: GachaResultTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5845,7 +5845,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1338.4}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &494383127
+--- !u!114 &494383128
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -5854,7 +5854,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 494383125}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dd9b8f6323170246a76429972e4a10c, type: 3}
+  m_Script: {fileID: 11500000, guid: 2056056e94004be459d86b3888fc8450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 101283706}
@@ -5877,7 +5877,7 @@ GameObject:
   - component: {fileID: 500671915}
   - component: {fileID: 500671916}
   m_Layer: 5
-  m_Name: GachaPickUpTempView
+  m_Name: GachaPickUpTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5918,7 +5918,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 500671914}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5d00c69e70dec3740afcd836a093ae23, type: 3}
+  m_Script: {fileID: 11500000, guid: 89f2a42b0dadc354c9421e6e0195a063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 1176935475}
@@ -9412,9 +9412,9 @@ GameObject:
   - component: {fileID: 884381918}
   - component: {fileID: 884381917}
   - component: {fileID: 884381916}
-  - component: {fileID: 884381915}
+  - component: {fileID: 884381919}
   m_Layer: 5
-  m_Name: ShopCategoryTempView
+  m_Name: ShopCategoryTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9441,20 +9441,6 @@ RectTransform:
   m_AnchoredPosition: {x: 197.5, y: 807.5}
   m_SizeDelta: {x: 200, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &884381915
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 884381910}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 35499676bc74eba4ea10108b1110009a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  shopCategoryIcon: {fileID: 1655187960}
-  shopCategoryText: {fileID: 1253401457}
 --- !u!114 &884381916
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9537,6 +9523,20 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 884381910}
   m_CullTransparentMesh: 1
+--- !u!114 &884381919
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 884381910}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1486ae42dc4608c469c08d15afbcd79c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopCategoryIcon: {fileID: 1655187960}
+  shopCategoryText: {fileID: 1253401457}
 --- !u!1 &884497071
 GameObject:
   m_ObjectHideFlags: 0
@@ -10059,7 +10059,7 @@ GameObject:
   - component: {fileID: 924080638}
   - component: {fileID: 924080639}
   m_Layer: 5
-  m_Name: GachaOfferRateTempView
+  m_Name: GachaOfferRateTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10101,7 +10101,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 924080637}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ea38a195e78714468dfe69d2593e30a, type: 3}
+  m_Script: {fileID: 11500000, guid: 3809e6ab6cee6604e90111b766ac9d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 834035572}
@@ -14483,7 +14483,7 @@ GameObject:
   - component: {fileID: 1195476529}
   - component: {fileID: 1195476530}
   m_Layer: 0
-  m_Name: GachaLogTempView
+  m_Name: GachaLogTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14524,7 +14524,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1195476528}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2b9424a0ed9a1c442bdf91c381dcaff7, type: 3}
+  m_Script: {fileID: 11500000, guid: 7602ccc3c5345124391c8ce2238276d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   characterImage: {fileID: 1181137455}
@@ -14544,7 +14544,7 @@ GameObject:
   - component: {fileID: 1210189726}
   - component: {fileID: 1210189725}
   m_Layer: 0
-  m_Name: ProductIcon
+  m_Name: ProductImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16699,7 +16699,7 @@ GameObject:
   - component: {fileID: 1406646911}
   - component: {fileID: 1406646912}
   m_Layer: 5
-  m_Name: GachaRewardTempView
+  m_Name: GachaRewardTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16739,7 +16739,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1406646910}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9a9c8d88f4e342488c30d11bf6b9998, type: 3}
+  m_Script: {fileID: 11500000, guid: c05fd42722b8bbc4fb1d65e71da91781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 1526911475}
@@ -22030,7 +22030,7 @@ GameObject:
   - component: {fileID: 1894198016}
   - component: {fileID: 1894198017}
   m_Layer: 0
-  m_Name: GemShopTempView
+  m_Name: GemShopTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22068,7 +22068,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1894198015}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9a1bed4935db2d94ba3f36c53597e736, type: 3}
+  m_Script: {fileID: 11500000, guid: 88f2957990255d141ac63da8e294d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 1210189725}

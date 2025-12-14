@@ -224,10 +224,6 @@ public class ResponseManager : MonoBehaviour
             clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
             clientGacha.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
         }
-        else
-        {
-            clientShop.WarningMessage("");
-        }
     }
 
     public void ExecuteObjects(string endPoint, ResponseObjects responseObjects)

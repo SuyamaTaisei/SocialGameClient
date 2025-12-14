@@ -57,7 +57,7 @@ public class ClientShop : MonoBehaviour
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
         shopConfirmView.SetActive(false);
-        warningText.text = "";
+        WarningMessage("");
         OpenShopListButton(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
     }
 
@@ -104,7 +104,7 @@ public class ClientShop : MonoBehaviour
         StartCoroutine(apiConnect.Send(GameUtility.Const.PAYMENT_URL, form));
     }
 
-    //購入確認画面
+    //購入確認画面開く
     public void OpenConfirmButton(int index1, int index2, int index)
     {
         //必ず購入状態をリセット
@@ -133,13 +133,14 @@ public class ClientShop : MonoBehaviour
         buyItemGemButton.onClick.AddListener(() => PaymentButton(index2));
 
         shopConfirmView.SetActive(true);
+        WarningMessage("");
     }
 
     //購入確認画面閉じる
     public void CloseConfirmButton()
     {
         shopConfirmView.SetActive(false);
-        warningText.text = "";
+        WarningMessage("");
     }
 
     //販売一覧表示

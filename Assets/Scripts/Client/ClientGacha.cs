@@ -81,8 +81,8 @@ public class ClientGacha : MonoBehaviour
         apiConnect = FindFirstObjectByType<ApiConnect>();
         gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gacha_id, gacha_count));
         NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
+        WarningMessage("");
         usersModel = UsersTable.Select();
-        warningText.text = "";
         gachaView.SetActive(false);
         gachaConfirmView.SetActive(false);
         gachaResultView.SetActive(false);
@@ -278,13 +278,14 @@ public class ClientGacha : MonoBehaviour
     public void OpenConfirmButton()
     {
         gachaConfirmView.SetActive(true);
+        WarningMessage("");
     }
 
     //ガチャ実行確認画面閉じる
     public void CloseConfirmButton()
     {
         gachaConfirmView.SetActive(false);
-        warningText.text = "";
+        WarningMessage("");
     }
 
     //ガチャ報酬開く

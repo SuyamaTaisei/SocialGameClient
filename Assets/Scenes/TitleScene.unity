@@ -304,7 +304,7 @@ MonoBehaviour:
   registerCompleteView: {fileID: 816921663}
   userNameText: {fileID: 806827285}
   idText: {fileID: 2026494460}
-  inputUserName: {fileID: 1177073478}
+  inputUserTextName: {fileID: 1177073478}
   warningText: {fileID: 1875894050}
   apiConnect: {fileID: 1672812954}
   clientMasterData: {fileID: 665385069}

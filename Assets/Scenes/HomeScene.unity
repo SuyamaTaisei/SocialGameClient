@@ -2738,7 +2738,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f2957990255d141ac63da8e294d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 1955913628}
+  productImage: {fileID: 1955913628}
   productNameText: {fileID: 1044364959}
   priceText: {fileID: 0}
 --- !u!1 &213088841
@@ -8064,10 +8064,10 @@ MonoBehaviour:
   clientShop: {fileID: 2025727311}
   startCount: 0
   maxCount: 3
-  index1: 10001
-  index2: 10005
+  productNumber1: 10001
+  productNumber2: 10005
   imageFolderName: Gems
-  imageIndex: 10001
+  imageNumber: 10001
 --- !u!114 &778621573 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6929876141952669222, guid: e028e2bf8f73ee7459ae630860bb1b9d, type: 3}
@@ -9719,8 +9719,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1486ae42dc4608c469c08d15afbcd79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopCategoryIcon: {fileID: 1655187960}
-  shopCategoryText: {fileID: 1253401457}
+  categoryIcon: {fileID: 1655187960}
+  categoryText: {fileID: 1253401457}
 --- !u!1 &884497071
 GameObject:
   m_ObjectHideFlags: 0
@@ -9982,7 +9982,7 @@ MonoBehaviour:
   clientGacha: {fileID: 1605318034}
   startCount: 0
   maxCount: 1
-  index: 4001
+  pickUpNumber: 4001
 --- !u!1 &896128337
 GameObject:
   m_ObjectHideFlags: 0
@@ -14607,7 +14607,7 @@ MonoBehaviour:
   nameText: {fileID: 1984575607}
   rarityText: {fileID: 1608619001}
   dateTimeText: {fileID: 1847558817}
-  gachaPeriodText: {fileID: 983678596}
+  periodText: {fileID: 983678596}
 --- !u!1 &1210189723
 GameObject:
   m_ObjectHideFlags: 0
@@ -16766,10 +16766,10 @@ MonoBehaviour:
   clientShop: {fileID: 2025727311}
   startCount: 4
   maxCount: 7
-  index1: 10001
-  index2: 10005
+  productNumber1: 10001
+  productNumber2: 10005
   imageFolderName: Items
-  imageIndex: 1001
+  imageNumber: 1001
 --- !u!1 &1406646910
 GameObject:
   m_ObjectHideFlags: 0
@@ -16824,7 +16824,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05fd42722b8bbc4fb1d65e71da91781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 1526911475}
+  rewardImage: {fileID: 1526911475}
   nameText: {fileID: 1556948027}
   rarityText: {fileID: 798372560}
   amountText: {fileID: 603154510}
@@ -17562,7 +17562,7 @@ GameObject:
   - component: {fileID: 1526911475}
   - component: {fileID: 1526911474}
   m_Layer: 5
-  m_Name: ItemImage
+  m_Name: RewardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18096,19 +18096,19 @@ MonoBehaviour:
   gachaOfferRateTotalText: {fileID: 1184428914}
   gachaListPeriodTitle: {fileID: 478836213}
   gachaListPeriodText: {fileID: 926252792}
-  singleCostText: {fileID: 202143063}
-  multiCostText: {fileID: 1250795197}
-  singleText: {fileID: 884497073}
-  multiText: {fileID: 1446986335}
-  confirmText: {fileID: 15737426}
+  gachaSingleCostText: {fileID: 202143063}
+  gachaMultiCostText: {fileID: 1250795197}
+  gachaSingleText: {fileID: 884497073}
+  gachaMultiText: {fileID: 1446986335}
+  gachaConfirmText: {fileID: 15737426}
   coinText: {fileID: 1009487290}
   gemFreeText: {fileID: 33144344}
   gemPaidText: {fileID: 33144343}
-  gachaResultList: {fileID: 659044970}
-  gachaRewardList: {fileID: 2069872098}
+  gachaResultListView: {fileID: 659044970}
+  gachaRewardListView: {fileID: 2069872098}
   gachaExecuteButton: {fileID: 1890462556}
   warningText: {fileID: 1014642881}
-  nothingText: {fileID: 948262062}
+  nothingTextGachaReward: {fileID: 948262062}
   nothingTextGachaLog: {fileID: 1151508022}
 --- !u!1 &1608618999
 GameObject:
@@ -18997,7 +18997,7 @@ GameObject:
   - component: {fileID: 1670079445}
   - component: {fileID: 1670079446}
   m_Layer: 5
-  m_Name: ItemImageMask
+  m_Name: RewardImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22058,7 +22058,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f2957990255d141ac63da8e294d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemImage: {fileID: 1210189725}
+  productImage: {fileID: 1210189725}
   productNameText: {fileID: 837604118}
   priceText: {fileID: 213088843}
 --- !u!1 &1898551640
@@ -23634,8 +23634,8 @@ MonoBehaviour:
   coinText: {fileID: 957532797}
   gemFreeText: {fileID: 197218853}
   gemPaidText: {fileID: 197218852}
-  productName: {fileID: 1653300512}
-  productDescription: {fileID: 225567423}
+  productNameText: {fileID: 1653300512}
+  productDescriptionText: {fileID: 225567423}
   productImage: {fileID: 1411107731}
   priceMoneyText: {fileID: 938867757}
   priceCoinText: {fileID: 114164114}
@@ -24304,7 +24304,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2126487535}
   m_Layer: 5
-  m_Name: ItemObject
+  m_Name: RewardObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,9 +10,12 @@ public class GachaLogTemplateView : MonoBehaviour
     [SerializeField] TextMeshProUGUI dateTimeText;
     [SerializeField] TextMeshProUGUI periodText;
 
-    public Image CharacterImage => characterImage;
-    public TextMeshProUGUI NameText => nameText;
-    public TextMeshProUGUI RarityText => rarityText;
-    public TextMeshProUGUI DateTimeText => dateTimeText;
-    public TextMeshProUGUI PeriodText => periodText;
+    public void Set(GachaLogTemplateView view, CharacterDataModel data1, CharacterRaritiesModel data2, GachaLogsModel data3, GachaPeriodsModel data4, string imagePath)
+    {
+        view.characterImage.sprite = Resources.Load<Sprite>(imagePath);
+        view.nameText.text = data1.name;
+        view.rarityText.text = data2.name;
+        view.dateTimeText.text = data3.created_at;
+        view.periodText.text = data4.name;
+    }
 }

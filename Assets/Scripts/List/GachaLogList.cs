@@ -6,15 +6,11 @@ public class GachaLogList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
+    [SerializeField] GachaLogTemplateView gachaLogTemplateView;
 
-    //DBモデル
-    private GachaPeriodsModel gachaPeriodsModel;
-    private CharacterDataModel characterDataModel;
-    private CharacterRaritiesModel characterRaritiesModel;
-
-    //ガチャ履歴ボタン押下で、履歴リスト更新と破棄
+    //ガチャ履歴ボタン押下で、履歴リスト更新とリセット
     private void OnEnable() => Refresh();
-    private void OnDisable() => Destroy();
+    private void OnDisable() => Clear();
 
     //開いて更新
     private void Refresh()
@@ -32,26 +28,24 @@ public class GachaLogList : MonoBehaviour
 
         for (int i = 0; i < gachaLogsList.Count; i++)
         {
+            //データ実体の生成
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaLogTemplateView>();
             int index = i;
 
-            characterDataModel = CharacterDataTable.SelectId(gachaLogsList[index].character_id);
-            characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-            gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaLogsList[index].gacha_id);
+            //データの取得
+            var characterDataModel = CharacterDataTable.SelectId(gachaLogsList[index].character_id);
+            var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+            var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaLogsList[index].gacha_id);
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaLogsList[index].character_id}";
 
-            //表記
-            view.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
-            view.NameText.text = characterDataModel.name;
-            view.RarityText.text = characterRaritiesModel.name;
-            view.DateTimeText.text = gachaLogsList[i].created_at;
-            view.PeriodText.text = gachaPeriodsModel.name;
+            //データの描画
+            gachaLogTemplateView.Set(view, characterDataModel, characterRaritiesModel, gachaLogsList[i], gachaPeriodsModel, imagePath);
         }
     }
 
-    //閉じて破棄
-    private void Destroy()
+    //閉じてリセット
+    private void Clear()
     {
         foreach (Transform child in content)
         {

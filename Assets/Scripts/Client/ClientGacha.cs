@@ -130,29 +130,6 @@ public class ClientGacha : MonoBehaviour
         gachaOfferRatePeriodText.text = gachaPeriodsModel.name;
     }
 
-    //ピックアップ表示リスト
-    public void ShowGachaPickUpList(GachaPickUpTemplateView viewGacha, int index)
-    {
-        List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gacha_id);
-
-        foreach (var list in gachaDataModel)
-        {
-            if (list.character_id == index)
-            {
-                //ガチャ期間idが同じcharacter_id全部と、任意のピックアップガチャの値が一致するデータのみを取得
-                characterDataModel = CharacterDataTable.SelectId(index);
-                characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-                string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{index}";
-
-                //表記
-                viewGacha.NameText.text = characterDataModel.name;
-                viewGacha.RarityText.text = characterRaritiesModel.name;
-                viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
-                viewGacha.CharacterImage.preserveAspect = true;
-            }
-        }
-    }
-
     //ガチャ提供割合リスト
     public void ShowGachaOfferRateList(GachaOfferRateTemplateView viewGacha, int index)
     {

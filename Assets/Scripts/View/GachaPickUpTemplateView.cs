@@ -8,7 +8,11 @@ public class GachaPickUpTemplateView : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI rarityText;
 
-    public Image CharacterImage => characterImage;
-    public TextMeshProUGUI NameText => nameText;
-    public TextMeshProUGUI RarityText => rarityText;
+    public void Set(CharacterDataModel data1, CharacterRaritiesModel data2, string imagePath)
+    {
+        nameText.text = data1.name;
+        rarityText.text = data2.name;
+        characterImage.sprite = Resources.Load<Sprite>(imagePath);
+        characterImage.preserveAspect = true;
+    }
 }

@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class GachaPickUpList : MonoBehaviour
 {
@@ -12,13 +13,28 @@ public class GachaPickUpList : MonoBehaviour
 
     private void Start()
     {
-        //ガチャピックアップ表示を切り替えるために、Updateで何かしらの条件をもとに随時更新する必要がある
+        //データ実体の生成
         for (int i = startCount; i <= maxCount; i++)
         {
             GameObject item = Instantiate(templateView, content);
             int index = pickUpNumber + i;
             var view = item.GetComponent<GachaPickUpTemplateView>();
-            if (clientGacha) clientGacha.ShowGachaPickUpList(view, index);
+
+            List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(clientGacha.GachaId);
+
+            foreach (var list in gachaDataModel)
+            {
+                if (list.character_id == index)
+                {
+                    //一致するデータの取得
+                    var characterDataModel = CharacterDataTable.SelectId(index);
+                    var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+                    string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{index}";
+
+                    //データの描画
+                    view.Set(characterDataModel, characterRaritiesModel, imagePath);
+                }
+            }
         }
     }
 }

@@ -63,8 +63,6 @@ public class ClientGacha : MonoBehaviour
     private UsersModel usersModel;
     private WalletsModel walletsModel;
     private GachaPeriodsModel gachaPeriodsModel;
-    private ItemDataModel itemDataModel;
-    private ItemRaritiesModel itemRaritiesModel;
 
     private void Awake()
     {
@@ -245,13 +243,5 @@ public class ClientGacha : MonoBehaviour
     public void WarningMessage(string message)
     {
         warningText.text = message;
-    }
-
-    //新規と所持済みで透明度を変更
-    public void GachaResultColorChangeEffect(GachaResultTemplateView view, float value)
-    {
-        var color = view.CharacterImage.color;
-        color.a = value;
-        view.CharacterImage.color = color;
     }
 }

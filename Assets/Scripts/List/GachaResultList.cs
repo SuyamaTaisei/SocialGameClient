@@ -10,10 +10,6 @@ public class GachaResultList : MonoBehaviour
 
     public Transform Content => content;
 
-    //DBモデル
-    private CharacterDataModel characterDataModel;
-    private CharacterRaritiesModel characterRaritiesModel;
-
     //ガチャ結果表示処理
     public void ShowGachaResult(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
     {
@@ -29,9 +25,8 @@ public class GachaResultList : MonoBehaviour
             //ガチャ回数分全てを取得
             var gachaResult = gachaResults[i];
 
-            //雛形をもとにリストを生成
+            //データ実体の生成
             GameObject item = Instantiate(templateView, content);
-            //ガチャ用viewの取得
             var view = item.GetComponent<GachaResultTemplateView>();
 
             //ガチャ回数分の内、新規で出たキャラクターIDのみ
@@ -50,32 +45,23 @@ public class GachaResultList : MonoBehaviour
             //新規入手
             if (isNew)
             {
-                clientGacha.GachaResultColorChangeEffect(view, GameUtility.Const.GACHA_COLOR_NEW);
+                gachaResultTemplateView.SetColorChange(view, GameUtility.Const.GACHA_COLOR_NEW);
                 gachaResultTemplateView.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
             }
             //所持済み
             else
             {
-                clientGacha.GachaResultColorChangeEffect(view, GameUtility.Const.GACHA_COLOR_EXIST);
+                gachaResultTemplateView.SetColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
                 gachaResultTemplateView.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
             }
 
-            //idが一致するデータを取得
-            characterDataModel = CharacterDataTable.SelectId(gachaResult.character_id);
-            characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+            //データの取得
+            var characterDataModel = CharacterDataTable.SelectId(gachaResult.character_id);
+            var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaResult.character_id}";
 
-            //表記
-            view.CharacterNameText.text = characterDataModel.name;
-            view.CharacterRarityText.text = characterRaritiesModel.name;
-            Sprite sprite = Resources.Load<Sprite>(imagePath);
-
-            //画像設定
-            if (view != null)
-            {
-                view.CharacterImage.sprite = sprite;
-                view.CharacterImage.preserveAspect = true;
-            }
+            //データの描画
+            gachaResultTemplateView.SetGachaResult(view, characterDataModel, characterRaritiesModel, imagePath);
         }
     }
 }

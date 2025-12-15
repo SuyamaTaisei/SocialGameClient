@@ -40,8 +40,8 @@ public class GachaRewardList : MonoBehaviour
             //画像設定
             if (view != null)
             {
-                view.ItemImage.sprite = sprite;
-                view.ItemImage.preserveAspect = true;
+                view.RewardImage.sprite = sprite;
+                view.RewardImage.preserveAspect = true;
             }
         }
     }

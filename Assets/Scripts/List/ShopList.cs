@@ -10,11 +10,11 @@ public class ShopList : MonoBehaviour
 
     [SerializeField] int startCount;
     [SerializeField] int maxCount;
-    [SerializeField] int index1;
-    [SerializeField] int index2;
+    [SerializeField] int productNumber1;
+    [SerializeField] int productNumber2;
 
     [SerializeField] string imageFolderName;
-    [SerializeField] int imageIndex;
+    [SerializeField] int imageNumber;
 
     private void Start()
     {
@@ -23,8 +23,8 @@ public class ShopList : MonoBehaviour
         for (int i = startCount; i <= maxCount; i++)
         {
             //選択されたボタンの番号をセット
-            int index1 = this.index1 + i;
-            int index2 = this.index2 + i;
+            int index1 = productNumber1 + i;
+            int index2 = productNumber2 + i;
 
             //雛形をもとにリストを生成
             GameObject item = Instantiate(templateView, content);
@@ -33,13 +33,13 @@ public class ShopList : MonoBehaviour
             ShopTemplateView view = item.GetComponent<ShopTemplateView>();
 
             //キャプチャしてから渡す
-            int itemId = imageIndex;
+            int itemId = imageNumber;
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{itemId}";
 
             //処理
             if (clientShop) button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, itemId));
             if (view != null) view.Set(shopList[i], imagePath);
-            imageIndex++;
+            imageNumber++;
         }
     }
 }

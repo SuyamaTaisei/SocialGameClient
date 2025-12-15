@@ -18,8 +18,8 @@ public class ClientShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemPaidText;
 
     //商品情報表示
-    [SerializeField] TextMeshProUGUI productName;
-    [SerializeField] TextMeshProUGUI productDescription;
+    [SerializeField] TextMeshProUGUI productNameText;
+    [SerializeField] TextMeshProUGUI productDescriptionText;
     [SerializeField] Image productImage;
 
     //価格表示
@@ -119,9 +119,9 @@ public class ClientShop : MonoBehaviour
         ShopDataModel data4 = ShopDataTable.SelectProductId(index);
 
         //表記
-        productName.text = data1.name;
+        productNameText.text = data1.name;
         bool showText = (data3 != null);
-        productDescription.text = showText ? data3.description : $"{GameUtility.Const.SHOW_AFTER_WALLET}{GameUtility.Const.SHOW_PAID_GEM}{walletsModel.gem_paid_amount + data4.paid_currency}{GameUtility.Const.SHOW_FREE_GEM}{walletsModel.gem_free_amount + data4.free_currency}";
+        productDescriptionText.text = showText ? data3.description : $"{GameUtility.Const.SHOW_AFTER_WALLET}{GameUtility.Const.SHOW_PAID_GEM}{walletsModel.gem_paid_amount + data4.paid_currency}{GameUtility.Const.SHOW_FREE_GEM}{walletsModel.gem_free_amount + data4.free_currency}";
         productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{index}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();

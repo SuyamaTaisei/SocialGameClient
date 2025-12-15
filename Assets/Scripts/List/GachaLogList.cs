@@ -46,7 +46,7 @@ public class GachaLogList : MonoBehaviour
             view.NameText.text = characterDataModel.name;
             view.RarityText.text = characterRaritiesModel.name;
             view.DateTimeText.text = gachaLogsList[i].created_at;
-            view.GachaPeriodText.text = gachaPeriodsModel.name;
+            view.PeriodText.text = gachaPeriodsModel.name;
         }
     }
 

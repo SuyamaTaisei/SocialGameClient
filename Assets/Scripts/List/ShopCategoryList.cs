@@ -21,8 +21,8 @@ public class ShopCategoryList : MonoBehaviour
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{index}";
 
             //表記
-            view.ShopCategoryText.text = shopCategoriesList[index].name;
-            view.ShopCategoryIcon.sprite = Resources.Load<Sprite>(imagePath);
+            view.CategoryText.text = shopCategoriesList[index].name;
+            view.CategoryIcon.sprite = Resources.Load<Sprite>(imagePath);
             if (clientShop) button.onClick.AddListener(() => clientShop.ShowShopCategoryList(index));
         }
     }

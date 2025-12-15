@@ -8,7 +8,7 @@ public class GachaPickUpList : MonoBehaviour
 
     [SerializeField] int startCount;
     [SerializeField] int maxCount;
-    [SerializeField] int index;
+    [SerializeField] int pickUpNumber;
 
     private void Start()
     {
@@ -16,7 +16,7 @@ public class GachaPickUpList : MonoBehaviour
         for (int i = startCount; i <= maxCount; i++)
         {
             GameObject item = Instantiate(templateView, content);
-            int index = this.index + i;
+            int index = pickUpNumber + i;
             var view = item.GetComponent<GachaPickUpTemplateView>();
             if (clientGacha) clientGacha.ShowGachaPickUpList(view, index);
         }

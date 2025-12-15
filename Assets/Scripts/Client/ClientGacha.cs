@@ -22,11 +22,11 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI gachaOfferRateTotalText;
     [SerializeField] TextMeshProUGUI gachaListPeriodTitle;
     [SerializeField] TextMeshProUGUI gachaListPeriodText;
-    [SerializeField] TextMeshProUGUI singleCostText;
-    [SerializeField] TextMeshProUGUI multiCostText;
-    [SerializeField] TextMeshProUGUI singleText;
-    [SerializeField] TextMeshProUGUI multiText;
-    [SerializeField] TextMeshProUGUI confirmText;
+    [SerializeField] TextMeshProUGUI gachaSingleCostText;
+    [SerializeField] TextMeshProUGUI gachaMultiCostText;
+    [SerializeField] TextMeshProUGUI gachaSingleText;
+    [SerializeField] TextMeshProUGUI gachaMultiText;
+    [SerializeField] TextMeshProUGUI gachaConfirmText;
 
     //ウォレット表示
     [SerializeField] TextMeshProUGUI coinText;
@@ -34,15 +34,15 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemPaidText;
 
     //リスト
-    [SerializeField] GachaResultList gachaResultList;
-    [SerializeField] GachaRewardList gachaRewardList;
+    [SerializeField] GachaResultList gachaResultListView;
+    [SerializeField] GachaRewardList gachaRewardListView;
 
     //ボタン
     [SerializeField] Button gachaExecuteButton;
 
     //メッセージ
     [SerializeField] TextMeshProUGUI warningText;
-    [SerializeField] TextMeshProUGUI nothingText;
+    [SerializeField] TextMeshProUGUI nothingTextGachaReward;
     [SerializeField] TextMeshProUGUI nothingTextGachaLog;
 
     private float rateN = 0;
@@ -121,10 +121,10 @@ public class ClientGacha : MonoBehaviour
         //各ガチャ期間内の表記
         gachaPeriodTitle.text = gachaPeriodsModel.name;
         gachaPeriodText.text = GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_1 + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_2;
-        singleCostText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GEM;
-        multiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
-        singleText.text = gachaPeriodsModel.single_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
-        multiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
+        gachaSingleCostText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GEM;
+        gachaMultiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
+        gachaSingleText.text = gachaPeriodsModel.single_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
+        gachaMultiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
 
         gachaOfferRatePeriodText.text = gachaPeriodsModel.name;
     }
@@ -238,11 +238,11 @@ public class ClientGacha : MonoBehaviour
     {
         gachaResultView.SetActive(false);
         NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
-        foreach (Transform child in gachaResultList.Content)
+        foreach (Transform child in gachaResultListView.Content)
         {
             Destroy(child.gameObject);
         }
-        foreach (Transform child in gachaRewardList.Content)
+        foreach (Transform child in gachaRewardListView.Content)
         {
             Destroy(child.gameObject);
         }
@@ -252,14 +252,14 @@ public class ClientGacha : MonoBehaviour
     public void GachaSingleButton()
     {
         gacha_count = gachaPeriodsModel.single_count;
-        confirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
+        gachaConfirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }
 
     //連発
     public void GachaMultiButton()
     {
         gacha_count = gachaPeriodsModel.multi_count;
-        confirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
+        gachaConfirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }
 
     //ガチャ画面開く
@@ -327,7 +327,7 @@ public class ClientGacha : MonoBehaviour
     //ガチャ報酬無し警告
     public void NothingMessage(string message)
     {
-        nothingText.text = message;
+        nothingTextGachaReward.text = message;
     }
 
     //ガチャ履歴無し警告

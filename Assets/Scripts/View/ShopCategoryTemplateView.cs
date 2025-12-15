@@ -4,9 +4,9 @@ using UnityEngine.UI;
 
 public class ShopCategoryTemplateView : MonoBehaviour
 {
-    [SerializeField] Image shopCategoryIcon;
-    [SerializeField] TextMeshProUGUI shopCategoryText;
+    [SerializeField] Image categoryIcon;
+    [SerializeField] TextMeshProUGUI categoryText;
 
-    public Image ShopCategoryIcon => shopCategoryIcon;
-    public TextMeshProUGUI ShopCategoryText => shopCategoryText;
+    public Image CategoryIcon => categoryIcon;
+    public TextMeshProUGUI CategoryText => categoryText;
 }

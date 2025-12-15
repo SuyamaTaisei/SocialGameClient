@@ -14,7 +14,7 @@ public class ClientTitle : MonoBehaviour
     [SerializeField] TextMeshProUGUI userNameText;
     [SerializeField] TextMeshProUGUI idText;
 
-    [SerializeField] TMP_InputField inputUserName;
+    [SerializeField] TMP_InputField inputUserTextName;
     [SerializeField] TextMeshProUGUI warningText;
 
     [SerializeField] ApiConnect apiConnect;
@@ -57,12 +57,12 @@ public class ClientTitle : MonoBehaviour
     //アカウント登録ボタン
     public void RegisterButton()
     {
-        if (string.IsNullOrEmpty(inputUserName.text))
+        if (string.IsNullOrEmpty(inputUserTextName.text))
         {
             //ユーザ名未入力
             warningText.text = GameUtility.Const.ERROR_VALIDATE_1;
         }
-        else if (inputUserName.text.Length <= GameUtility.Const.NUMBER_VALIDATE_1)
+        else if (inputUserTextName.text.Length <= GameUtility.Const.NUMBER_VALIDATE_1)
         {
             //ユーザ名が指定文字数以上の場合
             warningText.text = GameUtility.Const.ERROR_VALIDATE_2;
@@ -72,7 +72,7 @@ public class ClientTitle : MonoBehaviour
             registerView.SetActive(false);
             Action action = new(() => RegisterComplete(true));
 
-            string userName = inputUserName.text;
+            string userName = inputUserTextName.text;
             List<IMultipartFormSection> form = new() //POST送信用のフォームを作成
             {
                 new MultipartFormDataSection(column_UserName, userName)

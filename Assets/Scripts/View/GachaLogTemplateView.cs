@@ -8,11 +8,11 @@ public class GachaLogTemplateView : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI rarityText;
     [SerializeField] TextMeshProUGUI dateTimeText;
-    [SerializeField] TextMeshProUGUI gachaPeriodText;
+    [SerializeField] TextMeshProUGUI periodText;
 
     public Image CharacterImage => characterImage;
     public TextMeshProUGUI NameText => nameText;
     public TextMeshProUGUI RarityText => rarityText;
     public TextMeshProUGUI DateTimeText => dateTimeText;
-    public TextMeshProUGUI GachaPeriodText => gachaPeriodText;
+    public TextMeshProUGUI PeriodText => periodText;
 }

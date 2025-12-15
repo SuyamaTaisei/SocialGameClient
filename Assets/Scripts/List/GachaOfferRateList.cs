@@ -6,18 +6,33 @@ public class GachaOfferRateList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
+    [SerializeField] GachaOfferRateTemplateView gachaOfferRateTemplate;
 
     private void Start()
     {
         List<GachaDataModel> gachaDataList = GachaDataTable.SelectAllGachaId(clientGacha.GachaId);
 
-        //提供割合表示を切り替えるために、Updateで何かしらの条件をもとに随時更新する必要がある
-        //ガチャ期間IDが一致するレコードのみで全件走査
+        float rateN = 0f, rateR = 0f, rateSR = 0f, rateSSR = 0f;
+
         for (int i = 0; i < gachaDataList.Count; i++)
         {
+            //データの生成
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaOfferRateTemplateView>();
-            if (clientGacha) clientGacha.ShowGachaOfferRateList(view, i);
+
+            //データの取得
+            var data = gachaDataList[i];
+            var characterDataModel = CharacterDataTable.SelectId(data.character_id);
+            var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
+            float rate = data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+
+            //データの描画
+            view.Set(data, characterDataModel, characterRaritiesModel, rate, imagePath);
+            view.SetCalculate(data, ref rateN, ref rateR, ref rateSR, ref rateSSR);
         }
+
+        //合計値のデータ描画
+        gachaOfferRateTemplate.SetTotalRate(rateN, rateR, rateSR, rateSSR);
     }
 }

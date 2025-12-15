@@ -45,15 +45,12 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI nothingTextGachaReward;
     [SerializeField] TextMeshProUGUI nothingTextGachaLog;
 
-    private float rateN = 0;
-    private float rateR = 0;
-    private float rateSR = 0;
-    private float rateSSR = 0;
     private int gacha_id;
     private int gacha_count;
 
     public int GachaId => gacha_id;
     public int GachaCount => gacha_count;
+    public TextMeshProUGUI GachaOfferRateTotalText => gachaOfferRateTotalText;
     public GameObject GachaResultView => gachaResultView;
 
     private ApiConnect apiConnect;
@@ -66,8 +63,6 @@ public class ClientGacha : MonoBehaviour
     private UsersModel usersModel;
     private WalletsModel walletsModel;
     private GachaPeriodsModel gachaPeriodsModel;
-    private CharacterDataModel characterDataModel;
-    private CharacterRaritiesModel characterRaritiesModel;
     private ItemDataModel itemDataModel;
     private ItemRaritiesModel itemRaritiesModel;
 
@@ -128,40 +123,6 @@ public class ClientGacha : MonoBehaviour
         gachaMultiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
 
         gachaOfferRatePeriodText.text = gachaPeriodsModel.name;
-    }
-
-    //ガチャ提供割合リスト
-    public void ShowGachaOfferRateList(GachaOfferRateTemplateView viewGacha, int index)
-    {
-        List<GachaDataModel> gachaDataList = GachaDataTable.SelectAllGachaId(gacha_id);
-
-        //そのガチャ期間IDと一致するレコードのindex番目を取得
-        var data = gachaDataList[index];
-
-        //レアリティごとの合計排出率の表示
-        if (data.character_id >= GameUtility.Const.GACHA_1000_NUMBER && data.character_id <= GameUtility.Const.GACHA_1999_NUMBER) rateN += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
-        if (data.character_id >= GameUtility.Const.GACHA_2000_NUMBER && data.character_id <= GameUtility.Const.GACHA_2999_NUMBER) rateR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
-        if (data.character_id >= GameUtility.Const.GACHA_3000_NUMBER && data.character_id <= GameUtility.Const.GACHA_3999_NUMBER) rateSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
-        if (data.character_id >= GameUtility.Const.GACHA_4000_NUMBER && data.character_id <= GameUtility.Const.GACHA_4999_NUMBER) rateSSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
-
-        gachaOfferRateTotalText.text =
-                       GameUtility.Const.SHOW_GACHA_RARITY_N + rateN.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT +
-            "      " + GameUtility.Const.SHOW_GACHA_RARITY_R + rateR.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT +
-            "      " + GameUtility.Const.SHOW_GACHA_RARITY_SR + rateSR.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT +
-            "      " + GameUtility.Const.SHOW_GACHA_RARITY_SSR + rateSSR.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT;
-
-        //ガチャ期間idのcharacter_id全部と、任意のcharacter_idが一致する場合のみ
-        characterDataModel = CharacterDataTable.SelectId(data.character_id);
-        characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-        string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
-        float rate = data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
-
-        //表記
-        viewGacha.NameText.text = characterDataModel.name;
-        viewGacha.RarityText.text = characterRaritiesModel.name;
-        viewGacha.RateText.text = rate.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT;
-        viewGacha.CharacterImage.sprite = Resources.Load<Sprite>(imagePath);
-        viewGacha.CharacterImage.preserveAspect = true;
     }
 
     //ガチャ報酬単一表示リスト

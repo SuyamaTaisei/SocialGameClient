@@ -116,11 +116,12 @@ public class ClientGacha : MonoBehaviour
 
         //ガチャ期間リスト表記
         gachaListPeriodTitle.text = gachaPeriodsModel.name;
-        gachaListPeriodText.text = GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_1 + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_2;
+        var periodEnd = gacha_id != GameUtility.Const.GACHA_PERIOD_DEFAULT ? GameUtility.Const.SHOW_GACHA_PERIOD_START + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_END : GameUtility.Const.SHOW_GACHA_PERIOD_NOTHING;
+        gachaListPeriodText.text = periodEnd;
 
         //各ガチャ期間内の表記
         gachaPeriodTitle.text = gachaPeriodsModel.name;
-        gachaPeriodText.text = GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_1 + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_TEXT_2;
+        gachaPeriodText.text = periodEnd;
         gachaSingleCostText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GEM;
         gachaMultiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
         gachaSingleText.text = gachaPeriodsModel.single_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;

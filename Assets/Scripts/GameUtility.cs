@@ -51,8 +51,9 @@
 
         //ガチャ表記
         public const string SHOW_GACHA_CONFIRM_TEXT = "ジェムでガチャを実行しますか？";
-        public const string SHOW_GACHA_PERIOD_TEXT_1 = "期限 : ";
-        public const string SHOW_GACHA_PERIOD_TEXT_2 = " まで";
+        public const string SHOW_GACHA_PERIOD_START = "期限 : ";
+        public const string SHOW_GACHA_PERIOD_END = " まで";
+        public const string SHOW_GACHA_PERIOD_NOTHING = "期限なし";
         public const string SHOW_GACHA_COUNT = "回引く";
         public const string SHOW_GACHA_NEW = "NEW CHARACTER";
         public const string SHOW_GACHA_REWARD_NOTHING = "ガチャ報酬が何もありません";
@@ -71,7 +72,7 @@
         //ガチャ数値
         public const float GACHA_COLOR_NEW = 1;
         public const float GACHA_COLOR_EXIST = 0.15f;
-        public const int GACHA_START_DEFAULT_LIST = 1001;
+        public const int GACHA_PERIOD_DEFAULT = 1001;
         public const float GACHA_TOTAL_RATE = 1000f;
         public const int GACHA_1000_NUMBER = 1000;
         public const int GACHA_1999_NUMBER = 1999;

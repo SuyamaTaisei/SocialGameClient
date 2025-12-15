@@ -7785,6 +7785,7 @@ MonoBehaviour:
   content: {fileID: 127755025}
   templateView: {fileID: 494383125}
   clientGacha: {fileID: 1605318034}
+  gachaResultTemplateView: {fileID: 494383128}
 --- !u!1 &678765087
 GameObject:
   m_ObjectHideFlags: 0

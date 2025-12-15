@@ -6,6 +6,7 @@ public class GachaResultList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
+    [SerializeField] GachaResultTemplateView gachaResultTemplateView;
 
     public Transform Content => content;
 
@@ -49,20 +50,14 @@ public class GachaResultList : MonoBehaviour
             //新規入手
             if (isNew)
             {
-                view.CharacterNewText.text = GameUtility.Const.SHOW_GACHA_NEW;
-                view.ItemImage.gameObject.SetActive(false);
-                view.ItemNameText.text = "";
-                view.ItemRarityText.text = "";
-                view.ItemAmountText.text = "";
-                view.ItemOtherObject.SetActive(false);
                 clientGacha.GachaResultColorChangeEffect(view, GameUtility.Const.GACHA_COLOR_NEW);
+                gachaResultTemplateView.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
             }
             //所持済み
             else
             {
-                view.CharacterNewText.text = "";
                 clientGacha.GachaResultColorChangeEffect(view, GameUtility.Const.GACHA_COLOR_EXIST);
-                clientGacha.ShowGachaSingleRewardList(view, singleExchangeItems, ref singleExchangeIndex);
+                gachaResultTemplateView.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
             }
 
             //idが一致するデータを取得

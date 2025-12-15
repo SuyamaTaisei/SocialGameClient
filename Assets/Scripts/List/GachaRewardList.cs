@@ -5,12 +5,9 @@ public class GachaRewardList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
+    [SerializeField] GachaRewardTemplateView gachaRewardTemplateView;
 
     public Transform Content => content;
-
-    //DBモデル
-    ItemDataModel itemDataModel;
-    ItemRaritiesModel itemRaritiesModel;
 
     public void ShowGachaReward(GachaResultsModel[] totalExchangeItems)
     {
@@ -21,28 +18,18 @@ public class GachaRewardList : MonoBehaviour
             if (totalExchangeItems.Length < 0) clientGacha.NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
             else { clientGacha.NothingMessage(""); }
 
+            //データ実体の生成
             var exchange = totalExchangeItems[i];
-        
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaRewardTemplateView>();
 
-            //アイテムidが一致するデータを取得
-            itemDataModel = ItemDataTable.SelectId(exchange.item_id);
-            itemRaritiesModel = ItemRaritiesTable.SelectId(itemDataModel.rarity_id);
+            //データの取得
+            var itemDataModel = ItemDataTable.SelectId(exchange.item_id);
+            var itemRaritiesModel = ItemRaritiesTable.SelectId(itemDataModel.rarity_id);
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{exchange.item_id}";
 
-            //表記
-            view.NameText.text = itemDataModel.name;
-            view.RarityText.text = itemRaritiesModel.name;
-            view.AmountText.text = exchange.amount.ToString();
-            Sprite sprite = Resources.Load<Sprite>(imagePath);
-
-            //画像設定
-            if (view != null)
-            {
-                view.RewardImage.sprite = sprite;
-                view.RewardImage.preserveAspect = true;
-            }
+            //データの描画
+            gachaRewardTemplateView.Set(view, itemDataModel, itemRaritiesModel, exchange, imagePath);
         }
     }
 }

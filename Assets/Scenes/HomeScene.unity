@@ -7811,6 +7811,7 @@ MonoBehaviour:
   templateView: {fileID: 494383125}
   clientGacha: {fileID: 1605318034}
   gachaResultTemplateView: {fileID: 494383128}
+  gachaRewardList: {fileID: 2069872098}
 --- !u!1 &678765087
 GameObject:
   m_ObjectHideFlags: 0
@@ -18131,8 +18132,6 @@ MonoBehaviour:
   coinText: {fileID: 1009487290}
   gemFreeText: {fileID: 33144344}
   gemPaidText: {fileID: 33144343}
-  gachaResultListView: {fileID: 659044970}
-  gachaRewardListView: {fileID: 2069872098}
   gachaExecuteButton: {fileID: 1890462556}
   warningText: {fileID: 1014642881}
   nothingTextGachaReward: {fileID: 948262062}

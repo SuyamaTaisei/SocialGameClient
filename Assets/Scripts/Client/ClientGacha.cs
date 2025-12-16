@@ -23,10 +23,6 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
 
-    //リスト
-    [SerializeField] GachaResultList gachaResultListView;
-    [SerializeField] GachaRewardList gachaRewardListView;
-
     //ボタン
     [SerializeField] Button gachaExecuteButton;
 
@@ -99,14 +95,6 @@ public class ClientGacha : MonoBehaviour
     {
         gachaResultView.SetActive(false);
         NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
-        foreach (Transform child in gachaResultListView.Content)
-        {
-            Destroy(child.gameObject);
-        }
-        foreach (Transform child in gachaRewardListView.Content)
-        {
-            Destroy(child.gameObject);
-        }
     }
 
     //単発

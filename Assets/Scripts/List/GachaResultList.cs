@@ -7,8 +7,9 @@ public class GachaResultList : MonoBehaviour
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaResultTemplateView gachaResultTemplateView;
+    [SerializeField] GachaRewardList gachaRewardList;
 
-    public Transform Content => content;
+    private void OnDisable() => Clear();
 
     //ガチャ結果表示処理
     public void ShowGachaResult(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
@@ -62,6 +63,19 @@ public class GachaResultList : MonoBehaviour
 
             //データの描画
             gachaResultTemplateView.SetGachaResult(view, characterDataModel, characterRaritiesModel, imagePath);
+        }
+    }
+
+    //閉じてリセット
+    private void Clear()
+    {
+        foreach (Transform child in content)
+        {
+            Destroy(child.gameObject);
+        }
+        foreach (Transform child in gachaRewardList.Content)
+        {
+            Destroy(child.gameObject);
         }
     }
 }

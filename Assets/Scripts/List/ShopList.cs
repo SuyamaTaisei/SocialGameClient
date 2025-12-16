@@ -22,23 +22,20 @@ public class ShopList : MonoBehaviour
 
         for (int i = startCount; i <= maxCount; i++)
         {
-            //選択されたボタンの番号をセット
-            int index1 = productNumber1 + i;
-            int index2 = productNumber2 + i;
-
-            //雛形をもとにリストを生成
+            //データの生成
             GameObject item = Instantiate(templateView, content);
-
             Button button = item.GetComponentInChildren<Button>();
             ShopTemplateView view = item.GetComponent<ShopTemplateView>();
 
-            //キャプチャしてから渡す
+            //データの取得
+            int index1 = productNumber1 + i;
+            int index2 = productNumber2 + i;
             int itemId = imageNumber;
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{itemId}";
 
-            //処理
-            if (clientShop) button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, itemId));
-            if (view != null) view.Set(shopList[i], imagePath);
+            //データの描画
+            view.Set(shopList[i], imagePath);
+            button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, itemId));
             imageNumber++;
         }
     }

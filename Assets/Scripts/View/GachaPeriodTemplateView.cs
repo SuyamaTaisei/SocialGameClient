@@ -27,11 +27,9 @@ public class GachaPeriodTemplateView : MonoBehaviour
     //ガチャ期間リスト
     public void SetList(int index)
     {
-        //全ガチャ期間のレコード取得
+        //データの取得
         List<GachaPeriodsModel> gachaDataList = GachaPeriodsTable.SelectAll();
         var data = gachaDataList[index];
-
-        //idが一致するレコードを取得
         gacha_id = data.id;
         var gachaPeriodsModel = GachaPeriodsTable.SelectId(gacha_id);
 
@@ -40,14 +38,12 @@ public class GachaPeriodTemplateView : MonoBehaviour
         var periodEnd = gacha_id != GameUtility.Const.GACHA_PERIOD_DEFAULT ? GameUtility.Const.SHOW_GACHA_PERIOD_START + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_END : GameUtility.Const.SHOW_GACHA_PERIOD_NOTHING;
         gachaPeriodListText.text = periodEnd;
 
-        //各ガチャ期間内の表記
+        //ガチャ期間内の表記
         gachaPeriodTitle.text = gachaPeriodsModel.name;
         gachaPeriodText.text = periodEnd;
         gachaSingleCostText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GEM;
         gachaMultiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
         gachaSingleText.text = gachaPeriodsModel.single_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
         gachaMultiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
-
-        gachaOfferRatePeriodText.text = gachaPeriodsModel.name;
     }
 }

@@ -33,6 +33,9 @@ public class GachaOfferRateList : MonoBehaviour
             view.SetCalculate(data, ref rateN, ref rateR, ref rateSR, ref rateSSR);
         }
 
+        //ガチャ期間別ガチャ提供割合のデータ描画
+        gachaOfferRateTemplate.SetPeriod();
+
         //合計値のデータ描画
         gachaOfferRateTemplate.SetTotalRate(rateN, rateR, rateSR, rateSSR);
     }

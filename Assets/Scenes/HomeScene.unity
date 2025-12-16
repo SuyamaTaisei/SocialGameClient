@@ -6398,7 +6398,7 @@ GameObject:
   - component: {fileID: 504548710}
   - component: {fileID: 504548709}
   m_Layer: 5
-  m_Name: GachaOfferRateRateText
+  m_Name: GachaOfferRateText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10324,7 +10324,9 @@ MonoBehaviour:
   nameText: {fileID: 2049230346}
   rarityText: {fileID: 875215307}
   rateText: {fileID: 504548709}
+  gachaOfferRatePeriodTitle: {fileID: 1824369991}
   clientGacha: {fileID: 1605318034}
+  gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &926252790
 GameObject:
   m_ObjectHideFlags: 0
@@ -20804,7 +20806,7 @@ GameObject:
   - component: {fileID: 1824369992}
   - component: {fileID: 1824369991}
   m_Layer: 5
-  m_Name: GachaOfferRatePeriodText
+  m_Name: GachaOfferRatePeriodTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

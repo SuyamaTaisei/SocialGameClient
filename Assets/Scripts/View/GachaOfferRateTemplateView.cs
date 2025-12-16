@@ -8,7 +8,16 @@ public class GachaOfferRateTemplateView : MonoBehaviour
     [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI rarityText;
     [SerializeField] TextMeshProUGUI rateText;
+    [SerializeField] TextMeshProUGUI gachaOfferRatePeriodTitle;
     [SerializeField] ClientGacha clientGacha;
+    [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
+
+    //ガチャ期間別提供割合表記
+    public void SetPeriod()
+    {
+        var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
+        gachaOfferRatePeriodTitle.text = gachaPeriodsModel.name;
+    }
 
     //各ガチャ提供割合表記
     public void Set(GachaDataModel data, CharacterDataModel data1, CharacterRaritiesModel data2, float rate, string imagePath)

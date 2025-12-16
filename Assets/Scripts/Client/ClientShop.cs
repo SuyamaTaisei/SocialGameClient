@@ -35,7 +35,7 @@ public class ClientShop : MonoBehaviour
     //購入警告
     [SerializeField] TextMeshProUGUI warningText;
 
-    private string imageFolderName;
+    [SerializeField] ShopCategoryTemplateView shopCategoryTemplateView;
 
     private ApiConnect apiConnect;
 
@@ -46,11 +46,6 @@ public class ClientShop : MonoBehaviour
     private UsersModel usersModel;
     private WalletsModel walletsModel;
 
-    private void Awake()
-    {
-        ShowShopCategoryList(0);
-    }
-
     private void Start()
     {
         usersModel = UsersTable.Select();
@@ -58,7 +53,6 @@ public class ClientShop : MonoBehaviour
         shopView.SetActive(false);
         shopConfirmView.SetActive(false);
         WarningMessage("");
-        OpenShopListButton(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
     }
 
     //表記のリアルタイム更新
@@ -70,25 +64,6 @@ public class ClientShop : MonoBehaviour
             coinText.text = walletsModel.coin_amount.ToString();
             gemFreeText.text = walletsModel.gem_free_amount.ToString();
             gemPaidText.text = walletsModel.gem_paid_amount.ToString();
-        }
-    }
-
-    //ショップカテゴリ内の商品リスト
-    public void ShowShopCategoryList(int index)
-    {
-        //全カテゴリ期間のレコード取得
-        List<ShopCategoriesModel> shopCategoriesList = ShopCategoriesTable.SelectAll();
-        var data = shopCategoriesList[index];
-
-        //カテゴリIDが一致するレコードを取得
-        var category = data.category;
-
-        switch(category)
-        {
-            case GameUtility.Const.SHOP_GEMS: OpenShopListButton(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
-                break;
-            case GameUtility.Const.SHOP_ITEMS: OpenShopListButton(GameUtility.Const.FOLDER_NAME_ITEMS, true, false, true, true, false);
-                break;
         }
     }
 
@@ -122,7 +97,7 @@ public class ClientShop : MonoBehaviour
         productNameText.text = data1.name;
         bool showText = (data3 != null);
         productDescriptionText.text = showText ? data3.description : $"{GameUtility.Const.SHOW_AFTER_WALLET}{GameUtility.Const.SHOW_PAID_GEM}{walletsModel.gem_paid_amount + data4.paid_currency}{GameUtility.Const.SHOW_FREE_GEM}{walletsModel.gem_free_amount + data4.free_currency}";
-        productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{index}");
+        productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{index}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();
         priceGemText.text = data2.price.ToString();
@@ -141,17 +116,6 @@ public class ClientShop : MonoBehaviour
     {
         shopConfirmView.SetActive(false);
         WarningMessage("");
-    }
-
-    //販売一覧表示
-    public void OpenShopListButton(string isName, bool isItem, bool isGem, bool coinBtn, bool gemBtn, bool moneyBtn)
-    {
-        imageFolderName = isName;
-        itemListView.SetActive(isItem);
-        gemListView.SetActive(isGem);
-        buyItemCoinButton.gameObject.SetActive(coinBtn);
-        buyItemGemButton.gameObject.SetActive(gemBtn);
-        buyMoneyButton.gameObject.SetActive(moneyBtn);
     }
 
     //ショップ開く

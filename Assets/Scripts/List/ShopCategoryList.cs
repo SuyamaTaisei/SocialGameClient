@@ -7,6 +7,7 @@ public class ShopCategoryList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientShop clientShop;
+    [SerializeField] ShopCategoryTemplateView shopCategoryTemplateView;
 
     private void Start()
     {
@@ -14,16 +15,20 @@ public class ShopCategoryList : MonoBehaviour
 
         for (int i = 0; i < shopCategoriesList.Count; i++)
         {
+            //データの生成
             GameObject item = Instantiate(templateView, content);
             Button button = item.GetComponentInChildren<Button>();
             var view = item.GetComponent<ShopCategoryTemplateView>();
+
+            //データの取得
             int index = i;
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{index}";
+            var data = shopCategoriesList[index];
+            var category = data.category;
 
-            //表記
-            view.CategoryText.text = shopCategoriesList[index].name;
-            view.CategoryIcon.sprite = Resources.Load<Sprite>(imagePath);
-            if (clientShop) button.onClick.AddListener(() => clientShop.ShowShopCategoryList(index));
+            //データの描画
+            shopCategoryTemplateView.Set(view, shopCategoriesList[i], imagePath);
+            button.onClick.AddListener(() => shopCategoryTemplateView.SetCategory(category));
         }
     }
 }

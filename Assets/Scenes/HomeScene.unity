@@ -9724,6 +9724,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   categoryIcon: {fileID: 1655187960}
   categoryText: {fileID: 1253401457}
+  itemListView: {fileID: 1400259708}
+  gemListView: {fileID: 769193377}
+  buyMoneyButton: {fileID: 257106186}
+  buyItemCoinButton: {fileID: 980415271}
+  buyItemGemButton: {fileID: 896128339}
 --- !u!1 &884497071
 GameObject:
   m_ObjectHideFlags: 0
@@ -17045,6 +17050,7 @@ MonoBehaviour:
   content: {fileID: 1114424207}
   templateView: {fileID: 884381910}
   clientShop: {fileID: 2025727311}
+  shopCategoryTemplateView: {fileID: 884381919}
 --- !u!1 &1417886879
 GameObject:
   m_ObjectHideFlags: 0
@@ -23648,6 +23654,7 @@ MonoBehaviour:
   buyItemCoinButton: {fileID: 980415271}
   buyItemGemButton: {fileID: 896128339}
   warningText: {fileID: 2103633098}
+  shopCategoryTemplateView: {fileID: 884381919}
 --- !u!1 &2045183589
 GameObject:
   m_ObjectHideFlags: 0

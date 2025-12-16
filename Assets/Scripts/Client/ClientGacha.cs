@@ -4,7 +4,6 @@ using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
-//上から順に、リスト系、ボタン系、メッセージ系、エフェクト系の順で記述
 public class ClientGacha : MonoBehaviour
 {
     //ガチャ画面表示
@@ -16,16 +15,7 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] GameObject gachaLogView;
 
     //ガチャ画面テキスト
-    [SerializeField] TextMeshProUGUI gachaPeriodTitle;
-    [SerializeField] TextMeshProUGUI gachaPeriodText;
-    [SerializeField] TextMeshProUGUI gachaOfferRatePeriodText;
     [SerializeField] TextMeshProUGUI gachaOfferRateTotalText;
-    [SerializeField] TextMeshProUGUI gachaListPeriodTitle;
-    [SerializeField] TextMeshProUGUI gachaListPeriodText;
-    [SerializeField] TextMeshProUGUI gachaSingleCostText;
-    [SerializeField] TextMeshProUGUI gachaMultiCostText;
-    [SerializeField] TextMeshProUGUI gachaSingleText;
-    [SerializeField] TextMeshProUGUI gachaMultiText;
     [SerializeField] TextMeshProUGUI gachaConfirmText;
 
     //ウォレット表示
@@ -45,10 +35,10 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI nothingTextGachaReward;
     [SerializeField] TextMeshProUGUI nothingTextGachaLog;
 
-    private int gacha_id;
+    [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
+
     private int gacha_count;
 
-    public int GachaId => gacha_id;
     public int GachaCount => gacha_count;
     public TextMeshProUGUI GachaOfferRateTotalText => gachaOfferRateTotalText;
     public GameObject GachaResultView => gachaResultView;
@@ -64,15 +54,10 @@ public class ClientGacha : MonoBehaviour
     private WalletsModel walletsModel;
     private GachaPeriodsModel gachaPeriodsModel;
 
-    private void Awake()
-    {
-        ShowGachaPeriodList(0);
-    }
-
     void Start()
     {
         apiConnect = FindFirstObjectByType<ApiConnect>();
-        gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gacha_id, gacha_count));
+        gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gachaPeriodTemplateView.GachaId, gacha_count));
         NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
         WarningMessage("");
         usersModel = UsersTable.Select();
@@ -94,33 +79,6 @@ public class ClientGacha : MonoBehaviour
             gemFreeText.text = walletsModel.gem_free_amount.ToString();
             gemPaidText.text = walletsModel.gem_paid_amount.ToString();
         }
-    }
-
-    //ガチャ期間リスト
-    public void ShowGachaPeriodList(int index)
-    {
-        //全ガチャ期間のレコード取得
-        List<GachaPeriodsModel> gachaDataList = GachaPeriodsTable.SelectAll();
-        var data = gachaDataList[index];
-
-        //idが一致するレコードを取得
-        gacha_id = data.id;
-        gachaPeriodsModel = GachaPeriodsTable.SelectId(gacha_id);
-
-        //ガチャ期間リスト表記
-        gachaListPeriodTitle.text = gachaPeriodsModel.name;
-        var periodEnd = gacha_id != GameUtility.Const.GACHA_PERIOD_DEFAULT ? GameUtility.Const.SHOW_GACHA_PERIOD_START + gachaPeriodsModel.end + GameUtility.Const.SHOW_GACHA_PERIOD_END : GameUtility.Const.SHOW_GACHA_PERIOD_NOTHING;
-        gachaListPeriodText.text = periodEnd;
-
-        //各ガチャ期間内の表記
-        gachaPeriodTitle.text = gachaPeriodsModel.name;
-        gachaPeriodText.text = periodEnd;
-        gachaSingleCostText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GEM;
-        gachaMultiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
-        gachaSingleText.text = gachaPeriodsModel.single_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
-        gachaMultiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
-
-        gachaOfferRatePeriodText.text = gachaPeriodsModel.name;
     }
 
     //ガチャリクエスト送信
@@ -154,6 +112,7 @@ public class ClientGacha : MonoBehaviour
     //単発
     public void GachaSingleButton()
     {
+        gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
         gacha_count = gachaPeriodsModel.single_count;
         gachaConfirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }
@@ -161,6 +120,7 @@ public class ClientGacha : MonoBehaviour
     //連発
     public void GachaMultiButton()
     {
+        gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
         gacha_count = gachaPeriodsModel.multi_count;
         gachaConfirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }

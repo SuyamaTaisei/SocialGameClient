@@ -7,10 +7,11 @@ public class GachaOfferRateList : MonoBehaviour
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaOfferRateTemplateView gachaOfferRateTemplate;
+    [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
 
     private void Start()
     {
-        List<GachaDataModel> gachaDataList = GachaDataTable.SelectAllGachaId(clientGacha.GachaId);
+        List<GachaDataModel> gachaDataList = GachaDataTable.SelectAllGachaId(gachaPeriodTemplateView.GachaId);
 
         float rateN = 0f, rateR = 0f, rateSR = 0f, rateSSR = 0f;
 

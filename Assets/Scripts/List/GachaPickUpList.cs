@@ -5,7 +5,7 @@ public class GachaPickUpList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
-    [SerializeField] ClientGacha clientGacha;
+    [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
 
     [SerializeField] int startCount;
     [SerializeField] int maxCount;
@@ -20,7 +20,7 @@ public class GachaPickUpList : MonoBehaviour
             int index = pickUpNumber + i;
             var view = item.GetComponent<GachaPickUpTemplateView>();
 
-            List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(clientGacha.GachaId);
+            List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gachaPeriodTemplateView.GachaId);
 
             foreach (var list in gachaDataModel)
             {

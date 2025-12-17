@@ -14,14 +14,10 @@ public class ClientHome : MonoBehaviour
 
     private const string column_id = "id";
 
-    //DBモデル
-    private UsersModel usersModel;
-    private WalletsModel walletsModel;
-
     private void Start()
     {
-        apiConnect  = FindFirstObjectByType<ApiConnect>();
-        usersModel   = UsersTable.Select();
+        apiConnect = FindFirstObjectByType<ApiConnect>();
+        var usersModel = UsersTable.Select();
 
         if (!string.IsNullOrEmpty(usersModel.id))
         {

@@ -46,18 +46,12 @@ public class ClientGacha : MonoBehaviour
     private const string column_gacha_id = "gacha_id";
     private const string key_gacha_count = "gacha_count";
 
-    //DBモデル
-    private UsersModel usersModel;
-    private WalletsModel walletsModel;
-    private GachaPeriodsModel gachaPeriodsModel;
-
     void Start()
     {
         apiConnect = FindFirstObjectByType<ApiConnect>();
         gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gachaPeriodTemplateView.GachaId, gacha_count));
         NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
         WarningMessage("");
-        usersModel = UsersTable.Select();
         gachaView.SetActive(false);
         gachaConfirmView.SetActive(false);
         gachaResultView.SetActive(false);
@@ -75,7 +69,7 @@ public class ClientGacha : MonoBehaviour
     //ガチャリクエスト送信
     public void GachaExecuteButton(int gacha_id, int gacha_count)
     {
-        usersModel = UsersTable.Select();
+        var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(column_id, usersModel.id),
@@ -95,7 +89,7 @@ public class ClientGacha : MonoBehaviour
     //単発
     public void GachaSingleButton()
     {
-        gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
+        var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
         gacha_count = gachaPeriodsModel.single_count;
         gachaConfirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }
@@ -103,7 +97,7 @@ public class ClientGacha : MonoBehaviour
     //連発
     public void GachaMultiButton()
     {
-        gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
+        var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
         gacha_count = gachaPeriodsModel.multi_count;
         gachaConfirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
     }

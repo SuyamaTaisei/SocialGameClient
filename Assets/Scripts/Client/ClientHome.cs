@@ -22,7 +22,6 @@ public class ClientHome : MonoBehaviour
     {
         apiConnect  = FindFirstObjectByType<ApiConnect>();
         usersModel   = UsersTable.Select();
-        walletsModel = WalletsTable.Select();
 
         if (!string.IsNullOrEmpty(usersModel.id))
         {
@@ -33,21 +32,22 @@ public class ClientHome : MonoBehaviour
             };
             StartCoroutine(apiConnect.Send(GameUtility.Const.HOME_URL, form));
 
-            coinText.text     = walletsModel.coin_amount.ToString();
-            gemFreeText.text  = walletsModel.gem_free_amount.ToString();
-            gemPaidText.text  = walletsModel.gem_paid_amount.ToString();
+            WalletApply(coinText, gemFreeText, gemPaidText);
             userNameText.text = usersModel.user_name;
         }
     }
 
     private void Update()
     {
-        if (!string.IsNullOrEmpty(usersModel.id))
-        {
-            walletsModel = WalletsTable.Select();
-            coinText.text = walletsModel.coin_amount.ToString();
-            gemFreeText.text = walletsModel.gem_free_amount.ToString();
-            gemPaidText.text = walletsModel.gem_paid_amount.ToString();
-        }
+        WalletApply(coinText, gemFreeText, gemPaidText);
+    }
+
+    //ウォレット反映処理
+    public void WalletApply(TextMeshProUGUI coinText, TextMeshProUGUI gemFreeText, TextMeshProUGUI gemPaidText)
+    {
+        var walletsModel = WalletsTable.Select();
+        coinText.text = walletsModel.coin_amount.ToString();
+        gemFreeText.text = walletsModel.gem_free_amount.ToString();
+        gemPaidText.text = walletsModel.gem_paid_amount.ToString();
     }
 }

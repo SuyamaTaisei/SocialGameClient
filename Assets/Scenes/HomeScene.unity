@@ -18136,6 +18136,7 @@ MonoBehaviour:
   warningText: {fileID: 1014642881}
   nothingTextGachaReward: {fileID: 948262062}
   nothingTextGachaLog: {fileID: 1151508022}
+  clientHome: {fileID: 2134605330}
   gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &1608618999
 GameObject:
@@ -23671,6 +23672,7 @@ MonoBehaviour:
   buyItemCoinButton: {fileID: 980415271}
   buyItemGemButton: {fileID: 896128339}
   warningText: {fileID: 2103633098}
+  clientHome: {fileID: 2134605330}
   shopCategoryTemplateView: {fileID: 884381919}
 --- !u!1 &2045183589
 GameObject:

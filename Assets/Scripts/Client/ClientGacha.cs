@@ -31,6 +31,7 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI nothingTextGachaReward;
     [SerializeField] TextMeshProUGUI nothingTextGachaLog;
 
+    [SerializeField] ClientHome clientHome;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
 
     private int gacha_count;
@@ -68,13 +69,7 @@ public class ClientGacha : MonoBehaviour
     //表記リアルタイム更新
     private void Update()
     {
-        if (!string.IsNullOrEmpty(usersModel.id))
-        {
-            walletsModel = WalletsTable.Select();
-            coinText.text = walletsModel.coin_amount.ToString();
-            gemFreeText.text = walletsModel.gem_free_amount.ToString();
-            gemPaidText.text = walletsModel.gem_paid_amount.ToString();
-        }
+        clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
     }
 
     //ガチャリクエスト送信

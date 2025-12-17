@@ -35,6 +35,7 @@ public class ClientShop : MonoBehaviour
     //購入警告
     [SerializeField] TextMeshProUGUI warningText;
 
+    [SerializeField] ClientHome clientHome;
     [SerializeField] ShopCategoryTemplateView shopCategoryTemplateView;
 
     private ApiConnect apiConnect;
@@ -58,13 +59,7 @@ public class ClientShop : MonoBehaviour
     //表記のリアルタイム更新
     private void Update()
     {
-        if (!string.IsNullOrEmpty(usersModel.id))
-        {
-            walletsModel = WalletsTable.Select();
-            coinText.text = walletsModel.coin_amount.ToString();
-            gemFreeText.text = walletsModel.gem_free_amount.ToString();
-            gemPaidText.text = walletsModel.gem_paid_amount.ToString();
-        }
+        clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
     }
 
     //購入処理
@@ -80,7 +75,7 @@ public class ClientShop : MonoBehaviour
     }
 
     //購入確認画面開く
-    public void OpenConfirmButton(int index1, int index2, int index)
+    public void OpenConfirmButton(int index1, int index2, int itemId)
     {
         //必ず購入状態をリセット
         buyMoneyButton.onClick.RemoveAllListeners();
@@ -90,14 +85,15 @@ public class ClientShop : MonoBehaviour
         //product_idが一致するレコードを取得
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
         ShopDataModel data2 = ShopDataTable.SelectProductId(index2);
-        ItemDataModel data3 = ItemDataTable.SelectId(index);
-        ShopDataModel data4 = ShopDataTable.SelectProductId(index);
+        ItemDataModel data3 = ItemDataTable.SelectId(itemId);
+        ShopDataModel data4 = ShopDataTable.SelectProductId(itemId);
+        WalletsModel walletsModel = WalletsTable.Select();
 
         //表記
         productNameText.text = data1.name;
         bool showText = (data3 != null);
         productDescriptionText.text = showText ? data3.description : $"{GameUtility.Const.SHOW_AFTER_WALLET}{GameUtility.Const.SHOW_PAID_GEM}{walletsModel.gem_paid_amount + data4.paid_currency}{GameUtility.Const.SHOW_FREE_GEM}{walletsModel.gem_free_amount + data4.free_currency}";
-        productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{index}");
+        productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{itemId}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoinText.text = data1.price.ToString();
         priceGemText.text = data2.price.ToString();

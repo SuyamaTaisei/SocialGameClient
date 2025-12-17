@@ -59,13 +59,13 @@ public class ResponseManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("アカウント登録完了");
             UsersTable.Insert(responseObjects.users);
             WalletsTable.Insert(responseObjects.wallets);
         }
         else
         {
-            Debug.Log("SQLiteへINSERTできなかった");
+            Debug.LogError("アカウント登録できなかった");
         }
     }
 
@@ -73,12 +73,12 @@ public class ResponseManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("ログイン完了");
             UsersTable.Insert(responseObjects.users);
         }
         else
         {
-            Debug.Log("SQLiteへINSERTできなかった");
+            Debug.LogError("ログインできなかった");
         }
     }
 
@@ -86,14 +86,14 @@ public class ResponseManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("ホーム更新完了");
             WalletsTable.Insert(responseObjects.wallets);
             ItemInstacesTable.Insert(responseObjects.item_instances);
             CharacterInstancesTable.Insert(responseObjects.character_instances);
         }
         else
         {
-            Debug.Log("SQLiteへINSERTできなかった");
+            Debug.LogError("ホーム更新できなかった");
         }
     }
 
@@ -101,7 +101,7 @@ public class ResponseManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("ガチャSQLiteへINSERTした");
+            Debug.Log("ガチャ実行完了");
             CharacterInstancesTable.Insert(responseObjects.character_instances);
             ItemInstacesTable.Insert(responseObjects.item_instances);
 
@@ -120,13 +120,13 @@ public class ResponseManager : MonoBehaviour
             //ガチャログ実行
             if (responseObjects.gacha_logs != null)
             {
-                Debug.Log("ガチャログ実行");
+                Debug.Log("ガチャログ実行完了");
                 GachaLogsTable.Insert(responseObjects.gacha_logs);
             }
         }
         else
         {
-            Debug.Log("SQLiteへINSERTできなかった");
+            Debug.LogError("ガチャ実行できなかった");
         }
     }
 
@@ -136,12 +136,12 @@ public class ResponseManager : MonoBehaviour
         int error_number = int.Parse(GameUtility.Const.ERRCODE_MASTER_DATA_UPDATE);
         if (responseObjects.master_data_version != error_number)
         {
-            Debug.Log("マスターデータバージョンを保存");
+            Debug.Log("マスターデータバージョンを保存完了");
             MasterDataManager.SetMasterDataVersion(responseObjects.master_data_version);
         }
         else if (responseObjects.master_data_version == error_number)
         {
-            Debug.Log("マスターデータバージョンを保存できなかった");
+            Debug.LogError("マスターデータバージョンを保存できなかった");
         }
     }
 
@@ -149,60 +149,60 @@ public class ResponseManager : MonoBehaviour
     {
         if (responseObjects.shop_categories != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(ショップカテゴリ)");
             ShopCategoriesTable.Insert(responseObjects.shop_categories);
         }
         if (responseObjects.shop_data != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(ショップデータ)");
             ShopDataTable.Insert(responseObjects.shop_data);
         }
         if (responseObjects.shop_rewards != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(ショップ提供報酬)");
             ShopRewardsTable.Insert(responseObjects.shop_rewards);
         }
 
         if (responseObjects.character_categories != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(キャラクターカテゴリ)");
             CharacterCategoriesTable.Insert(responseObjects.character_categories);
         }
         if (responseObjects.character_data != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(キャラクターデータ)");
             CharacterDataTable.Insert(responseObjects.character_data);
         }
         if (responseObjects.character_rarities != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(キャラクターレアリティ)");
             CharacterRaritiesTable.Insert(responseObjects.character_rarities);
         }
 
         if (responseObjects.item_categories != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(アイテムカテゴリ)");
             ItemCategoriesTable.Insert(responseObjects.item_categories);
         }
         if (responseObjects.item_data != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(アイテムデータ)");
             ItemDataTable.Insert(responseObjects.item_data);
         }
         if (responseObjects.item_rarities != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(アイテムレアリティ)");
             ItemRaritiesTable.Insert(responseObjects.item_rarities);
         }
 
         if (responseObjects.gacha_periods != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(ガチャ期間)");
             GachaPeriodsTable.Insert(responseObjects.gacha_periods);
         }
         if (responseObjects.gacha_data != null)
         {
-            Debug.Log("SQLiteへINSERTした");
+            Debug.Log("マスタデータ更新完了(ガチャデータ)");
             GachaDataTable.Insert(responseObjects.gacha_data);
         }
     }

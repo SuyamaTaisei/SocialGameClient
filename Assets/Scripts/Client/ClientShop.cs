@@ -43,13 +43,8 @@ public class ClientShop : MonoBehaviour
     private const string column_id = "id";
     private const string column_product_id = "product_id";
 
-    //DBモデル
-    private UsersModel usersModel;
-    private WalletsModel walletsModel;
-
     private void Start()
     {
-        usersModel = UsersTable.Select();
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
         shopConfirmView.SetActive(false);
@@ -65,7 +60,7 @@ public class ClientShop : MonoBehaviour
     //購入処理
     public void PaymentButton(int index)
     {
-        usersModel = UsersTable.Select();
+        var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(column_id, usersModel.id),

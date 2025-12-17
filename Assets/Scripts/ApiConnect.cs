@@ -39,7 +39,7 @@ public class ApiConnect : MonoBehaviour
         //レスポンスが成功したら
         if (request.result == UnityWebRequest.Result.Success)
         {
-            Debug.Log("レスポンス成功");
+            Debug.Log("レスポンス完了");
 
             //サーバーエラーチェック
             string serverData = request.downloadHandler.text;

@@ -27,6 +27,11 @@ public class ClientShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI priceCoinText;
     [SerializeField] TextMeshProUGUI priceGemText;
 
+    //購入数ボタン
+    [SerializeField] TextMeshProUGUI amountText;
+    [SerializeField] Button increaseButton;
+    [SerializeField] Button decreaseButton;
+
     //購入ボタン
     [SerializeField] Button buyMoneyButton;
     [SerializeField] Button buyItemCoinButton;
@@ -38,10 +43,15 @@ public class ClientShop : MonoBehaviour
     [SerializeField] ClientHome clientHome;
     [SerializeField] ShopCategoryTemplateView shopCategoryTemplateView;
 
+    private int amountValue;
+    private const int amountMin = 1;
+    private const int amountMax = 99;
+
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
     private const string column_product_id = "product_id";
+    private const string key_amount = "amount";
 
     private void Start()
     {
@@ -58,24 +68,39 @@ public class ClientShop : MonoBehaviour
     }
 
     //購入処理
-    public void PaymentButton(int index)
+    public void PaymentButton(int index, int amount)
     {
         var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(column_id, usersModel.id),
-            new MultipartFormDataSection(column_product_id, index.ToString())
+            new MultipartFormDataSection(column_product_id, index.ToString()),
+            new MultipartFormDataSection(key_amount, amount.ToString())
         };
         StartCoroutine(apiConnect.Send(GameUtility.Const.PAYMENT_URL, form));
     }
 
-    //購入確認画面開く
+    //購入数の増減制御
+    private void SetAmount(int value)
+    {
+        amountValue = Mathf.Clamp(value, amountMin, amountMax);
+        amountText.text = amountValue.ToString();
+        increaseButton.interactable = amountValue < amountMax;
+        decreaseButton.interactable = amountValue > amountMin;
+    }
+
+    //商品確認画面開く
     public void OpenConfirmButton(int index1, int index2, int itemId)
     {
         //必ず購入状態をリセット
+        increaseButton.onClick.RemoveAllListeners();
+        decreaseButton.onClick.RemoveAllListeners();
         buyMoneyButton.onClick.RemoveAllListeners();
         buyItemCoinButton.onClick.RemoveAllListeners();
         buyItemGemButton.onClick.RemoveAllListeners();
+
+        //再度開いたら常に1に設定
+        SetAmount(amountMin);
 
         //product_idが一致するレコードを取得
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
@@ -93,16 +118,18 @@ public class ClientShop : MonoBehaviour
         priceCoinText.text = data1.price.ToString();
         priceGemText.text = data2.price.ToString();
 
-        //購入ボタン処理
-        buyMoneyButton.onClick.AddListener(() => PaymentButton(index1));
-        buyItemCoinButton.onClick.AddListener(() => PaymentButton(index1));
-        buyItemGemButton.onClick.AddListener(() => PaymentButton(index2));
+        //購入数増減処理
+        increaseButton.onClick.AddListener(() => SetAmount(amountValue + amountMin));
+        decreaseButton.onClick.AddListener(() => SetAmount(amountValue - amountMin));
+        buyMoneyButton.onClick.AddListener(() => PaymentButton(index1, amountMin));
+        buyItemCoinButton.onClick.AddListener(() => PaymentButton(index1, amountValue));
+        buyItemGemButton.onClick.AddListener(() => PaymentButton(index2, amountValue));
 
         shopConfirmView.SetActive(true);
         WarningMessage("");
     }
 
-    //購入確認画面閉じる
+    //商品確認画面閉じる
     public void CloseConfirmButton()
     {
         shopConfirmView.SetActive(false);

@@ -16,6 +16,8 @@ public class ShopCategoryTemplateView : MonoBehaviour
     [SerializeField] Button buyItemCoinButton;
     [SerializeField] Button buyItemGemButton;
 
+    [SerializeField] GameObject buyAmountObject;
+
     private string imageFolderName;
 
     public string ImageFolderName => imageFolderName;
@@ -58,5 +60,6 @@ public class ShopCategoryTemplateView : MonoBehaviour
         buyItemCoinButton.gameObject.SetActive(coinBtn);
         buyItemGemButton.gameObject.SetActive(gemBtn);
         buyMoneyButton.gameObject.SetActive(moneyBtn);
+        buyAmountObject.SetActive(isItem);
     }
 }

@@ -46,6 +46,8 @@ public class ClientShop : MonoBehaviour
     private int amountValue;
     private const int amountMin = 1;
     private const int amountMax = 99;
+    private int priceCoin;
+    private int priceGem;
 
     private ApiConnect apiConnect;
 
@@ -80,6 +82,13 @@ public class ClientShop : MonoBehaviour
         StartCoroutine(apiConnect.Send(GameUtility.Const.PAYMENT_URL, form));
     }
 
+    //価格更新
+    private void UpdatePriceText()
+    {
+        priceCoinText.text = (priceCoin * amountValue).ToString();
+        priceGemText.text = (priceGem * amountValue).ToString();
+    }
+
     //購入数の増減制御
     private void SetAmount(int value)
     {
@@ -87,6 +96,7 @@ public class ClientShop : MonoBehaviour
         amountText.text = amountValue.ToString();
         increaseButton.interactable = amountValue < amountMax;
         decreaseButton.interactable = amountValue > amountMin;
+        UpdatePriceText();
     }
 
     //商品確認画面開く
@@ -98,9 +108,6 @@ public class ClientShop : MonoBehaviour
         buyMoneyButton.onClick.RemoveAllListeners();
         buyItemCoinButton.onClick.RemoveAllListeners();
         buyItemGemButton.onClick.RemoveAllListeners();
-
-        //再度開いたら常に1に設定
-        SetAmount(amountMin);
 
         //product_idが一致するレコードを取得
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
@@ -115,8 +122,8 @@ public class ClientShop : MonoBehaviour
         productDescriptionText.text = showText ? data3.description : $"{GameUtility.Const.SHOW_AFTER_WALLET}{GameUtility.Const.SHOW_PAID_GEM}{walletsModel.gem_paid_amount + data4.paid_currency}{GameUtility.Const.SHOW_FREE_GEM}{walletsModel.gem_free_amount + data4.free_currency}";
         productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{itemId}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
-        priceCoinText.text = data1.price.ToString();
-        priceGemText.text = data2.price.ToString();
+        priceCoin = data1.price;
+        priceGem = data2.price;
 
         //購入数増減処理
         increaseButton.onClick.AddListener(() => SetAmount(amountValue + amountMin));
@@ -126,6 +133,7 @@ public class ClientShop : MonoBehaviour
         buyItemGemButton.onClick.AddListener(() => PaymentButton(index2, amountValue));
 
         shopConfirmView.SetActive(true);
+        SetAmount(amountMin); //再度開いたら常に1に設定
         WarningMessage("");
     }
 

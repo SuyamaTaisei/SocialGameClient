@@ -37,6 +37,12 @@ public class ClientShop : MonoBehaviour
     [SerializeField] Button buyItemCoinButton;
     [SerializeField] Button buyItemGemButton;
 
+    //購入確認画面
+    [SerializeField] GameObject paymentConfirmView;
+    [SerializeField] TextMeshProUGUI paymentConfirmText;
+    [SerializeField] Button yesButton;
+    [SerializeField] Button noButton;
+
     //購入警告
     [SerializeField] TextMeshProUGUI warningText;
 
@@ -60,6 +66,7 @@ public class ClientShop : MonoBehaviour
         apiConnect = FindAnyObjectByType<ApiConnect>();
         shopView.SetActive(false);
         shopConfirmView.SetActive(false);
+        paymentConfirmView.SetActive(false);
         WarningMessage("");
     }
 
@@ -128,9 +135,9 @@ public class ClientShop : MonoBehaviour
         //購入数増減処理
         increaseButton.onClick.AddListener(() => SetAmount(amountValue + amountMin));
         decreaseButton.onClick.AddListener(() => SetAmount(amountValue - amountMin));
-        buyMoneyButton.onClick.AddListener(() => PaymentButton(index1, amountMin));
-        buyItemCoinButton.onClick.AddListener(() => PaymentButton(index1, amountValue));
-        buyItemGemButton.onClick.AddListener(() => PaymentButton(index2, amountValue));
+        buyMoneyButton.onClick.AddListener(() => OpenConfirmPaymentButton(index1, amountMin));
+        buyItemCoinButton.onClick.AddListener(() => OpenConfirmPaymentButton(index1, amountValue));
+        buyItemGemButton.onClick.AddListener(() => OpenConfirmPaymentButton(index2, amountValue));
 
         shopConfirmView.SetActive(true);
         SetAmount(amountMin); //再度開いたら常に1に設定
@@ -141,6 +148,27 @@ public class ClientShop : MonoBehaviour
     public void CloseConfirmButton()
     {
         shopConfirmView.SetActive(false);
+        WarningMessage("");
+    }
+
+    //購入確認画面開く
+    public void OpenConfirmPaymentButton(int productId, int amount)
+    {
+        yesButton.onClick.RemoveAllListeners();
+        noButton.onClick.RemoveAllListeners();
+
+        ShopDataModel data = ShopDataTable.SelectProductId(productId);
+        paymentConfirmText.text = "商品名\n" + data.name + "\n" + amount + "個購入しますか？";
+
+        yesButton.onClick.AddListener(() => PaymentButton(productId, amount));
+        noButton.onClick.AddListener(() => CloseConfirmPaymentButton());
+        paymentConfirmView.SetActive(true);
+    }
+
+    //購入確認画面閉じる
+    public void CloseConfirmPaymentButton()
+    {
+        paymentConfirmView.SetActive(false);
         WarningMessage("");
     }
 

@@ -224,6 +224,7 @@ public class ResponseManager : MonoBehaviour
             clientShop.WarningMessage("");
             clientShop.CloseConfirmButton();
             clientShop.CloseConfirmPaymentButton();
+            clientShop.PaymentComplete(true);
             clientGacha.WarningMessage("");
         }
         if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_LIMIT_WALLETS))

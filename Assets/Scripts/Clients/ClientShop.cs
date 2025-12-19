@@ -43,6 +43,9 @@ public class ClientShop : MonoBehaviour
     [SerializeField] Button yesButton;
     [SerializeField] Button noButton;
 
+    //購入完了画面
+    [SerializeField] GameObject paymentCompleteView;
+
     //購入警告
     [SerializeField] TextMeshProUGUI warningText;
 
@@ -67,6 +70,7 @@ public class ClientShop : MonoBehaviour
         shopView.SetActive(false);
         shopConfirmView.SetActive(false);
         paymentConfirmView.SetActive(false);
+        paymentCompleteView.SetActive(false);
         WarningMessage("");
     }
 
@@ -170,6 +174,12 @@ public class ClientShop : MonoBehaviour
     {
         paymentConfirmView.SetActive(false);
         WarningMessage("");
+    }
+
+    //購入完了画面
+    public void PaymentComplete(bool enabled)
+    {
+        paymentCompleteView.SetActive(enabled);
     }
 
     //ショップ開く

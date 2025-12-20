@@ -38,7 +38,7 @@ public class ShopList : MonoBehaviour
 
             //データの描画
             view.Set(shopList[i], data2, imagePath);
-            button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, imageindex));
+            button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, imageindex, data2));
             imageNumber++;
             itemId++;
         }

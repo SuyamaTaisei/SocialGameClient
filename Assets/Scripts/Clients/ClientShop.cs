@@ -19,6 +19,7 @@ public class ClientShop : MonoBehaviour
 
     //商品情報表示
     [SerializeField] TextMeshProUGUI productNameText;
+    [SerializeField] TextMeshProUGUI productRarityText;
     [SerializeField] TextMeshProUGUI productDescriptionText;
     [SerializeField] Image productImage;
 
@@ -112,7 +113,7 @@ public class ClientShop : MonoBehaviour
     }
 
     //商品確認画面開く
-    public void OpenConfirmButton(int index1, int index2, int itemId)
+    public void OpenConfirmButton(int index1, int index2, int imageIndex, ItemRaritiesModel itemRarity)
     {
         //必ず購入状態をリセット
         increaseButton.onClick.RemoveAllListeners();
@@ -124,14 +125,15 @@ public class ClientShop : MonoBehaviour
         //product_idが一致するレコードを取得
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
         ShopDataModel data2 = ShopDataTable.SelectProductId(index2);
-        ItemDataModel data3 = ItemDataTable.SelectId(itemId);
-        ShopDataModel data4 = ShopDataTable.SelectProductId(itemId);
+        ItemDataModel data3 = ItemDataTable.SelectId(imageIndex);
+        ShopDataModel data4 = ShopDataTable.SelectProductId(imageIndex);
+        bool showText = (data3 != null);
 
         //表記
         productNameText.text = data1.name;
-        bool showText = (data3 != null);
+        productRarityText.text = showText ? itemRarity.name : "";
         productDescriptionText.text = showText ? data3.description : $"ジェムが有償{data4.paid_currency}個・無償{data4.free_currency}個もらえる";
-        productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{itemId}");
+        productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{imageIndex}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoin = data1.price;
         priceGem = data2.price;
@@ -189,6 +191,7 @@ public class ClientShop : MonoBehaviour
     //ショップ開く
     public void OpenShopButton()
     {
+        PaymentComplete(false);
         shopView.SetActive(true);
     }
 

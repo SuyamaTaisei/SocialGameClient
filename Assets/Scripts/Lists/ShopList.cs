@@ -15,6 +15,7 @@ public class ShopList : MonoBehaviour
 
     [SerializeField] string imageFolderName;
     [SerializeField] int imageNumber;
+    int itemId = GameUtility.Const.SHOP_ITEM_ID;
 
     private void Start()
     {
@@ -30,13 +31,16 @@ public class ShopList : MonoBehaviour
             //データの取得
             int index1 = productNumber1 + i;
             int index2 = productNumber2 + i;
-            int itemId = imageNumber;
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{itemId}";
+            int imageindex = imageNumber;
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{imageindex}";
+            ItemDataModel data1 = ItemDataTable.SelectId(itemId);
+            ItemRaritiesModel data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
 
             //データの描画
-            view.Set(shopList[i], imagePath);
-            button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, itemId));
+            view.Set(shopList[i], data2, imagePath);
+            button.onClick.AddListener(() => clientShop.OpenConfirmButton(index1, index2, imageindex, data2));
             imageNumber++;
+            itemId++;
         }
     }
 }

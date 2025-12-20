@@ -25,10 +25,10 @@ public class ClientGacha : MonoBehaviour
 
     //ボタン
     [SerializeField] Button gachaExecuteButton;
+    [SerializeField] Button openGachaRewardButton;
 
     //メッセージ
     [SerializeField] TextMeshProUGUI warningText;
-    [SerializeField] TextMeshProUGUI nothingTextGachaReward;
     [SerializeField] TextMeshProUGUI nothingTextGachaLog;
 
     [SerializeField] ClientHome clientHome;
@@ -50,7 +50,6 @@ public class ClientGacha : MonoBehaviour
     {
         apiConnect = FindFirstObjectByType<ApiConnect>();
         gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gachaPeriodTemplateView.GachaId, gacha_count));
-        NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
         WarningMessage("");
         gachaView.SetActive(false);
         gachaConfirmView.SetActive(false);
@@ -83,7 +82,6 @@ public class ClientGacha : MonoBehaviour
     public void CloseGachaResultResetButton()
     {
         gachaResultView.SetActive(false);
-        NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
     }
 
     //単発
@@ -165,9 +163,15 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ報酬無し警告
-    public void NothingMessage(string message)
+    public void NothingRewardMessage(bool enabled)
     {
-        nothingTextGachaReward.text = message;
+        openGachaRewardButton.interactable = enabled;
+        var color = openGachaRewardButton.image.color;
+        color.a = enabled ? 1 : 0.07f;
+        openGachaRewardButton.image.color = color;
+
+        var text = openGachaRewardButton.GetComponentInChildren<TextMeshProUGUI>();
+        text.color = color;
     }
 
     //ガチャ履歴無し警告

@@ -69,6 +69,9 @@
         public const int SHOP_GEMS = 1001;
         public const int SHOP_ITEMS = 1002;
 
+        //ショップ販売アイテムID
+        public const int SHOP_ITEM_ID = 1001;
+
         //ガチャ数値
         public const float GACHA_COLOR_NEW = 1;
         public const float GACHA_COLOR_EXIST = 0.15f;

@@ -189,6 +189,7 @@ public class ClientShop : MonoBehaviour
     //ショップ開く
     public void OpenShopButton()
     {
+        PaymentComplete(false);
         shopView.SetActive(true);
     }
 

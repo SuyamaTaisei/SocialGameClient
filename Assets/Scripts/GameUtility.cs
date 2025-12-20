@@ -55,9 +55,9 @@
         public const string SHOW_GACHA_PERIOD_END = " まで";
         public const string SHOW_GACHA_PERIOD_NOTHING = "期限なし";
         public const string SHOW_GACHA_COUNT = "回引く";
-        public const string SHOW_GACHA_NEW = "NEW CHARACTER";
-        public const string SHOW_GACHA_REWARD_NOTHING = "ガチャ報酬が何もありません";
-        public const string SHOW_GACHA_LOG_NOTHING = "ガチャ履歴が何もありません";
+        public const string SHOW_GACHA_NEW = "NEW\nCHARACTER";
+        public const string SHOW_GACHA_REWARD_NOTHING = "ガチャ報酬がありません";
+        public const string SHOW_GACHA_LOG_NOTHING = "ガチャ履歴がありません";
         public const string SHOW_GACHA_RARITY_N = "N : ";
         public const string SHOW_GACHA_RARITY_R = "R : ";
         public const string SHOW_GACHA_RARITY_SR = "SR : ";

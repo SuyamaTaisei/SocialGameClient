@@ -11,13 +11,18 @@ public class GachaRewardList : MonoBehaviour
 
     public void ShowGachaReward(GachaResultsModel[] totalExchangeItems)
     {
+        //何もガチャ報酬がなければボタンを押せない
+        if (totalExchangeItems == null || totalExchangeItems.Length == 0)
+        {
+            clientGacha.NothingRewardMessage(false);
+            return;
+        }
+
+        clientGacha.NothingRewardMessage(true);
+
         //変換された個数分走査
         for (int i = 0; i < totalExchangeItems.Length; i++)
         {
-            //何もガチャ報酬がなければ警告メッセージ表示
-            if (totalExchangeItems.Length < 0) clientGacha.NothingMessage(GameUtility.Const.SHOW_GACHA_REWARD_NOTHING);
-            else { clientGacha.NothingMessage(""); }
-
             //データ実体の生成
             var exchange = totalExchangeItems[i];
             GameObject item = Instantiate(templateView, content);

@@ -40,6 +40,7 @@ public class ClientShop : MonoBehaviour
     //購入確認画面
     [SerializeField] GameObject paymentConfirmView;
     [SerializeField] TextMeshProUGUI paymentConfirmText;
+    [SerializeField] TextMeshProUGUI walletStateText;
     [SerializeField] Button yesButton;
     [SerializeField] Button noButton;
 
@@ -125,12 +126,11 @@ public class ClientShop : MonoBehaviour
         ShopDataModel data2 = ShopDataTable.SelectProductId(index2);
         ItemDataModel data3 = ItemDataTable.SelectId(itemId);
         ShopDataModel data4 = ShopDataTable.SelectProductId(itemId);
-        WalletsModel walletsModel = WalletsTable.Select();
 
         //表記
         productNameText.text = data1.name;
         bool showText = (data3 != null);
-        productDescriptionText.text = showText ? data3.description : $"{GameUtility.Const.SHOW_AFTER_WALLET}{GameUtility.Const.SHOW_PAID_GEM}{walletsModel.gem_paid_amount + data4.paid_currency}{GameUtility.Const.SHOW_FREE_GEM}{walletsModel.gem_free_amount + data4.free_currency}";
+        productDescriptionText.text = showText ? data3.description : $"ジェムが有償{data4.paid_currency}個・無償{data4.free_currency}個もらえる";
         productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{itemId}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoin = data1.price;
@@ -139,9 +139,9 @@ public class ClientShop : MonoBehaviour
         //購入数増減処理
         increaseButton.onClick.AddListener(() => SetAmount(amountValue + amountMin));
         decreaseButton.onClick.AddListener(() => SetAmount(amountValue - amountMin));
-        buyMoneyButton.onClick.AddListener(() => OpenConfirmPaymentButton(index1, amountMin));
-        buyItemCoinButton.onClick.AddListener(() => OpenConfirmPaymentButton(index1, amountValue));
-        buyItemGemButton.onClick.AddListener(() => OpenConfirmPaymentButton(index2, amountValue));
+        buyMoneyButton.onClick.AddListener(() => OpenConfirmPaymentButton(index1, amountMin, "円"));
+        buyItemCoinButton.onClick.AddListener(() => OpenConfirmPaymentButton(index1, amountValue, "コイン"));
+        buyItemGemButton.onClick.AddListener(() => OpenConfirmPaymentButton(index2, amountValue, "ジェム"));
 
         shopConfirmView.SetActive(true);
         SetAmount(amountMin); //再度開いたら常に1に設定
@@ -156,13 +156,17 @@ public class ClientShop : MonoBehaviour
     }
 
     //購入確認画面開く
-    public void OpenConfirmPaymentButton(int productId, int amount)
+    public void OpenConfirmPaymentButton(int productId, int amount, string currency)
     {
         yesButton.onClick.RemoveAllListeners();
         noButton.onClick.RemoveAllListeners();
 
         ShopDataModel data = ShopDataTable.SelectProductId(productId);
-        paymentConfirmText.text = "商品名\n" + data.name + "\n" + amount + "個購入しますか？";
+        WalletsModel walletsModel = WalletsTable.Select();
+        paymentConfirmText.text = "商品名\n" + data.name + "\n\n" + amount + "個を" + data.price * amount + currency + "で購入しますか？";
+        walletStateText.text =
+        "現在のウォレット残高\n" +
+        "コイン残高 " + walletsModel.coin_amount + "コイン" + "     " + "有償 " + walletsModel.gem_paid_amount + "ジェム" + "     " + "無償 " + walletsModel.gem_free_amount + "ジェム";
 
         yesButton.onClick.AddListener(() => PaymentButton(productId, amount));
         noButton.onClick.AddListener(() => CloseConfirmPaymentButton());

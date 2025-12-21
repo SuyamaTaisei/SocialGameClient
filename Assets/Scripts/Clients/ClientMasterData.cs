@@ -11,6 +11,8 @@ public class ClientMasterData : MonoBehaviour
     [SerializeField] GameObject masterCheckButton;
     [SerializeField] ClientTitle clientTitle;
 
+    private int serverVersion;
+
     private ApiConnect apiConnect;
 
     private const string masterData_key = "client_master_version";
@@ -30,44 +32,57 @@ public class ClientMasterData : MonoBehaviour
         masterCheckButton.SetActive(true);
     }
 
-    //マスタデータバージョン確認処理
+    //1.マスタデータバージョン確認処理
     public void MasterDataCheck()
     {
-        Action action = new(() => MasterDataGet());
-
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(masterData_key, GameUtility.Const.MASTER_DATA_VERSION)
         };
-        StartCoroutine(apiConnect.Send(GameUtility.Const.MASTER_DATA_CHECK_URL, form, action));
+
+        StartCoroutine(apiConnect.Send(GameUtility.Const.MASTER_DATA_CHECK_URL, form, (action) =>
+        {
+            //現在のローカルバージョン、最新のサーバーバージョンを取得
+            int localVersion = MasterDataManager.GetMasterDataVersion();
+            serverVersion = action.master_data_version;
+
+            //バージョンが一致していれば
+            if (localVersion == serverVersion)
+            {
+                LoadingManager.Instance.LoadScene(GameUtility.Const.SCENE_NAME_HOMESCENE);
+            }
+            else
+            {
+                MasterDataGet();
+            }
+        }));
     }
 
-    //マスタデータ取得処理
+    //2.マスタデータ取得処理(ゲームアップデート)
     public void MasterDataGet()
     {
         clientTitle.StartView.SetActive(false);
         masterCheckView.SetActive(true);
         masterCheckText.text = GameUtility.Const.SHOW_MASTER_TEXT_1;
-        Action action = () =>
+
+        StartCoroutine(apiConnect.Send(GameUtility.Const.MASTER_DATA_GET_URL, null, (action) =>
         {
+            //バージョンが一致していない場合は最新のバージョンを保存
+            MasterDataManager.SetMasterDataVersion(serverVersion);
             masterCheckText.text = GameUtility.Const.SHOW_MASTER_TEXT_2;
             masterCheckButton.SetActive(true);
-        };
-        StartCoroutine(apiConnect.Send(GameUtility.Const.MASTER_DATA_GET_URL, null, action));
+        }));
     }
 
-    //マスタデータ更新完了ボタン
+    //3.マスタデータ更新完了後のシーン遷移
     public void MasterDataUpdateComplete()
     {
-        string masterDataNumber = MasterDataManager.GetMasterDataVersion().ToString();
-        if (GameUtility.Const.MASTER_DATA_VERSION == masterDataNumber)
+        //ローカルバージョンを最新バージョンに更新済み
+        int localVersion = MasterDataManager.GetMasterDataVersion();
+        if (localVersion == serverVersion)
         {
             masterCheckView.SetActive(false);
             LoadingManager.Instance.LoadScene(GameUtility.Const.SCENE_NAME_HOMESCENE);
-        }
-        else
-        {
-            MasterDataCheck();
         }
     }
 }

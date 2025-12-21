@@ -35,6 +35,7 @@ public class SaveManager : MonoBehaviour
         if (!SaveDataCheck())
         {
             CreateSaveData();
+            Debug.Log(filePath);
         }
     }
 

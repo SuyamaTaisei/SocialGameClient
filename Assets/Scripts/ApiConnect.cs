@@ -29,7 +29,7 @@ public class ApiConnect : MonoBehaviour
         clientMasterData = FindFirstObjectByType<ClientMasterData>();
     }
 
-    public IEnumerator Send(string endPoint, List<IMultipartFormSection> form = null, Action action = null, int timeOut = 10)
+    public IEnumerator Send(string endPoint, List<IMultipartFormSection> form = null, Action<ResponseObjects> action = null, int timeOut = 10)
     {
         //POSTでデータを送信
         UnityWebRequest request = UnityWebRequest.Post(endPoint, form);
@@ -72,8 +72,7 @@ public class ApiConnect : MonoBehaviour
             //レスポンス成功時に、関数があれば実行
             if (action != null)
             {
-                action();
-                action = null;
+                action(responseObjects);
             }
         }
         //失敗したら

@@ -1,16 +1,25 @@
-﻿namespace GameUtility
+﻿#define ENV_LOCAL
+#define ENV_SERVER
+
+namespace GameUtility
 {
     //上から順に、エンドポイント、DB、マスタデータ、エラー系、内部表記系、数値系、外部表記系
     public static class Const
     {
+        #if ENV_LOCAL
+            private const string BASE_URL = "http://localhost/";
+        #elif ENV_SERVER
+            private const string BASE_URL = "http://example.com/";
+        #endif
+
         //エンドポイント
-        public const string REGISTER_URL = "http://localhost/api/register";
-        public const string LOGIN_URL = "http://localhost/api/login";
-        public const string HOME_URL = "http://localhost/api/home";
-        public const string MASTER_DATA_CHECK_URL = "http://localhost/api/check_master_data";
-        public const string MASTER_DATA_GET_URL = "http://localhost/api/get_master_data";
-        public const string PAYMENT_URL = "http://localhost/api/payment";
-        public const string GACHA_EXECUTE_URL = "http://localhost/api/gacha_execute";
+        public const string REGISTER_URL          = BASE_URL + "api/register";
+        public const string LOGIN_URL             = BASE_URL + "api/login";
+        public const string HOME_URL              = BASE_URL + "api/home";
+        public const string MASTER_DATA_CHECK_URL = BASE_URL + "api/check_master_data";
+        public const string MASTER_DATA_GET_URL   = BASE_URL + "api/get_master_data";
+        public const string PAYMENT_URL           = BASE_URL + "api/payment";
+        public const string GACHA_EXECUTE_URL     = BASE_URL + "api/gacha_execute";
 
         //DB
         public const string SQLITE_DB_NAME = "SocialGameServer.db";

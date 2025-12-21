@@ -32,10 +32,22 @@ public class GachaOfferRateTemplateView : MonoBehaviour
     //レアリティごとの合計排出率の表記計算
     public void SetCalculate(GachaDataModel data, ref float rateN, ref float rateR, ref float rateSR, ref float rateSSR)
     {
-        if (data.character_id >= GameUtility.Const.GACHA_1000_NUMBER && data.character_id <= GameUtility.Const.GACHA_1999_NUMBER) rateN += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
-        if (data.character_id >= GameUtility.Const.GACHA_2000_NUMBER && data.character_id <= GameUtility.Const.GACHA_2999_NUMBER) rateR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
-        if (data.character_id >= GameUtility.Const.GACHA_3000_NUMBER && data.character_id <= GameUtility.Const.GACHA_3999_NUMBER) rateSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
-        if (data.character_id >= GameUtility.Const.GACHA_4000_NUMBER && data.character_id <= GameUtility.Const.GACHA_4999_NUMBER) rateSSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        if (data.character_id >= GameUtility.Const.GACHA_1000_NUMBER && data.character_id <= GameUtility.Const.GACHA_1999_NUMBER)
+        {
+            rateN += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        }
+        if (data.character_id >= GameUtility.Const.GACHA_2000_NUMBER && data.character_id <= GameUtility.Const.GACHA_2999_NUMBER)
+        {
+            rateR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        }
+        if (data.character_id >= GameUtility.Const.GACHA_3000_NUMBER && data.character_id <= GameUtility.Const.GACHA_3999_NUMBER)
+        {
+            rateSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        }
+        if (data.character_id >= GameUtility.Const.GACHA_4000_NUMBER && data.character_id <= GameUtility.Const.GACHA_4999_NUMBER)
+        {
+            rateSSR += data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
+        }
     }
 
     //合計排出率の表記

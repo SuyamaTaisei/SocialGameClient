@@ -16,7 +16,7 @@ public class ClientHome : MonoBehaviour
 
     private void Start()
     {
-        apiConnect = FindFirstObjectByType<ApiConnect>();
+        apiConnect = ApiConnect.Instance;
         var usersModel = UsersTable.Select();
 
         if (!string.IsNullOrEmpty(usersModel.id))

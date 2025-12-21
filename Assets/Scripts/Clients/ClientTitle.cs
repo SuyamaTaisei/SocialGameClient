@@ -17,10 +17,11 @@ public class ClientTitle : MonoBehaviour
     [SerializeField] TMP_InputField inputUserTextName;
     [SerializeField] TextMeshProUGUI warningText;
 
-    [SerializeField] ApiConnect apiConnect;
     [SerializeField] ClientMasterData clientMasterData;
 
     public GameObject StartView => startView;
+
+    private ApiConnect apiConnect;
 
     private const string column_UserName = "user_name";
     private const string column_id = "id";
@@ -42,6 +43,7 @@ public class ClientTitle : MonoBehaviour
 
     void Start()
     {
+        apiConnect = ApiConnect.Instance;
         StartView.SetActive(true);
         registerView.SetActive(false);
         registerCompleteView.SetActive(false);

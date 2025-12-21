@@ -9,15 +9,15 @@ public class ClientMasterData : MonoBehaviour
     [SerializeField] GameObject masterCheckView;
     [SerializeField] TextMeshProUGUI masterCheckText;
     [SerializeField] GameObject masterCheckButton;
-    [SerializeField] ApiConnect apiConnect;
     [SerializeField] ClientTitle clientTitle;
+
+    private ApiConnect apiConnect;
 
     private const string masterData_key = "client_master_version";
 
-    public static ClientMasterData Instance { get; private set; }
-
     private void Start()
     {
+        apiConnect = ApiConnect.Instance;
         masterCheckView.SetActive(false);
         masterCheckButton.SetActive(false);
     }

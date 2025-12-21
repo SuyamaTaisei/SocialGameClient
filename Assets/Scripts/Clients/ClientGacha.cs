@@ -48,7 +48,7 @@ public class ClientGacha : MonoBehaviour
 
     void Start()
     {
-        apiConnect = FindFirstObjectByType<ApiConnect>();
+        apiConnect = ApiConnect.Instance;
         gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gachaPeriodTemplateView.GachaId, gacha_count));
         WarningMessage("");
         gachaView.SetActive(false);

@@ -25,7 +25,7 @@ public class ApiConnect : MonoBehaviour
 
     private void Start()
     {
-        responseManager = FindFirstObjectByType<ResponseManager>();
+        responseManager = ResponseManager.Instance;
         clientMasterData = FindFirstObjectByType<ClientMasterData>();
     }
 
@@ -66,7 +66,7 @@ public class ApiConnect : MonoBehaviour
             ResponseObjects responseObjects = JsonUtility.FromJson<ResponseObjects>(serverData);
 
             //ここでもう一度確実に取得
-            responseManager = FindFirstObjectByType<ResponseManager>();
+            responseManager = ResponseManager.Instance;
             responseManager.ExecuteObjects(endPoint, responseObjects);
 
             //レスポンス成功時に、関数があれば実行

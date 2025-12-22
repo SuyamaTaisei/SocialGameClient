@@ -17,10 +17,11 @@ public class ClientTitle : MonoBehaviour
     [SerializeField] TMP_InputField inputUserTextName;
     [SerializeField] TextMeshProUGUI warningText;
 
-    [SerializeField] ApiConnect apiConnect;
     [SerializeField] ClientMasterData clientMasterData;
 
     public GameObject StartView => startView;
+
+    private ApiConnect apiConnect;
 
     private const string column_UserName = "user_name";
     private const string column_id = "id";
@@ -42,6 +43,7 @@ public class ClientTitle : MonoBehaviour
 
     void Start()
     {
+        apiConnect = ApiConnect.Instance;
         StartView.SetActive(true);
         registerView.SetActive(false);
         registerCompleteView.SetActive(false);
@@ -70,14 +72,16 @@ public class ClientTitle : MonoBehaviour
         else
         {
             registerView.SetActive(false);
-            Action action = new(() => RegisterComplete(true));
 
             string userName = inputUserTextName.text;
             List<IMultipartFormSection> form = new() //POST送信用のフォームを作成
             {
                 new MultipartFormDataSection(column_UserName, userName)
             };
-            StartCoroutine(apiConnect.Send(GameUtility.Const.REGISTER_URL, form, action));
+            StartCoroutine(apiConnect.Send(GameUtility.Const.REGISTER_URL, form, (action) =>
+            {
+                RegisterComplete(true);
+            }));
         }
     }
 
@@ -88,15 +92,16 @@ public class ClientTitle : MonoBehaviour
         usersModel = UsersTable.Select();
         if (!string.IsNullOrEmpty(usersModel.id))
         {
-            Action action = new(() => clientMasterData.MasterDataCheck());
-
             //そのままログイン
             string id = usersModel.id;
             List<IMultipartFormSection> form = new()
             {
                 new MultipartFormDataSection(column_id, id)
             };
-            StartCoroutine(apiConnect.Send(GameUtility.Const.LOGIN_URL, form, action));
+            StartCoroutine(apiConnect.Send(GameUtility.Const.LOGIN_URL, form, (action) =>
+            {
+                clientMasterData.MasterDataCheck();
+            }));
 
             StartView.SetActive(true);
             registerView.SetActive(false);

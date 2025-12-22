@@ -68,7 +68,7 @@ public class ClientShop : MonoBehaviour
 
     private void Start()
     {
-        apiConnect = FindAnyObjectByType<ApiConnect>();
+        apiConnect = ApiConnect.Instance;
         shopView.SetActive(false);
         shopConfirmView.SetActive(false);
         paymentConfirmView.SetActive(false);

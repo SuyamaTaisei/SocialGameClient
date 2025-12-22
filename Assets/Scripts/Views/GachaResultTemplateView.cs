@@ -36,7 +36,10 @@ public class GachaResultTemplateView : MonoBehaviour
         view.itemOtherObject.SetActive(false);
         view.itemImage.gameObject.SetActive(false);
 
-        if (isNew) return;
+        if (isNew)
+        {
+            return;
+        }
 
         //ガチャが被った時だけ、1要素ずつガチャ報酬(変換したアイテム)を表示
         var exchange = singleExchangeItems[singleExchangeIndex];

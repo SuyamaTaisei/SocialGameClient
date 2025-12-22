@@ -25,11 +25,11 @@ public class ApiConnect : MonoBehaviour
 
     private void Start()
     {
-        responseManager = FindFirstObjectByType<ResponseManager>();
+        responseManager = ResponseManager.Instance;
         clientMasterData = FindFirstObjectByType<ClientMasterData>();
     }
 
-    public IEnumerator Send(string endPoint, List<IMultipartFormSection> form = null, Action action = null, int timeOut = 10)
+    public IEnumerator Send(string endPoint, List<IMultipartFormSection> form = null, Action<ResponseObjects> action = null, int timeOut = 10)
     {
         //POSTでデータを送信
         UnityWebRequest request = UnityWebRequest.Post(endPoint, form);
@@ -48,11 +48,7 @@ public class ApiConnect : MonoBehaviour
                 switch (serverData)
                 {
                     case GameUtility.Const.ERRCODE_MASTER_DATA_UPDATE:
-                        Debug.LogError("ゲームをアップデートしてください。");
-                        clientMasterData.MasterDataWarningUpdate(GameUtility.Const.ERROR_MASTER_DATA_VERSION_TEXT);
-                        break;
-                    case GameUtility.Const.ERRCODE_DB_UPDATE:
-                        Debug.LogError("サーバーでエラーが発生しました。[データベース更新エラー]");
+                        Debug.LogError("マスタデータバージョンエラー");
                         break;
                     default:
                         Debug.LogError("サーバーでエラーが発生しました。[システムエラー]");
@@ -66,14 +62,13 @@ public class ApiConnect : MonoBehaviour
             ResponseObjects responseObjects = JsonUtility.FromJson<ResponseObjects>(serverData);
 
             //ここでもう一度確実に取得
-            responseManager = FindFirstObjectByType<ResponseManager>();
+            responseManager = ResponseManager.Instance;
             responseManager.ExecuteObjects(endPoint, responseObjects);
 
             //レスポンス成功時に、関数があれば実行
             if (action != null)
             {
-                action();
-                action = null;
+                action(responseObjects);
             }
         }
         //失敗したら

@@ -130,21 +130,6 @@ public class ResponseManager : MonoBehaviour
         }
     }
 
-    public void ExecuteMasterDataCheck(ResponseObjects responseObjects)
-    {
-        Debug.Log(responseObjects.master_data_version);
-        int error_number = int.Parse(GameUtility.Const.ERRCODE_MASTER_DATA_UPDATE);
-        if (responseObjects.master_data_version != error_number)
-        {
-            Debug.Log("マスターデータバージョンを保存完了");
-            MasterDataManager.SetMasterDataVersion(responseObjects.master_data_version);
-        }
-        else if (responseObjects.master_data_version == error_number)
-        {
-            Debug.LogError("マスターデータバージョンを保存できなかった");
-        }
-    }
-
     public void ExecuteMasterData(ResponseObjects responseObjects)
     {
         if (responseObjects.shop_categories != null)
@@ -248,9 +233,6 @@ public class ResponseManager : MonoBehaviour
                 break;
             case GameUtility.Const.HOME_URL:
                 ExecuteHome(responseObjects);
-                break;
-            case GameUtility.Const.MASTER_DATA_CHECK_URL:
-                ExecuteMasterDataCheck(responseObjects);
                 break;
             case GameUtility.Const.MASTER_DATA_GET_URL:
                 ExecuteMasterData(responseObjects);

@@ -203,6 +203,12 @@ public class ResponseManager : MonoBehaviour
             clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_1);
             clientGacha.WarningMessage(GameUtility.Const.ERROR_PAYMENT_1);
         }
+        else if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_LIMIT_WALLETS))
+        {
+            Debug.Log("これ以上ウォレットを増やせない");
+            clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
+            clientGacha.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
+        }
         else
         {
             Debug.Log("支払い完了");
@@ -212,12 +218,6 @@ public class ResponseManager : MonoBehaviour
             clientShop.PaymentComplete(true);
             clientGacha.WarningMessage("");
             clientGacha.CloseConfirmButton();
-        }
-        if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_LIMIT_WALLETS))
-        {
-            Debug.Log("これ以上ウォレットを増やせない");
-            clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
-            clientGacha.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
         }
     }
 

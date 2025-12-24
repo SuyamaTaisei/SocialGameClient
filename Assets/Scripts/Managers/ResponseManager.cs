@@ -75,6 +75,7 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("ログイン完了");
             UsersTable.Insert(responseObjects.users);
+            GachaLogsTable.Insert(responseObjects.gacha_logs);
         }
         else
         {

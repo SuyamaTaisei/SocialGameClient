@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class ItemInstancesModel
@@ -39,5 +40,28 @@ public class ItemInstacesTable
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
             sqlDB.ExecuteNonQuery(query);
         }
+    }
+
+    //全レコード取得
+    public static List<ItemInstancesModel> SelectAll()
+    {
+        string query = "select * from item_Instances";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<ItemInstancesModel> result = new List<ItemInstancesModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            ItemInstancesModel itemInstancesModel = new ItemInstancesModel();
+            itemInstancesModel.id = int.Parse(record["id"].ToString());
+            itemInstancesModel.manage_id = int.Parse(record["manage_id"].ToString());
+            itemInstancesModel.item_id = int.Parse(record["item_id"].ToString());
+            itemInstancesModel.amount = int.Parse(record["amount"].ToString());
+
+            result.Add(itemInstancesModel);
+        }
+
+        return result;
     }
 }

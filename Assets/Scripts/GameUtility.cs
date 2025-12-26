@@ -74,11 +74,21 @@ namespace GameUtility
         public const string SHOW_GACHA_RATE_DECIMAL = "0.###";
         public const string SHOW_GACHA_RATE_PERCENT = "%";
 
+        //インスタンス表記
+        public const string SHOW_INSTANCE_LEVEL_MAX = "100";
+        public const string SHOW_INSTANCE_AMOUNT_MAX = "99";
+        public const string SHOW_INSTANCE_CHARA_NOTHING = "キャラクターを所持していません";
+        public const string SHOW_INSTANCE_ITEM_NOTHING = "アイテムを所持していません";
+
         //ショップカテゴリ数値
         public const int SHOP_GEMS = 1001;
         public const int SHOP_ITEMS = 1002;
 
-        //ショップ販売アイテムID
+        //ショップ購入最小数値・最大数値
+        public const int SHOP_AMOUNT_MIN = 1;
+        public const int SHOP_AMOUNT_MAX = 99;
+
+        //ショップ販売アイテムID数値
         public const int SHOP_ITEM_ID = 1001;
 
         //ガチャ数値

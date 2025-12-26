@@ -70,7 +70,7 @@ public class GachaLogsTable
     }
 
     //任意の件数分、新しい順にガチャ履歴レコードを取得
-    public static List<GachaLogsModel> SelectLatest(int limit)
+    public static List<GachaLogsModel> SelectIdLatest(int limit)
     {
         string query = $"select * from gacha_logs order by id desc limit {limit}";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);

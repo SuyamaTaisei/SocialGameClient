@@ -74,6 +74,9 @@ namespace GameUtility
         public const string SHOW_GACHA_RATE_DECIMAL = "0.###";
         public const string SHOW_GACHA_RATE_PERCENT = "%";
 
+        //インスタンス表記
+        public const string SHOW_INSTANCE_LEVEL_MAX = "100";
+
         //ショップカテゴリ数値
         public const int SHOP_GEMS = 1001;
         public const int SHOP_ITEMS = 1002;

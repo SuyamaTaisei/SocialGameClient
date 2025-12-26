@@ -214,8 +214,8 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("支払い完了");
             clientShop.WarningMessage("");
+            clientShop.CloseProductInfoButton();
             clientShop.CloseConfirmButton();
-            clientShop.CloseConfirmPaymentButton();
             clientShop.PaymentComplete(true);
             clientGacha.WarningMessage("");
             clientGacha.CloseConfirmButton();

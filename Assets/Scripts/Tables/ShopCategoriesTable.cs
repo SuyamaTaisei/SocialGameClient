@@ -52,7 +52,7 @@ public static class ShopCategoriesTable
     }
 
     //カテゴリの一致するレコードを取得
-    public static ShopCategoriesModel SelectId(int category)
+    public static ShopCategoriesModel SelectCategory(int category)
     {
         string query = "select * from shop_categories where category = " + category;
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);

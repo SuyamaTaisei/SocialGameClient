@@ -15,7 +15,7 @@ public class GachaLogList : MonoBehaviour
     //開いて更新
     private void Refresh()
     {
-        List<GachaLogsModel> gachaLogsList = GachaLogsTable.SelectLatest(GameUtility.Const.LOG_GACHA_LIMIT);
+        List<GachaLogsModel> gachaLogsList = GachaLogsTable.SelectIdLatest(GameUtility.Const.LOG_GACHA_LIMIT);
 
         //何もガチャ履歴が無ければ
         if (gachaLogsList.Count == 0)

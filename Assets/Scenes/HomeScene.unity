@@ -4208,7 +4208,7 @@ GameObject:
   - component: {fileID: 242989898}
   - component: {fileID: 242989897}
   m_Layer: 0
-  m_Name: YesButton
+  m_Name: ShopComfirmYesButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4864,7 +4864,7 @@ GameObject:
   - component: {fileID: 282860014}
   - component: {fileID: 282860013}
   m_Layer: 0
-  m_Name: PaymentConfirmFrame
+  m_Name: ShopConfirmFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6073,7 +6073,7 @@ GameObject:
   - component: {fileID: 382553046}
   - component: {fileID: 382553045}
   m_Layer: 0
-  m_Name: CloseConfirmButton
+  m_Name: CloseProductButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6144,7 +6144,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2025727311}
         m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: CloseConfirmButton
+        m_MethodName: CloseProductInfoButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7894,7 +7894,7 @@ GameObject:
   - component: {fileID: 501014182}
   - component: {fileID: 501014181}
   m_Layer: 0
-  m_Name: PaymentConfirmBG
+  m_Name: ShopConfirmBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10416,7 +10416,7 @@ GameObject:
   - component: {fileID: 612298835}
   - component: {fileID: 612298834}
   m_Layer: 0
-  m_Name: CloseButton
+  m_Name: ClosePaymentButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17124,7 +17124,7 @@ GameObject:
   - component: {fileID: 1091141774}
   - component: {fileID: 1091141773}
   m_Layer: 0
-  m_Name: YesText
+  m_Name: ShopComfirmYesText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17564,7 +17564,7 @@ GameObject:
   - component: {fileID: 1121430408}
   - component: {fileID: 1121430407}
   m_Layer: 0
-  m_Name: NoButton
+  m_Name: ShopComfirmNoButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21111,7 +21111,7 @@ GameObject:
   - component: {fileID: 1320087519}
   - component: {fileID: 1320087518}
   m_Layer: 0
-  m_Name: PaymentConfirmBG
+  m_Name: ShopConfirmBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21474,7 +21474,7 @@ GameObject:
   - component: {fileID: 1349828764}
   - component: {fileID: 1349828763}
   m_Layer: 0
-  m_Name: ShopConfirmBG
+  m_Name: ProductBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21549,7 +21549,7 @@ GameObject:
   - component: {fileID: 1352017031}
   - component: {fileID: 1352017030}
   m_Layer: 0
-  m_Name: NoText
+  m_Name: ShopComfirmNoText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22644,7 +22644,7 @@ GameObject:
   - component: {fileID: 1419917961}
   - component: {fileID: 1419917960}
   m_Layer: 0
-  m_Name: CloseText
+  m_Name: ClosePaymentText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24887,7 +24887,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632232014}
   m_Layer: 0
-  m_Name: PaymentConfirmView
+  m_Name: ShopConfirmView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25147,7 +25147,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1655090802}
   m_Layer: 0
-  m_Name: ShopConfirmView
+  m_Name: ProductInfoView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27502,7 +27502,7 @@ GameObject:
   - component: {fileID: 1808533088}
   - component: {fileID: 1808533087}
   m_Layer: 0
-  m_Name: CloseConfirmBGButton
+  m_Name: CloseProductBGButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27573,7 +27573,7 @@ MonoBehaviour:
       m_Calls:
       - m_Target: {fileID: 2025727311}
         m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: CloseConfirmButton
+        m_MethodName: CloseProductInfoButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -28563,7 +28563,7 @@ GameObject:
   - component: {fileID: 1864895499}
   - component: {fileID: 1864895498}
   m_Layer: 5
-  m_Name: PaymentConfirmText
+  m_Name: ShopConfirmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29670,7 +29670,7 @@ GameObject:
   - component: {fileID: 1901158296}
   - component: {fileID: 1901158295}
   m_Layer: 0
-  m_Name: ShopConfirmFrame
+  m_Name: ProductFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31154,7 +31154,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991596785}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
@@ -32377,7 +32377,7 @@ GameObject:
   - component: {fileID: 2103633099}
   - component: {fileID: 2103633098}
   m_Layer: 5
-  m_Name: WarningText
+  m_Name: ShopComfirmWarningText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

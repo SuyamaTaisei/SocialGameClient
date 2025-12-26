@@ -55,8 +55,6 @@ public class ClientShop : MonoBehaviour
     [SerializeField] ShopCategoryTemplateView shopCategoryTemplateView;
 
     private int amountValue;
-    private const int amountMin = 1;
-    private const int amountMax = 99;
     private int priceCoin;
     private int priceGem;
 
@@ -105,15 +103,15 @@ public class ClientShop : MonoBehaviour
     //購入数の増減制御
     private void SetAmount(int value)
     {
-        amountValue = Mathf.Clamp(value, amountMin, amountMax);
+        amountValue = Mathf.Clamp(value, GameUtility.Const.SHOP_AMOUNT_MIN, GameUtility.Const.SHOP_AMOUNT_MAX);
         amountText.text = amountValue.ToString();
-        increaseButton.interactable = amountValue < amountMax;
-        decreaseButton.interactable = amountValue > amountMin;
+        increaseButton.interactable = amountValue < GameUtility.Const.SHOP_AMOUNT_MAX;
+        decreaseButton.interactable = amountValue > GameUtility.Const.SHOP_AMOUNT_MIN;
         UpdatePriceText();
     }
 
     //商品確認画面開く
-    public void OpenConfirmButton(int index1, int index2, int imageIndex, ItemRaritiesModel itemRarity)
+    public void OpenProductInfoButton(int index1, int index2, int imageIndex, ItemRaritiesModel itemRarity)
     {
         //必ず購入状態をリセット
         increaseButton.onClick.RemoveAllListeners();
@@ -139,26 +137,26 @@ public class ClientShop : MonoBehaviour
         priceGem = data2.price;
 
         //購入数増減処理
-        increaseButton.onClick.AddListener(() => SetAmount(amountValue + amountMin));
-        decreaseButton.onClick.AddListener(() => SetAmount(amountValue - amountMin));
-        buyMoneyButton.onClick.AddListener(() => OpenConfirmPaymentButton(index1, amountMin, "円"));
-        buyItemCoinButton.onClick.AddListener(() => OpenConfirmPaymentButton(index1, amountValue, "コイン"));
-        buyItemGemButton.onClick.AddListener(() => OpenConfirmPaymentButton(index2, amountValue, "ジェム"));
+        increaseButton.onClick.AddListener(() => SetAmount(amountValue + GameUtility.Const.SHOP_AMOUNT_MIN));
+        decreaseButton.onClick.AddListener(() => SetAmount(amountValue - GameUtility.Const.SHOP_AMOUNT_MIN));
+        buyMoneyButton.onClick.AddListener(() => OpenConfirmButton(index1, GameUtility.Const.SHOP_AMOUNT_MIN, "円"));
+        buyItemCoinButton.onClick.AddListener(() => OpenConfirmButton(index1, amountValue, "コイン"));
+        buyItemGemButton.onClick.AddListener(() => OpenConfirmButton(index2, amountValue, "ジェム"));
 
         shopConfirmView.SetActive(true);
-        SetAmount(amountMin); //再度開いたら常に1に設定
+        SetAmount(GameUtility.Const.SHOP_AMOUNT_MIN); //再度開いたら常に1に設定
         WarningMessage("");
     }
 
     //商品確認画面閉じる
-    public void CloseConfirmButton()
+    public void CloseProductInfoButton()
     {
         shopConfirmView.SetActive(false);
         WarningMessage("");
     }
 
     //購入確認画面開く
-    public void OpenConfirmPaymentButton(int productId, int amount, string currency)
+    public void OpenConfirmButton(int productId, int amount, string currency)
     {
         yesButton.onClick.RemoveAllListeners();
         noButton.onClick.RemoveAllListeners();
@@ -171,12 +169,12 @@ public class ClientShop : MonoBehaviour
         "コイン残高 " + walletsModel.coin_amount + "コイン" + "     " + "有償 " + walletsModel.gem_paid_amount + "ジェム" + "     " + "無償 " + walletsModel.gem_free_amount + "ジェム";
 
         yesButton.onClick.AddListener(() => PaymentButton(productId, amount));
-        noButton.onClick.AddListener(() => CloseConfirmPaymentButton());
+        noButton.onClick.AddListener(() => CloseConfirmButton());
         paymentConfirmView.SetActive(true);
     }
 
     //購入確認画面閉じる
-    public void CloseConfirmPaymentButton()
+    public void CloseConfirmButton()
     {
         paymentConfirmView.SetActive(false);
         WarningMessage("");

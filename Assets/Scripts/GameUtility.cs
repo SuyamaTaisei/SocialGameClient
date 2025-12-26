@@ -84,7 +84,11 @@ namespace GameUtility
         public const int SHOP_GEMS = 1001;
         public const int SHOP_ITEMS = 1002;
 
-        //ショップ販売アイテムID
+        //ショップ購入最小数値・最大数値
+        public const int SHOP_AMOUNT_MIN = 1;
+        public const int SHOP_AMOUNT_MAX = 99;
+
+        //ショップ販売アイテムID数値
         public const int SHOP_ITEM_ID = 1001;
 
         //ガチャ数値

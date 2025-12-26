@@ -76,6 +76,9 @@ namespace GameUtility
 
         //インスタンス表記
         public const string SHOW_INSTANCE_LEVEL_MAX = "100";
+        public const string SHOW_INSTANCE_AMOUNT_MAX = "99";
+        public const string SHOW_INSTANCE_CHARA_NOTHING = "キャラクターを所持していません";
+        public const string SHOW_INSTANCE_ITEM_NOTHING = "アイテムを所持していません";
 
         //ショップカテゴリ数値
         public const int SHOP_GEMS = 1001;

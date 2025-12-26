@@ -3,12 +3,21 @@ using UnityEngine;
 
 public class ClientInstance : MonoBehaviour
 {
+    [SerializeField] GameObject itemInstanceView;
     [SerializeField] GameObject characterInstanceView;
-    [SerializeField] TextMeshProUGUI messageText;
+    [SerializeField] TextMeshProUGUI itemNothingText;
+    [SerializeField] TextMeshProUGUI CharacterNothingText;
 
     private void Start()
     {
+        itemInstanceView.SetActive(false);
         characterInstanceView.SetActive(false);
+    }
+
+    //アイテム一覧開くボタン
+    public void ItemInstanceButton(bool enabled)
+    {
+        itemInstanceView.SetActive(enabled);
     }
 
     //キャラクター一覧開くボタン
@@ -17,8 +26,13 @@ public class ClientInstance : MonoBehaviour
         characterInstanceView.SetActive(enabled);
     }
 
-    public void NothingMessage(string text)
+    public void NothingItemMessage(string text)
     {
-        messageText.text = text;
+        itemNothingText.text = text;
+    }
+
+    public void NothingCharacterMessage(string text)
+    {
+        CharacterNothingText.text = text;
     }
 }

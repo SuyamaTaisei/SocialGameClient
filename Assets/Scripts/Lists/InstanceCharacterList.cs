@@ -33,6 +33,8 @@ public class InstanceCharacterList : MonoBehaviour
             case 1: RefreshSort("id", "Asc"); break;
             case 2: RefreshSort("level", "Desc"); break;
             case 3: RefreshSort("level", "Asc"); break;
+            case 4: RefreshSort("rarity_id", "Desc"); break;
+            case 5: RefreshSort("rarity_id", "Asc"); break;
         }
     }
 

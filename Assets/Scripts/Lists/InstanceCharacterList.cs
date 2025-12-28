@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,15 +8,45 @@ public class InstanceCharacterList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientInstance clientInstance;
+    [SerializeField] TMP_Dropdown dropDownList;
 
-    private void OnEnable() => Refresh();
-    private void OnDisable() => Clear();
-
-    //開いて更新
-    private void Refresh()
+    //現在選択中のソートリストで再表示、別のソート選択で表示更新
+    private void OnEnable()
     {
-        List<CharacterInstancesModel> characterInstancesList = CharacterInstancesTable.SelectAll();
+        dropDownList.onValueChanged.AddListener(SortList);
+        SortList(dropDownList.value);
+    }
 
+    //閉じたらボタンリセット＆表示リセット
+    private void OnDisable()
+    {
+        dropDownList.onValueChanged.RemoveListener(SortList);
+        Clear();
+    }
+
+    //ソート選択リスト
+    private void SortList(int value)
+    {
+        switch (value)
+        {
+            case 0: RefreshSort("id", "Desc"); break;
+            case 1: RefreshSort("id", "Asc"); break;
+            case 2: RefreshSort("level", "Desc"); break;
+            case 3: RefreshSort("level", "Asc"); break;
+        }
+    }
+
+    //ソート付きで全てのデータを取得
+    public void RefreshSort(string column, string sort)
+    {
+        Clear(); //再選択時に必ず破棄
+        List<CharacterInstancesModel> characterInstancesList = CharacterInstancesTable.SelectSortAll(column, sort);
+        DataList(characterInstancesList);
+    }
+
+    //データの生成・取得・描画
+    public void DataList(List<CharacterInstancesModel> characterInstancesList)
+    {
         //何もキャラを所持していなければ
         if (characterInstancesList == null || characterInstancesList.Count == 0)
         {

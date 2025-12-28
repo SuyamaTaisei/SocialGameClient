@@ -42,10 +42,10 @@ public class CharacterInstancesTable
         }
     }
 
-    //全レコード取得
-    public static List<CharacterInstancesModel> SelectAll()
+    //ソート付きで全レコード取得
+    public static List<CharacterInstancesModel> SelectSortAll(string column, string sort)
     {
-        string query = "select * from character_Instances";
+        string query = $"select * from character_Instances order by {column} {sort}";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
 

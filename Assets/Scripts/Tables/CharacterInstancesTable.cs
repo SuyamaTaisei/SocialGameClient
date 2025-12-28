@@ -42,10 +42,19 @@ public class CharacterInstancesTable
         }
     }
 
-    //全レコード取得
-    public static List<CharacterInstancesModel> SelectAll()
+    //ソート付きで全レコード取得
+    public static List<CharacterInstancesModel> SelectSortAll(string column, string sort)
     {
-        string query = "select * from character_Instances";
+        string query = "";
+
+        //カラム名単位でSQLクエリを呼び出し
+        switch(column)
+        {
+            case "id":
+            case "level": query = $"select * from character_Instances order by {column} {sort}"; break;
+            case "rarity_id": query = $"select ci.* from character_Instances as ci inner join character_data as cd on cd.id = ci.character_id order by cd.{column} {sort}"; break;
+        }
+
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
 

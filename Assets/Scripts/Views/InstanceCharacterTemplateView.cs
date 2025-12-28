@@ -14,6 +14,6 @@ public class InstanceCharacterTemplateView : MonoBehaviour
         if (characterImage) characterImage.sprite = Resources.Load<Sprite>(imagePath);
         if (characterNameText) characterNameText.text = data1.name;
         if (characterRarityText) characterRarityText.text = data2.name;
-        if (characterLevelText) characterLevelText.text = data3.level.ToString() + "/" + GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX;
+        if (characterLevelText) characterLevelText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + data3.level.ToString() + "/" + GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX;
     }
 }

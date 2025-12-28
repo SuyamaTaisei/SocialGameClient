@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -7,15 +8,45 @@ public class InstanceItemList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientInstance clientInstance;
+    [SerializeField] TMP_Dropdown dropDownList;
 
-    private void OnEnable() => Refresh();
-    private void OnDisable() => Clear();
+    //現在選択中のソートリストで再表示、別のソート選択で表示更新
+    private void OnEnable()
+    {
+        dropDownList.onValueChanged.AddListener(SortList);
+        SortList(dropDownList.value);
+    }
+
+    //閉じたらボタンリセット＆表示リセット
+    private void OnDisable()
+    {
+        dropDownList.onValueChanged.RemoveListener(SortList);
+        Clear();
+    }
+
+    //ソート選択リスト
+    private void SortList(int value)
+    {
+        switch (value)
+        {
+            case 0: RefreshSort("amount", "Desc"); break;
+            case 1: RefreshSort("amount", "Asc"); break;
+            case 2: RefreshSort("rarity_id", "Desc"); break;
+            case 3: RefreshSort("rarity_id", "Asc"); break;
+        }
+    }
+
+    //ソート付きで全てのデータを取得
+    public void RefreshSort(string column, string sort)
+    {
+        Clear(); //再選択時に必ず破棄
+        List<ItemInstancesModel> itemInstancesList = ItemInstacesTable.SelectSortAll(column, sort);
+        DataList(itemInstancesList);
+    }
 
     //開いて更新
-    private void Refresh()
+    private void DataList(List<ItemInstancesModel> itemInstancesList)
     {
-        List<ItemInstancesModel> itemInstancesList = ItemInstacesTable.SelectAll();
-
         //何もアイテムを所持していなければ
         if (itemInstancesList == null || itemInstancesList.Count == 0)
         {

@@ -5,6 +5,7 @@ public class ClientInstance : MonoBehaviour
 {
     [SerializeField] GameObject itemInstanceView;
     [SerializeField] GameObject characterInstanceView;
+    [SerializeField] GameObject characterInstanceDetailView;
     [SerializeField] TextMeshProUGUI itemNothingText;
     [SerializeField] TextMeshProUGUI CharacterNothingText;
 
@@ -12,6 +13,7 @@ public class ClientInstance : MonoBehaviour
     {
         itemInstanceView.SetActive(false);
         characterInstanceView.SetActive(false);
+        characterInstanceDetailView.SetActive(false);
     }
 
     //アイテム一覧開くボタン
@@ -24,6 +26,12 @@ public class ClientInstance : MonoBehaviour
     public void CharacterInstanceButton(bool enabled)
     {
         characterInstanceView.SetActive(enabled);
+    }
+
+    //キャラクター詳細画面開閉ボタン
+    public void CharacterDetailButton(bool enabled)
+    {
+        characterInstanceDetailView.SetActive(enabled);
     }
 
     public void NothingItemMessage(string text)

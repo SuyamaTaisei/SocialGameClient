@@ -1531,7 +1531,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &88261309
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3405,6 +3405,7 @@ MonoBehaviour:
   currentAmountText: {fileID: 1578566791}
   increaseButton: {fileID: 108193009}
   decreaseButton: {fileID: 850958688}
+  clientInstance: {fileID: 1116380503}
   characterDetailView: {fileID: 2041603146}
 --- !u!1 &158242672
 GameObject:
@@ -22623,6 +22624,9 @@ MonoBehaviour:
   itemNothingText: {fileID: 2103941123}
   enhanceItemNothingText: {fileID: 916540070}
   CharacterNothingText: {fileID: 210899810}
+  enhanceItemList: {fileID: 618233856}
+  instanceCharacterList: {fileID: 581279431}
+  instanceCharacterDetailView: {fileID: 2041603146}
 --- !u!1 &1121430405
 GameObject:
   m_ObjectHideFlags: 0
@@ -35757,7 +35761,7 @@ GameObject:
   - component: {fileID: 1842921611}
   - component: {fileID: 1842921610}
   m_Layer: 0
-  m_Name: CloseButton
+  m_Name: EnhanceCompleteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39861,7 +39865,10 @@ MonoBehaviour:
   enhanceButton: {fileID: 89288023}
   executeEnhanceButton: {fileID: 1411646078}
   cancelEnhanceButton: {fileID: 487363522}
+  enhanceCompleteButton: {fileID: 1842921610}
   enhanceConfirmView: {fileID: 467343880}
+  enhanceCompleteView: {fileID: 88261308}
+  clientInstance: {fileID: 1116380503}
 --- !u!1 &2046237490
 GameObject:
   m_ObjectHideFlags: 0

@@ -12,8 +12,12 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     [SerializeField] Button enhanceButton;
     [SerializeField] Button executeEnhanceButton;
     [SerializeField] Button cancelEnhanceButton;
+    [SerializeField] Button enhanceCompleteButton;
 
     [SerializeField] GameObject enhanceConfirmView;
+    [SerializeField] GameObject enhanceCompleteView;
+
+    [SerializeField] ClientInstance clientInstance;
 
     private int beforeLevel;
     private int afterLevel;
@@ -21,9 +25,11 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     private void Start()
     {
         enhanceConfirmView.SetActive(false);
+        enhanceCompleteView.SetActive(false);
         enhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(true));
-        //executeEnhanceButton.onClick.AddListener(() => );
+        executeEnhanceButton.onClick.AddListener(() => clientInstance.ExecuteEnhance()); //強化リクエスト送信
         cancelEnhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(false));
+        enhanceCompleteButton.onClick.AddListener(() => SetEnhanceCompleteView(false));
     }
 
     public void Set(CharacterDataModel data1, CharacterRaritiesModel data2, CharacterInstancesModel data3, string imagePath)
@@ -31,6 +37,10 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
         if (characterDetailImage) characterDetailImage.sprite = Resources.Load<Sprite>(imagePath);
         if (characterDetailNameText) characterDetailNameText.text = data1.name;
         if (characterDetailRarityText) characterDetailRarityText.text = data2.name;
+
+        //強化対象となるキャラの更新
+        clientInstance.SetEnhanceCharacterId(data3.character_id);
+        clientInstance.ClearSelectEnhanceItems();
 
         beforeLevel = data3.level;
         if (characterDetailLevelBeforeText) characterDetailLevelBeforeText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + data3.level.ToString();
@@ -50,6 +60,18 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
         SetCtrlEnhanceButton();
     }
 
+    //強化後に最新レベルで更新
+    public void SetLatestLevel(int value)
+    {
+        beforeLevel = value;
+        afterLevel = value;
+
+        characterDetailLevelBeforeText.text = $"{GameUtility.Const.SHOW_INSTANCE_LEVEL}{beforeLevel}";
+        characterDetailLevelAfterText.text = $"{GameUtility.Const.SHOW_INSTANCE_LEVEL}{afterLevel}";
+
+        SetCtrlEnhanceButton(); //強化直後は、強化ボタンを押せない
+    }
+
     //強化ボタン押下制御
     private void SetCtrlEnhanceButton()
     {
@@ -60,5 +82,11 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     public void SetEnhanceConfirmView(bool enabled)
     {
         enhanceConfirmView.SetActive(enabled);
+    }
+
+    //強化完了画面
+    public void SetEnhanceCompleteView(bool enabled)
+    {
+        enhanceCompleteView.SetActive(enabled);
     }
 }

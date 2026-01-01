@@ -7838,7 +7838,7 @@ GameObject:
   - component: {fileID: 393053614}
   - component: {fileID: 393053613}
   m_Layer: 5
-  m_Name: EnhanceText
+  m_Name: EnhanceButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39866,6 +39866,7 @@ MonoBehaviour:
   executeEnhanceButton: {fileID: 1411646078}
   cancelEnhanceButton: {fileID: 487363522}
   enhanceCompleteButton: {fileID: 1842921610}
+  enhanceButtonText: {fileID: 393053613}
   enhanceConfirmView: {fileID: 467343880}
   enhanceCompleteView: {fileID: 88261308}
   clientInstance: {fileID: 1116380503}

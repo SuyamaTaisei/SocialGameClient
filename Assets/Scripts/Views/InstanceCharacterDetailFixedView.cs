@@ -14,6 +14,8 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     [SerializeField] Button cancelEnhanceButton;
     [SerializeField] Button enhanceCompleteButton;
 
+    [SerializeField] TextMeshProUGUI enhanceButtonText;
+
     [SerializeField] GameObject enhanceConfirmView;
     [SerializeField] GameObject enhanceCompleteView;
 
@@ -76,6 +78,9 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     private void SetCtrlEnhanceButton()
     {
         enhanceButton.interactable = (afterLevel != beforeLevel) && (afterLevel <= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX));
+
+        bool isMaxLevel = beforeLevel >= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX);
+        enhanceButtonText.text = isMaxLevel ? "最大レベルです" : "強化する";
     }
 
     //強化確認画面

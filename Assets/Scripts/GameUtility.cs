@@ -20,6 +20,7 @@ namespace GameUtility
         public const string MASTER_DATA_GET_URL   = BASE_URL + "api/get_master_data";
         public const string PAYMENT_URL           = BASE_URL + "api/payment";
         public const string GACHA_EXECUTE_URL     = BASE_URL + "api/gacha_execute";
+        public const string CHARACTER_ENHANCE_URL = BASE_URL + "api/enhance_character";
 
         //DB
         public const string SQLITE_DB_NAME = "SocialGameServer.db";

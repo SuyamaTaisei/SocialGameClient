@@ -10,9 +10,21 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     [SerializeField] TextMeshProUGUI characterDetailLevelBeforeText;
     [SerializeField] TextMeshProUGUI characterDetailLevelAfterText;
     [SerializeField] Button enhanceButton;
+    [SerializeField] Button executeEnhanceButton;
+    [SerializeField] Button cancelEnhanceButton;
+
+    [SerializeField] GameObject enhanceConfirmView;
 
     private int beforeLevel;
     private int afterLevel;
+
+    private void Start()
+    {
+        enhanceConfirmView.SetActive(false);
+        enhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(true));
+        //executeEnhanceButton.onClick.AddListener(() => );
+        cancelEnhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(false));
+    }
 
     public void Set(CharacterDataModel data1, CharacterRaritiesModel data2, CharacterInstancesModel data3, string imagePath)
     {
@@ -44,5 +56,9 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
         enhanceButton.interactable = (afterLevel != beforeLevel) && (afterLevel <= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX));
     }
 
-    //強化ボタン押下時の処理を書く
+    //強化確認画面
+    public void SetEnhanceConfirmView(bool enabled)
+    {
+        enhanceConfirmView.SetActive(enabled);
+    }
 }

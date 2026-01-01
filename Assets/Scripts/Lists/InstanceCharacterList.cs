@@ -8,7 +8,7 @@ public class InstanceCharacterList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientInstance clientInstance;
-    [SerializeField] InstanceCharacterDetailView characterDetailView;
+    [SerializeField] InstanceCharacterDetailFixedView characterDetailView;
     [SerializeField] TMP_Dropdown dropDownList;
 
     //現在選択中のソートリストで再表示、別のソート選択で表示更新

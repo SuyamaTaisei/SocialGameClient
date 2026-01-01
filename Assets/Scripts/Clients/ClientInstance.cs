@@ -7,6 +7,7 @@ public class ClientInstance : MonoBehaviour
     [SerializeField] GameObject characterInstanceView;
     [SerializeField] GameObject characterInstanceDetailView;
     [SerializeField] TextMeshProUGUI itemNothingText;
+    [SerializeField] TextMeshProUGUI enhanceItemNothingText;
     [SerializeField] TextMeshProUGUI CharacterNothingText;
 
     private void Start()
@@ -37,6 +38,11 @@ public class ClientInstance : MonoBehaviour
     public void NothingItemMessage(string text)
     {
         itemNothingText.text = text;
+    }
+
+    public void NothingEnhanceItemMessage(string text)
+    {
+        enhanceItemNothingText.text = text;
     }
 
     public void NothingCharacterMessage(string text)

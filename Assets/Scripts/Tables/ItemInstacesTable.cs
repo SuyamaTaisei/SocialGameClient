@@ -72,4 +72,27 @@ public class ItemInstacesTable
 
         return result;
     }
+
+    //所持している強化アイテムだけ全て取得
+    public static List<ItemInstancesModel> SelectEnhanceItemAll()
+    {
+        string query = $"select ii.* from item_Instances as ii inner join item_data as id on id.id = ii.item_id where id.item_category = {GameUtility.Const.ITEM_CATEGORY_ENHANCES} order by id.id Asc";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<ItemInstancesModel> result = new List<ItemInstancesModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            ItemInstancesModel itemInstancesModel = new ItemInstancesModel();
+            itemInstancesModel.id = int.Parse(record["id"].ToString());
+            itemInstancesModel.manage_id = int.Parse(record["manage_id"].ToString());
+            itemInstancesModel.item_id = int.Parse(record["item_id"].ToString());
+            itemInstancesModel.amount = int.Parse(record["amount"].ToString());
+
+            result.Add(itemInstancesModel);
+        }
+
+        return result;
+    }
 }

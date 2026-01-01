@@ -12,6 +12,7 @@ public class EnhanceItemTemplateView : MonoBehaviour
     [SerializeField] Button increaseButton;
     [SerializeField] Button decreaseButton;
 
+    [SerializeField] ClientInstance clientInstance;
     [SerializeField] InstanceCharacterDetailFixedView characterDetailView;
 
     private int amountValue;
@@ -28,19 +29,22 @@ public class EnhanceItemTemplateView : MonoBehaviour
         increaseButton.onClick.RemoveAllListeners();
         decreaseButton.onClick.RemoveAllListeners();
 
-        //強化アイテム数、レベルアップ後の増減処理
+        //強化アイテム数、レベルアップ後の増減処理、選択アイテムIDと数量の保持
         increaseButton.onClick.AddListener(() => {
             SetAmount(amountValue + GameUtility.Const.SHOP_AMOUNT_MIN, data3.amount);
             characterDetailView.SetAddAfterLevel(+data1.value);
+            clientInstance.SetEnhanceItems(data3.item_id, amountValue);
         });
         decreaseButton.onClick.AddListener(() => {
             SetAmount(amountValue - GameUtility.Const.SHOP_AMOUNT_MIN, data3.amount);
             characterDetailView.SetAddAfterLevel(-data1.value);
+            clientInstance.SetEnhanceItems(data3.item_id, amountValue);
         });
 
         //開くたびにリセット
         amountValue = minAmount;
         SetAmount(minAmount, data3.amount);
+        clientInstance.SetEnhanceItems(data3.item_id, amountValue);
     }
 
     //強化アイテム数の増減制御

@@ -10,12 +10,14 @@ public class EnhanceItemList : MonoBehaviour
     private void OnEnable() => RefreshEnhanceList();
     private void OnDisable() => Clear();
 
-    private void Start()
+    //外部更新用
+    public void Refresh()
     {
+        Clear();
         RefreshEnhanceList();
     }
 
-    private void RefreshEnhanceList()
+    public void RefreshEnhanceList()
     {
         List<ItemInstancesModel> itemInstancesList = ItemInstacesTable.SelectEnhanceItemAll();
 

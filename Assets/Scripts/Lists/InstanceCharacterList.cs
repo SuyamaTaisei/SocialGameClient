@@ -39,6 +39,12 @@ public class InstanceCharacterList : MonoBehaviour
         }
     }
 
+    //外部更新用
+    public void Refresh()
+    {
+        RefreshSort("id", "Desc");
+    }
+
     //ソート付きで全てのデータを取得
     public void RefreshSort(string column, string sort)
     {

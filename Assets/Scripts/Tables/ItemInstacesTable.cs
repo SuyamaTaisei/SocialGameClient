@@ -95,4 +95,12 @@ public class ItemInstacesTable
 
         return result;
     }
+
+    //管理ID、アイテムID、最大数量で一致した時のみレコードを削除
+    public static void DeleteItem(int manageId, int itemId, int amount)
+    {
+        string query = $"delete from item_instances where manage_id = {manageId} and item_id = {itemId} and amount = {amount}";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        sqlDB.ExecuteNonQuery(query);
+    }
 }

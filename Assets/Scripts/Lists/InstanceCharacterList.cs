@@ -11,6 +11,10 @@ public class InstanceCharacterList : MonoBehaviour
     [SerializeField] InstanceCharacterDetailFixedView characterDetailView;
     [SerializeField] TMP_Dropdown dropDownList;
 
+    //標準ソート。最後に選ばれたソートを保持
+    private string lastSortColumn = "id";
+    private string lastSortForm = "Desc";
+
     //現在選択中のソートリストで再表示、別のソート選択で表示更新
     private void OnEnable()
     {
@@ -30,19 +34,20 @@ public class InstanceCharacterList : MonoBehaviour
     {
         switch (value)
         {
-            case 0: RefreshSort("id", "Desc"); break;
-            case 1: RefreshSort("id", "Asc"); break;
-            case 2: RefreshSort("level", "Desc"); break;
-            case 3: RefreshSort("level", "Asc"); break;
-            case 4: RefreshSort("rarity_id", "Desc"); break;
-            case 5: RefreshSort("rarity_id", "Asc"); break;
+            case 0: lastSortColumn = "id";        lastSortForm = "Desc"; break;
+            case 1: lastSortColumn = "id";        lastSortForm = "Asc";  break;
+            case 2: lastSortColumn = "level";     lastSortForm = "Desc"; break;
+            case 3: lastSortColumn = "level";     lastSortForm = "Asc";  break;
+            case 4: lastSortColumn = "rarity_id"; lastSortForm = "Desc"; break;
+            case 5: lastSortColumn = "rarity_id"; lastSortForm = "Asc";  break;
         }
+        RefreshSort(lastSortColumn, lastSortForm);
     }
 
     //外部更新用
     public void Refresh()
     {
-        RefreshSort("id", "Desc");
+        RefreshSort(lastSortColumn, lastSortForm);
     }
 
     //ソート付きで全てのデータを取得

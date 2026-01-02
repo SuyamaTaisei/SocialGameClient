@@ -6,8 +6,10 @@ using System.Collections.Generic;
 public class ClientInstance : MonoBehaviour
 {
     [SerializeField] GameObject itemInstanceView;
+    [SerializeField] GameObject itemInstanceDetailView;
     [SerializeField] GameObject characterInstanceView;
     [SerializeField] GameObject characterInstanceDetailView;
+
     [SerializeField] TextMeshProUGUI itemNothingText;
     [SerializeField] TextMeshProUGUI enhanceItemNothingText;
     [SerializeField] TextMeshProUGUI CharacterNothingText;
@@ -32,6 +34,7 @@ public class ClientInstance : MonoBehaviour
         apiConnect = ApiConnect.Instance;
 
         itemInstanceView.SetActive(false);
+        itemInstanceDetailView.SetActive(false);
         characterInstanceView.SetActive(false);
         characterInstanceDetailView.SetActive(false);
     }
@@ -111,6 +114,12 @@ public class ClientInstance : MonoBehaviour
     public void CharacterDetailButton(bool enabled)
     {
         characterInstanceDetailView.SetActive(enabled);
+    }
+
+    //アイテム詳細画面開閉ボタン
+    public void ItemDetailButton(bool enabled)
+    {
+        itemInstanceDetailView.SetActive(enabled);
     }
 
     public void NothingItemMessage(string text)

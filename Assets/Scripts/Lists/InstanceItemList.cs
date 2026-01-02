@@ -8,6 +8,7 @@ public class InstanceItemList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientInstance clientInstance;
+    [SerializeField] InstanceItemDetailFixedView itemDetailFixedView;
     [SerializeField] TMP_Dropdown dropDownList;
 
     //現在選択中のソートリストで再表示、別のソート選択で表示更新
@@ -72,7 +73,7 @@ public class InstanceItemList : MonoBehaviour
 
             //データの描画
             view.Set(data1, data2, data, imagePath);
-            //button.onClick.AddListener(() => instanceCharacterTemplateView...;
+            button.onClick.AddListener(() => itemDetailFixedView.Set(data1, data2, data, imagePath));
         }
     }
 

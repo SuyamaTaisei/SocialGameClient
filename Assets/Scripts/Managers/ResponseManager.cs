@@ -247,6 +247,9 @@ public class ResponseManager : MonoBehaviour
                 ExecuteGacha(responseObjects);
                 ExecutePayment(responseObjects);
                 break;
+            case GameUtility.Const.CHARACTER_ENHANCE_URL:
+                ExecuteHome(responseObjects);
+                break;
         }
     }
 }

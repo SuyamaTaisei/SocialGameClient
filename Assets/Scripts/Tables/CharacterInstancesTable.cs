@@ -73,4 +73,26 @@ public class CharacterInstancesTable
 
         return result;
     }
+
+    public static CharacterInstancesModel SelectId(int characterId)
+    {
+        string query = "select * from character_Instances where character_id = " + characterId;
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        CharacterInstancesModel characterInstancesModel = null;
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            //必ずインスタンスを生成
+            characterInstancesModel = new CharacterInstancesModel();
+            characterInstancesModel.id = int.Parse(record["id"].ToString());
+            characterInstancesModel.manage_id = int.Parse(record["manage_id"].ToString());
+            characterInstancesModel.character_id = int.Parse(record["character_id"].ToString());
+            characterInstancesModel.level = int.Parse(record["level"].ToString());
+            break;
+        }
+
+        return characterInstancesModel;
+    }
 }

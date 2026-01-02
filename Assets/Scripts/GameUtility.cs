@@ -20,6 +20,7 @@ namespace GameUtility
         public const string MASTER_DATA_GET_URL   = BASE_URL + "api/get_master_data";
         public const string PAYMENT_URL           = BASE_URL + "api/payment";
         public const string GACHA_EXECUTE_URL     = BASE_URL + "api/gacha_execute";
+        public const string CHARACTER_ENHANCE_URL = BASE_URL + "api/enhance_character";
 
         //DB
         public const string SQLITE_DB_NAME = "SocialGameServer.db";
@@ -80,6 +81,7 @@ namespace GameUtility
         public const string SHOW_INSTANCE_AMOUNT_MAX = "99";
         public const string SHOW_INSTANCE_CHARA_NOTHING = "キャラクターを所持していません";
         public const string SHOW_INSTANCE_ITEM_NOTHING = "アイテムを所持していません";
+        public const string SHOW_INSTANCE_ENHANCE_ITEM_NOTHING = "強化アイテムを所持していません";
 
         //ショップカテゴリ数値
         public const int SHOP_GEMS = 1001;
@@ -105,6 +107,9 @@ namespace GameUtility
         public const int GACHA_3999_NUMBER = 3999;
         public const int GACHA_4000_NUMBER = 4000;
         public const int GACHA_4999_NUMBER = 4999;
+
+        //アイテムカテゴリ数値
+        public const int ITEM_CATEGORY_ENHANCES = 1001;
 
         //ログ数値
         public const int LOG_GACHA_LIMIT = 150;

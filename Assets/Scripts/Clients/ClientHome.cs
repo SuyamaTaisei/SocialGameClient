@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ClientHome : MonoBehaviour
 {
@@ -10,6 +11,13 @@ public class ClientHome : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemPaidText;
     [SerializeField] TextMeshProUGUI userNameText;
 
+    [SerializeField] Image staminaGauge;
+    [SerializeField] TextMeshProUGUI staminaValueText;
+    [SerializeField] Button staminaRecoveryButton;
+    [SerializeField] Button gameMatchButton;
+
+    private UsersModel usersModel;
+
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
@@ -17,8 +25,21 @@ public class ClientHome : MonoBehaviour
     private void Start()
     {
         apiConnect = ApiConnect.Instance;
-        var usersModel = UsersTable.Select();
+        usersModel = UsersTable.Select();
 
+        RequestHome(usersModel, GameUtility.Const.HOME_URL);
+        WalletApply(coinText, gemFreeText, gemPaidText);
+        userNameText.text = usersModel.user_name;
+    }
+
+    private void Update()
+    {
+        WalletApply(coinText, gemFreeText, gemPaidText);
+    }
+
+    //リクエスト送信処理
+    public void RequestHome(UsersModel usersModel, string endPoint)
+    {
         if (!string.IsNullOrEmpty(usersModel.id))
         {
             string id = usersModel.id;
@@ -26,16 +47,8 @@ public class ClientHome : MonoBehaviour
             {
                 new MultipartFormDataSection(column_id, id)
             };
-            StartCoroutine(apiConnect.Send(GameUtility.Const.HOME_URL, form));
-
-            WalletApply(coinText, gemFreeText, gemPaidText);
-            userNameText.text = usersModel.user_name;
+            StartCoroutine(apiConnect.Send(endPoint, form));
         }
-    }
-
-    private void Update()
-    {
-        WalletApply(coinText, gemFreeText, gemPaidText);
     }
 
     //ウォレット反映処理

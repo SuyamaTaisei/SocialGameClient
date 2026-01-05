@@ -27,6 +27,7 @@ public class ClientHome : MonoBehaviour
 
         RequestHome(usersModel, GameUtility.Const.HOME_URL);
         WalletApply(coinText, gemFreeText, gemPaidText);
+        StaminaButtonCtrl();
 
         userNameText.text = usersModel.user_name;
         staminaValueText.text = usersModel.last_stamina.ToString() + "/100";
@@ -51,7 +52,10 @@ public class ClientHome : MonoBehaviour
             {
                 new MultipartFormDataSection(column_id, id)
             };
-            StartCoroutine(apiConnect.Send(endPoint, form, (action) => { StaminaApply(); }));
+            StartCoroutine(apiConnect.Send(endPoint, form, (action) => {
+                StaminaApply();
+                StaminaButtonCtrl();
+            }));
         }
     }
 
@@ -70,5 +74,14 @@ public class ClientHome : MonoBehaviour
         var usersModel = UsersTable.Select();
         staminaValueText.text = usersModel.last_stamina.ToString() + "/100";
         staminaGauge.fillAmount = (float)usersModel.last_stamina / 100;
+    }
+
+    //スタミナ、対戦ボタン押下制御
+    public void StaminaButtonCtrl()
+    {
+        var usersModel = UsersTable.Select();
+        var walletsModel = WalletsTable.Select();
+        staminaRecoveryButton.interactable = usersModel.last_stamina < 199 && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= 50;
+        gameMatchButton.interactable = usersModel.last_stamina >= 5;
     }
 }

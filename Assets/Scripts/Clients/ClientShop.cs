@@ -90,7 +90,11 @@ public class ClientShop : MonoBehaviour
             new MultipartFormDataSection(column_product_id, index.ToString()),
             new MultipartFormDataSection(key_amount, amount.ToString())
         };
-        StartCoroutine(apiConnect.Send(GameUtility.Const.PAYMENT_URL, form));
+        StartCoroutine(apiConnect.Send(GameUtility.Const.PAYMENT_URL, form, (action) =>
+        {
+            clientHome.StaminaApply();
+            clientHome.StaminaButtonCtrl();
+        }));
     }
 
     //価格更新

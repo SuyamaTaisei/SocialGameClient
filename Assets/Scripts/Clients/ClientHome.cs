@@ -16,8 +16,6 @@ public class ClientHome : MonoBehaviour
     [SerializeField] Button staminaRecoveryButton;
     [SerializeField] Button gameMatchButton;
 
-    private UsersModel usersModel;
-
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
@@ -25,11 +23,17 @@ public class ClientHome : MonoBehaviour
     private void Start()
     {
         apiConnect = ApiConnect.Instance;
-        usersModel = UsersTable.Select();
+        var usersModel = UsersTable.Select();
 
         RequestHome(usersModel, GameUtility.Const.HOME_URL);
         WalletApply(coinText, gemFreeText, gemPaidText);
+
         userNameText.text = usersModel.user_name;
+        staminaValueText.text = usersModel.last_stamina.ToString() + "/100";
+        staminaGauge.fillAmount = (float)usersModel.last_stamina / 100;
+
+        staminaRecoveryButton.onClick.AddListener(() => { RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL); });
+        gameMatchButton.onClick.AddListener(() => { RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL); });
     }
 
     private void Update()
@@ -47,7 +51,7 @@ public class ClientHome : MonoBehaviour
             {
                 new MultipartFormDataSection(column_id, id)
             };
-            StartCoroutine(apiConnect.Send(endPoint, form));
+            StartCoroutine(apiConnect.Send(endPoint, form, (action) => { StaminaApply(); }));
         }
     }
 
@@ -58,5 +62,13 @@ public class ClientHome : MonoBehaviour
         coinText.text = walletsModel.coin_amount.ToString();
         gemFreeText.text = walletsModel.gem_free_amount.ToString();
         gemPaidText.text = walletsModel.gem_paid_amount.ToString();
+    }
+
+    //スタミナ反映処理
+    public void StaminaApply()
+    {
+        var usersModel = UsersTable.Select();
+        staminaValueText.text = usersModel.last_stamina.ToString() + "/100";
+        staminaGauge.fillAmount = (float)usersModel.last_stamina / 100;
     }
 }

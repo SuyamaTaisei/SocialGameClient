@@ -21,6 +21,9 @@ namespace GameUtility
         public const string PAYMENT_URL           = BASE_URL + "api/payment";
         public const string GACHA_EXECUTE_URL     = BASE_URL + "api/gacha_execute";
         public const string CHARACTER_ENHANCE_URL = BASE_URL + "api/enhance_character";
+        public const string STAMINA_DECREASE_URL  = BASE_URL + "api/stamina_decrease";
+        public const string STAMINA_INCREASE_URL  = BASE_URL + "api/stamina_increase";
+        public const string STAMINA_AUTO_INCREASE_URL = BASE_URL + "api/stamina_auto_increase";
 
         //DB
         public const string SQLITE_DB_NAME = "SocialGameServer.db";

@@ -3,6 +3,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using System.Collections;
 
 public class ClientHome : MonoBehaviour
 {
@@ -27,6 +28,7 @@ public class ClientHome : MonoBehaviour
 
         RequestHome(usersModel, GameUtility.Const.HOME_URL);
         WalletApply(coinText, gemFreeText, gemPaidText);
+        StartCoroutine(StaminaAutoIncrease());
         StaminaButtonCtrl();
 
         userNameText.text = usersModel.user_name;
@@ -83,5 +85,22 @@ public class ClientHome : MonoBehaviour
         var walletsModel = WalletsTable.Select();
         staminaRecoveryButton.interactable = usersModel.last_stamina < 199 && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= 50;
         gameMatchButton.interactable = usersModel.last_stamina >= 5;
+    }
+
+    //スタミナ自然回復処理。1分毎に1回復。最大値の場合はスキップ (基本はホームにいる時のみ実行。ゲームプレイ時などは差分計算で増やして負荷軽減)
+    private IEnumerator StaminaAutoIncrease()
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(60f);
+            var usersModel = UsersTable.Select();
+
+            if (usersModel.last_stamina >= 199)
+            {
+                continue;
+            }
+
+            RequestHome(usersModel, GameUtility.Const.STAMINA_AUTO_INCREASE_URL);
+        }
     }
 }

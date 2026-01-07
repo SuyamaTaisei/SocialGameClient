@@ -38,6 +38,7 @@ public class ResponseObjects
 public class ResponseManager : MonoBehaviour
 {
     private ClientShop clientShop;
+    private ProductDetailFixedView shopConfirmFixedView;
     private ClientGacha clientGacha;
     private GachaResultList gachaResultList;
     private GachaRewardList gachaRewardList;
@@ -210,6 +211,7 @@ public class ResponseManager : MonoBehaviour
     {
         clientShop = FindAnyObjectByType<ClientShop>();
         clientGacha = FindAnyObjectByType<ClientGacha>();        
+        shopConfirmFixedView = FindAnyObjectByType<ProductDetailFixedView>(FindObjectsInactive.Include);
 
         if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_NOT_PAYMENT))
         {
@@ -227,9 +229,9 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("支払い完了");
             clientShop.WarningMessage("");
-            clientShop.CloseProductInfoButton();
-            clientShop.CloseConfirmButton();
-            clientShop.PaymentComplete(true);
+            shopConfirmFixedView.CloseProductInfoButton();
+            shopConfirmFixedView.CloseConfirmButton();
+            shopConfirmFixedView.PaymentComplete(true);
             clientGacha.WarningMessage("");
             clientGacha.CloseConfirmButton();
         }

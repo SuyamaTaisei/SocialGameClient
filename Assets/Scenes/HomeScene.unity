@@ -8113,8 +8113,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
+      - m_Target: {fileID: 1655090803}
+        m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
         m_MethodName: CloseProductInfoButton
         m_Mode: 1
         m_Arguments:
@@ -13933,8 +13933,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
+      - m_Target: {fileID: 1655090803}
+        m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
         m_MethodName: PaymentComplete
         m_Mode: 6
         m_Arguments:
@@ -14336,8 +14336,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
+      - m_Target: {fileID: 1655090803}
+        m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
         m_MethodName: PaymentComplete
         m_Mode: 6
         m_Arguments:
@@ -16077,7 +16077,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1499128405}
   templateView: {fileID: 1894198015}
-  clientShop: {fileID: 2025727311}
+  shopConfirmFixedView: {fileID: 1655090803}
   startCount: 0
   maxCount: 3
   productNumber1: 10001
@@ -31341,7 +31341,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 480185484}
   templateView: {fileID: 202819306}
-  clientShop: {fileID: 2025727311}
+  shopConfirmFixedView: {fileID: 1655090803}
   startCount: 4
   maxCount: 7
   productNumber1: 10001
@@ -36123,8 +36123,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1655090802}
+  - component: {fileID: 1655090803}
   m_Layer: 0
-  m_Name: ProductInfoView
+  m_Name: ProductDetailFixedView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36165,6 +36166,40 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1655090803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655090801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 93157599487493a4e8ea06f71d2542dc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopConfirmView: {fileID: 1655090801}
+  productNameText: {fileID: 1653300512}
+  productRarityText: {fileID: 1282777243}
+  productDescriptionText: {fileID: 225567423}
+  productImage: {fileID: 1411107731}
+  priceMoneyText: {fileID: 938867757}
+  priceCoinText: {fileID: 114164114}
+  priceGemText: {fileID: 1684634507}
+  amountText: {fileID: 1165978823}
+  increaseButton: {fileID: 681280399}
+  decreaseButton: {fileID: 461797160}
+  buyMoneyButton: {fileID: 257106186}
+  buyItemCoinButton: {fileID: 980415271}
+  buyItemGemButton: {fileID: 896128339}
+  paymentConfirmView: {fileID: 1632232013}
+  paymentConfirmText: {fileID: 1864895498}
+  walletStateText: {fileID: 781881643}
+  yesButton: {fileID: 242989897}
+  noButton: {fileID: 1121430407}
+  paymentCompleteView: {fileID: 1475781999}
+  clientShop: {fileID: 2025727311}
+  shopCategoryTemplateView: {fileID: 884381919}
 --- !u!1 &1655187958
 GameObject:
   m_ObjectHideFlags: 0
@@ -39207,8 +39242,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
+      - m_Target: {fileID: 1655090803}
+        m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
         m_MethodName: CloseProductInfoButton
         m_Mode: 1
         m_Arguments:
@@ -44081,34 +44116,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopView: {fileID: 84480098}
-  itemListView: {fileID: 1400259708}
-  gemListView: {fileID: 769193377}
-  shopConfirmView: {fileID: 1655090801}
   coinText: {fileID: 957532797}
   gemFreeText: {fileID: 197218853}
   gemPaidText: {fileID: 197218852}
-  productNameText: {fileID: 1653300512}
-  productRarityText: {fileID: 1282777243}
-  productDescriptionText: {fileID: 225567423}
-  productImage: {fileID: 1411107731}
-  priceMoneyText: {fileID: 938867757}
-  priceCoinText: {fileID: 114164114}
-  priceGemText: {fileID: 1684634507}
-  amountText: {fileID: 1165978823}
-  increaseButton: {fileID: 681280399}
-  decreaseButton: {fileID: 461797160}
-  buyMoneyButton: {fileID: 257106186}
-  buyItemCoinButton: {fileID: 980415271}
-  buyItemGemButton: {fileID: 896128339}
-  paymentConfirmView: {fileID: 1632232013}
-  paymentConfirmText: {fileID: 1864895498}
-  walletStateText: {fileID: 781881643}
-  yesButton: {fileID: 242989897}
-  noButton: {fileID: 1121430407}
-  paymentCompleteView: {fileID: 1475781999}
   warningText: {fileID: 2103633098}
   clientHome: {fileID: 2134605330}
-  shopCategoryTemplateView: {fileID: 884381919}
+  shopConfirmFixedView: {fileID: 1655090803}
 --- !u!1001 &2039632324
 PrefabInstance:
   m_ObjectHideFlags: 0

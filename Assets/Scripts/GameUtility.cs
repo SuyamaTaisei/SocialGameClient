@@ -56,6 +56,10 @@ namespace GameUtility
         public const string SHOW_COIN = "コイン";
         public const string SHOW_GEM = "ジェム";
 
+        //スタミナ表記
+        public const string SHOW_STAMINA_RECOVERY_CONFIRM = "ジェムでスタミナを回復しますか？";
+        public const string SHOW_STAMINA_DECREASE_CONFIRM = "スタミナを消費して対戦しますか？";
+
         //ショップ表記
         public const string SHOW_PRODUCT_NAME = "商品名";
         public const string SHOW_GEM_WALLET = "現在のウォレット残高\n";

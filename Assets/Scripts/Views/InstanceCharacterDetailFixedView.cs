@@ -80,7 +80,7 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
         enhanceButton.interactable = (afterLevel != beforeLevel) && (afterLevel <= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX));
 
         bool isMaxLevel = beforeLevel >= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX);
-        enhanceButtonText.text = isMaxLevel ? "最大レベルです" : "強化する";
+        enhanceButtonText.text = isMaxLevel ? GameUtility.Const.SHOW_INSTANCE_MAX : GameUtility.Const.SHOW_INSTANCE_ENHANCE;
     }
 
     //強化確認画面

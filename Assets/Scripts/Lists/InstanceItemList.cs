@@ -11,6 +11,10 @@ public class InstanceItemList : MonoBehaviour
     [SerializeField] InstanceItemDetailFixedView itemDetailFixedView;
     [SerializeField] TMP_Dropdown dropDownList;
 
+    //標準ソート。最後に選ばれたソートを保持
+    private string lastSortColumn = "amount";
+    private string lastSortForm = GameUtility.Const.DESC;
+
     //現在選択中のソートリストで再表示、別のソート選択で表示更新
     private void OnEnable()
     {
@@ -30,11 +34,12 @@ public class InstanceItemList : MonoBehaviour
     {
         switch (value)
         {
-            case 0: RefreshSort("amount", "Desc"); break;
-            case 1: RefreshSort("amount", "Asc"); break;
-            case 2: RefreshSort("rarity_id", "Desc"); break;
-            case 3: RefreshSort("rarity_id", "Asc"); break;
+            case 0: lastSortColumn = "amount";    lastSortForm = GameUtility.Const.DESC; break;
+            case 1: lastSortColumn = "amount";    lastSortForm = GameUtility.Const.ASC;  break;
+            case 2: lastSortColumn = "rarity_id"; lastSortForm = GameUtility.Const.DESC; break;
+            case 3: lastSortColumn = "rarity_id"; lastSortForm = GameUtility.Const.ASC;  break;
         }
+        RefreshSort(lastSortColumn, lastSortForm);
     }
 
     //ソート付きで全てのデータを取得

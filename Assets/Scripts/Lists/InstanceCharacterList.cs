@@ -13,7 +13,7 @@ public class InstanceCharacterList : MonoBehaviour
 
     //標準ソート。最後に選ばれたソートを保持
     private string lastSortColumn = "id";
-    private string lastSortForm = "Desc";
+    private string lastSortForm = GameUtility.Const.DESC;
 
     //現在選択中のソートリストで再表示、別のソート選択で表示更新
     private void OnEnable()
@@ -34,12 +34,12 @@ public class InstanceCharacterList : MonoBehaviour
     {
         switch (value)
         {
-            case 0: lastSortColumn = "id";        lastSortForm = "Desc"; break;
-            case 1: lastSortColumn = "id";        lastSortForm = "Asc";  break;
-            case 2: lastSortColumn = "level";     lastSortForm = "Desc"; break;
-            case 3: lastSortColumn = "level";     lastSortForm = "Asc";  break;
-            case 4: lastSortColumn = "rarity_id"; lastSortForm = "Desc"; break;
-            case 5: lastSortColumn = "rarity_id"; lastSortForm = "Asc";  break;
+            case 0: lastSortColumn = "id";        lastSortForm = GameUtility.Const.DESC; break;
+            case 1: lastSortColumn = "id";        lastSortForm = GameUtility.Const.ASC;  break;
+            case 2: lastSortColumn = "level";     lastSortForm = GameUtility.Const.DESC; break;
+            case 3: lastSortColumn = "level";     lastSortForm = GameUtility.Const.ASC;  break;
+            case 4: lastSortColumn = "rarity_id"; lastSortForm = GameUtility.Const.DESC; break;
+            case 5: lastSortColumn = "rarity_id"; lastSortForm = GameUtility.Const.ASC;  break;
         }
         RefreshSort(lastSortColumn, lastSortForm);
     }

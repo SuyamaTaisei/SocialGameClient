@@ -88,6 +88,9 @@ namespace GameUtility
         public const string SHOW_INSTANCE_CHARA_NOTHING = "キャラクターを所持していません";
         public const string SHOW_INSTANCE_ITEM_NOTHING = "アイテムを所持していません";
         public const string SHOW_INSTANCE_ENHANCE_ITEM_NOTHING = "強化アイテムを所持していません";
+        public const string SHOW_INSTANCE_MAX = "最大レベルです";
+        public const string SHOW_INSTANCE_ENHANCE = "強化する";
+        public const string SHOW_POSSESSION = "所持";
 
         //スタミナ数値
         public const int STAMINA_MAX_VALUE = 199;
@@ -135,5 +138,9 @@ namespace GameUtility
 
         //シーン名
         public const string SCENE_NAME_HOMESCENE = "HomeScene";
+
+        //SQLクエリ
+        public const string ASC = "Asc";
+        public const string DESC = "Desc";
     }
 }

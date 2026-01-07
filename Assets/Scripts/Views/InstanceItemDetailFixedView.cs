@@ -16,6 +16,6 @@ public class InstanceItemDetailFixedView : MonoBehaviour
         if (detailItemNameText) detailItemNameText.text = data1.name;
         if (detailItemRarityText) detailItemRarityText.text = data2.name;
         if (detailItemDescriptionText) detailItemDescriptionText.text = data1.description;
-        if (detailItemAmountText) detailItemAmountText.text = data3.amount + "個所持";
+        if (detailItemAmountText) detailItemAmountText.text = data3.amount + GameUtility.Const.SHOW_AMOUNT + GameUtility.Const.SHOW_POSSESSION;
     }
 }

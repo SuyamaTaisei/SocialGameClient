@@ -2,6 +2,8 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
+using System.Collections;
 
 public class ClientHome : MonoBehaviour
 {
@@ -9,6 +11,20 @@ public class ClientHome : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
     [SerializeField] TextMeshProUGUI userNameText;
+
+    [SerializeField] Image staminaGauge;
+    [SerializeField] TextMeshProUGUI staminaValueText;
+    [SerializeField] Button staminaRecoveryButton;
+    [SerializeField] Button gameMatchButton;
+
+    [SerializeField] TextMeshProUGUI recoveryConfirmText;
+    [SerializeField] TextMeshProUGUI gameMatchConfirmText;
+    [SerializeField] GameObject recoveryConfirmView;
+    [SerializeField] GameObject gameMatchConfirmView;
+    [SerializeField] Button recoveryExecuteButton;
+    [SerializeField] Button gameMatchExecuteButton;
+    [SerializeField] Button recoveryCancelButton;
+    [SerializeField] Button gameMatchCancelButton;
 
     private ApiConnect apiConnect;
 
@@ -19,6 +35,43 @@ public class ClientHome : MonoBehaviour
         apiConnect = ApiConnect.Instance;
         var usersModel = UsersTable.Select();
 
+        RequestHome(usersModel, GameUtility.Const.HOME_URL);
+        WalletApply(coinText, gemFreeText, gemPaidText);
+        StartCoroutine(StaminaAutoIncrease());
+        StaminaButtonCtrl();
+
+        userNameText.text = usersModel.user_name;
+        staminaValueText.text = usersModel.last_stamina.ToString() + "/" + GameUtility.Const.STAMINA_MOST_VALUE;
+        staminaGauge.fillAmount = (float)usersModel.last_stamina / GameUtility.Const.STAMINA_MOST_VALUE;
+
+        recoveryConfirmText.text = GameUtility.Const.STAMINA_GEM_VALUE + GameUtility.Const.SHOW_STAMINA_RECOVERY_CONFIRM;
+        gameMatchConfirmText.text = GameUtility.Const.STAMINA_DECREASE_VALUE + GameUtility.Const.SHOW_STAMINA_DECREASE_CONFIRM;
+
+        recoveryConfirmView.SetActive(false);
+        gameMatchConfirmView.SetActive(false);
+
+        staminaRecoveryButton.onClick.AddListener(()  => { recoveryConfirmView.SetActive(true); });
+        gameMatchButton.onClick.AddListener(()        => { gameMatchConfirmView.SetActive(true); });
+        recoveryExecuteButton.onClick.AddListener(()  => {
+            RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL);
+            recoveryConfirmView.SetActive(false);
+        });
+        gameMatchExecuteButton.onClick.AddListener(() => {
+            RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL);
+            gameMatchConfirmView.SetActive(false);
+        });
+        recoveryCancelButton.onClick.AddListener(() => { recoveryConfirmView.SetActive(false); });
+        gameMatchCancelButton.onClick.AddListener(() => { gameMatchConfirmView.SetActive(false); });
+    }
+
+    private void Update()
+    {
+        WalletApply(coinText, gemFreeText, gemPaidText);
+    }
+
+    //リクエスト送信処理
+    public void RequestHome(UsersModel usersModel, string endPoint)
+    {
         if (!string.IsNullOrEmpty(usersModel.id))
         {
             string id = usersModel.id;
@@ -26,16 +79,11 @@ public class ClientHome : MonoBehaviour
             {
                 new MultipartFormDataSection(column_id, id)
             };
-            StartCoroutine(apiConnect.Send(GameUtility.Const.HOME_URL, form));
-
-            WalletApply(coinText, gemFreeText, gemPaidText);
-            userNameText.text = usersModel.user_name;
+            StartCoroutine(apiConnect.Send(endPoint, form, (action) => {
+                StaminaApply();
+                StaminaButtonCtrl();
+            }));
         }
-    }
-
-    private void Update()
-    {
-        WalletApply(coinText, gemFreeText, gemPaidText);
     }
 
     //ウォレット反映処理
@@ -45,5 +93,39 @@ public class ClientHome : MonoBehaviour
         coinText.text = walletsModel.coin_amount.ToString();
         gemFreeText.text = walletsModel.gem_free_amount.ToString();
         gemPaidText.text = walletsModel.gem_paid_amount.ToString();
+    }
+
+    //スタミナ反映処理
+    public void StaminaApply()
+    {
+        var usersModel = UsersTable.Select();
+        staminaValueText.text = usersModel.last_stamina.ToString() + "/" + GameUtility.Const.STAMINA_MOST_VALUE;
+        staminaGauge.fillAmount = (float)usersModel.last_stamina / GameUtility.Const.STAMINA_MOST_VALUE;
+    }
+
+    //スタミナ、対戦ボタン押下制御
+    public void StaminaButtonCtrl()
+    {
+        var usersModel = UsersTable.Select();
+        var walletsModel = WalletsTable.Select();
+        staminaRecoveryButton.interactable = usersModel.last_stamina < GameUtility.Const.STAMINA_MAX_VALUE && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= GameUtility.Const.STAMINA_GEM_VALUE;
+        gameMatchButton.interactable = usersModel.last_stamina >= GameUtility.Const.STAMINA_DECREASE_VALUE;
+    }
+
+    //スタミナ自然回復処理。1分毎に1回復。最大値の場合はスキップ (基本はホームにいる時のみ実行。ゲームプレイ時などは差分計算で増やして負荷軽減)
+    private IEnumerator StaminaAutoIncrease()
+    {
+        while (true)
+        {
+            yield return new WaitForSecondsRealtime(GameUtility.Const.STAMINA_EVERY_MINUTE);
+            var usersModel = UsersTable.Select();
+
+            if (usersModel.last_stamina >= GameUtility.Const.STAMINA_MAX_VALUE)
+            {
+                continue;
+            }
+
+            RequestHome(usersModel, GameUtility.Const.STAMINA_AUTO_INCREASE_URL);
+        }
     }
 }

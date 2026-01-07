@@ -21,6 +21,9 @@ namespace GameUtility
         public const string PAYMENT_URL           = BASE_URL + "api/payment";
         public const string GACHA_EXECUTE_URL     = BASE_URL + "api/gacha_execute";
         public const string CHARACTER_ENHANCE_URL = BASE_URL + "api/enhance_character";
+        public const string STAMINA_DECREASE_URL  = BASE_URL + "api/stamina_decrease";
+        public const string STAMINA_INCREASE_URL  = BASE_URL + "api/stamina_increase";
+        public const string STAMINA_AUTO_INCREASE_URL = BASE_URL + "api/stamina_auto_increase";
 
         //DB
         public const string SQLITE_DB_NAME = "SocialGameServer.db";
@@ -29,10 +32,8 @@ namespace GameUtility
         public const string MASTER_DATA_VERSION = "1";
         public const string SHOW_MASTER_TEXT_1 = "ゲームを更新中...";
         public const string SHOW_MASTER_TEXT_2 = "ゲームを更新しました";
-        public const string ERROR_MASTER_DATA_VERSION_TEXT = "ゲームをアップデートしてください";
 
         //エラーコード
-        public const string ERRCODE_DB_UPDATE = "1";
         public const string ERRCODE_MASTER_DATA_UPDATE = "0";
         public const string ERRCODE_NOT_PAYMENT = "510";
         public const string ERRCODE_LIMIT_WALLETS = "511";
@@ -52,12 +53,22 @@ namespace GameUtility
 
         //通貨表記
         public const string SHOW_YEN = "円";
+        public const string SHOW_COIN = "コイン";
         public const string SHOW_GEM = "ジェム";
 
+        //スタミナ表記
+        public const string SHOW_STAMINA_RECOVERY_CONFIRM = "ジェムでスタミナを回復しますか？";
+        public const string SHOW_STAMINA_DECREASE_CONFIRM = "スタミナを消費して対戦しますか？";
+
         //ショップ表記
-        public const string SHOW_AFTER_WALLET = "購入後のウォレット残高\n\n";
-        public const string SHOW_PAID_GEM = "有償ジェム";
-        public const string SHOW_FREE_GEM = "\n無償ジェム";
+        public const string SHOW_PRODUCT_NAME = "商品名";
+        public const string SHOW_GEM_WALLET = "現在のウォレット残高\n";
+        public const string SHOW_COIN_WALLET = "コイン残高 ";
+        public const string SHOW_PAID_GEM = "有償";
+        public const string SHOW_FREE_GEM = "無償";
+        public const string SHOW_BUY = "で購入しますか？";
+        public const string SHOW_AMOUNT = "個";
+        public const string SHOW_GET = "獲得";
 
         //ガチャ表記
         public const string SHOW_GACHA_CONFIRM_TEXT = "ジェムでガチャを実行しますか？";
@@ -66,7 +77,6 @@ namespace GameUtility
         public const string SHOW_GACHA_PERIOD_NOTHING = "期限なし";
         public const string SHOW_GACHA_COUNT = "回引く";
         public const string SHOW_GACHA_NEW = "NEW\nCHARACTER";
-        public const string SHOW_GACHA_REWARD_NOTHING = "ガチャ報酬がありません";
         public const string SHOW_GACHA_LOG_NOTHING = "ガチャ履歴がありません";
         public const string SHOW_GACHA_RARITY_N = "N : ";
         public const string SHOW_GACHA_RARITY_R = "R : ";
@@ -82,6 +92,16 @@ namespace GameUtility
         public const string SHOW_INSTANCE_CHARA_NOTHING = "キャラクターを所持していません";
         public const string SHOW_INSTANCE_ITEM_NOTHING = "アイテムを所持していません";
         public const string SHOW_INSTANCE_ENHANCE_ITEM_NOTHING = "強化アイテムを所持していません";
+        public const string SHOW_INSTANCE_MAX = "最大レベルです";
+        public const string SHOW_INSTANCE_ENHANCE = "強化する";
+        public const string SHOW_POSSESSION = "所持";
+
+        //スタミナ数値
+        public const int STAMINA_MAX_VALUE = 199;
+        public const int STAMINA_MOST_VALUE = 100;
+        public const int STAMINA_DECREASE_VALUE = 5;
+        public const int STAMINA_EVERY_MINUTE = 60;
+        public const int STAMINA_GEM_VALUE = 50;
 
         //ショップカテゴリ数値
         public const int SHOP_GEMS = 1001;
@@ -122,5 +142,9 @@ namespace GameUtility
 
         //シーン名
         public const string SCENE_NAME_HOMESCENE = "HomeScene";
+
+        //SQLクエリ
+        public const string ASC = "Asc";
+        public const string DESC = "Desc";
     }
 }

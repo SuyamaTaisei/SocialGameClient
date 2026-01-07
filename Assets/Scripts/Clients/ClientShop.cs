@@ -134,7 +134,11 @@ public class ClientShop : MonoBehaviour
         //表記
         productNameText.text = data1.name;
         productRarityText.text = showText ? itemRarity.name : "";
-        productDescriptionText.text = showText ? data3.description : $"ジェムが有償{data4.paid_currency}個・無償{data4.free_currency}個もらえる";
+        productDescriptionText.text = showText
+            ? data3.description
+            : GameUtility.Const.SHOW_PAID_GEM + data4.paid_currency + GameUtility.Const.SHOW_AMOUNT + "　" +
+              GameUtility.Const.SHOW_FREE_GEM + data4.free_currency + GameUtility.Const.SHOW_AMOUNT + " " +
+              GameUtility.Const.SHOW_GET;
         productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{imageIndex}");
         priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoin = data1.price;
@@ -143,9 +147,9 @@ public class ClientShop : MonoBehaviour
         //購入数増減処理
         increaseButton.onClick.AddListener(() => SetAmount(amountValue + GameUtility.Const.SHOP_AMOUNT_MIN));
         decreaseButton.onClick.AddListener(() => SetAmount(amountValue - GameUtility.Const.SHOP_AMOUNT_MIN));
-        buyMoneyButton.onClick.AddListener(() => OpenConfirmButton(index1, GameUtility.Const.SHOP_AMOUNT_MIN, "円"));
-        buyItemCoinButton.onClick.AddListener(() => OpenConfirmButton(index1, amountValue, "コイン"));
-        buyItemGemButton.onClick.AddListener(() => OpenConfirmButton(index2, amountValue, "ジェム"));
+        buyMoneyButton.onClick.AddListener(() => OpenConfirmButton(index1, GameUtility.Const.SHOP_AMOUNT_MIN, GameUtility.Const.SHOW_YEN));
+        buyItemCoinButton.onClick.AddListener(() => OpenConfirmButton(index1, amountValue, GameUtility.Const.SHOW_COIN));
+        buyItemGemButton.onClick.AddListener(() => OpenConfirmButton(index2, amountValue, GameUtility.Const.SHOW_GEM));
 
         shopConfirmView.SetActive(true);
         SetAmount(GameUtility.Const.SHOP_AMOUNT_MIN); //再度開いたら常に1に設定
@@ -167,10 +171,19 @@ public class ClientShop : MonoBehaviour
 
         ShopDataModel data = ShopDataTable.SelectProductId(productId);
         WalletsModel walletsModel = WalletsTable.Select();
-        paymentConfirmText.text = "商品名\n" + data.name + "\n\n" + amount + "個を" + data.price * amount + currency + "で購入しますか？";
+
+        //購入情報表記
+        paymentConfirmText.text =
+            GameUtility.Const.SHOW_PRODUCT_NAME + "\n" +
+            data.name + "\n\n" +
+            amount + GameUtility.Const.SHOW_AMOUNT + " " + data.price * amount + currency + " " + GameUtility.Const.SHOW_BUY;
+
+        //現在ウォレット残高表記
         walletStateText.text =
-        "現在のウォレット残高\n" +
-        "コイン残高 " + walletsModel.coin_amount + "コイン" + "     " + "有償 " + walletsModel.gem_paid_amount + "ジェム" + "     " + "無償 " + walletsModel.gem_free_amount + "ジェム";
+            GameUtility.Const.SHOW_GEM_WALLET +
+            GameUtility.Const.SHOW_COIN_WALLET + walletsModel.coin_amount + GameUtility.Const.SHOW_COIN + "     " +
+            GameUtility.Const.SHOW_PAID_GEM + walletsModel.gem_paid_amount + GameUtility.Const.SHOW_GEM + "     " +
+            GameUtility.Const.SHOW_FREE_GEM + walletsModel.gem_free_amount + GameUtility.Const.SHOW_GEM;
 
         yesButton.onClick.AddListener(() => PaymentButton(productId, amount));
         noButton.onClick.AddListener(() => CloseConfirmButton());

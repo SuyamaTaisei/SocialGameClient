@@ -32,8 +32,8 @@ public class ClientHome : MonoBehaviour
         StaminaButtonCtrl();
 
         userNameText.text = usersModel.user_name;
-        staminaValueText.text = usersModel.last_stamina.ToString() + "/100";
-        staminaGauge.fillAmount = (float)usersModel.last_stamina / 100;
+        staminaValueText.text = usersModel.last_stamina.ToString() + "/" + GameUtility.Const.STAMINA_MOST_VALUE;
+        staminaGauge.fillAmount = (float)usersModel.last_stamina / GameUtility.Const.STAMINA_MOST_VALUE;
 
         staminaRecoveryButton.onClick.AddListener(() => { RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL); });
         gameMatchButton.onClick.AddListener(() => { RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL); });
@@ -74,8 +74,8 @@ public class ClientHome : MonoBehaviour
     public void StaminaApply()
     {
         var usersModel = UsersTable.Select();
-        staminaValueText.text = usersModel.last_stamina.ToString() + "/100";
-        staminaGauge.fillAmount = (float)usersModel.last_stamina / 100;
+        staminaValueText.text = usersModel.last_stamina.ToString() + "/" + GameUtility.Const.STAMINA_MOST_VALUE;
+        staminaGauge.fillAmount = (float)usersModel.last_stamina / GameUtility.Const.STAMINA_MOST_VALUE;
     }
 
     //スタミナ、対戦ボタン押下制御
@@ -83,8 +83,8 @@ public class ClientHome : MonoBehaviour
     {
         var usersModel = UsersTable.Select();
         var walletsModel = WalletsTable.Select();
-        staminaRecoveryButton.interactable = usersModel.last_stamina < 199 && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= 50;
-        gameMatchButton.interactable = usersModel.last_stamina >= 5;
+        staminaRecoveryButton.interactable = usersModel.last_stamina < GameUtility.Const.STAMINA_MAX_VALUE && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= GameUtility.Const.STAMINA_GEM_VALUE;
+        gameMatchButton.interactable = usersModel.last_stamina >= GameUtility.Const.STAMINA_DECREASE_VALUE;
     }
 
     //スタミナ自然回復処理。1分毎に1回復。最大値の場合はスキップ (基本はホームにいる時のみ実行。ゲームプレイ時などは差分計算で増やして負荷軽減)
@@ -92,10 +92,10 @@ public class ClientHome : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSecondsRealtime(60f);
+            yield return new WaitForSecondsRealtime(GameUtility.Const.STAMINA_EVERY_MINUTE);
             var usersModel = UsersTable.Select();
 
-            if (usersModel.last_stamina >= 199)
+            if (usersModel.last_stamina >= GameUtility.Const.STAMINA_MAX_VALUE)
             {
                 continue;
             }

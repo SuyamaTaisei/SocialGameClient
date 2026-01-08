@@ -6,7 +6,7 @@ public class GachaOfferRateList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
-    [SerializeField] GachaOfferRateTemplateView gachaOfferRateTemplate;
+    [SerializeField] GachaOfferRateTemplateView gachaOfferRateTemplateView;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
 
     private void Start()
@@ -34,9 +34,9 @@ public class GachaOfferRateList : MonoBehaviour
         }
 
         //ガチャ期間別ガチャ提供割合のデータ描画
-        gachaOfferRateTemplate.SetPeriod();
+        gachaOfferRateTemplateView.SetPeriod();
 
         //合計値のデータ描画
-        gachaOfferRateTemplate.SetTotalRate(rateN, rateR, rateSR, rateSSR);
+        gachaOfferRateTemplateView.SetTotalRate(rateN, rateR, rateSR, rateSSR);
     }
 }

@@ -6,17 +6,17 @@ using System.Collections.Generic;
 public class ClientInstance : MonoBehaviour
 {
     [SerializeField] GameObject itemInstanceView;
-    [SerializeField] GameObject itemInstanceDetailView;
-    [SerializeField] GameObject characterInstanceView;
-    [SerializeField] GameObject characterInstanceDetailView;
+    [SerializeField] GameObject itemInstanceDetailFixedView;
+    [SerializeField] GameObject charaInstanceView;
+    [SerializeField] GameObject charaInstanceDetailFixedView;
 
-    [SerializeField] TextMeshProUGUI itemNothingText;
+    [SerializeField] TextMeshProUGUI itemInstanceNothingText;
     [SerializeField] TextMeshProUGUI enhanceItemNothingText;
-    [SerializeField] TextMeshProUGUI CharacterNothingText;
+    [SerializeField] TextMeshProUGUI charaInstanceNothingText;
 
     [SerializeField] EnhanceItemList enhanceItemList;
-    [SerializeField] InstanceCharacterList instanceCharacterList;
-    [SerializeField] InstanceCharacterDetailFixedView instanceCharacterDetailView;
+    [SerializeField] InstanceCharacterList charaInstanceList;
+    [SerializeField] InstanceCharacterDetailFixedView charaDetailFixedView;
 
     private ApiConnect apiConnect;
 
@@ -34,9 +34,9 @@ public class ClientInstance : MonoBehaviour
         apiConnect = ApiConnect.Instance;
 
         itemInstanceView.SetActive(false);
-        itemInstanceDetailView.SetActive(false);
-        characterInstanceView.SetActive(false);
-        characterInstanceDetailView.SetActive(false);
+        itemInstanceDetailFixedView.SetActive(false);
+        charaInstanceView.SetActive(false);
+        charaInstanceDetailFixedView.SetActive(false);
     }
 
     //キャラ強化画面を開いた時の選択キャラのキャラクターIDを取得
@@ -89,11 +89,11 @@ public class ClientInstance : MonoBehaviour
                 ItemInstacesTable.DeleteItem(manageId, item.Key, item.Value);
             }
             CharacterInstancesModel characterInstancesModel = CharacterInstancesTable.SelectId(selectEnhanceCharacterId);
-            instanceCharacterDetailView.SetLatestLevel(characterInstancesModel.level); //最新レベルを反映
+            charaDetailFixedView.SetLatestLevel(characterInstancesModel.level); //最新レベルを反映
             enhanceItemList.Refresh();                                //アイテム更新
-            instanceCharacterList.Refresh();                          //キャラクター更新
-            instanceCharacterDetailView.SetEnhanceConfirmView(false); //確認画面閉じる
-            instanceCharacterDetailView.SetEnhanceCompleteView(true); //強化完了画面開く
+            charaInstanceList.Refresh();                          //キャラクター更新
+            charaDetailFixedView.SetEnhanceConfirmView(false); //確認画面閉じる
+            charaDetailFixedView.SetEnhanceCompleteView(true); //強化完了画面開く
             ClearSelectEnhanceItems();
         }));
     }
@@ -107,24 +107,24 @@ public class ClientInstance : MonoBehaviour
     //キャラクター一覧開くボタン
     public void CharacterInstanceButton(bool enabled)
     {
-        characterInstanceView.SetActive(enabled);
+        charaInstanceView.SetActive(enabled);
     }
 
     //キャラクター詳細画面開閉ボタン
     public void CharacterDetailButton(bool enabled)
     {
-        characterInstanceDetailView.SetActive(enabled);
+        charaInstanceDetailFixedView.SetActive(enabled);
     }
 
     //アイテム詳細画面開閉ボタン
     public void ItemDetailButton(bool enabled)
     {
-        itemInstanceDetailView.SetActive(enabled);
+        itemInstanceDetailFixedView.SetActive(enabled);
     }
 
     public void NothingItemMessage(string text)
     {
-        itemNothingText.text = text;
+        itemInstanceNothingText.text = text;
     }
 
     public void NothingEnhanceItemMessage(string text)
@@ -134,6 +134,6 @@ public class ClientInstance : MonoBehaviour
 
     public void NothingCharacterMessage(string text)
     {
-        CharacterNothingText.text = text;
+        charaInstanceNothingText.text = text;
     }
 }

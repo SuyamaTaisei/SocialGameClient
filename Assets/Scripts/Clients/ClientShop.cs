@@ -14,10 +14,10 @@ public class ClientShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemPaidText;
 
     //購入警告
-    [SerializeField] TextMeshProUGUI warningText;
+    [SerializeField] TextMeshProUGUI buyConfirmWarningText;
 
     [SerializeField] ClientHome clientHome;
-    [SerializeField] ProductDetailFixedView shopConfirmFixedView;
+    [SerializeField] ProductDetailFixedView shopDetailFixedView;
 
     private ApiConnect apiConnect;
 
@@ -58,7 +58,7 @@ public class ClientShop : MonoBehaviour
     //ショップ開く
     public void OpenShopButton()
     {
-        shopConfirmFixedView.PaymentComplete(false);
+        shopDetailFixedView.PaymentComplete(false);
         shopView.SetActive(true);
     }
 
@@ -71,6 +71,6 @@ public class ClientShop : MonoBehaviour
     //購入警告
     public void WarningMessage(string message)
     {
-        warningText.text = message;
+        buyConfirmWarningText.text = message;
     }
 }

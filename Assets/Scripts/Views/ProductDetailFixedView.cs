@@ -5,35 +5,35 @@ using UnityEngine.UI;
 public class ProductDetailFixedView : MonoBehaviour
 {
     //各ビューの表示
-    [SerializeField] GameObject shopConfirmView;
+    [SerializeField] GameObject shopDetailFixedView;
 
     //商品情報表示
-    [SerializeField] TextMeshProUGUI productNameText;
-    [SerializeField] TextMeshProUGUI productRarityText;
-    [SerializeField] TextMeshProUGUI productDescriptionText;
-    [SerializeField] Image productImage;
+    [SerializeField] TextMeshProUGUI shopDetailNameText;
+    [SerializeField] TextMeshProUGUI shopDetailRarityText;
+    [SerializeField] TextMeshProUGUI shopDetailDescriptionText;
+    [SerializeField] Image shopDetailImage;
 
     //価格表示
-    [SerializeField] TextMeshProUGUI priceMoneyText;
-    [SerializeField] TextMeshProUGUI priceCoinText;
-    [SerializeField] TextMeshProUGUI priceGemText;
+    [SerializeField] TextMeshProUGUI shopDetailMoneyText;
+    [SerializeField] TextMeshProUGUI shopDetailCoinText;
+    [SerializeField] TextMeshProUGUI shopDetailGemText;
 
     //購入数ボタン
-    [SerializeField] TextMeshProUGUI amountText;
-    [SerializeField] Button increaseButton;
-    [SerializeField] Button decreaseButton;
+    [SerializeField] TextMeshProUGUI shopDetailAmountText;
+    [SerializeField] Button shopDetailIncreaseButton;
+    [SerializeField] Button shopDetailDecreaseButton;
 
     //購入ボタン
-    [SerializeField] Button buyMoneyButton;
-    [SerializeField] Button buyItemCoinButton;
-    [SerializeField] Button buyItemGemButton;
+    [SerializeField] Button shopDetailMoneyButton;
+    [SerializeField] Button shopDetailCoinButton;
+    [SerializeField] Button shopDetailGemButton;
 
     //購入確認画面
-    [SerializeField] GameObject paymentConfirmView;
-    [SerializeField] TextMeshProUGUI paymentConfirmText;
+    [SerializeField] GameObject buyConfirmView;
+    [SerializeField] TextMeshProUGUI buyConfirmText;
     [SerializeField] TextMeshProUGUI walletStateText;
-    [SerializeField] Button yesButton;
-    [SerializeField] Button noButton;
+    [SerializeField] Button buyConfirmExecuteButton;
+    [SerializeField] Button buyConfirmCancelButton;
 
     //購入完了画面
     [SerializeField] GameObject paymentCompleteView;
@@ -47,25 +47,25 @@ public class ProductDetailFixedView : MonoBehaviour
 
     private void Start()
     {
-        shopConfirmView.SetActive(false);
-        paymentConfirmView.SetActive(false);
+        shopDetailFixedView.SetActive(false);
+        buyConfirmView.SetActive(false);
         paymentCompleteView.SetActive(false);
     }
 
     //価格更新
     private void UpdatePriceText()
     {
-        priceCoinText.text = (priceCoin * amountValue).ToString();
-        priceGemText.text = (priceGem * amountValue).ToString();
+        shopDetailCoinText.text = (priceCoin * amountValue).ToString();
+        shopDetailGemText.text = (priceGem * amountValue).ToString();
     }
 
     //購入数の増減制御
     private void SetAmount(int value)
     {
         amountValue = Mathf.Clamp(value, GameUtility.Const.SHOP_AMOUNT_MIN, GameUtility.Const.SHOP_AMOUNT_MAX);
-        amountText.text = amountValue.ToString();
-        increaseButton.interactable = amountValue < GameUtility.Const.SHOP_AMOUNT_MAX;
-        decreaseButton.interactable = amountValue > GameUtility.Const.SHOP_AMOUNT_MIN;
+        shopDetailAmountText.text = amountValue.ToString();
+        shopDetailIncreaseButton.interactable = amountValue < GameUtility.Const.SHOP_AMOUNT_MAX;
+        shopDetailDecreaseButton.interactable = amountValue > GameUtility.Const.SHOP_AMOUNT_MIN;
         UpdatePriceText();
     }
 
@@ -73,11 +73,11 @@ public class ProductDetailFixedView : MonoBehaviour
     public void OpenProductInfoButton(int index1, int index2, int imageIndex, ItemRaritiesModel itemRarity)
     {
         //必ず購入状態をリセット
-        increaseButton.onClick.RemoveAllListeners();
-        decreaseButton.onClick.RemoveAllListeners();
-        buyMoneyButton.onClick.RemoveAllListeners();
-        buyItemCoinButton.onClick.RemoveAllListeners();
-        buyItemGemButton.onClick.RemoveAllListeners();
+        shopDetailIncreaseButton.onClick.RemoveAllListeners();
+        shopDetailDecreaseButton.onClick.RemoveAllListeners();
+        shopDetailMoneyButton.onClick.RemoveAllListeners();
+        shopDetailCoinButton.onClick.RemoveAllListeners();
+        shopDetailGemButton.onClick.RemoveAllListeners();
 
         //product_idが一致するレコードを取得
         ShopDataModel data1 = ShopDataTable.SelectProductId(index1);
@@ -87,26 +87,26 @@ public class ProductDetailFixedView : MonoBehaviour
         bool showText = (data3 != null);
 
         //表記
-        productNameText.text = data1.name;
-        productRarityText.text = showText ? itemRarity.name : "";
-        productDescriptionText.text = showText
+        shopDetailNameText.text = data1.name;
+        shopDetailRarityText.text = showText ? itemRarity.name : "";
+        shopDetailDescriptionText.text = showText
             ? data3.description
             : GameUtility.Const.SHOW_PAID_GEM + data4.paid_currency + GameUtility.Const.SHOW_AMOUNT + "　" +
               GameUtility.Const.SHOW_FREE_GEM + data4.free_currency + GameUtility.Const.SHOW_AMOUNT + " " +
               GameUtility.Const.SHOW_GET;
-        productImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{imageIndex}");
-        priceMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
+        shopDetailImage.sprite = Resources.Load<Sprite>($"{GameUtility.Const.FOLDER_NAME_IMAGES}/{shopCategoryTemplateView.ImageFolderName}/{imageIndex}");
+        shopDetailMoneyText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
         priceCoin = data1.price;
         priceGem = data2.price;
 
         //購入数増減処理
-        increaseButton.onClick.AddListener(() => SetAmount(amountValue + GameUtility.Const.SHOP_AMOUNT_MIN));
-        decreaseButton.onClick.AddListener(() => SetAmount(amountValue - GameUtility.Const.SHOP_AMOUNT_MIN));
-        buyMoneyButton.onClick.AddListener(() => OpenConfirmButton(index1, GameUtility.Const.SHOP_AMOUNT_MIN, GameUtility.Const.SHOW_YEN));
-        buyItemCoinButton.onClick.AddListener(() => OpenConfirmButton(index1, amountValue, GameUtility.Const.SHOW_COIN));
-        buyItemGemButton.onClick.AddListener(() => OpenConfirmButton(index2, amountValue, GameUtility.Const.SHOW_GEM));
+        shopDetailIncreaseButton.onClick.AddListener(() => SetAmount(amountValue + GameUtility.Const.SHOP_AMOUNT_MIN));
+        shopDetailDecreaseButton.onClick.AddListener(() => SetAmount(amountValue - GameUtility.Const.SHOP_AMOUNT_MIN));
+        shopDetailMoneyButton.onClick.AddListener(() => OpenConfirmButton(index1, GameUtility.Const.SHOP_AMOUNT_MIN, GameUtility.Const.SHOW_YEN));
+        shopDetailCoinButton.onClick.AddListener(() => OpenConfirmButton(index1, amountValue, GameUtility.Const.SHOW_COIN));
+        shopDetailGemButton.onClick.AddListener(() => OpenConfirmButton(index2, amountValue, GameUtility.Const.SHOW_GEM));
 
-        shopConfirmView.SetActive(true);
+        shopDetailFixedView.SetActive(true);
         SetAmount(GameUtility.Const.SHOP_AMOUNT_MIN); //再度開いたら常に1に設定
         clientShop.WarningMessage("");
     }
@@ -114,21 +114,21 @@ public class ProductDetailFixedView : MonoBehaviour
     //商品確認画面閉じる
     public void CloseProductInfoButton()
     {
-        shopConfirmView.SetActive(false);
+        shopDetailFixedView.SetActive(false);
         clientShop.WarningMessage("");
     }
 
     //購入確認画面開く
     public void OpenConfirmButton(int productId, int amount, string currency)
     {
-        yesButton.onClick.RemoveAllListeners();
-        noButton.onClick.RemoveAllListeners();
+        buyConfirmExecuteButton.onClick.RemoveAllListeners();
+        buyConfirmCancelButton.onClick.RemoveAllListeners();
 
         ShopDataModel data = ShopDataTable.SelectProductId(productId);
         WalletsModel walletsModel = WalletsTable.Select();
 
         //購入情報表記
-        paymentConfirmText.text =
+        buyConfirmText.text =
             GameUtility.Const.SHOW_PRODUCT_NAME + "\n" +
             data.name + "\n\n" +
             amount + GameUtility.Const.SHOW_AMOUNT + " " + data.price * amount + currency + " " + GameUtility.Const.SHOW_BUY;
@@ -140,15 +140,15 @@ public class ProductDetailFixedView : MonoBehaviour
             GameUtility.Const.SHOW_PAID_GEM + walletsModel.gem_paid_amount + GameUtility.Const.SHOW_GEM + "     " +
             GameUtility.Const.SHOW_FREE_GEM + walletsModel.gem_free_amount + GameUtility.Const.SHOW_GEM;
 
-        yesButton.onClick.AddListener(() => clientShop.PaymentButton(productId, amount));
-        noButton.onClick.AddListener(() => CloseConfirmButton());
-        paymentConfirmView.SetActive(true);
+        buyConfirmExecuteButton.onClick.AddListener(() => clientShop.PaymentButton(productId, amount));
+        buyConfirmCancelButton.onClick.AddListener(() => CloseConfirmButton());
+        buyConfirmView.SetActive(true);
     }
 
     //購入確認画面閉じる
     public void CloseConfirmButton()
     {
-        paymentConfirmView.SetActive(false);
+        buyConfirmView.SetActive(false);
         clientShop.WarningMessage("");
     }
 

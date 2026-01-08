@@ -8,7 +8,6 @@ public class GachaPeriodTemplateView : MonoBehaviour
     [SerializeField] TextMeshProUGUI gachaPeriodListText;
     [SerializeField] TextMeshProUGUI gachaPeriodTitle;
     [SerializeField] TextMeshProUGUI gachaPeriodText;
-    [SerializeField] TextMeshProUGUI gachaOfferRatePeriodText;
     [SerializeField] TextMeshProUGUI gachaSingleCostText;
     [SerializeField] TextMeshProUGUI gachaMultiCostText;
     [SerializeField] TextMeshProUGUI gachaSingleText;

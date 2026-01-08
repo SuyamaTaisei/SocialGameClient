@@ -4,19 +4,19 @@ using UnityEngine.UI;
 
 public class ShopCategoryTemplateView : MonoBehaviour
 {
-    [SerializeField] Image categoryIcon;
-    [SerializeField] TextMeshProUGUI categoryText;
+    [SerializeField] Image shopCategoryIcon;
+    [SerializeField] TextMeshProUGUI shopCategoryText;
 
     //ビューの表示
-    [SerializeField] GameObject itemListView;
-    [SerializeField] GameObject gemListView;
+    [SerializeField] GameObject shopItemList;
+    [SerializeField] GameObject shopGemList;
 
     //購入ボタン
-    [SerializeField] Button buyMoneyButton;
-    [SerializeField] Button buyItemCoinButton;
-    [SerializeField] Button buyItemGemButton;
+    [SerializeField] Button shopDetailMoneyButton;
+    [SerializeField] Button shopDetailCoinButton;
+    [SerializeField] Button shopDetailGemButton;
 
-    [SerializeField] GameObject buyAmountObject;
+    [SerializeField] GameObject shopDetailAmountObject;
 
     private string imageFolderName;
 
@@ -35,8 +35,8 @@ public class ShopCategoryTemplateView : MonoBehaviour
     //カテゴリ別ボタンの描画
     public void Set(ShopCategoryTemplateView view, ShopCategoriesModel data1, string imagePath)
     {
-        view.categoryText.text = data1.name;
-        view.categoryIcon.sprite = Resources.Load<Sprite>(imagePath);
+        view.shopCategoryText.text = data1.name;
+        view.shopCategoryIcon.sprite = Resources.Load<Sprite>(imagePath);
     }
 
     //カテゴリ別ショップ内の描画
@@ -55,11 +55,11 @@ public class ShopCategoryTemplateView : MonoBehaviour
     public void SetButton(string isName, bool isItem, bool isGem, bool coinBtn, bool gemBtn, bool moneyBtn)
     {
         imageFolderName = isName;
-        itemListView.SetActive(isItem);
-        gemListView.SetActive(isGem);
-        buyItemCoinButton.gameObject.SetActive(coinBtn);
-        buyItemGemButton.gameObject.SetActive(gemBtn);
-        buyMoneyButton.gameObject.SetActive(moneyBtn);
-        buyAmountObject.SetActive(isItem);
+        shopItemList.SetActive(isItem);
+        shopGemList.SetActive(isGem);
+        shopDetailCoinButton.gameObject.SetActive(coinBtn);
+        shopDetailGemButton.gameObject.SetActive(gemBtn);
+        shopDetailMoneyButton.gameObject.SetActive(moneyBtn);
+        shopDetailAmountObject.SetActive(isItem);
     }
 }

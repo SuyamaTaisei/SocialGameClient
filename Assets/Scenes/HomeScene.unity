@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 19971436}
   - component: {fileID: 19971435}
   m_Layer: 5
-  m_Name: CharacterDetailImage
+  m_Name: CharaDetailImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1780,7 +1780,7 @@ GameObject:
   - component: {fileID: 89288024}
   - component: {fileID: 89288023}
   m_Layer: 5
-  m_Name: EnhanceExecuteButton
+  m_Name: EnhanceButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2365,7 +2365,7 @@ GameObject:
   - component: {fileID: 114164115}
   - component: {fileID: 114164114}
   m_Layer: 0
-  m_Name: ProductCoinText
+  m_Name: ShopDetailCoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2612,7 +2612,7 @@ GameObject:
   - component: {fileID: 116658502}
   - component: {fileID: 116658501}
   m_Layer: 0
-  m_Name: ProductCoinIcon
+  m_Name: ShopDetailCoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3537,12 +3537,12 @@ MonoBehaviour:
   enhanceItemImage: {fileID: 1864169180}
   enhanceItemNameText: {fileID: 1818238233}
   enhanceItemRarityText: {fileID: 1167462608}
-  totalAmountText: {fileID: 1735797768}
-  currentAmountText: {fileID: 1578566791}
-  increaseButton: {fileID: 108193009}
-  decreaseButton: {fileID: 850958688}
+  enhanceItemTotalAmountText: {fileID: 1735797768}
+  enhanceItemCurrentAmountText: {fileID: 1578566791}
+  enhanceItemIncreaseButton: {fileID: 108193009}
+  enhanceItemDecreaseButton: {fileID: 850958688}
   clientInstance: {fileID: 1116380503}
-  characterDetailView: {fileID: 2041603146}
+  charaInstanceDetailFixedView: {fileID: 2041603146}
 --- !u!1 &158242672
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,7 +3784,7 @@ GameObject:
   - component: {fileID: 180215904}
   - component: {fileID: 180215905}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: GachaPickUpImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4015,11 +4015,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc46c6a5f3c714444a3f4a801cfe178e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detailItemImage: {fileID: 423469624}
-  detailItemNameText: {fileID: 980223736}
-  detailItemRarityText: {fileID: 76088012}
-  detailItemDescriptionText: {fileID: 1678213695}
-  detailItemAmountText: {fileID: 1516549253}
+  itemDetailImage: {fileID: 423469624}
+  itemDetailNameText: {fileID: 980223736}
+  itemDetailRarityText: {fileID: 76088012}
+  itemDetailDescriptionText: {fileID: 1678213695}
+  itemDetailAmountText: {fileID: 1516549253}
 --- !u!1001 &197218850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4667,10 +4667,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f2957990255d141ac63da8e294d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productImage: {fileID: 1955913628}
-  productNameText: {fileID: 1044364959}
+  image: {fileID: 1955913628}
+  nameText: {fileID: 1044364959}
   priceText: {fileID: 0}
-  productRarityText: {fileID: 450088116}
+  rarityText: {fileID: 450088116}
 --- !u!1 &210899808
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,7 +5132,7 @@ GameObject:
   - component: {fileID: 225567424}
   - component: {fileID: 225567423}
   m_Layer: 5
-  m_Name: ProductDescriptionText
+  m_Name: ShopDetailDescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6069,7 +6069,7 @@ GameObject:
   - component: {fileID: 257106187}
   - component: {fileID: 257106186}
   m_Layer: 0
-  m_Name: ProductMoneyButton
+  m_Name: ShopDetailMoneyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6192,7 +6192,7 @@ GameObject:
   - component: {fileID: 257925890}
   - component: {fileID: 257925893}
   m_Layer: 5
-  m_Name: GachaOfferRateListView
+  m_Name: GachaOfferRateList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6301,7 +6301,7 @@ MonoBehaviour:
   content: {fileID: 1190968998}
   templateView: {fileID: 924080637}
   clientGacha: {fileID: 1605318034}
-  gachaOfferRateTemplate: {fileID: 924080639}
+  gachaOfferRateTemplateView: {fileID: 924080639}
   gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &258852210
 GameObject:
@@ -6317,7 +6317,7 @@ GameObject:
   - component: {fileID: 258852213}
   - component: {fileID: 258852216}
   m_Layer: 5
-  m_Name: ItemInstanceListView
+  m_Name: ItemInstanceList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6427,7 +6427,7 @@ MonoBehaviour:
   content: {fileID: 1958544682}
   templateView: {fileID: 1280758908}
   clientInstance: {fileID: 1116380503}
-  itemDetailFixedView: {fileID: 189289193}
+  itemInstanceDetailFixedView: {fileID: 189289193}
   dropDownList: {fileID: 677923900}
 --- !u!1 &282860011
 GameObject:
@@ -8044,7 +8044,7 @@ GameObject:
   - component: {fileID: 382553046}
   - component: {fileID: 382553045}
   m_Layer: 0
-  m_Name: ProductCloseButton
+  m_Name: ShopDetailCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8250,7 +8250,7 @@ GameObject:
   - component: {fileID: 393053614}
   - component: {fileID: 393053613}
   m_Layer: 5
-  m_Name: EnhanceExecuteText
+  m_Name: EnhanceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8490,7 +8490,7 @@ GameObject:
   - component: {fileID: 395465824}
   - component: {fileID: 395465827}
   m_Layer: 5
-  m_Name: GachaLogListView
+  m_Name: GachaLogList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9361,7 +9361,6 @@ MonoBehaviour:
   gachaPeriodListText: {fileID: 926252792}
   gachaPeriodTitle: {fileID: 1158041302}
   gachaPeriodText: {fileID: 570081278}
-  gachaOfferRatePeriodText: {fileID: 1824369991}
   gachaSingleCostText: {fileID: 202143063}
   gachaMultiCostText: {fileID: 1250795197}
   gachaSingleText: {fileID: 884497073}
@@ -9625,7 +9624,7 @@ GameObject:
   - component: {fileID: 450088117}
   - component: {fileID: 450088116}
   m_Layer: 0
-  m_Name: ProductRarityText
+  m_Name: ShopItemRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9759,7 +9758,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456120712}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: CharaObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10084,7 +10083,7 @@ GameObject:
   - component: {fileID: 461797158}
   - component: {fileID: 461797160}
   m_Layer: 0
-  m_Name: ProductDecreaseButton
+  m_Name: ShopDetailDecreaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11146,15 +11145,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2056056e94004be459d86b3888fc8450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 101283706}
-  characterNameText: {fileID: 797010334}
-  characterRarityText: {fileID: 356031599}
-  characterNewText: {fileID: 292862454}
-  itemImage: {fileID: 253552656}
-  itemNameText: {fileID: 198622517}
-  itemRarityText: {fileID: 1614425156}
-  itemAmountText: {fileID: 1173844703}
-  itemOtherObject: {fileID: 1170680951}
+  gachaResultImage: {fileID: 101283706}
+  gachaResultNameText: {fileID: 797010334}
+  gachaResultRarityText: {fileID: 356031599}
+  gachaResultNewText: {fileID: 292862454}
+  gachaSingleRewardImage: {fileID: 253552656}
+  gachaSingleRewardNameText: {fileID: 198622517}
+  gachaSingleRewardRarityText: {fileID: 1614425156}
+  gachaSingleRewardAmountText: {fileID: 1173844703}
+  gachaSingleRewardOtherObject: {fileID: 1170680951}
 --- !u!1 &494486122
 GameObject:
   m_ObjectHideFlags: 0
@@ -11478,9 +11477,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f2a42b0dadc354c9421e6e0195a063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 1176935475}
-  nameText: {fileID: 97559909}
-  rarityText: {fileID: 927953690}
+  gachaPickUpImage: {fileID: 1176935475}
+  gachaPickUpNameText: {fileID: 97559909}
+  gachaPickUpRarityText: {fileID: 927953690}
 --- !u!1 &501014179
 GameObject:
   m_ObjectHideFlags: 0
@@ -12486,7 +12485,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526249027}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: GachaOfferRateObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13418,7 +13417,7 @@ GameObject:
   m_Component:
   - component: {fileID: 565704101}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: GachaPickUpObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13630,7 +13629,7 @@ GameObject:
   - component: {fileID: 581279428}
   - component: {fileID: 581279431}
   m_Layer: 5
-  m_Name: CharaInstanceListView
+  m_Name: CharaInstanceList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13740,7 +13739,7 @@ MonoBehaviour:
   content: {fileID: 723250606}
   templateView: {fileID: 1407158981}
   clientInstance: {fileID: 1116380503}
-  characterDetailView: {fileID: 2041603146}
+  charaInstanceDetailFixedView: {fileID: 2041603146}
   dropDownList: {fileID: 1533433354}
 --- !u!1 &591015463
 GameObject:
@@ -14231,7 +14230,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609548032}
   m_Layer: 5
-  m_Name: ProductObject
+  m_Name: ShopItemObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14540,7 +14539,7 @@ GameObject:
   - component: {fileID: 618233853}
   - component: {fileID: 618233856}
   m_Layer: 5
-  m_Name: EnhanceItemListView
+  m_Name: EnhanceItemList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14908,7 +14907,7 @@ GameObject:
   - component: {fileID: 656591220}
   - component: {fileID: 656591221}
   m_Layer: 5
-  m_Name: CharacterDetailImageMask
+  m_Name: CharaDetailImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14962,7 +14961,7 @@ GameObject:
   - component: {fileID: 659044967}
   - component: {fileID: 659044970}
   m_Layer: 5
-  m_Name: GachaResultListView
+  m_Name: GachaResultList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15418,7 +15417,7 @@ GameObject:
   - component: {fileID: 681280397}
   - component: {fileID: 681280399}
   m_Layer: 0
-  m_Name: ProductIncreaseButton
+  m_Name: ShopDetailIncreaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15537,7 +15536,7 @@ GameObject:
   - component: {fileID: 715321088}
   - component: {fileID: 715321087}
   m_Layer: 0
-  m_Name: ProductFrame
+  m_Name: ShopGemFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15973,7 +15972,7 @@ GameObject:
   - component: {fileID: 769193379}
   - component: {fileID: 769193382}
   m_Layer: 5
-  m_Name: ShopGemListView
+  m_Name: ShopGemList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16081,7 +16080,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1499128405}
   templateView: {fileID: 1894198015}
-  shopConfirmFixedView: {fileID: 1655090803}
+  shopDetailFixedView: {fileID: 1655090803}
   startCount: 0
   maxCount: 3
   productNumber1: 10001
@@ -17526,7 +17525,7 @@ GameObject:
   m_Component:
   - component: {fileID: 829897669}
   m_Layer: 0
-  m_Name: ProductAmountObject
+  m_Name: ShopDetailAmountObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17567,7 +17566,7 @@ GameObject:
   - component: {fileID: 834035572}
   - component: {fileID: 834035571}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: GachaOfferRateImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17835,7 +17834,7 @@ GameObject:
   - component: {fileID: 837604119}
   - component: {fileID: 837604118}
   m_Layer: 0
-  m_Name: ProductNameText
+  m_Name: ShopGemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18986,14 +18985,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1486ae42dc4608c469c08d15afbcd79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  categoryIcon: {fileID: 1655187960}
-  categoryText: {fileID: 1253401457}
-  itemListView: {fileID: 1400259708}
-  gemListView: {fileID: 769193377}
-  buyMoneyButton: {fileID: 257106186}
-  buyItemCoinButton: {fileID: 980415271}
-  buyItemGemButton: {fileID: 896128339}
-  buyAmountObject: {fileID: 829897668}
+  shopCategoryIcon: {fileID: 1655187960}
+  shopCategoryText: {fileID: 1253401457}
+  shopItemList: {fileID: 1400259708}
+  shopGemList: {fileID: 769193377}
+  shopDetailMoneyButton: {fileID: 257106186}
+  shopDetailCoinButton: {fileID: 980415271}
+  shopDetailGemButton: {fileID: 896128339}
+  shopDetailAmountObject: {fileID: 829897668}
 --- !u!114 &884381920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19156,7 +19155,7 @@ GameObject:
   - component: {fileID: 884613457}
   - component: {fileID: 884613460}
   m_Layer: 5
-  m_Name: GachaPickUpListView_NormalPeriod
+  m_Name: GachaPickUpList_NormalPeriod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19497,7 +19496,7 @@ GameObject:
   - component: {fileID: 896128340}
   - component: {fileID: 896128339}
   m_Layer: 0
-  m_Name: ProductGemButton
+  m_Name: ShopDetailGemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19618,7 +19617,7 @@ GameObject:
   - component: {fileID: 899910320}
   - component: {fileID: 899910321}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: GachaLogImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19836,7 +19835,7 @@ GameObject:
   - component: {fileID: 910942326}
   - component: {fileID: 910942325}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: CharaImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20373,10 +20372,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3809e6ab6cee6604e90111b766ac9d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 834035572}
-  nameText: {fileID: 2049230346}
-  rarityText: {fileID: 875215307}
-  rateText: {fileID: 504548709}
+  gachaOfferRateImage: {fileID: 834035572}
+  gachaOfferRateNameText: {fileID: 2049230346}
+  gachaOfferRateRarityText: {fileID: 875215307}
+  gachaOfferRateText: {fileID: 504548709}
   gachaOfferRatePeriodTitle: {fileID: 1824369991}
   clientGacha: {fileID: 1605318034}
   gachaPeriodTemplateView: {fileID: 432129394}
@@ -20795,7 +20794,7 @@ GameObject:
   - component: {fileID: 938838757}
   - component: {fileID: 938838756}
   m_Layer: 0
-  m_Name: ProductMoneyIcon
+  m_Name: ShopDetailMoneyIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20870,7 +20869,7 @@ GameObject:
   - component: {fileID: 938867758}
   - component: {fileID: 938867757}
   m_Layer: 0
-  m_Name: ProductMoneyText
+  m_Name: ShopDetailMoneyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21247,7 +21246,7 @@ GameObject:
   - component: {fileID: 947684181}
   - component: {fileID: 947684180}
   m_Layer: 5
-  m_Name: ProductExplanationTitle
+  m_Name: ShopDetailExplanationTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22232,7 +22231,7 @@ GameObject:
   - component: {fileID: 980415272}
   - component: {fileID: 980415271}
   m_Layer: 0
-  m_Name: ProductCoinButton
+  m_Name: ShopDetailCoinButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22490,7 +22489,7 @@ GameObject:
   - component: {fileID: 985850540}
   - component: {fileID: 985850539}
   m_Layer: 5
-  m_Name: GachaResultFrame1
+  m_Name: GachaResultFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23736,7 +23735,7 @@ GameObject:
   - component: {fileID: 1044364960}
   - component: {fileID: 1044364959}
   m_Layer: 0
-  m_Name: ProductNameText
+  m_Name: ShopItemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24918,15 +24917,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemInstanceView: {fileID: 2146620987}
-  itemInstanceDetailView: {fileID: 189289191}
-  characterInstanceView: {fileID: 778964153}
-  characterInstanceDetailView: {fileID: 2041603144}
-  itemNothingText: {fileID: 2103941123}
+  itemInstanceDetailFixedView: {fileID: 189289191}
+  charaInstanceView: {fileID: 778964153}
+  charaInstanceDetailFixedView: {fileID: 2041603144}
+  itemInstanceNothingText: {fileID: 2103941123}
   enhanceItemNothingText: {fileID: 916540070}
-  CharacterNothingText: {fileID: 210899810}
+  charaInstanceNothingText: {fileID: 210899810}
   enhanceItemList: {fileID: 618233856}
-  instanceCharacterList: {fileID: 581279431}
-  instanceCharacterDetailView: {fileID: 2041603146}
+  charaInstanceList: {fileID: 581279431}
+  charaDetailFixedView: {fileID: 2041603146}
 --- !u!1 &1121430405
 GameObject:
   m_ObjectHideFlags: 0
@@ -25285,7 +25284,7 @@ GameObject:
   - component: {fileID: 1134917005}
   - component: {fileID: 1134917006}
   m_Layer: 5
-  m_Name: ProductImageMask
+  m_Name: ShopItemImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25432,6 +25431,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1669178640}
+  - {fileID: 1485899825}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -26142,7 +26142,7 @@ GameObject:
   - component: {fileID: 1165978822}
   - component: {fileID: 1165978823}
   m_Layer: 0
-  m_Name: ProductAmountText
+  m_Name: ShopDetailAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26714,7 +26714,7 @@ GameObject:
   - component: {fileID: 1176935475}
   - component: {fileID: 1176935474}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: GachaPickUpImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26804,7 +26804,7 @@ GameObject:
   - component: {fileID: 1181137455}
   - component: {fileID: 1181137454}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: GachaLogImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27404,11 +27404,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7602ccc3c5345124391c8ce2238276d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 1181137455}
-  nameText: {fileID: 1984575607}
-  rarityText: {fileID: 1608619001}
-  dateTimeText: {fileID: 1847558817}
-  periodText: {fileID: 983678596}
+  gachaLogImage: {fileID: 1181137455}
+  gachaLogNameText: {fileID: 1984575607}
+  gachaLogRarityText: {fileID: 1608619001}
+  gachaLogDateTimeText: {fileID: 1847558817}
+  gachaLogPeriodText: {fileID: 983678596}
 --- !u!1 &1201007857
 GameObject:
   m_ObjectHideFlags: 0
@@ -27542,7 +27542,7 @@ GameObject:
   - component: {fileID: 1210189726}
   - component: {fileID: 1210189725}
   m_Layer: 0
-  m_Name: ProductImage
+  m_Name: ShopGemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27692,7 +27692,7 @@ GameObject:
   - component: {fileID: 1214821143}
   - component: {fileID: 1214821142}
   m_Layer: 5
-  m_Name: ProductCoinLabel
+  m_Name: ShopDetailCoinLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28296,7 +28296,7 @@ GameObject:
   - component: {fileID: 1255512895}
   - component: {fileID: 1255512894}
   m_Layer: 5
-  m_Name: CharacterDetailFrame
+  m_Name: CharaDetailFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28412,7 +28412,7 @@ GameObject:
   - component: {fileID: 1257927234}
   - component: {fileID: 1257927233}
   m_Layer: 5
-  m_Name: CharacterDetailFrame
+  m_Name: CharaDetailFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28696,7 +28696,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268603644}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: GachaLogObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29085,9 +29085,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 199508430}
-  itemNameText: {fileID: 601821600}
-  itemRarityText: {fileID: 1957719865}
-  itemAmountText: {fileID: 551900973}
+  itemInstanceNameText: {fileID: 601821600}
+  itemInstanceRarityText: {fileID: 1957719865}
+  itemInstanceAmountText: {fileID: 551900973}
 --- !u!1 &1282777240
 GameObject:
   m_ObjectHideFlags: 0
@@ -29100,7 +29100,7 @@ GameObject:
   - component: {fileID: 1282777242}
   - component: {fileID: 1282777243}
   m_Layer: 5
-  m_Name: ProductRarityText
+  m_Name: ShopDetailRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29602,7 +29602,7 @@ GameObject:
   - component: {fileID: 1295209646}
   - component: {fileID: 1295209645}
   m_Layer: 5
-  m_Name: ProductGemLabel
+  m_Name: ShopDetailGemLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30290,7 +30290,7 @@ GameObject:
   - component: {fileID: 1349828764}
   - component: {fileID: 1349828763}
   m_Layer: 0
-  m_Name: ProductBG
+  m_Name: ShopDetailBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31160,7 +31160,7 @@ GameObject:
   - component: {fileID: 1396391641}
   - component: {fileID: 1396391640}
   m_Layer: 5
-  m_Name: GachaResultFrame2
+  m_Name: GachaResultFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31237,7 +31237,7 @@ GameObject:
   - component: {fileID: 1400259710}
   - component: {fileID: 1400259713}
   m_Layer: 5
-  m_Name: ShopItemListView
+  m_Name: ShopItemList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31345,7 +31345,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 480185484}
   templateView: {fileID: 202819306}
-  shopConfirmFixedView: {fileID: 1655090803}
+  shopDetailFixedView: {fileID: 1655090803}
   startCount: 4
   maxCount: 7
   productNumber1: 10001
@@ -31406,10 +31406,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05fd42722b8bbc4fb1d65e71da91781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardImage: {fileID: 1526911475}
-  nameText: {fileID: 1556948027}
-  rarityText: {fileID: 798372560}
-  amountText: {fileID: 603154510}
+  gachaRewardImage: {fileID: 1526911475}
+  gachaRewardNameText: {fileID: 1556948027}
+  gachaRewardRarityText: {fileID: 798372560}
+  gachaRewardAmountText: {fileID: 603154510}
 --- !u!1 &1407158981
 GameObject:
   m_ObjectHideFlags: 0
@@ -31464,10 +31464,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8df6a2f6dd8df8459d33a185045dd05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 910942326}
-  characterNameText: {fileID: 1735876218}
-  characterRarityText: {fileID: 1445220656}
-  characterLevelText: {fileID: 494535471}
+  charaImage: {fileID: 910942326}
+  charaInstanceNameText: {fileID: 1735876218}
+  charaInstanceRarityText: {fileID: 1445220656}
+  charaInstanceLevelText: {fileID: 494535471}
 --- !u!1 &1411107728
 GameObject:
   m_ObjectHideFlags: 0
@@ -31481,7 +31481,7 @@ GameObject:
   - component: {fileID: 1411107731}
   - component: {fileID: 1411107730}
   m_Layer: 5
-  m_Name: ProductImage
+  m_Name: ShopDetailImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31572,7 +31572,7 @@ GameObject:
   - component: {fileID: 1411209988}
   - component: {fileID: 1411209991}
   m_Layer: 5
-  m_Name: ShopCategoryListView
+  m_Name: ShopCategoryList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31814,7 +31814,7 @@ GameObject:
   - component: {fileID: 1417886880}
   - component: {fileID: 1417886881}
   m_Layer: 5
-  m_Name: ProductImageMask
+  m_Name: ShopDetailImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32582,7 +32582,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443803623}
   m_Layer: 5
-  m_Name: GachaResultList
+  m_Name: GachaResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33477,6 +33477,126 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481411764}
   m_CullTransparentMesh: 1
+--- !u!1 &1485899824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485899825}
+  - component: {fileID: 1485899828}
+  - component: {fileID: 1485899827}
+  - component: {fileID: 1485899826}
+  m_Layer: 5
+  m_Name: GameMatchButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1485899825
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485899824}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1138398369}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 400, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1485899826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485899824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1485899827}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1485899827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485899824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a0da870ed3b0a414598ead7a8a32c0e6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1485899828
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485899824}
+  m_CullTransparentMesh: 1
 --- !u!1 &1493400210
 GameObject:
   m_ObjectHideFlags: 0
@@ -34021,7 +34141,7 @@ GameObject:
   - component: {fileID: 1526911475}
   - component: {fileID: 1526911474}
   m_Layer: 5
-  m_Name: RewardImage
+  m_Name: GachaRewardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35036,7 +35156,7 @@ GameObject:
   - component: {fileID: 1581128997}
   - component: {fileID: 1581128996}
   m_Layer: 0
-  m_Name: ProductTextFrame
+  m_Name: ShopItemTextFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35367,9 +35487,9 @@ MonoBehaviour:
   gemFreeText: {fileID: 33144344}
   gemPaidText: {fileID: 33144343}
   gachaExecuteButton: {fileID: 1890462556}
-  openGachaRewardButton: {fileID: 502751417}
-  warningText: {fileID: 1014642881}
-  nothingTextGachaLog: {fileID: 1151508022}
+  gachaRewardOpenButton: {fileID: 502751417}
+  gachaWarningText: {fileID: 1014642881}
+  gachaLogNothingText: {fileID: 1151508022}
   clientHome: {fileID: 2134605330}
   gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &1605412725
@@ -35993,7 +36113,7 @@ GameObject:
   - component: {fileID: 1653300513}
   - component: {fileID: 1653300512}
   m_Layer: 5
-  m_Name: ProductNameText
+  m_Name: ShopDetailNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36128,7 +36248,7 @@ GameObject:
   - component: {fileID: 1655090802}
   - component: {fileID: 1655090803}
   m_Layer: 0
-  m_Name: ProductDetailFixedView
+  m_Name: ShopDetailFixedView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36181,25 +36301,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 93157599487493a4e8ea06f71d2542dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopConfirmView: {fileID: 1655090801}
-  productNameText: {fileID: 1653300512}
-  productRarityText: {fileID: 1282777243}
-  productDescriptionText: {fileID: 225567423}
-  productImage: {fileID: 1411107731}
-  priceMoneyText: {fileID: 938867757}
-  priceCoinText: {fileID: 114164114}
-  priceGemText: {fileID: 1684634507}
-  amountText: {fileID: 1165978823}
-  increaseButton: {fileID: 681280399}
-  decreaseButton: {fileID: 461797160}
-  buyMoneyButton: {fileID: 257106186}
-  buyItemCoinButton: {fileID: 980415271}
-  buyItemGemButton: {fileID: 896128339}
-  paymentConfirmView: {fileID: 1632232013}
-  paymentConfirmText: {fileID: 1864895498}
+  shopDetailFixedView: {fileID: 1655090801}
+  shopDetailNameText: {fileID: 1653300512}
+  shopDetailRarityText: {fileID: 1282777243}
+  shopDetailDescriptionText: {fileID: 225567423}
+  shopDetailImage: {fileID: 1411107731}
+  shopDetailMoneyText: {fileID: 938867757}
+  shopDetailCoinText: {fileID: 114164114}
+  shopDetailGemText: {fileID: 1684634507}
+  shopDetailAmountText: {fileID: 1165978823}
+  shopDetailIncreaseButton: {fileID: 681280399}
+  shopDetailDecreaseButton: {fileID: 461797160}
+  shopDetailMoneyButton: {fileID: 257106186}
+  shopDetailCoinButton: {fileID: 980415271}
+  shopDetailGemButton: {fileID: 896128339}
+  buyConfirmView: {fileID: 1632232013}
+  buyConfirmText: {fileID: 1864895498}
   walletStateText: {fileID: 781881643}
-  yesButton: {fileID: 242989897}
-  noButton: {fileID: 1121430407}
+  buyConfirmExecuteButton: {fileID: 242989897}
+  buyConfirmCancelButton: {fileID: 1121430407}
   paymentCompleteView: {fileID: 1475781999}
   clientShop: {fileID: 2025727311}
   shopCategoryTemplateView: {fileID: 884381919}
@@ -36727,7 +36847,7 @@ GameObject:
   - component: {fileID: 1670079445}
   - component: {fileID: 1670079446}
   m_Layer: 5
-  m_Name: RewardImageMask
+  m_Name: GachaRewardImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37003,7 +37123,7 @@ GameObject:
   - component: {fileID: 1684634508}
   - component: {fileID: 1684634507}
   m_Layer: 0
-  m_Name: ProductGemText
+  m_Name: ShopDetailGemText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38043,7 +38163,7 @@ GameObject:
   - component: {fileID: 1740015963}
   - component: {fileID: 1740015962}
   m_Layer: 0
-  m_Name: ProductButton
+  m_Name: ShopGemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38974,7 +39094,7 @@ GameObject:
   - component: {fileID: 1790553149}
   - component: {fileID: 1790553148}
   m_Layer: 0
-  m_Name: ProductGemIcon
+  m_Name: ShopDetailGemIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39049,7 +39169,7 @@ GameObject:
   - component: {fileID: 1794500870}
   - component: {fileID: 1794500869}
   m_Layer: 0
-  m_Name: ProductTextBG
+  m_Name: ShopItemTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39123,7 +39243,7 @@ GameObject:
   - component: {fileID: 1804790877}
   - component: {fileID: 1804790878}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: CharaImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39176,7 +39296,7 @@ GameObject:
   - component: {fileID: 1808533088}
   - component: {fileID: 1808533087}
   m_Layer: 0
-  m_Name: ProductBGCloseButton
+  m_Name: ShopDetailBGCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40932,7 +41052,7 @@ GameObject:
   - component: {fileID: 1865711876}
   - component: {fileID: 1865711875}
   m_Layer: 0
-  m_Name: ProductButton
+  m_Name: ShopItemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41053,7 +41173,7 @@ GameObject:
   - component: {fileID: 1867080571}
   - component: {fileID: 1867080574}
   m_Layer: 5
-  m_Name: GachaPeriodListView
+  m_Name: GachaPeriodList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41439,7 +41559,7 @@ GameObject:
   - component: {fileID: 1879994207}
   - component: {fileID: 1879994206}
   m_Layer: 0
-  m_Name: ProductFrame
+  m_Name: ShopItemFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41750,10 +41870,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f2957990255d141ac63da8e294d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productImage: {fileID: 1210189725}
-  productNameText: {fileID: 837604118}
+  image: {fileID: 1210189725}
+  nameText: {fileID: 837604118}
   priceText: {fileID: 213088843}
-  productRarityText: {fileID: 0}
+  rarityText: {fileID: 0}
 --- !u!1 &1895444178
 GameObject:
   m_ObjectHideFlags: 0
@@ -42034,7 +42154,7 @@ GameObject:
   - component: {fileID: 1901158296}
   - component: {fileID: 1901158295}
   m_Layer: 0
-  m_Name: ProductFrame
+  m_Name: ShopDetailFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42858,7 +42978,7 @@ GameObject:
   - component: {fileID: 1955913628}
   - component: {fileID: 1955913627}
   m_Layer: 5
-  m_Name: ProductImage
+  m_Name: ShopItemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44122,9 +44242,9 @@ MonoBehaviour:
   coinText: {fileID: 957532797}
   gemFreeText: {fileID: 197218853}
   gemPaidText: {fileID: 197218852}
-  warningText: {fileID: 2103633098}
+  buyConfirmWarningText: {fileID: 2103633098}
   clientHome: {fileID: 2134605330}
-  shopConfirmFixedView: {fileID: 1655090803}
+  shopDetailFixedView: {fileID: 1655090803}
 --- !u!1001 &2039632324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44293,16 +44413,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a1123dcac6ce948b071e357dd71a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDetailImage: {fileID: 19971436}
-  characterDetailNameText: {fileID: 532099182}
-  characterDetailRarityText: {fileID: 761606751}
-  characterDetailLevelBeforeText: {fileID: 965259534}
-  characterDetailLevelAfterText: {fileID: 1263476499}
+  charaDetailImage: {fileID: 19971436}
+  charaDetailNameText: {fileID: 532099182}
+  charaDetailRarityText: {fileID: 761606751}
+  charaDetailLevelBeforeText: {fileID: 965259534}
+  charaDetailLevelAfterText: {fileID: 1263476499}
   enhanceButton: {fileID: 89288023}
-  executeEnhanceButton: {fileID: 1411646078}
-  cancelEnhanceButton: {fileID: 487363522}
-  enhanceCompleteButton: {fileID: 1842921610}
-  enhanceButtonText: {fileID: 393053613}
+  enhanceExecuteButton: {fileID: 1411646078}
+  enhanceCancelButton: {fileID: 487363522}
+  enhanceCloseButton: {fileID: 1842921610}
+  enhanceText: {fileID: 393053613}
   enhanceConfirmView: {fileID: 467343880}
   enhanceCompleteView: {fileID: 88261308}
   clientInstance: {fileID: 1116380503}
@@ -44621,7 +44741,7 @@ GameObject:
   - component: {fileID: 2069872099}
   - component: {fileID: 2069872098}
   m_Layer: 5
-  m_Name: GachaRewardListView
+  m_Name: GachaRewardList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45743,7 +45863,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2126487535}
   m_Layer: 5
-  m_Name: RewardObject
+  m_Name: GachaRewardObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45780,7 +45900,7 @@ GameObject:
   - component: {fileID: 2128144034}
   - component: {fileID: 2128144035}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: GachaOfferRateImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45856,14 +45976,14 @@ MonoBehaviour:
   staminaGauge: {fileID: 1351143447}
   staminaValueText: {fileID: 424427461}
   staminaRecoveryButton: {fileID: 849911984}
-  gameMatchButton: {fileID: 1138398370}
-  recoveryConfirmText: {fileID: 1996555300}
+  gameMatchButton: {fileID: 1485899826}
+  staminaRecoveryConfirmText: {fileID: 1996555300}
   gameMatchConfirmText: {fileID: 923161611}
-  recoveryConfirmView: {fileID: 732227044}
+  staminaRecoveryConfirmView: {fileID: 732227044}
   gameMatchConfirmView: {fileID: 937980293}
-  recoveryExecuteButton: {fileID: 1233943237}
+  staminaRecoveryExecuteButton: {fileID: 1233943237}
   gameMatchExecuteButton: {fileID: 1201007859}
-  recoveryCancelButton: {fileID: 1034396963}
+  staminaRecoveryCancelButton: {fileID: 1034396963}
   gameMatchCancelButton: {fileID: 791073838}
 --- !u!4 &2134605331
 Transform:
@@ -45890,7 +46010,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2134832374}
   m_Layer: 5
-  m_Name: ProductObject
+  m_Name: ShopDetailObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

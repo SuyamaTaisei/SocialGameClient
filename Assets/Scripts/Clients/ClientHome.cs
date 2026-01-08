@@ -17,13 +17,13 @@ public class ClientHome : MonoBehaviour
     [SerializeField] Button staminaRecoveryButton;
     [SerializeField] Button gameMatchButton;
 
-    [SerializeField] TextMeshProUGUI recoveryConfirmText;
+    [SerializeField] TextMeshProUGUI staminaRecoveryConfirmText;
     [SerializeField] TextMeshProUGUI gameMatchConfirmText;
-    [SerializeField] GameObject recoveryConfirmView;
+    [SerializeField] GameObject staminaRecoveryConfirmView;
     [SerializeField] GameObject gameMatchConfirmView;
-    [SerializeField] Button recoveryExecuteButton;
+    [SerializeField] Button staminaRecoveryExecuteButton;
     [SerializeField] Button gameMatchExecuteButton;
-    [SerializeField] Button recoveryCancelButton;
+    [SerializeField] Button staminaRecoveryCancelButton;
     [SerializeField] Button gameMatchCancelButton;
 
     private ApiConnect apiConnect;
@@ -44,23 +44,23 @@ public class ClientHome : MonoBehaviour
         staminaValueText.text = usersModel.last_stamina.ToString() + "/" + GameUtility.Const.STAMINA_MOST_VALUE;
         staminaGauge.fillAmount = (float)usersModel.last_stamina / GameUtility.Const.STAMINA_MOST_VALUE;
 
-        recoveryConfirmText.text = GameUtility.Const.STAMINA_GEM_VALUE + GameUtility.Const.SHOW_STAMINA_RECOVERY_CONFIRM;
+        staminaRecoveryConfirmText.text = GameUtility.Const.STAMINA_GEM_VALUE + GameUtility.Const.SHOW_STAMINA_RECOVERY_CONFIRM;
         gameMatchConfirmText.text = GameUtility.Const.STAMINA_DECREASE_VALUE + GameUtility.Const.SHOW_STAMINA_DECREASE_CONFIRM;
 
-        recoveryConfirmView.SetActive(false);
+        staminaRecoveryConfirmView.SetActive(false);
         gameMatchConfirmView.SetActive(false);
 
-        staminaRecoveryButton.onClick.AddListener(()  => { recoveryConfirmView.SetActive(true); });
+        staminaRecoveryButton.onClick.AddListener(()  => { staminaRecoveryConfirmView.SetActive(true); });
         gameMatchButton.onClick.AddListener(()        => { gameMatchConfirmView.SetActive(true); });
-        recoveryExecuteButton.onClick.AddListener(()  => {
+        staminaRecoveryExecuteButton.onClick.AddListener(()  => {
             RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL);
-            recoveryConfirmView.SetActive(false);
+            staminaRecoveryConfirmView.SetActive(false);
         });
         gameMatchExecuteButton.onClick.AddListener(() => {
             RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL);
             gameMatchConfirmView.SetActive(false);
         });
-        recoveryCancelButton.onClick.AddListener(() => { recoveryConfirmView.SetActive(false); });
+        staminaRecoveryCancelButton.onClick.AddListener(() => { staminaRecoveryConfirmView.SetActive(false); });
         gameMatchCancelButton.onClick.AddListener(() => { gameMatchConfirmView.SetActive(false); });
     }
 

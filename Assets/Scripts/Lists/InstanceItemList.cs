@@ -8,7 +8,7 @@ public class InstanceItemList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientInstance clientInstance;
-    [SerializeField] InstanceItemDetailFixedView itemDetailFixedView;
+    [SerializeField] InstanceItemDetailFixedView itemInstanceDetailFixedView;
     [SerializeField] TMP_Dropdown dropDownList;
 
     //標準ソート。最後に選ばれたソートを保持
@@ -78,7 +78,7 @@ public class InstanceItemList : MonoBehaviour
 
             //データの描画
             view.Set(data1, data2, data, imagePath);
-            button.onClick.AddListener(() => itemDetailFixedView.Set(data1, data2, data, imagePath));
+            button.onClick.AddListener(() => itemInstanceDetailFixedView.Set(data1, data2, data, imagePath));
         }
     }
 

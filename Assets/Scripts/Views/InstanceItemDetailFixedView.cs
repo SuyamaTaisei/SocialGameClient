@@ -4,18 +4,18 @@ using UnityEngine.UI;
 
 public class InstanceItemDetailFixedView : MonoBehaviour
 {
-    [SerializeField] Image detailItemImage;
-    [SerializeField] TextMeshProUGUI detailItemNameText;
-    [SerializeField] TextMeshProUGUI detailItemRarityText;
-    [SerializeField] TextMeshProUGUI detailItemDescriptionText;
-    [SerializeField] TextMeshProUGUI detailItemAmountText;
+    [SerializeField] Image itemDetailImage;
+    [SerializeField] TextMeshProUGUI itemDetailNameText;
+    [SerializeField] TextMeshProUGUI itemDetailRarityText;
+    [SerializeField] TextMeshProUGUI itemDetailDescriptionText;
+    [SerializeField] TextMeshProUGUI itemDetailAmountText;
 
     public void Set(ItemDataModel data1, ItemRaritiesModel data2, ItemInstancesModel data3, string imagePath)
     {
-        if (detailItemImage) detailItemImage.sprite = Resources.Load<Sprite>(imagePath);
-        if (detailItemNameText) detailItemNameText.text = data1.name;
-        if (detailItemRarityText) detailItemRarityText.text = data2.name;
-        if (detailItemDescriptionText) detailItemDescriptionText.text = data1.description;
-        if (detailItemAmountText) detailItemAmountText.text = data3.amount + GameUtility.Const.SHOW_AMOUNT + GameUtility.Const.SHOW_POSSESSION;
+        if (itemDetailImage) itemDetailImage.sprite = Resources.Load<Sprite>(imagePath);
+        if (itemDetailNameText) itemDetailNameText.text = data1.name;
+        if (itemDetailRarityText) itemDetailRarityText.text = data2.name;
+        if (itemDetailDescriptionText) itemDetailDescriptionText.text = data1.description;
+        if (itemDetailAmountText) itemDetailAmountText.text = data3.amount + GameUtility.Const.SHOW_AMOUNT + GameUtility.Const.SHOW_POSSESSION;
     }
 }

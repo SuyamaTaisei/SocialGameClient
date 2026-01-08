@@ -394,7 +394,7 @@ GameObject:
   - component: {fileID: 59493342}
   - component: {fileID: 59493341}
   m_Layer: 5
-  m_Name: CheckBG
+  m_Name: RegisterCheckBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -470,7 +470,7 @@ GameObject:
   - component: {fileID: 151690382}
   - component: {fileID: 151690381}
   m_Layer: 5
-  m_Name: CompleteBG
+  m_Name: RegisterCompleteBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -668,7 +668,7 @@ GameObject:
   - component: {fileID: 229722063}
   - component: {fileID: 229722062}
   m_Layer: 5
-  m_Name: CompleteFrame
+  m_Name: RegisterCompleteFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1378,7 +1378,7 @@ GameObject:
   - component: {fileID: 624818518}
   - component: {fileID: 624818517}
   m_Layer: 5
-  m_Name: CheckMark
+  m_Name: RegisterCheckMark
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2938,7 +2938,7 @@ GameObject:
   - component: {fileID: 1239347230}
   - component: {fileID: 1239347229}
   m_Layer: 5
-  m_Name: CompleteComfirmButton
+  m_Name: RegisterCompleteExecuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3230,7 +3230,7 @@ GameObject:
   - component: {fileID: 1372611483}
   - component: {fileID: 1372611482}
   m_Layer: 5
-  m_Name: CheckLabel
+  m_Name: RegisterCheckLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3309,7 +3309,7 @@ GameObject:
   - component: {fileID: 1408323311}
   - component: {fileID: 1408323310}
   m_Layer: 0
-  m_Name: CompleteFrame
+  m_Name: RegisterCompleteFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3384,7 +3384,7 @@ GameObject:
   - component: {fileID: 1501398074}
   - component: {fileID: 1501398073}
   m_Layer: 5
-  m_Name: SendText
+  m_Name: RegisterSendText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3823,7 +3823,7 @@ GameObject:
   - component: {fileID: 1781982540}
   - component: {fileID: 1781982539}
   m_Layer: 5
-  m_Name: CompleteComfirmText
+  m_Name: RegisterCompleteExecuteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3959,7 +3959,7 @@ GameObject:
   - component: {fileID: 1839384152}
   - component: {fileID: 1839384151}
   m_Layer: 0
-  m_Name: CompleteBG
+  m_Name: RegisterCompleteBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4245,7 +4245,7 @@ GameObject:
   - component: {fileID: 1875894051}
   - component: {fileID: 1875894050}
   m_Layer: 5
-  m_Name: WarningText
+  m_Name: RegisterWarningText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4926,7 +4926,7 @@ GameObject:
   - component: {fileID: 2032090357}
   - component: {fileID: 2032090356}
   m_Layer: 5
-  m_Name: CompleteText
+  m_Name: RegisterCompleteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

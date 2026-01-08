@@ -17,7 +17,7 @@ public class ClientShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI buyConfirmWarningText;
 
     [SerializeField] ClientHome clientHome;
-    [SerializeField] ProductDetailFixedView shopDetailFixedView;
+    [SerializeField] ShopDetailFixedView shopDetailFixedView;
 
     private ApiConnect apiConnect;
 

@@ -38,7 +38,7 @@ public class ResponseObjects
 public class ResponseManager : MonoBehaviour
 {
     private ClientShop clientShop;
-    private ProductDetailFixedView shopConfirmFixedView;
+    private ShopDetailFixedView shopConfirmFixedView;
     private ClientGacha clientGacha;
     private GachaResultList gachaResultList;
     private GachaRewardList gachaRewardList;
@@ -211,7 +211,7 @@ public class ResponseManager : MonoBehaviour
     {
         clientShop = FindAnyObjectByType<ClientShop>();
         clientGacha = FindAnyObjectByType<ClientGacha>();        
-        shopConfirmFixedView = FindAnyObjectByType<ProductDetailFixedView>(FindObjectsInactive.Include);
+        shopConfirmFixedView = FindAnyObjectByType<ShopDetailFixedView>(FindObjectsInactive.Include);
 
         if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_NOT_PAYMENT))
         {

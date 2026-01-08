@@ -2,10 +2,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-public class ProductDetailFixedView : MonoBehaviour
+public class ShopDetailFixedView : MonoBehaviour
 {
     //各ビューの表示
-    [SerializeField] GameObject shopDetailFixedView;
+    [SerializeField] GameObject shopDetailView;
 
     //商品情報表示
     [SerializeField] TextMeshProUGUI shopDetailNameText;
@@ -47,7 +47,7 @@ public class ProductDetailFixedView : MonoBehaviour
 
     private void Start()
     {
-        shopDetailFixedView.SetActive(false);
+        shopDetailView.SetActive(false);
         buyConfirmView.SetActive(false);
         paymentCompleteView.SetActive(false);
     }
@@ -106,7 +106,7 @@ public class ProductDetailFixedView : MonoBehaviour
         shopDetailCoinButton.onClick.AddListener(() => OpenConfirmButton(index1, amountValue, GameUtility.Const.SHOW_COIN));
         shopDetailGemButton.onClick.AddListener(() => OpenConfirmButton(index2, amountValue, GameUtility.Const.SHOW_GEM));
 
-        shopDetailFixedView.SetActive(true);
+        shopDetailView.SetActive(true);
         SetAmount(GameUtility.Const.SHOP_AMOUNT_MIN); //再度開いたら常に1に設定
         clientShop.WarningMessage("");
     }
@@ -114,7 +114,7 @@ public class ProductDetailFixedView : MonoBehaviour
     //商品確認画面閉じる
     public void CloseProductInfoButton()
     {
-        shopDetailFixedView.SetActive(false);
+        shopDetailView.SetActive(false);
         clientShop.WarningMessage("");
     }
 

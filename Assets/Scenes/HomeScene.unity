@@ -8113,7 +8113,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1655090803}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
         m_MethodName: CloseProductInfoButton
         m_Mode: 1
@@ -13936,7 +13936,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1655090803}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
         m_MethodName: PaymentComplete
         m_Mode: 6
@@ -14339,7 +14339,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1655090803}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
         m_MethodName: PaymentComplete
         m_Mode: 6
@@ -36298,10 +36298,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 1655090801}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 93157599487493a4e8ea06f71d2542dc, type: 3}
+  m_Script: {fileID: 11500000, guid: c4b272da4f35b804d96deb273d56c4d2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopDetailFixedView: {fileID: 1655090801}
+  shopDetailView: {fileID: 1655090801}
   shopDetailNameText: {fileID: 1653300512}
   shopDetailRarityText: {fileID: 1282777243}
   shopDetailDescriptionText: {fileID: 225567423}
@@ -39365,7 +39365,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1655090803}
+      - m_Target: {fileID: 0}
         m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
         m_MethodName: CloseProductInfoButton
         m_Mode: 1

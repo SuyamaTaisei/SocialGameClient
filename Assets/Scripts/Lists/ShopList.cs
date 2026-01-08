@@ -6,7 +6,7 @@ public class ShopList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
-    [SerializeField] ProductDetailFixedView shopDetailFixedView;
+    [SerializeField] ShopDetailFixedView shopDetailFixedView;
 
     [SerializeField] int startCount;
     [SerializeField] int maxCount;

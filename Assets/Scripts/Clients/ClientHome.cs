@@ -7,24 +7,27 @@ using System.Collections;
 
 public class ClientHome : MonoBehaviour
 {
+    //ウォレット
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
     [SerializeField] TextMeshProUGUI userNameText;
 
+    //スタミナ
     [SerializeField] Image staminaGauge;
     [SerializeField] TextMeshProUGUI staminaValueText;
-    [SerializeField] Button staminaRecoveryButton;
-    [SerializeField] Button gameMatchButton;
-
     [SerializeField] TextMeshProUGUI staminaRecoveryConfirmText;
-    [SerializeField] TextMeshProUGUI gameMatchConfirmText;
-    [SerializeField] GameObject staminaRecoveryConfirmView;
-    [SerializeField] GameObject gameMatchConfirmView;
+    [SerializeField] Button staminaRecoveryButton;
     [SerializeField] Button staminaRecoveryExecuteButton;
-    [SerializeField] Button gameMatchExecuteButton;
     [SerializeField] Button staminaRecoveryCancelButton;
+    [SerializeField] GameObject staminaRecoveryConfirmView;
+
+    //対戦
+    [SerializeField] TextMeshProUGUI gameMatchConfirmText;
+    [SerializeField] Button gameMatchButton;
+    [SerializeField] Button gameMatchExecuteButton;
     [SerializeField] Button gameMatchCancelButton;
+    [SerializeField] GameObject gameMatchConfirmView;
 
     private ApiConnect apiConnect;
 

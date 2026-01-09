@@ -12,6 +12,7 @@ public class GachaPeriodTemplateView : MonoBehaviour
     [SerializeField] TextMeshProUGUI gachaMultiCostText;
     [SerializeField] TextMeshProUGUI gachaSingleText;
     [SerializeField] TextMeshProUGUI gachaMultiText;
+
     [SerializeField] ClientGacha clientGacha;
 
     private int gacha_id;

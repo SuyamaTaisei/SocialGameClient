@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -7,15 +6,14 @@ using UnityEngine.UI;
 
 public class ClientMasterData : MonoBehaviour
 {
-    [SerializeField] GameObject masterCheckView;
     [SerializeField] TextMeshProUGUI masterCheckText;
     [SerializeField] Button masterCheckButton;
+    [SerializeField] GameObject masterCheckView;
+
     [SerializeField] ClientTitle clientTitle;
-
-    private int serverVersion;
-
     private ApiConnect apiConnect;
 
+    private int serverVersion;
     private const string masterData_key = "client_master_version";
 
     private void Start()

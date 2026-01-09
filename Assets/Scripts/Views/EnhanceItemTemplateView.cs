@@ -5,10 +5,12 @@ using UnityEngine.UI;
 public class EnhanceItemTemplateView : MonoBehaviour
 {
     [SerializeField] Image enhanceItemImage;
+
     [SerializeField] TextMeshProUGUI enhanceItemNameText;
     [SerializeField] TextMeshProUGUI enhanceItemRarityText;
     [SerializeField] TextMeshProUGUI enhanceItemTotalAmountText;
     [SerializeField] TextMeshProUGUI enhanceItemCurrentAmountText;
+
     [SerializeField] Button enhanceItemIncreaseButton;
     [SerializeField] Button enhanceItemDecreaseButton;
 

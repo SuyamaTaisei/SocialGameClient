@@ -6,13 +6,6 @@ using UnityEngine.UI;
 
 public class ClientGacha : MonoBehaviour
 {
-    //ガチャ画面表示
-    [SerializeField] GameObject gachaView;
-    [SerializeField] GameObject gachaConfirmView;
-    [SerializeField] GameObject gachaResultView;
-    [SerializeField] GameObject gachaRewardView;
-    [SerializeField] GameObject gachaOfferRateView;
-    [SerializeField] GameObject gachaLogView;
 
     //ガチャ画面テキスト
     [SerializeField] TextMeshProUGUI gachaOfferRateTotalText;
@@ -22,6 +15,10 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
+
+    //メッセージ
+    [SerializeField] TextMeshProUGUI gachaWarningText;
+    [SerializeField] TextMeshProUGUI gachaLogNothingText;
 
     //ボタン
     [SerializeField] Button gachaExecuteButton;
@@ -40,24 +37,26 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] Button gachaRewardCloseButton;
     [SerializeField] Button gachaResultCloseButton;
 
-    //メッセージ
-    [SerializeField] TextMeshProUGUI gachaWarningText;
-    [SerializeField] TextMeshProUGUI gachaLogNothingText;
+    //ガチャ画面表示
+    [SerializeField] GameObject gachaView;
+    [SerializeField] GameObject gachaConfirmView;
+    [SerializeField] GameObject gachaResultView;
+    [SerializeField] GameObject gachaRewardView;
+    [SerializeField] GameObject gachaOfferRateView;
+    [SerializeField] GameObject gachaLogView;
 
     [SerializeField] ClientHome clientHome;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
+    private ApiConnect apiConnect;
 
     private int gacha_count;
+    private const string column_id = "id";
+    private const string column_gacha_id = "gacha_id";
+    private const string key_gacha_count = "gacha_count";
 
     public int GachaCount => gacha_count;
     public TextMeshProUGUI GachaOfferRateTotalText => gachaOfferRateTotalText;
     public GameObject GachaResultView => gachaResultView;
-
-    private ApiConnect apiConnect;
-
-    private const string column_id = "id";
-    private const string column_gacha_id = "gacha_id";
-    private const string key_gacha_count = "gacha_count";
 
     void Start()
     {

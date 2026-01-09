@@ -5,16 +5,17 @@ using UnityEngine.UI;
 public class InstanceCharacterDetailFixedView : MonoBehaviour
 {
     [SerializeField] Image charaDetailImage;
+
     [SerializeField] TextMeshProUGUI charaDetailNameText;
     [SerializeField] TextMeshProUGUI charaDetailRarityText;
     [SerializeField] TextMeshProUGUI charaDetailLevelBeforeText;
     [SerializeField] TextMeshProUGUI charaDetailLevelAfterText;
+    [SerializeField] TextMeshProUGUI enhanceText;
+
     [SerializeField] Button enhanceButton;
     [SerializeField] Button enhanceExecuteButton;
     [SerializeField] Button enhanceCancelButton;
     [SerializeField] Button enhanceCloseButton;
-
-    [SerializeField] TextMeshProUGUI enhanceText;
 
     [SerializeField] GameObject enhanceConfirmView;
     [SerializeField] GameObject enhanceCompleteView;

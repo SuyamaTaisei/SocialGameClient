@@ -4,14 +4,14 @@ using UnityEngine.UI;
 
 public class ShopDetailFixedView : MonoBehaviour
 {
-    //各ビューの表示
+    //ビューの表示
     [SerializeField] GameObject shopDetailView;
 
     //商品情報表示
+    [SerializeField] Image shopDetailImage;
     [SerializeField] TextMeshProUGUI shopDetailNameText;
     [SerializeField] TextMeshProUGUI shopDetailRarityText;
     [SerializeField] TextMeshProUGUI shopDetailDescriptionText;
-    [SerializeField] Image shopDetailImage;
     [SerializeField] Button shopDetailCloseButton;
 
     //価格表示

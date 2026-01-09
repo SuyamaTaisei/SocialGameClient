@@ -6,23 +6,18 @@ using UnityEngine.UI;
 
 public class ClientShop : MonoBehaviour
 {
-    //各ビューの表示
-    [SerializeField] GameObject shopView;
-
-    //現在所持ウォレット表示
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
+    [SerializeField] TextMeshProUGUI buyConfirmWarningText;
 
     [SerializeField] Button shopOpenButton;
     [SerializeField] Button shopCloseButton;
 
-    //購入警告
-    [SerializeField] TextMeshProUGUI buyConfirmWarningText;
+    [SerializeField] GameObject shopView;
 
     [SerializeField] ClientHome clientHome;
     [SerializeField] ShopDetailFixedView shopDetailFixedView;
-
     private ApiConnect apiConnect;
 
     private const string column_id = "id";

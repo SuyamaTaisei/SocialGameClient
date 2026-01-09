@@ -15,6 +15,7 @@ public class ShopList : MonoBehaviour
 
     [SerializeField] string imageFolderName;
     [SerializeField] int imageNumber;
+
     int itemId = GameUtility.Const.SHOP_ITEM_ID;
 
     private void Start()

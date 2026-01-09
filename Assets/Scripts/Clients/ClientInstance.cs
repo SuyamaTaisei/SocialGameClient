@@ -6,28 +6,28 @@ using UnityEngine.UI;
 
 public class ClientInstance : MonoBehaviour
 {
-    [SerializeField] GameObject itemInstanceView;
-    [SerializeField] GameObject itemInstanceDetailFixedView;
-    [SerializeField] GameObject charaInstanceView;
-    [SerializeField] GameObject charaInstanceDetailFixedView;
-
     [SerializeField] TextMeshProUGUI itemInstanceNothingText;
     [SerializeField] TextMeshProUGUI enhanceItemNothingText;
     [SerializeField] TextMeshProUGUI charaInstanceNothingText;
 
     [SerializeField] Button itemInstanceOpenButton;
-    [SerializeField] Button charaInstanceOpenButton;
-    [SerializeField] Button charaInstanceDetailOpenButton;
-    [SerializeField] Button itemInstanceDetailOpenButton;
     [SerializeField] Button itemInstanceCloseButton;
-    [SerializeField] Button charaInstanceCloseButton;
-    [SerializeField] Button charaDetailCloseButton;
+    [SerializeField] Button itemInstanceDetailOpenButton;
     [SerializeField] Button itemDetailCloseButton;
+
+    [SerializeField] Button charaInstanceOpenButton;
+    [SerializeField] Button charaInstanceCloseButton;
+    [SerializeField] Button charaInstanceDetailOpenButton;
+    [SerializeField] Button charaDetailCloseButton;
+
+    [SerializeField] GameObject itemInstanceView;
+    [SerializeField] GameObject itemInstanceDetailFixedView;
+    [SerializeField] GameObject charaInstanceView;
+    [SerializeField] GameObject charaInstanceDetailFixedView;
 
     [SerializeField] EnhanceItemList enhanceItemList;
     [SerializeField] InstanceCharacterList charaInstanceList;
     [SerializeField] InstanceCharacterDetailFixedView charaDetailFixedView;
-
     private ApiConnect apiConnect;
 
     //キャラクターID取得
@@ -35,7 +35,6 @@ public class ClientInstance : MonoBehaviour
 
     //強化アイテム一覧で選択したアイテムIDとアイテム数量の紐づけ
     private readonly Dictionary<int, int> selectEnhanceItems = new();
-
     private const string column_id = "id";
     private const string column_character_id = "character_id";
 

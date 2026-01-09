@@ -7,10 +7,6 @@ using UnityEngine.UI;
 
 public class ClientTitle : MonoBehaviour
 {
-    [SerializeField] GameObject startView;
-    [SerializeField] GameObject registerView;
-    [SerializeField] GameObject registerCompleteView;
-
     [SerializeField] TextMeshProUGUI userNameText;
     [SerializeField] TextMeshProUGUI idText;
 
@@ -18,20 +14,21 @@ public class ClientTitle : MonoBehaviour
     [SerializeField] Button startButton;
     [SerializeField] Button registerCompleteButton;
 
+    [SerializeField] GameObject startView;
+    [SerializeField] GameObject registerView;
+    [SerializeField] GameObject registerCompleteView;
+
     [SerializeField] TMP_InputField registerInputNameText;
     [SerializeField] TextMeshProUGUI registerWarningText;
 
     [SerializeField] ClientMasterData clientMasterData;
-
-    public GameObject StartView => startView;
-
     private ApiConnect apiConnect;
+    private UsersModel usersModel;
 
     private const string column_UserName = "user_name";
     private const string column_id = "id";
 
-    //DBモデル
-    private UsersModel usersModel;
+    public GameObject StartView => startView;
 
     private void Awake()
     {

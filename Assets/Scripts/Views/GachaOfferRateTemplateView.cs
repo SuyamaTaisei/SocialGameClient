@@ -9,6 +9,7 @@ public class GachaOfferRateTemplateView : MonoBehaviour
     [SerializeField] TextMeshProUGUI gachaOfferRateRarityText;
     [SerializeField] TextMeshProUGUI gachaOfferRateText;
     [SerializeField] TextMeshProUGUI gachaOfferRatePeriodTitle;
+
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
 

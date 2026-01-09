@@ -7,15 +7,14 @@ public class ShopCategoryTemplateView : MonoBehaviour
     [SerializeField] Image shopCategoryIcon;
     [SerializeField] TextMeshProUGUI shopCategoryText;
 
-    //ビューの表示
-    [SerializeField] GameObject shopItemList;
-    [SerializeField] GameObject shopGemList;
-
     //購入ボタン
     [SerializeField] Button shopDetailMoneyButton;
     [SerializeField] Button shopDetailCoinButton;
     [SerializeField] Button shopDetailGemButton;
 
+    //ビューの表示
+    [SerializeField] GameObject shopItemList;
+    [SerializeField] GameObject shopGemList;
     [SerializeField] GameObject shopDetailAmountObject;
 
     private string imageFolderName;

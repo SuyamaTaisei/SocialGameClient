@@ -2,6 +2,7 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ClientInstance : MonoBehaviour
 {
@@ -13,6 +14,15 @@ public class ClientInstance : MonoBehaviour
     [SerializeField] TextMeshProUGUI itemInstanceNothingText;
     [SerializeField] TextMeshProUGUI enhanceItemNothingText;
     [SerializeField] TextMeshProUGUI charaInstanceNothingText;
+
+    [SerializeField] Button itemInstanceOpenButton;
+    [SerializeField] Button charaInstanceOpenButton;
+    [SerializeField] Button charaInstanceDetailOpenButton;
+    [SerializeField] Button itemInstanceDetailOpenButton;
+    [SerializeField] Button itemInstanceCloseButton;
+    [SerializeField] Button charaInstanceCloseButton;
+    [SerializeField] Button charaDetailCloseButton;
+    [SerializeField] Button itemDetailCloseButton;
 
     [SerializeField] EnhanceItemList enhanceItemList;
     [SerializeField] InstanceCharacterList charaInstanceList;
@@ -37,6 +47,16 @@ public class ClientInstance : MonoBehaviour
         itemInstanceDetailFixedView.SetActive(false);
         charaInstanceView.SetActive(false);
         charaInstanceDetailFixedView.SetActive(false);
+
+        itemInstanceOpenButton.onClick.AddListener(() => ItemInstanceButton(true));
+        charaInstanceOpenButton.onClick.AddListener(() => CharacterInstanceButton(true));
+        charaInstanceDetailOpenButton.onClick.AddListener(() => CharacterDetailButton(true));
+        itemInstanceDetailOpenButton.onClick.AddListener(() => ItemDetailButton(true));
+
+        itemInstanceCloseButton.onClick.AddListener(() => ItemInstanceButton(false));
+        charaInstanceCloseButton.onClick.AddListener(() => CharacterInstanceButton(false));
+        charaDetailCloseButton.onClick.AddListener(() => CharacterDetailButton(false));
+        itemDetailCloseButton.onClick.AddListener(() => ItemDetailButton(false));
     }
 
     //キャラ強化画面を開いた時の選択キャラのキャラクターIDを取得

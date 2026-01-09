@@ -25,7 +25,20 @@ public class ClientGacha : MonoBehaviour
 
     //ボタン
     [SerializeField] Button gachaExecuteButton;
+    [SerializeField] Button gachaCancelButton;
+    [SerializeField] Button gachaSingleExecuteButton;
+    [SerializeField] Button gachaMultiExecuteButton;
+
+    [SerializeField] Button gachaOpenButton;
     [SerializeField] Button gachaRewardOpenButton;
+    [SerializeField] Button gachaLogOpenButton;
+    [SerializeField] Button gachaOfferRateOpenButton;
+
+    [SerializeField] Button gachaCloseButton;
+    [SerializeField] Button gachaLogCloseButton;
+    [SerializeField] Button gachaOfferRateCloseButton;
+    [SerializeField] Button gachaRewardCloseButton;
+    [SerializeField] Button gachaResultCloseButton;
 
     //メッセージ
     [SerializeField] TextMeshProUGUI gachaWarningText;
@@ -50,6 +63,27 @@ public class ClientGacha : MonoBehaviour
     {
         apiConnect = ApiConnect.Instance;
         gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gachaPeriodTemplateView.GachaId, gacha_count));
+        gachaCancelButton.onClick.AddListener(() => CloseConfirmButton());
+        gachaSingleExecuteButton.onClick.AddListener(() => {
+            GachaSingleButton();
+            OpenConfirmButton();
+        });
+        gachaMultiExecuteButton.onClick.AddListener(() => {
+            GachaMultiButton();
+            OpenConfirmButton();
+        });
+
+        gachaOpenButton.onClick.AddListener(() => OpenGachaButton());
+        gachaRewardOpenButton.onClick.AddListener(() => OpenGachaRewardButton());
+        gachaLogOpenButton.onClick.AddListener(() => OpenGachaLogButton());
+        gachaOfferRateOpenButton.onClick.AddListener(() => OpenGachaOfferRateButton());
+
+        gachaCloseButton.onClick.AddListener(() => CloseGachaButton());
+        gachaLogCloseButton.onClick.AddListener(() => CloseGachaLogButton());
+        gachaOfferRateCloseButton.onClick.AddListener(() => CloseGachaOfferRateButton());
+        gachaRewardCloseButton.onClick.AddListener(() => CloseGachaRewardButton());
+        gachaResultCloseButton.onClick.AddListener(() => CloseGachaResultResetButton());
+
         WarningMessage("");
         gachaView.SetActive(false);
         gachaConfirmView.SetActive(false);

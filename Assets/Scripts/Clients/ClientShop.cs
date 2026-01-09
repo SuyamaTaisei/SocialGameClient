@@ -2,6 +2,7 @@
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ClientShop : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class ClientShop : MonoBehaviour
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
+
+    [SerializeField] Button shopOpenButton;
+    [SerializeField] Button shopCloseButton;
 
     //購入警告
     [SerializeField] TextMeshProUGUI buyConfirmWarningText;
@@ -30,6 +34,9 @@ public class ClientShop : MonoBehaviour
         apiConnect = ApiConnect.Instance;
         shopView.SetActive(false);
         WarningMessage("");
+
+        shopOpenButton.onClick.AddListener(() => OpenShopButton());
+        shopCloseButton.onClick.AddListener(() => CloseShopButton());
     }
 
     //表記のリアルタイム更新

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ClientMasterData : MonoBehaviour
 {
     [SerializeField] GameObject masterCheckView;
     [SerializeField] TextMeshProUGUI masterCheckText;
-    [SerializeField] GameObject masterCheckButton;
+    [SerializeField] Button masterCheckButton;
     [SerializeField] ClientTitle clientTitle;
 
     private int serverVersion;
@@ -21,7 +22,9 @@ public class ClientMasterData : MonoBehaviour
     {
         apiConnect = ApiConnect.Instance;
         masterCheckView.SetActive(false);
-        masterCheckButton.SetActive(false);
+        masterCheckButton.gameObject.SetActive(false);
+
+        masterCheckButton.onClick.AddListener(() => MasterDataUpdateComplete());
     }
 
     //マスタデータアップデート警告
@@ -29,7 +32,7 @@ public class ClientMasterData : MonoBehaviour
     {
         masterCheckText.text = message;
         masterCheckView.SetActive(true);
-        masterCheckButton.SetActive(true);
+        masterCheckButton.gameObject.SetActive(true);
     }
 
     //1.マスタデータバージョン確認処理
@@ -70,7 +73,7 @@ public class ClientMasterData : MonoBehaviour
             //バージョンが一致していない場合は最新のバージョンを保存
             MasterDataManager.SetMasterDataVersion(serverVersion);
             masterCheckText.text = GameUtility.Const.SHOW_MASTER_TEXT_2;
-            masterCheckButton.SetActive(true);
+            masterCheckButton.gameObject.SetActive(true);
         }));
     }
 

@@ -1,9 +1,9 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ClientTitle : MonoBehaviour
 {
@@ -13,6 +13,10 @@ public class ClientTitle : MonoBehaviour
 
     [SerializeField] TextMeshProUGUI userNameText;
     [SerializeField] TextMeshProUGUI idText;
+
+    [SerializeField] Button registerSendButton;
+    [SerializeField] Button startButton;
+    [SerializeField] Button registerCompleteButton;
 
     [SerializeField] TMP_InputField registerInputNameText;
     [SerializeField] TextMeshProUGUI registerWarningText;
@@ -47,6 +51,10 @@ public class ClientTitle : MonoBehaviour
         StartView.SetActive(true);
         registerView.SetActive(false);
         registerCompleteView.SetActive(false);
+
+        registerSendButton.onClick.AddListener(() => RegisterButton());
+        startButton.onClick.AddListener(() => StartButton());
+        registerCompleteButton.onClick.AddListener(() => RegisterCompleteButton());
 
         ShowUserInfo();
     }

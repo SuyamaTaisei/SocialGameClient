@@ -12,6 +12,7 @@ public class ShopDetailFixedView : MonoBehaviour
     [SerializeField] TextMeshProUGUI shopDetailRarityText;
     [SerializeField] TextMeshProUGUI shopDetailDescriptionText;
     [SerializeField] Image shopDetailImage;
+    [SerializeField] Button shopDetailCloseButton;
 
     //価格表示
     [SerializeField] TextMeshProUGUI shopDetailMoneyText;
@@ -37,6 +38,7 @@ public class ShopDetailFixedView : MonoBehaviour
 
     //購入完了画面
     [SerializeField] GameObject paymentCompleteView;
+    [SerializeField] Button paymentCloseButton;
 
     [SerializeField] ClientShop clientShop;
     [SerializeField] ShopCategoryTemplateView shopCategoryTemplateView;
@@ -50,6 +52,9 @@ public class ShopDetailFixedView : MonoBehaviour
         shopDetailView.SetActive(false);
         buyConfirmView.SetActive(false);
         paymentCompleteView.SetActive(false);
+
+        shopDetailCloseButton.onClick.AddListener(() => CloseProductInfoButton());
+        paymentCloseButton.onClick.AddListener(() => PaymentComplete(false));
     }
 
     //価格更新

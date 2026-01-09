@@ -304,8 +304,11 @@ MonoBehaviour:
   registerCompleteView: {fileID: 816921663}
   userNameText: {fileID: 806827285}
   idText: {fileID: 2026494460}
+  registerSendButton: {fileID: 979345986}
+  startButton: {fileID: 977843360}
+  registerCompleteButton: {fileID: 1239347229}
   registerInputNameText: {fileID: 1177073478}
-  warningText: {fileID: 1875894050}
+  registerWarningText: {fileID: 1875894050}
   clientMasterData: {fileID: 665385069}
 --- !u!1 &46824311
 GameObject:
@@ -1213,19 +1216,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 465215904}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 665385069}
-        m_TargetAssemblyTypeName: ClientMasterData, Assembly-CSharp
-        m_MethodName: MasterDataUpdateComplete
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &465215904
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1637,7 +1628,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   masterCheckView: {fileID: 2014884467}
   masterCheckText: {fileID: 348663147}
-  masterCheckButton: {fileID: 465215901}
+  masterCheckButton: {fileID: 465215903}
   clientTitle: {fileID: 46352197}
 --- !u!1 &742941499
 GameObject:
@@ -2325,19 +2316,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 977843361}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 46352197}
-        m_TargetAssemblyTypeName: ClientTitle, Assembly-CSharp
-        m_MethodName: StartButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &977843361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2458,19 +2437,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 979345987}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 46352197}
-        m_TargetAssemblyTypeName: ClientTitle, Assembly-CSharp
-        m_MethodName: RegisterButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &979345987
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2938,7 +2905,7 @@ GameObject:
   - component: {fileID: 1239347230}
   - component: {fileID: 1239347229}
   m_Layer: 5
-  m_Name: RegisterCompleteExecuteButton
+  m_Name: RegisterCompleteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3007,19 +2974,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1239347230}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 46352197}
-        m_TargetAssemblyTypeName: ClientTitle, Assembly-CSharp
-        m_MethodName: RegisterCompleteButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1239347230
 MonoBehaviour:
   m_ObjectHideFlags: 0

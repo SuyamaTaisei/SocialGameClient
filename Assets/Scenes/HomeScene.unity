@@ -1272,7 +1272,7 @@ GameObject:
   - component: {fileID: 57354131}
   - component: {fileID: 57354133}
   m_Layer: 5
-  m_Name: CharaInstanceFrameButton
+  m_Name: CharaInstanceDetailOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1378,19 +1378,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 57354131}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: CharacterDetailButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &68859109
 GameObject:
   m_ObjectHideFlags: 0
@@ -3188,19 +3176,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 138787081}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenGachaLogButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &138787081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3905,19 +3881,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 181599465}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseGachaLogButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &181599465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8112,19 +8076,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 382553046}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
-        m_MethodName: CloseProductInfoButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &382553046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11235,19 +11187,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 494486125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &494486125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11637,19 +11577,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 502751418}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenGachaRewardButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &502751418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11907,31 +11835,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 507750354}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaSingleButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenConfirmButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &507750354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12886,19 +12790,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 543979790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseGachaOfferRateButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &551900971
 GameObject:
   m_ObjectHideFlags: 0
@@ -13935,19 +13827,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 591937359}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &601821598
 GameObject:
   m_ObjectHideFlags: 0
@@ -14338,19 +14218,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612298835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &612298835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18039,19 +17907,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 843832796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &843832796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -20031,19 +19887,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 914694342}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenGachaButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &916540067
 GameObject:
   m_ObjectHideFlags: 0
@@ -21183,19 +21027,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 946292218}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenGachaOfferRateButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &946292218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21648,19 +21480,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 958917730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseConfirmButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &958917730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23215,31 +23035,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1033894072}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaMultiButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenConfirmButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1033894072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23359,19 +23155,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1034172795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: CharacterDetailButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1034172795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24736,19 +24520,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1098161959}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: OpenShopButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &1103397489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4521923273895718084, guid: ce90da4511601124ca7a3a823f02015e, type: 3}
@@ -24923,6 +24695,14 @@ MonoBehaviour:
   itemInstanceNothingText: {fileID: 2103941123}
   enhanceItemNothingText: {fileID: 916540070}
   charaInstanceNothingText: {fileID: 210899810}
+  itemInstanceOpenButton: {fileID: 1895444180}
+  charaInstanceOpenButton: {fileID: 1773812978}
+  charaInstanceDetailOpenButton: {fileID: 57354133}
+  itemInstanceDetailOpenButton: {fileID: 2091515701}
+  itemInstanceCloseButton: {fileID: 1420148837}
+  charaInstanceCloseButton: {fileID: 1516355234}
+  charaDetailCloseButton: {fileID: 1034172794}
+  itemDetailCloseButton: {fileID: 1434085540}
   enhanceItemList: {fileID: 618233856}
   charaInstanceList: {fileID: 581279431}
   charaDetailFixedView: {fileID: 2041603146}
@@ -28803,19 +28583,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1273732620}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseGachaButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1273732620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32071,19 +31839,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1420148838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: ItemInstanceButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1420148838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32239,19 +31995,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1425791824}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1425791824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32446,19 +32190,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1434085541}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: ItemDetailButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1434085541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -33830,19 +33562,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1516355235}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: CharacterInstanceButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1516355235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35487,7 +35207,18 @@ MonoBehaviour:
   gemFreeText: {fileID: 33144344}
   gemPaidText: {fileID: 33144343}
   gachaExecuteButton: {fileID: 1890462556}
+  gachaCancelButton: {fileID: 958917729}
+  gachaSingleExecuteButton: {fileID: 507750353}
+  gachaMultiExecuteButton: {fileID: 1033894071}
+  gachaOpenButton: {fileID: 914694344}
   gachaRewardOpenButton: {fileID: 502751417}
+  gachaLogOpenButton: {fileID: 138787080}
+  gachaOfferRateOpenButton: {fileID: 946292217}
+  gachaCloseButton: {fileID: 1273732619}
+  gachaLogCloseButton: {fileID: 181599464}
+  gachaOfferRateCloseButton: {fileID: 543979792}
+  gachaRewardCloseButton: {fileID: 1962120557}
+  gachaResultCloseButton: {fileID: 1978471380}
   gachaWarningText: {fileID: 1014642881}
   gachaLogNothingText: {fileID: 1151508022}
   clientHome: {fileID: 2134605330}
@@ -36306,6 +36037,7 @@ MonoBehaviour:
   shopDetailRarityText: {fileID: 1282777243}
   shopDetailDescriptionText: {fileID: 225567423}
   shopDetailImage: {fileID: 1411107731}
+  shopDetailCloseButton: {fileID: 382553045}
   shopDetailMoneyText: {fileID: 938867757}
   shopDetailCoinText: {fileID: 114164114}
   shopDetailGemText: {fileID: 1684634507}
@@ -36321,6 +36053,7 @@ MonoBehaviour:
   buyConfirmExecuteButton: {fileID: 242989897}
   buyConfirmCancelButton: {fileID: 1121430407}
   paymentCompleteView: {fileID: 1475781999}
+  paymentCloseButton: {fileID: 612298834}
   clientShop: {fileID: 2025727311}
   shopCategoryTemplateView: {fileID: 884381919}
 --- !u!1 &1655187958
@@ -38828,19 +38561,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1773812979}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: CharacterInstanceButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1773812979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39364,19 +39085,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1808533088}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: ProductDetailFixedView, Assembly-CSharp
-        m_MethodName: CloseProductInfoButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1808533088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41363,19 +41072,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1873032813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1873032813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41496,19 +41193,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1875579666}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: CloseShopButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1875579666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41955,19 +41640,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1895444181}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: ItemInstanceButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1895444181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43348,19 +43021,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1962120558}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseGachaRewardButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1962120558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -44242,6 +43903,8 @@ MonoBehaviour:
   coinText: {fileID: 957532797}
   gemFreeText: {fileID: 197218853}
   gemPaidText: {fileID: 197218852}
+  shopOpenButton: {fileID: 1098161961}
+  shopCloseButton: {fileID: 1875579665}
   buyConfirmWarningText: {fileID: 2103633098}
   clientHome: {fileID: 2134605330}
   shopDetailFixedView: {fileID: 1655090803}
@@ -44944,7 +44607,7 @@ GameObject:
   - component: {fileID: 2091515699}
   - component: {fileID: 2091515701}
   m_Layer: 0
-  m_Name: ItemInstanceImageFrameButton
+  m_Name: ItemInstanceDetailOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45050,19 +44713,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2091515699}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: ItemDetailButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2094080356
 GameObject:
   m_ObjectHideFlags: 0

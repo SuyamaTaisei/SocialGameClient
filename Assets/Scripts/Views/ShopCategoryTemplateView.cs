@@ -29,7 +29,7 @@ public class ShopCategoryTemplateView : MonoBehaviour
 
     private void Start()
     {
-        SetButton(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
+        SetData(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
     }
 
     //カテゴリ別ボタンの描画
@@ -44,15 +44,15 @@ public class ShopCategoryTemplateView : MonoBehaviour
     {
         switch (category)
         {
-            case GameUtility.Const.SHOP_GEMS: SetButton(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
+            case GameUtility.Const.SHOP_GEMS: SetData(GameUtility.Const.FOLDER_NAME_GEMS, false, true, false, false, true);
                 break;
-            case GameUtility.Const.SHOP_ITEMS: SetButton(GameUtility.Const.FOLDER_NAME_ITEMS, true, false, true, true, false);
+            case GameUtility.Const.SHOP_ITEMS: SetData(GameUtility.Const.FOLDER_NAME_ITEMS, true, false, true, true, false);
                 break;
         }
     }
 
     //販売一覧の描画
-    public void SetButton(string isName, bool isItem, bool isGem, bool coinBtn, bool gemBtn, bool moneyBtn)
+    private void SetData(string isName, bool isItem, bool isGem, bool coinBtn, bool gemBtn, bool moneyBtn)
     {
         imageFolderName = isName;
         shopItemList.SetActive(isItem);

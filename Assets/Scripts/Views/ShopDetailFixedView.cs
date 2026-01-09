@@ -53,12 +53,12 @@ public class ShopDetailFixedView : MonoBehaviour
         buyConfirmView.SetActive(false);
         paymentCompleteView.SetActive(false);
 
-        shopDetailCloseButton.onClick.AddListener(() => CloseProductInfoButton());
-        paymentCloseButton.onClick.AddListener(() => PaymentComplete(false));
+        shopDetailCloseButton.onClick.AddListener(() => SetShopDetailClose());
+        paymentCloseButton.onClick.AddListener(() => SetPaymentComplete(false));
     }
 
     //価格更新
-    private void UpdatePriceText()
+    private void SetUpdatePrice()
     {
         shopDetailCoinText.text = (priceCoin * amountValue).ToString();
         shopDetailGemText.text = (priceGem * amountValue).ToString();
@@ -71,11 +71,11 @@ public class ShopDetailFixedView : MonoBehaviour
         shopDetailAmountText.text = amountValue.ToString();
         shopDetailIncreaseButton.interactable = amountValue < GameUtility.Const.SHOP_AMOUNT_MAX;
         shopDetailDecreaseButton.interactable = amountValue > GameUtility.Const.SHOP_AMOUNT_MIN;
-        UpdatePriceText();
+        SetUpdatePrice();
     }
 
     //商品確認画面開く
-    public void OpenProductInfoButton(int index1, int index2, int imageIndex, ItemRaritiesModel itemRarity)
+    public void SetShopDetailOpen(int index1, int index2, int imageIndex, ItemRaritiesModel itemRarity)
     {
         //必ず購入状態をリセット
         shopDetailIncreaseButton.onClick.RemoveAllListeners();
@@ -107,9 +107,9 @@ public class ShopDetailFixedView : MonoBehaviour
         //購入数増減処理
         shopDetailIncreaseButton.onClick.AddListener(() => SetAmount(amountValue + GameUtility.Const.SHOP_AMOUNT_MIN));
         shopDetailDecreaseButton.onClick.AddListener(() => SetAmount(amountValue - GameUtility.Const.SHOP_AMOUNT_MIN));
-        shopDetailMoneyButton.onClick.AddListener(() => OpenConfirmButton(index1, GameUtility.Const.SHOP_AMOUNT_MIN, GameUtility.Const.SHOW_YEN));
-        shopDetailCoinButton.onClick.AddListener(() => OpenConfirmButton(index1, amountValue, GameUtility.Const.SHOW_COIN));
-        shopDetailGemButton.onClick.AddListener(() => OpenConfirmButton(index2, amountValue, GameUtility.Const.SHOW_GEM));
+        shopDetailMoneyButton.onClick.AddListener(() => SetBuyConfirmOpen(index1, GameUtility.Const.SHOP_AMOUNT_MIN, GameUtility.Const.SHOW_YEN));
+        shopDetailCoinButton.onClick.AddListener(() => SetBuyConfirmOpen(index1, amountValue, GameUtility.Const.SHOW_COIN));
+        shopDetailGemButton.onClick.AddListener(() => SetBuyConfirmOpen(index2, amountValue, GameUtility.Const.SHOW_GEM));
 
         shopDetailView.SetActive(true);
         SetAmount(GameUtility.Const.SHOP_AMOUNT_MIN); //再度開いたら常に1に設定
@@ -117,14 +117,14 @@ public class ShopDetailFixedView : MonoBehaviour
     }
 
     //商品確認画面閉じる
-    public void CloseProductInfoButton()
+    public void SetShopDetailClose()
     {
         shopDetailView.SetActive(false);
         clientShop.WarningMessage("");
     }
 
     //購入確認画面開く
-    public void OpenConfirmButton(int productId, int amount, string currency)
+    private void SetBuyConfirmOpen(int productId, int amount, string currency)
     {
         buyConfirmExecuteButton.onClick.RemoveAllListeners();
         buyConfirmCancelButton.onClick.RemoveAllListeners();
@@ -145,20 +145,20 @@ public class ShopDetailFixedView : MonoBehaviour
             GameUtility.Const.SHOW_PAID_GEM + walletsModel.gem_paid_amount + GameUtility.Const.SHOW_GEM + "     " +
             GameUtility.Const.SHOW_FREE_GEM + walletsModel.gem_free_amount + GameUtility.Const.SHOW_GEM;
 
-        buyConfirmExecuteButton.onClick.AddListener(() => clientShop.PaymentButton(productId, amount));
-        buyConfirmCancelButton.onClick.AddListener(() => CloseConfirmButton());
+        buyConfirmExecuteButton.onClick.AddListener(() => clientShop.RequestPayment(productId, amount));
+        buyConfirmCancelButton.onClick.AddListener(() => SetBuyConfirmClose());
         buyConfirmView.SetActive(true);
     }
 
     //購入確認画面閉じる
-    public void CloseConfirmButton()
+    public void SetBuyConfirmClose()
     {
         buyConfirmView.SetActive(false);
         clientShop.WarningMessage("");
     }
 
     //購入完了画面
-    public void PaymentComplete(bool enabled)
+    public void SetPaymentComplete(bool enabled)
     {
         paymentCompleteView.SetActive(enabled);
     }

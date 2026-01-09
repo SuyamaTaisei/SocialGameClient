@@ -64,11 +64,11 @@ public class InstanceCharacterList : MonoBehaviour
         //何もキャラを所持していなければ
         if (characterInstancesList == null || characterInstancesList.Count == 0)
         {
-            clientInstance.NothingCharacterMessage(GameUtility.Const.SHOW_INSTANCE_CHARA_NOTHING);
+            clientInstance.CharaInstanceMessage(GameUtility.Const.SHOW_INSTANCE_CHARA_NOTHING);
             return;
         }
 
-        clientInstance.NothingCharacterMessage("");
+        clientInstance.CharaInstanceMessage("");
 
         for (int i = 0; i < characterInstancesList.Count; i++)
         {

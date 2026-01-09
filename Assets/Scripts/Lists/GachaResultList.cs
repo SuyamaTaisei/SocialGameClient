@@ -12,7 +12,7 @@ public class GachaResultList : MonoBehaviour
     private void OnDisable() => Clear();
 
     //ガチャ結果表示処理
-    public void ShowGachaResult(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
+    public void DataList(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
     {
         clientGacha.GachaResultView.SetActive(true);
 

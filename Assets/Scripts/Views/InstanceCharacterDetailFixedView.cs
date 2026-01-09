@@ -29,7 +29,7 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
         enhanceConfirmView.SetActive(false);
         enhanceCompleteView.SetActive(false);
         enhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(true));
-        enhanceExecuteButton.onClick.AddListener(() => clientInstance.ExecuteEnhance()); //強化リクエスト送信
+        enhanceExecuteButton.onClick.AddListener(() => clientInstance.RequestEnhance()); //強化リクエスト送信
         enhanceCancelButton.onClick.AddListener(() => SetEnhanceConfirmView(false));
         enhanceCloseButton.onClick.AddListener(() => SetEnhanceCompleteView(false));
     }
@@ -41,8 +41,8 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
         if (charaDetailRarityText) charaDetailRarityText.text = data2.name;
 
         //強化対象となるキャラの更新
-        clientInstance.SetEnhanceCharacterId(data3.character_id);
-        clientInstance.ClearSelectEnhanceItems();
+        clientInstance.GetCharacterId(data3.character_id);
+        clientInstance.ClearEnhanceItems();
 
         beforeLevel = data3.level;
         if (charaDetailLevelBeforeText) charaDetailLevelBeforeText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + data3.level.ToString();

@@ -52,9 +52,9 @@ public class ClientTitle : MonoBehaviour
         registerView.SetActive(false);
         registerCompleteView.SetActive(false);
 
-        registerSendButton.onClick.AddListener(() => RegisterButton());
-        startButton.onClick.AddListener(() => StartButton());
-        registerCompleteButton.onClick.AddListener(() => RegisterCompleteButton());
+        registerSendButton.onClick.AddListener(() => Register());
+        startButton.onClick.AddListener(() => GameStart());
+        registerCompleteButton.onClick.AddListener(() => RegisterCompleteExecute());
 
         ShowUserInfo();
     }
@@ -65,7 +65,7 @@ public class ClientTitle : MonoBehaviour
     }
 
     //アカウント登録ボタン
-    public void RegisterButton()
+    public void Register()
     {
         if (string.IsNullOrEmpty(registerInputNameText.text))
         {
@@ -94,7 +94,7 @@ public class ClientTitle : MonoBehaviour
     }
 
     //スタートボタン
-    public void StartButton()
+    public void GameStart()
     {
         //ユーザー情報の取得
         usersModel = UsersTable.Select();
@@ -123,7 +123,7 @@ public class ClientTitle : MonoBehaviour
     }
 
     //アカウント登録完了ボタン
-    public void RegisterCompleteButton()
+    public void RegisterCompleteExecute()
     {
         StartView.SetActive(true);
         RegisterComplete(false);

@@ -35,8 +35,8 @@ public class ClientShop : MonoBehaviour
         shopView.SetActive(false);
         WarningMessage("");
 
-        shopOpenButton.onClick.AddListener(() => OpenShopButton());
-        shopCloseButton.onClick.AddListener(() => CloseShopButton());
+        shopOpenButton.onClick.AddListener(() => ShopOpen());
+        shopCloseButton.onClick.AddListener(() => ShopClose());
     }
 
     //表記のリアルタイム更新
@@ -46,7 +46,7 @@ public class ClientShop : MonoBehaviour
     }
 
     //購入処理
-    public void PaymentButton(int index, int amount)
+    public void RequestPayment(int index, int amount)
     {
         var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
@@ -63,14 +63,14 @@ public class ClientShop : MonoBehaviour
     }
 
     //ショップ開く
-    public void OpenShopButton()
+    public void ShopOpen()
     {
-        shopDetailFixedView.PaymentComplete(false);
+        shopDetailFixedView.SetPaymentComplete(false);
         shopView.SetActive(true);
     }
 
     //ショップ閉じる
-    public void CloseShopButton()
+    public void ShopClose()
     {
         shopView.SetActive(false);
     }

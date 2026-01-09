@@ -56,11 +56,11 @@ public class InstanceItemList : MonoBehaviour
         //何もアイテムを所持していなければ
         if (itemInstancesList == null || itemInstancesList.Count == 0)
         {
-            clientInstance.NothingItemMessage(GameUtility.Const.SHOW_INSTANCE_ITEM_NOTHING);
+            clientInstance.ItemInstanceMessage(GameUtility.Const.SHOW_INSTANCE_ITEM_NOTHING);
             return;
         }
 
-        clientInstance.NothingItemMessage("");
+        clientInstance.ItemInstanceMessage("");
 
         for (int i = 0; i < itemInstancesList.Count; i++)
         {

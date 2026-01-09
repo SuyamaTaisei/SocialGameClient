@@ -62,27 +62,27 @@ public class ClientGacha : MonoBehaviour
     void Start()
     {
         apiConnect = ApiConnect.Instance;
-        gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gachaPeriodTemplateView.GachaId, gacha_count));
-        gachaCancelButton.onClick.AddListener(() => CloseConfirmButton());
+        gachaExecuteButton.onClick.AddListener(() => RequestGacha(gachaPeriodTemplateView.GachaId, gacha_count));
+        gachaCancelButton.onClick.AddListener(() => GachaConfirmClose());
         gachaSingleExecuteButton.onClick.AddListener(() => {
-            GachaSingleButton();
-            OpenConfirmButton();
+            GachaSingle();
+            GachaConfirmOpen();
         });
         gachaMultiExecuteButton.onClick.AddListener(() => {
-            GachaMultiButton();
-            OpenConfirmButton();
+            GachaMulti();
+            GachaConfirmOpen();
         });
 
-        gachaOpenButton.onClick.AddListener(() => OpenGachaButton());
-        gachaRewardOpenButton.onClick.AddListener(() => OpenGachaRewardButton());
-        gachaLogOpenButton.onClick.AddListener(() => OpenGachaLogButton());
-        gachaOfferRateOpenButton.onClick.AddListener(() => OpenGachaOfferRateButton());
+        gachaOpenButton.onClick.AddListener(() => GachaOpen());
+        gachaRewardOpenButton.onClick.AddListener(() => GachaRewardOpen());
+        gachaLogOpenButton.onClick.AddListener(() => GachaLogOpen());
+        gachaOfferRateOpenButton.onClick.AddListener(() => GachaOfferRateOpen());
 
-        gachaCloseButton.onClick.AddListener(() => CloseGachaButton());
-        gachaLogCloseButton.onClick.AddListener(() => CloseGachaLogButton());
-        gachaOfferRateCloseButton.onClick.AddListener(() => CloseGachaOfferRateButton());
-        gachaRewardCloseButton.onClick.AddListener(() => CloseGachaRewardButton());
-        gachaResultCloseButton.onClick.AddListener(() => CloseGachaResultResetButton());
+        gachaCloseButton.onClick.AddListener(() => GachaClose());
+        gachaLogCloseButton.onClick.AddListener(() => GachaLogClose());
+        gachaOfferRateCloseButton.onClick.AddListener(() => GachaOfferRateClose());
+        gachaRewardCloseButton.onClick.AddListener(() => GachaRewardClose());
+        gachaResultCloseButton.onClick.AddListener(() => GachaResultClose());
 
         WarningMessage("");
         gachaView.SetActive(false);
@@ -100,7 +100,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャリクエスト送信
-    public void GachaExecuteButton(int gacha_id, int gacha_count)
+    public void RequestGacha(int gacha_id, int gacha_count)
     {
         var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
@@ -113,13 +113,13 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ結果、ガチャ報酬表示リセット
-    public void CloseGachaResultResetButton()
+    public void GachaResultClose()
     {
         gachaResultView.SetActive(false);
     }
 
     //単発
-    public void GachaSingleButton()
+    public void GachaSingle()
     {
         var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
         gacha_count = gachaPeriodsModel.single_count;
@@ -127,7 +127,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //連発
-    public void GachaMultiButton()
+    public void GachaMulti()
     {
         var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
         gacha_count = gachaPeriodsModel.multi_count;
@@ -135,69 +135,69 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ画面開く
-    public void OpenGachaButton()
+    public void GachaOpen()
     {
         gachaView.SetActive(true);
     }
 
     //ガチャ画面閉じる
-    public void CloseGachaButton()
+    public void GachaClose()
     {
         gachaView.SetActive(false);
     }
 
     //ガチャ実行確認画面開く
-    public void OpenConfirmButton()
+    public void GachaConfirmOpen()
     {
         gachaConfirmView.SetActive(true);
         WarningMessage("");
     }
 
     //ガチャ実行確認画面閉じる
-    public void CloseConfirmButton()
+    public void GachaConfirmClose()
     {
         gachaConfirmView.SetActive(false);
         WarningMessage("");
     }
 
     //ガチャ報酬開く
-    public void OpenGachaRewardButton()
+    public void GachaRewardOpen()
     {
         gachaRewardView.SetActive(true);
     }
 
     //ガチャ報酬閉じる
-    public void CloseGachaRewardButton()
+    public void GachaRewardClose()
     {
         gachaRewardView.SetActive(false);
     }
 
     //ガチャ提供割合開く
-    public void OpenGachaOfferRateButton()
+    public void GachaOfferRateOpen()
     {
         gachaOfferRateView.SetActive(true);
     }
 
     //ガチャ提供割合閉じる
-    public void CloseGachaOfferRateButton()
+    public void GachaOfferRateClose()
     {
         gachaOfferRateView.SetActive(false);
     }
 
     //ガチャ履歴開く
-    public void OpenGachaLogButton()
+    public void GachaLogOpen()
     {
         gachaLogView.SetActive(true);
     }
 
     //ガチャ履歴閉じる
-    public void CloseGachaLogButton()
+    public void GachaLogClose()
     {
         gachaLogView.SetActive(false);
     }
 
     //ガチャ報酬無し警告
-    public void NothingRewardMessage(bool enabled)
+    public void GachaRewardMessage(bool enabled)
     {
         gachaRewardOpenButton.interactable = enabled;
         var color = gachaRewardOpenButton.image.color;
@@ -209,7 +209,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ履歴無し警告
-    public void NothingGachaLogMessage(string message)
+    public void GachaLogMessage(string message)
     {
         gachaLogNothingText.text = message;
     }

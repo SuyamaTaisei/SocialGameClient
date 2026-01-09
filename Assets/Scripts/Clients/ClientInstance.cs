@@ -48,37 +48,37 @@ public class ClientInstance : MonoBehaviour
         charaInstanceView.SetActive(false);
         charaInstanceDetailFixedView.SetActive(false);
 
-        itemInstanceOpenButton.onClick.AddListener(() => ItemInstanceButton(true));
-        charaInstanceOpenButton.onClick.AddListener(() => CharacterInstanceButton(true));
-        charaInstanceDetailOpenButton.onClick.AddListener(() => CharacterDetailButton(true));
-        itemInstanceDetailOpenButton.onClick.AddListener(() => ItemDetailButton(true));
+        itemInstanceOpenButton.onClick.AddListener(() => ItemInstance(true));
+        charaInstanceOpenButton.onClick.AddListener(() => CharaInstance(true));
+        charaInstanceDetailOpenButton.onClick.AddListener(() => CharaInstanceDetail(true));
+        itemInstanceDetailOpenButton.onClick.AddListener(() => ItemInstanceDetail(true));
 
-        itemInstanceCloseButton.onClick.AddListener(() => ItemInstanceButton(false));
-        charaInstanceCloseButton.onClick.AddListener(() => CharacterInstanceButton(false));
-        charaDetailCloseButton.onClick.AddListener(() => CharacterDetailButton(false));
-        itemDetailCloseButton.onClick.AddListener(() => ItemDetailButton(false));
+        itemInstanceCloseButton.onClick.AddListener(() => ItemInstance(false));
+        charaInstanceCloseButton.onClick.AddListener(() => CharaInstance(false));
+        charaDetailCloseButton.onClick.AddListener(() => CharaInstanceDetail(false));
+        itemDetailCloseButton.onClick.AddListener(() => ItemInstanceDetail(false));
     }
 
     //キャラ強化画面を開いた時の選択キャラのキャラクターIDを取得
-    public void SetEnhanceCharacterId(int characterId)
+    public void GetCharacterId(int characterId)
     {
         selectEnhanceCharacterId = characterId;
     }
 
     //強化アイテム一覧で選択されたアイテムIDとアイテム数量を保持
-    public void SetEnhanceItems(int itemId, int amount)
+    public void SaveEnhanceItems(int itemId, int amount)
     {
         selectEnhanceItems[itemId] = amount;
     }
 
     //保持された紐づけをリセット
-    public void ClearSelectEnhanceItems()
+    public void ClearEnhanceItems()
     {
         selectEnhanceItems.Clear();
     }
 
     //強化リクエストの送信処理
-    public void ExecuteEnhance()
+    public void RequestEnhance()
     {
         var usersModel = UsersTable.Select();
 
@@ -114,45 +114,45 @@ public class ClientInstance : MonoBehaviour
             charaInstanceList.Refresh();                          //キャラクター更新
             charaDetailFixedView.SetEnhanceConfirmView(false); //確認画面閉じる
             charaDetailFixedView.SetEnhanceCompleteView(true); //強化完了画面開く
-            ClearSelectEnhanceItems();
+            ClearEnhanceItems();
         }));
     }
 
     //アイテム一覧開くボタン
-    public void ItemInstanceButton(bool enabled)
+    public void ItemInstance(bool enabled)
     {
         itemInstanceView.SetActive(enabled);
     }
 
     //キャラクター一覧開くボタン
-    public void CharacterInstanceButton(bool enabled)
+    public void CharaInstance(bool enabled)
     {
         charaInstanceView.SetActive(enabled);
     }
 
     //キャラクター詳細画面開閉ボタン
-    public void CharacterDetailButton(bool enabled)
+    public void CharaInstanceDetail(bool enabled)
     {
         charaInstanceDetailFixedView.SetActive(enabled);
     }
 
     //アイテム詳細画面開閉ボタン
-    public void ItemDetailButton(bool enabled)
+    public void ItemInstanceDetail(bool enabled)
     {
         itemInstanceDetailFixedView.SetActive(enabled);
     }
 
-    public void NothingItemMessage(string text)
+    public void ItemInstanceMessage(string text)
     {
         itemInstanceNothingText.text = text;
     }
 
-    public void NothingEnhanceItemMessage(string text)
+    public void EnhanceItemMessage(string text)
     {
         enhanceItemNothingText.text = text;
     }
 
-    public void NothingCharacterMessage(string text)
+    public void CharaInstanceMessage(string text)
     {
         charaInstanceNothingText.text = text;
     }

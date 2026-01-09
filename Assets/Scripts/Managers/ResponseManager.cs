@@ -125,12 +125,12 @@ public class ResponseManager : MonoBehaviour
             gachaRewardList = FindAnyObjectByType<GachaRewardList>(FindObjectsInactive.Include);
             if(gachaResultList != null && responseObjects.gacha_results != null)
             {
-                gachaResultList.ShowGachaResult(responseObjects.gacha_results, responseObjects.new_characters, responseObjects.single_exchange_items);
+                gachaResultList.DataList(responseObjects.gacha_results, responseObjects.new_characters, responseObjects.single_exchange_items);
             }
             //変換されたガチャ報酬の表示
             if(gachaRewardList != null && responseObjects.total_exchange_items != null)
             {
-                gachaRewardList.ShowGachaReward(responseObjects.total_exchange_items);
+                gachaRewardList.DataList(responseObjects.total_exchange_items);
             }
             //ガチャログ実行
             if (responseObjects.gacha_logs != null)
@@ -229,11 +229,11 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("支払い完了");
             clientShop.WarningMessage("");
-            shopConfirmFixedView.CloseProductInfoButton();
-            shopConfirmFixedView.CloseConfirmButton();
-            shopConfirmFixedView.PaymentComplete(true);
+            shopConfirmFixedView.SetShopDetailClose();
+            shopConfirmFixedView.SetBuyConfirmClose();
+            shopConfirmFixedView.SetPaymentComplete(true);
             clientGacha.WarningMessage("");
-            clientGacha.CloseConfirmButton();
+            clientGacha.GachaConfirmClose();
         }
     }
 

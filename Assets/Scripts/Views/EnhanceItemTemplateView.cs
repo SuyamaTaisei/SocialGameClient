@@ -33,18 +33,18 @@ public class EnhanceItemTemplateView : MonoBehaviour
         enhanceItemIncreaseButton.onClick.AddListener(() => {
             SetAmount(amountValue + GameUtility.Const.SHOP_AMOUNT_MIN, data3.amount);
             charaInstanceDetailFixedView.SetAddAfterLevel(+data1.value);
-            clientInstance.SetEnhanceItems(data3.item_id, amountValue);
+            clientInstance.SaveEnhanceItems(data3.item_id, amountValue);
         });
         enhanceItemDecreaseButton.onClick.AddListener(() => {
             SetAmount(amountValue - GameUtility.Const.SHOP_AMOUNT_MIN, data3.amount);
             charaInstanceDetailFixedView.SetAddAfterLevel(-data1.value);
-            clientInstance.SetEnhanceItems(data3.item_id, amountValue);
+            clientInstance.SaveEnhanceItems(data3.item_id, amountValue);
         });
 
         //開くたびにリセット
         amountValue = minAmount;
         SetAmount(minAmount, data3.amount);
-        clientInstance.SetEnhanceItems(data3.item_id, amountValue);
+        clientInstance.SaveEnhanceItems(data3.item_id, amountValue);
     }
 
     //強化アイテム数の増減制御

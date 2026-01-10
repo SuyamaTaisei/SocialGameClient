@@ -104,7 +104,7 @@ public class ClientInstance : MonoBehaviour
             //最大量で強化確定したアイテムは削除
             foreach (var item in items)
             {
-                ItemInstacesTable.DeleteItem(manageId, item.Key, item.Value);
+                ItemInstancesTable.DeleteItem(manageId, item.Key, item.Value);
             }
             CharacterInstancesModel characterInstancesModel = CharacterInstancesTable.SelectCharacterId(selectEnhanceCharacterId);
             charaDetailFixedView.SetLatestLevel(characterInstancesModel.level); //最新レベルを反映

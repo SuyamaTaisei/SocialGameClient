@@ -46,7 +46,7 @@ public class InstanceItemList : MonoBehaviour
     public void RefreshSort(string column, string sort)
     {
         Clear(); //再選択時に必ず破棄
-        List<ItemInstancesModel> itemInstancesList = ItemInstacesTable.SelectSortAll(column, sort);
+        List<ItemInstancesModel> itemInstancesList = ItemInstancesTable.SelectSortAll(column, sort);
         DataList(itemInstancesList);
     }
 

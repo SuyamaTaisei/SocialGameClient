@@ -10,7 +10,7 @@ public class ItemInstancesModel
     public int amount;
 }
 
-public class ItemInstacesTable
+public class ItemInstancesTable
 {
     //テーブル作成
     public static void CreateTable()

@@ -19,7 +19,7 @@ public class EnhanceItemList : MonoBehaviour
 
     public void DataList()
     {
-        List<ItemInstancesModel> itemInstancesList = ItemInstacesTable.SelectEnhanceItemAll();
+        List<ItemInstancesModel> itemInstancesList = ItemInstancesTable.SelectEnhanceItemAll();
 
         //何もアイテムを所持していなければ
         if (itemInstancesList == null || itemInstancesList.Count == 0)

@@ -99,7 +99,7 @@ public class ResponseManager : MonoBehaviour
             }
             if (responseObjects.item_instances != null)
             {
-                ItemInstacesTable.Insert(responseObjects.item_instances);
+                ItemInstancesTable.Insert(responseObjects.item_instances);
             }
             if (responseObjects.character_instances != null)
             {
@@ -118,7 +118,7 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("ガチャ実行完了");
             CharacterInstancesTable.Insert(responseObjects.character_instances);
-            ItemInstacesTable.Insert(responseObjects.item_instances);
+            ItemInstancesTable.Insert(responseObjects.item_instances);
 
             //ガチャ結果の表示(非アクティブ状態でも取得)
             gachaResultList = FindAnyObjectByType<GachaResultList>(FindObjectsInactive.Include);

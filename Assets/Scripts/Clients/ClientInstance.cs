@@ -106,40 +106,41 @@ public class ClientInstance : MonoBehaviour
             {
                 ItemInstacesTable.DeleteItem(manageId, item.Key, item.Value);
             }
-            CharacterInstancesModel characterInstancesModel = CharacterInstancesTable.SelectId(selectEnhanceCharacterId);
+            CharacterInstancesModel characterInstancesModel = CharacterInstancesTable.SelectCharacterId(selectEnhanceCharacterId);
             charaDetailFixedView.SetLatestLevel(characterInstancesModel.level); //最新レベルを反映
-            enhanceItemList.Refresh();                                //アイテム更新
-            charaInstanceList.Refresh();                          //キャラクター更新
-            charaDetailFixedView.SetEnhanceConfirmView(false); //確認画面閉じる
-            charaDetailFixedView.SetEnhanceCompleteView(true); //強化完了画面開く
+            enhanceItemList.Refresh();                                          //アイテム更新
+            charaInstanceList.Refresh();                                        //キャラクター更新
+            charaDetailFixedView.SetEnhanceConfirmView(false);                  //確認画面閉じる
+            charaDetailFixedView.SetEnhanceCompleteView(true);                  //強化完了画面開く
             ClearEnhanceItems();
         }));
     }
 
-    //アイテム一覧開くボタン
+    //アイテム一覧開閉
     public void ItemInstance(bool enabled)
     {
         itemInstanceView.SetActive(enabled);
     }
 
-    //キャラクター一覧開くボタン
+    //キャラ一覧開閉
     public void CharaInstance(bool enabled)
     {
         charaInstanceView.SetActive(enabled);
     }
 
-    //キャラクター詳細画面開閉ボタン
-    public void CharaInstanceDetail(bool enabled)
-    {
-        charaInstanceDetailFixedView.SetActive(enabled);
-    }
-
-    //アイテム詳細画面開閉ボタン
+    //アイテム詳細画面開閉
     public void ItemInstanceDetail(bool enabled)
     {
         itemInstanceDetailFixedView.SetActive(enabled);
     }
 
+    //キャラ詳細画面開閉
+    public void CharaInstanceDetail(bool enabled)
+    {
+        charaInstanceDetailFixedView.SetActive(enabled);
+    }
+
+    //メッセージ
     public void ItemInstanceMessage(string text)
     {
         itemInstanceNothingText.text = text;

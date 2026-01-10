@@ -28,7 +28,7 @@ public class GachaLogList : MonoBehaviour
 
         for (int i = 0; i < gachaLogsList.Count; i++)
         {
-            //データ実体の生成
+            //データの生成
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaLogTemplateView>();
             int index = i;

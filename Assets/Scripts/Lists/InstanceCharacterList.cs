@@ -58,7 +58,6 @@ public class InstanceCharacterList : MonoBehaviour
         DataList(characterInstancesList);
     }
 
-    //データの生成・取得・描画
     public void DataList(List<CharacterInstancesModel> characterInstancesList)
     {
         //何もキャラを所持していなければ

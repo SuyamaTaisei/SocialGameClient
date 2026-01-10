@@ -60,7 +60,7 @@ public class ClientMasterData : MonoBehaviour
         }));
     }
 
-    //2.マスタデータ取得処理(ゲームアップデート)
+    //2.マスタデータ取得処理(バージョンが一致していなければ自動でゲームアップデート)
     public void MasterDataGet()
     {
         clientTitle.StartView.SetActive(false);

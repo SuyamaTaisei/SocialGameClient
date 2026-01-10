@@ -23,7 +23,7 @@ public class GachaRewardList : MonoBehaviour
         //変換された個数分走査
         for (int i = 0; i < totalExchangeItems.Length; i++)
         {
-            //データ実体の生成
+            //データの生成
             var exchange = totalExchangeItems[i];
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaRewardTemplateView>();

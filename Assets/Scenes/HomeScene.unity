@@ -18843,11 +18843,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shopCategoryIcon: {fileID: 1655187960}
   shopCategoryText: {fileID: 1253401457}
-  shopItemList: {fileID: 1400259708}
-  shopGemList: {fileID: 769193377}
   shopDetailMoneyButton: {fileID: 257106186}
   shopDetailCoinButton: {fileID: 980415271}
   shopDetailGemButton: {fileID: 896128339}
+  shopItemList: {fileID: 1400259708}
+  shopGemList: {fileID: 769193377}
   shopDetailAmountObject: {fileID: 829897668}
 --- !u!114 &884381920
 MonoBehaviour:
@@ -24688,21 +24688,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187a964313aeb3545b0f6a7dbf5ffc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemInstanceView: {fileID: 2146620987}
-  itemInstanceDetailFixedView: {fileID: 189289191}
-  charaInstanceView: {fileID: 778964153}
-  charaInstanceDetailFixedView: {fileID: 2041603144}
   itemInstanceNothingText: {fileID: 2103941123}
   enhanceItemNothingText: {fileID: 916540070}
   charaInstanceNothingText: {fileID: 210899810}
   itemInstanceOpenButton: {fileID: 1895444180}
-  charaInstanceOpenButton: {fileID: 1773812978}
-  charaInstanceDetailOpenButton: {fileID: 57354133}
-  itemInstanceDetailOpenButton: {fileID: 2091515701}
   itemInstanceCloseButton: {fileID: 1420148837}
+  charaInstanceOpenButton: {fileID: 1773812978}
   charaInstanceCloseButton: {fileID: 1516355234}
-  charaDetailCloseButton: {fileID: 1034172794}
-  itemDetailCloseButton: {fileID: 1434085540}
+  itemInstanceView: {fileID: 2146620987}
+  charaInstanceView: {fileID: 778964153}
   enhanceItemList: {fileID: 618233856}
   charaInstanceList: {fileID: 581279431}
   charaDetailFixedView: {fileID: 2041603146}
@@ -28856,6 +28850,9 @@ MonoBehaviour:
   itemInstanceNameText: {fileID: 601821600}
   itemInstanceRarityText: {fileID: 1957719865}
   itemInstanceAmountText: {fileID: 551900973}
+  itemInstanceDetailOpenButton: {fileID: 2091515701}
+  itemDetailCloseButton: {fileID: 1434085540}
+  itemInstanceDetailFixedView: {fileID: 189289191}
 --- !u!1 &1282777240
 GameObject:
   m_ObjectHideFlags: 0
@@ -31236,6 +31233,9 @@ MonoBehaviour:
   charaInstanceNameText: {fileID: 1735876218}
   charaInstanceRarityText: {fileID: 1445220656}
   charaInstanceLevelText: {fileID: 494535471}
+  charaInstanceDetailOpenButton: {fileID: 57354133}
+  charaDetailCloseButton: {fileID: 1034172794}
+  charaInstanceDetailFixedView: {fileID: 2041603144}
 --- !u!1 &1411107728
 GameObject:
   m_ObjectHideFlags: 0
@@ -35195,17 +35195,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc94a2f17c010f2478c5d1eac637555c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gachaView: {fileID: 1655934738}
-  gachaConfirmView: {fileID: 1361025735}
-  gachaResultView: {fileID: 340842833}
-  gachaRewardView: {fileID: 783824676}
-  gachaOfferRateView: {fileID: 1903894518}
-  gachaLogView: {fileID: 1710633597}
   gachaOfferRateTotalText: {fileID: 1184428914}
   gachaConfirmText: {fileID: 15737426}
   coinText: {fileID: 1009487290}
   gemFreeText: {fileID: 33144344}
   gemPaidText: {fileID: 33144343}
+  gachaWarningText: {fileID: 1014642881}
+  gachaLogNothingText: {fileID: 1151508022}
   gachaExecuteButton: {fileID: 1890462556}
   gachaCancelButton: {fileID: 958917729}
   gachaSingleExecuteButton: {fileID: 507750353}
@@ -35219,8 +35215,12 @@ MonoBehaviour:
   gachaOfferRateCloseButton: {fileID: 543979792}
   gachaRewardCloseButton: {fileID: 1962120557}
   gachaResultCloseButton: {fileID: 1978471380}
-  gachaWarningText: {fileID: 1014642881}
-  gachaLogNothingText: {fileID: 1151508022}
+  gachaView: {fileID: 1655934738}
+  gachaConfirmView: {fileID: 1361025735}
+  gachaResultView: {fileID: 340842833}
+  gachaRewardView: {fileID: 783824676}
+  gachaOfferRateView: {fileID: 1903894518}
+  gachaLogView: {fileID: 1710633597}
   clientHome: {fileID: 2134605330}
   gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &1605412725
@@ -36033,10 +36033,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shopDetailView: {fileID: 1655090801}
+  shopDetailImage: {fileID: 1411107731}
   shopDetailNameText: {fileID: 1653300512}
   shopDetailRarityText: {fileID: 1282777243}
   shopDetailDescriptionText: {fileID: 225567423}
-  shopDetailImage: {fileID: 1411107731}
   shopDetailCloseButton: {fileID: 382553045}
   shopDetailMoneyText: {fileID: 938867757}
   shopDetailCoinText: {fileID: 114164114}
@@ -43899,13 +43899,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a46f0bc5c744d438da63a34bed3514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopView: {fileID: 84480098}
   coinText: {fileID: 957532797}
   gemFreeText: {fileID: 197218853}
   gemPaidText: {fileID: 197218852}
+  buyConfirmWarningText: {fileID: 2103633098}
   shopOpenButton: {fileID: 1098161961}
   shopCloseButton: {fileID: 1875579665}
-  buyConfirmWarningText: {fileID: 2103633098}
+  shopView: {fileID: 84480098}
   clientHome: {fileID: 2134605330}
   shopDetailFixedView: {fileID: 1655090803}
 --- !u!1001 &2039632324
@@ -44081,11 +44081,11 @@ MonoBehaviour:
   charaDetailRarityText: {fileID: 761606751}
   charaDetailLevelBeforeText: {fileID: 965259534}
   charaDetailLevelAfterText: {fileID: 1263476499}
+  enhanceText: {fileID: 393053613}
   enhanceButton: {fileID: 89288023}
   enhanceExecuteButton: {fileID: 1411646078}
   enhanceCancelButton: {fileID: 487363522}
   enhanceCloseButton: {fileID: 1842921610}
-  enhanceText: {fileID: 393053613}
   enhanceConfirmView: {fileID: 467343880}
   enhanceCompleteView: {fileID: 88261308}
   clientInstance: {fileID: 1116380503}
@@ -45626,16 +45626,16 @@ MonoBehaviour:
   userNameText: {fileID: 1330603455}
   staminaGauge: {fileID: 1351143447}
   staminaValueText: {fileID: 424427461}
-  staminaRecoveryButton: {fileID: 849911984}
-  gameMatchButton: {fileID: 1485899826}
   staminaRecoveryConfirmText: {fileID: 1996555300}
-  gameMatchConfirmText: {fileID: 923161611}
-  staminaRecoveryConfirmView: {fileID: 732227044}
-  gameMatchConfirmView: {fileID: 937980293}
+  staminaRecoveryButton: {fileID: 849911984}
   staminaRecoveryExecuteButton: {fileID: 1233943237}
-  gameMatchExecuteButton: {fileID: 1201007859}
   staminaRecoveryCancelButton: {fileID: 1034396963}
+  staminaRecoveryConfirmView: {fileID: 732227044}
+  gameMatchConfirmText: {fileID: 923161611}
+  gameMatchButton: {fileID: 1485899826}
+  gameMatchExecuteButton: {fileID: 1201007859}
   gameMatchCancelButton: {fileID: 791073838}
+  gameMatchConfirmView: {fileID: 937980293}
 --- !u!4 &2134605331
 Transform:
   m_ObjectHideFlags: 0

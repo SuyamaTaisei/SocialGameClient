@@ -12,18 +12,11 @@ public class ClientInstance : MonoBehaviour
 
     [SerializeField] Button itemInstanceOpenButton;
     [SerializeField] Button itemInstanceCloseButton;
-    [SerializeField] Button itemInstanceDetailOpenButton;
-    [SerializeField] Button itemDetailCloseButton;
-
     [SerializeField] Button charaInstanceOpenButton;
     [SerializeField] Button charaInstanceCloseButton;
-    [SerializeField] Button charaInstanceDetailOpenButton;
-    [SerializeField] Button charaDetailCloseButton;
 
     [SerializeField] GameObject itemInstanceView;
-    [SerializeField] GameObject itemInstanceDetailFixedView;
     [SerializeField] GameObject charaInstanceView;
-    [SerializeField] GameObject charaInstanceDetailFixedView;
 
     [SerializeField] EnhanceItemList enhanceItemList;
     [SerializeField] InstanceCharacterList charaInstanceList;
@@ -43,18 +36,12 @@ public class ClientInstance : MonoBehaviour
         apiConnect = ApiConnect.Instance;
 
         itemInstanceView.SetActive(false);
-        itemInstanceDetailFixedView.SetActive(false);
         charaInstanceView.SetActive(false);
-        charaInstanceDetailFixedView.SetActive(false);
 
         itemInstanceOpenButton.onClick.AddListener(() => ItemInstance(true));
         itemInstanceCloseButton.onClick.AddListener(() => ItemInstance(false));
-        itemInstanceDetailOpenButton.onClick.AddListener(() => ItemInstanceDetail(true));
-        itemDetailCloseButton.onClick.AddListener(() => ItemInstanceDetail(false));
         charaInstanceOpenButton.onClick.AddListener(() => CharaInstance(true));
         charaInstanceCloseButton.onClick.AddListener(() => CharaInstance(false));
-        charaInstanceDetailOpenButton.onClick.AddListener(() => CharaInstanceDetail(true));
-        charaDetailCloseButton.onClick.AddListener(() => CharaInstanceDetail(false));
     }
 
     //キャラ強化画面を開いた時の選択キャラのキャラクターIDを取得
@@ -126,18 +113,6 @@ public class ClientInstance : MonoBehaviour
     public void CharaInstance(bool enabled)
     {
         charaInstanceView.SetActive(enabled);
-    }
-
-    //アイテム詳細画面開閉
-    public void ItemInstanceDetail(bool enabled)
-    {
-        itemInstanceDetailFixedView.SetActive(enabled);
-    }
-
-    //キャラ詳細画面開閉
-    public void CharaInstanceDetail(bool enabled)
-    {
-        charaInstanceDetailFixedView.SetActive(enabled);
     }
 
     //メッセージ

@@ -16,9 +16,11 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     [SerializeField] Button enhanceExecuteButton;
     [SerializeField] Button enhanceCancelButton;
     [SerializeField] Button enhanceCloseButton;
+    [SerializeField] Button charaDetailCloseButton;
 
     [SerializeField] GameObject enhanceConfirmView;
     [SerializeField] GameObject enhanceCompleteView;
+    [SerializeField] GameObject charaInstanceDetailFixedView;
 
     [SerializeField] ClientInstance clientInstance;
 
@@ -29,11 +31,13 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     {
         enhanceConfirmView.SetActive(false);
         enhanceCompleteView.SetActive(false);
+        charaInstanceDetailFixedView.SetActive(false);
 
         enhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(true));
         enhanceExecuteButton.onClick.AddListener(() => clientInstance.RequestEnhance()); //強化リクエスト送信
         enhanceCancelButton.onClick.AddListener(() => SetEnhanceConfirmView(false));
         enhanceCloseButton.onClick.AddListener(() => SetEnhanceCompleteView(false));
+        charaDetailCloseButton.onClick.AddListener(() => SetCharaInstanceDetail(false));
     }
 
     public void Set(CharacterDataModel data1, CharacterRaritiesModel data2, CharacterInstancesModel data3, string imagePath)
@@ -83,6 +87,12 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
 
         bool isMaxLevel = beforeLevel >= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX);
         enhanceText.text = isMaxLevel ? GameUtility.Const.SHOW_INSTANCE_MAX : GameUtility.Const.SHOW_INSTANCE_ENHANCE;
+    }
+
+    //キャラ詳細画面開閉
+    public void SetCharaInstanceDetail(bool enabled)
+    {
+        charaInstanceDetailFixedView.SetActive(enabled);
     }
 
     //強化確認画面

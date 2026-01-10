@@ -31234,8 +31234,7 @@ MonoBehaviour:
   charaInstanceRarityText: {fileID: 1445220656}
   charaInstanceLevelText: {fileID: 494535471}
   charaInstanceDetailOpenButton: {fileID: 57354133}
-  charaDetailCloseButton: {fileID: 1034172794}
-  charaInstanceDetailFixedView: {fileID: 2041603144}
+  charaDetailFixedView: {fileID: 2041603146}
 --- !u!1 &1411107728
 GameObject:
   m_ObjectHideFlags: 0
@@ -44086,8 +44085,10 @@ MonoBehaviour:
   enhanceExecuteButton: {fileID: 1411646078}
   enhanceCancelButton: {fileID: 487363522}
   enhanceCloseButton: {fileID: 1842921610}
+  charaDetailCloseButton: {fileID: 1034172794}
   enhanceConfirmView: {fileID: 467343880}
   enhanceCompleteView: {fileID: 88261308}
+  charaInstanceDetailFixedView: {fileID: 2041603144}
   clientInstance: {fileID: 1116380503}
 --- !u!1 &2046237490
 GameObject:

@@ -29,6 +29,7 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     {
         enhanceConfirmView.SetActive(false);
         enhanceCompleteView.SetActive(false);
+
         enhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(true));
         enhanceExecuteButton.onClick.AddListener(() => clientInstance.RequestEnhance()); //強化リクエスト送信
         enhanceCancelButton.onClick.AddListener(() => SetEnhanceConfirmView(false));

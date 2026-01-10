@@ -19,6 +19,7 @@ public class ClientMasterData : MonoBehaviour
     private void Start()
     {
         apiConnect = ApiConnect.Instance;
+
         masterCheckView.SetActive(false);
         masterCheckButton.gameObject.SetActive(false);
 

@@ -45,6 +45,9 @@ public class ClientTitle : MonoBehaviour
     void Start()
     {
         apiConnect = ApiConnect.Instance;
+
+        ShowUserInfo();
+
         StartView.SetActive(true);
         registerView.SetActive(false);
         registerCompleteView.SetActive(false);
@@ -52,8 +55,6 @@ public class ClientTitle : MonoBehaviour
         registerSendButton.onClick.AddListener(() => Register());
         startButton.onClick.AddListener(() => GameStart());
         registerCompleteButton.onClick.AddListener(() => RegisterCompleteExecute());
-
-        ShowUserInfo();
     }
 
     private void Update()

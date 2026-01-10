@@ -27,8 +27,8 @@ public class ClientShop : MonoBehaviour
     private void Start()
     {
         apiConnect = ApiConnect.Instance;
-        shopView.SetActive(false);
         WarningMessage("");
+        shopView.SetActive(false);
 
         shopOpenButton.onClick.AddListener(() => ShopOpen());
         shopCloseButton.onClick.AddListener(() => ShopClose());

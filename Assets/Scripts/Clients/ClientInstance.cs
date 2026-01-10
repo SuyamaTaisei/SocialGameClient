@@ -48,14 +48,13 @@ public class ClientInstance : MonoBehaviour
         charaInstanceDetailFixedView.SetActive(false);
 
         itemInstanceOpenButton.onClick.AddListener(() => ItemInstance(true));
-        charaInstanceOpenButton.onClick.AddListener(() => CharaInstance(true));
-        charaInstanceDetailOpenButton.onClick.AddListener(() => CharaInstanceDetail(true));
-        itemInstanceDetailOpenButton.onClick.AddListener(() => ItemInstanceDetail(true));
-
         itemInstanceCloseButton.onClick.AddListener(() => ItemInstance(false));
-        charaInstanceCloseButton.onClick.AddListener(() => CharaInstance(false));
-        charaDetailCloseButton.onClick.AddListener(() => CharaInstanceDetail(false));
+        itemInstanceDetailOpenButton.onClick.AddListener(() => ItemInstanceDetail(true));
         itemDetailCloseButton.onClick.AddListener(() => ItemInstanceDetail(false));
+        charaInstanceOpenButton.onClick.AddListener(() => CharaInstance(true));
+        charaInstanceCloseButton.onClick.AddListener(() => CharaInstance(false));
+        charaInstanceDetailOpenButton.onClick.AddListener(() => CharaInstanceDetail(true));
+        charaDetailCloseButton.onClick.AddListener(() => CharaInstanceDetail(false));
     }
 
     //キャラ強化画面を開いた時の選択キャラのキャラクターIDを取得

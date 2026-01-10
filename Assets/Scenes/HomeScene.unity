@@ -3984,6 +3984,8 @@ MonoBehaviour:
   itemDetailRarityText: {fileID: 76088012}
   itemDetailDescriptionText: {fileID: 1678213695}
   itemDetailAmountText: {fileID: 1516549253}
+  itemDetailCloseButton: {fileID: 1434085540}
+  itemInstanceDetailFixedView: {fileID: 189289191}
 --- !u!1001 &197218850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28851,8 +28853,7 @@ MonoBehaviour:
   itemInstanceRarityText: {fileID: 1957719865}
   itemInstanceAmountText: {fileID: 551900973}
   itemInstanceDetailOpenButton: {fileID: 2091515701}
-  itemDetailCloseButton: {fileID: 1434085540}
-  itemInstanceDetailFixedView: {fileID: 189289191}
+  itemDetailFixedView: {fileID: 189289193}
 --- !u!1 &1282777240
 GameObject:
   m_ObjectHideFlags: 0

@@ -83,16 +83,9 @@ public class ClientInstance : MonoBehaviour
             form.Add(new MultipartFormDataSection($"items[{i}][amount]", items[i].Value.ToString()));
         }
 
-        int manageId = usersModel.manage_id;
-
         //リクエスト送信後の成功時レスポンス受け取りコールバック
         StartCoroutine(apiConnect.Send(GameUtility.Const.CHARACTER_ENHANCE_URL, form, (action) =>
         {
-            //最大量で強化確定したアイテムは削除
-            foreach (var item in items)
-            {
-                ItemInstancesTable.DeleteItem(manageId, item.Key, item.Value);
-            }
             CharacterInstancesModel characterInstancesModel = CharacterInstancesTable.SelectCharacterId(selectEnhanceCharacterId);
             charaDetailFixedView.SetLatestLevel(characterInstancesModel.level); //最新レベルを反映
             enhanceItemList.Refresh();                                          //アイテム更新

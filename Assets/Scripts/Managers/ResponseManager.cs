@@ -145,6 +145,34 @@ public class ResponseManager : MonoBehaviour
         }
     }
 
+    public void ExecuteEnhance(ResponseObjects responseObjects)
+    {
+        if (!string.IsNullOrEmpty(responseObjects.users.id))
+        {
+            Debug.Log("強化完了");
+            if (responseObjects.users != null)
+            {
+                UsersTable.Insert(responseObjects.users);
+            }
+            if (responseObjects.wallets != null)
+            {
+                WalletsTable.Insert(responseObjects.wallets);
+            }
+            if (responseObjects.item_instances != null)
+            {
+                ItemInstancesTable.InsertFromDelete(responseObjects.users.manage_id, responseObjects.item_instances);
+            }
+            if (responseObjects.character_instances != null)
+            {
+                CharacterInstancesTable.Insert(responseObjects.character_instances);
+            }
+        }
+        else
+        {
+            Debug.LogError("強化できなかった");
+        }
+    }
+
     public void ExecuteMasterData(ResponseObjects responseObjects)
     {
         if (responseObjects.shop_categories != null)
@@ -263,7 +291,7 @@ public class ResponseManager : MonoBehaviour
                 ExecutePayment(responseObjects);
                 break;
             case GameUtility.Const.CHARACTER_ENHANCE_URL:
-                ExecuteHome(responseObjects);
+                ExecuteEnhance(responseObjects);
                 break;
             case GameUtility.Const.STAMINA_DECREASE_URL:
                 ExecuteHome(responseObjects);

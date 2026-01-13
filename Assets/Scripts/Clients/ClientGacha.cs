@@ -6,13 +6,6 @@ using UnityEngine.UI;
 
 public class ClientGacha : MonoBehaviour
 {
-    //ガチャ画面表示
-    [SerializeField] GameObject gachaView;
-    [SerializeField] GameObject gachaConfirmView;
-    [SerializeField] GameObject gachaResultView;
-    [SerializeField] GameObject gachaRewardView;
-    [SerializeField] GameObject gachaOfferRateView;
-    [SerializeField] GameObject gachaLogView;
 
     //ガチャ画面テキスト
     [SerializeField] TextMeshProUGUI gachaOfferRateTotalText;
@@ -23,40 +16,80 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
 
+    //メッセージ
+    [SerializeField] TextMeshProUGUI gachaWarningText;
+    [SerializeField] TextMeshProUGUI gachaLogNothingText;
+
     //ボタン
     [SerializeField] Button gachaExecuteButton;
-    [SerializeField] Button openGachaRewardButton;
+    [SerializeField] Button gachaCancelButton;
+    [SerializeField] Button gachaSingleExecuteButton;
+    [SerializeField] Button gachaMultiExecuteButton;
 
-    //メッセージ
-    [SerializeField] TextMeshProUGUI warningText;
-    [SerializeField] TextMeshProUGUI nothingTextGachaLog;
+    [SerializeField] Button gachaOpenButton;
+    [SerializeField] Button gachaRewardOpenButton;
+    [SerializeField] Button gachaLogOpenButton;
+    [SerializeField] Button gachaOfferRateOpenButton;
+
+    [SerializeField] Button gachaCloseButton;
+    [SerializeField] Button gachaLogCloseButton;
+    [SerializeField] Button gachaOfferRateCloseButton;
+    [SerializeField] Button gachaRewardCloseButton;
+    [SerializeField] Button gachaResultCloseButton;
+
+    //ガチャ画面表示
+    [SerializeField] GameObject gachaView;
+    [SerializeField] GameObject gachaConfirmView;
+    [SerializeField] GameObject gachaResultView;
+    [SerializeField] GameObject gachaRewardView;
+    [SerializeField] GameObject gachaOfferRateView;
+    [SerializeField] GameObject gachaLogView;
 
     [SerializeField] ClientHome clientHome;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
+    private ApiConnect apiConnect;
 
     private int gacha_count;
+    private const string column_id = "id";
+    private const string column_gacha_id = "gacha_id";
+    private const string key_gacha_count = "gacha_count";
 
     public int GachaCount => gacha_count;
     public TextMeshProUGUI GachaOfferRateTotalText => gachaOfferRateTotalText;
     public GameObject GachaResultView => gachaResultView;
 
-    private ApiConnect apiConnect;
-
-    private const string column_id = "id";
-    private const string column_gacha_id = "gacha_id";
-    private const string key_gacha_count = "gacha_count";
-
     void Start()
     {
         apiConnect = ApiConnect.Instance;
-        gachaExecuteButton.onClick.AddListener(() => GachaExecuteButton(gachaPeriodTemplateView.GachaId, gacha_count));
+
         WarningMessage("");
+
         gachaView.SetActive(false);
         gachaConfirmView.SetActive(false);
         gachaResultView.SetActive(false);
         gachaRewardView.SetActive(false);
         gachaOfferRateView.SetActive(false);
         gachaLogView.SetActive(false);
+
+        gachaExecuteButton.onClick.AddListener(() => RequestGacha(gachaPeriodTemplateView.GachaId, gacha_count));
+        gachaCancelButton.onClick.AddListener(() => GachaConfirmClose());
+        gachaSingleExecuteButton.onClick.AddListener(() => {
+            GachaSingle();
+            GachaConfirmOpen();
+        });
+        gachaMultiExecuteButton.onClick.AddListener(() => {
+            GachaMulti();
+            GachaConfirmOpen();
+        });
+        gachaOpenButton.onClick.AddListener(() => GachaOpen());
+        gachaRewardOpenButton.onClick.AddListener(() => GachaRewardOpen());
+        gachaLogOpenButton.onClick.AddListener(() => GachaLogOpen());
+        gachaOfferRateOpenButton.onClick.AddListener(() => GachaOfferRateOpen());
+        gachaCloseButton.onClick.AddListener(() => GachaClose());
+        gachaLogCloseButton.onClick.AddListener(() => GachaLogClose());
+        gachaOfferRateCloseButton.onClick.AddListener(() => GachaOfferRateClose());
+        gachaRewardCloseButton.onClick.AddListener(() => GachaRewardClose());
+        gachaResultCloseButton.onClick.AddListener(() => GachaResultClose());
     }
 
     //表記リアルタイム更新
@@ -66,7 +99,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャリクエスト送信
-    public void GachaExecuteButton(int gacha_id, int gacha_count)
+    public void RequestGacha(int gacha_id, int gacha_count)
     {
         var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
@@ -79,13 +112,13 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ結果、ガチャ報酬表示リセット
-    public void CloseGachaResultResetButton()
+    public void GachaResultClose()
     {
         gachaResultView.SetActive(false);
     }
 
     //単発
-    public void GachaSingleButton()
+    public void GachaSingle()
     {
         var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
         gacha_count = gachaPeriodsModel.single_count;
@@ -93,7 +126,7 @@ public class ClientGacha : MonoBehaviour
     }
 
     //連発
-    public void GachaMultiButton()
+    public void GachaMulti()
     {
         var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
         gacha_count = gachaPeriodsModel.multi_count;
@@ -101,88 +134,88 @@ public class ClientGacha : MonoBehaviour
     }
 
     //ガチャ画面開く
-    public void OpenGachaButton()
+    public void GachaOpen()
     {
         gachaView.SetActive(true);
     }
 
     //ガチャ画面閉じる
-    public void CloseGachaButton()
+    public void GachaClose()
     {
         gachaView.SetActive(false);
     }
 
     //ガチャ実行確認画面開く
-    public void OpenConfirmButton()
+    public void GachaConfirmOpen()
     {
         gachaConfirmView.SetActive(true);
         WarningMessage("");
     }
 
     //ガチャ実行確認画面閉じる
-    public void CloseConfirmButton()
+    public void GachaConfirmClose()
     {
         gachaConfirmView.SetActive(false);
         WarningMessage("");
     }
 
     //ガチャ報酬開く
-    public void OpenGachaRewardButton()
+    public void GachaRewardOpen()
     {
         gachaRewardView.SetActive(true);
     }
 
     //ガチャ報酬閉じる
-    public void CloseGachaRewardButton()
+    public void GachaRewardClose()
     {
         gachaRewardView.SetActive(false);
     }
 
     //ガチャ提供割合開く
-    public void OpenGachaOfferRateButton()
+    public void GachaOfferRateOpen()
     {
         gachaOfferRateView.SetActive(true);
     }
 
     //ガチャ提供割合閉じる
-    public void CloseGachaOfferRateButton()
+    public void GachaOfferRateClose()
     {
         gachaOfferRateView.SetActive(false);
     }
 
     //ガチャ履歴開く
-    public void OpenGachaLogButton()
+    public void GachaLogOpen()
     {
         gachaLogView.SetActive(true);
     }
 
     //ガチャ履歴閉じる
-    public void CloseGachaLogButton()
+    public void GachaLogClose()
     {
         gachaLogView.SetActive(false);
     }
 
     //ガチャ報酬無し警告
-    public void NothingRewardMessage(bool enabled)
+    public void GachaRewardMessage(bool enabled)
     {
-        openGachaRewardButton.interactable = enabled;
-        var color = openGachaRewardButton.image.color;
+        gachaRewardOpenButton.interactable = enabled;
+        var color = gachaRewardOpenButton.image.color;
         color.a = enabled ? 1 : 0.07f;
-        openGachaRewardButton.image.color = color;
+        gachaRewardOpenButton.image.color = color;
 
-        var text = openGachaRewardButton.GetComponentInChildren<TextMeshProUGUI>();
+        var text = gachaRewardOpenButton.GetComponentInChildren<TextMeshProUGUI>();
         text.color = color;
     }
 
     //ガチャ履歴無し警告
-    public void NothingGachaLogMessage(string message)
+    public void GachaLogMessage(string message)
     {
-        nothingTextGachaLog.text = message;
+        gachaLogNothingText.text = message;
     }
 
     //購入警告
     public void WarningMessage(string message)
     {
-        warningText.text = message;
+        gachaWarningText.text = message;
     }
 }

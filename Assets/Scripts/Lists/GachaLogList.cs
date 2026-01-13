@@ -9,26 +9,26 @@ public class GachaLogList : MonoBehaviour
     [SerializeField] GachaLogTemplateView gachaLogTemplateView;
 
     //ガチャ履歴ボタン押下で、履歴リスト更新とリセット
-    private void OnEnable() => Refresh();
+    private void OnEnable() => DataList();
     private void OnDisable() => Clear();
 
     //開いて更新
-    private void Refresh()
+    private void DataList()
     {
         List<GachaLogsModel> gachaLogsList = GachaLogsTable.SelectIdLatest(GameUtility.Const.LOG_GACHA_LIMIT);
 
         //何もガチャ履歴が無ければ
         if (gachaLogsList.Count == 0)
         {
-            clientGacha.NothingGachaLogMessage(GameUtility.Const.SHOW_GACHA_LOG_NOTHING);
+            clientGacha.GachaLogMessage(GameUtility.Const.SHOW_GACHA_LOG_NOTHING);
             return;
         }
 
-        clientGacha.NothingGachaLogMessage("");
+        clientGacha.GachaLogMessage("");
 
         for (int i = 0; i < gachaLogsList.Count; i++)
         {
-            //データ実体の生成
+            //データの生成
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaLogTemplateView>();
             int index = i;

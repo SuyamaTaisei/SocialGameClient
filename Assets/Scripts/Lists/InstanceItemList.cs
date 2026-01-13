@@ -8,7 +8,7 @@ public class InstanceItemList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientInstance clientInstance;
-    [SerializeField] InstanceItemDetailFixedView itemDetailFixedView;
+    [SerializeField] InstanceItemDetailFixedView itemInstanceDetailFixedView;
     [SerializeField] TMP_Dropdown dropDownList;
 
     //標準ソート。最後に選ばれたソートを保持
@@ -46,7 +46,7 @@ public class InstanceItemList : MonoBehaviour
     public void RefreshSort(string column, string sort)
     {
         Clear(); //再選択時に必ず破棄
-        List<ItemInstancesModel> itemInstancesList = ItemInstacesTable.SelectSortAll(column, sort);
+        List<ItemInstancesModel> itemInstancesList = ItemInstancesTable.SelectSortAll(column, sort);
         DataList(itemInstancesList);
     }
 
@@ -56,11 +56,11 @@ public class InstanceItemList : MonoBehaviour
         //何もアイテムを所持していなければ
         if (itemInstancesList == null || itemInstancesList.Count == 0)
         {
-            clientInstance.NothingItemMessage(GameUtility.Const.SHOW_INSTANCE_ITEM_NOTHING);
+            clientInstance.ItemInstanceMessage(GameUtility.Const.SHOW_INSTANCE_ITEM_NOTHING);
             return;
         }
 
-        clientInstance.NothingItemMessage("");
+        clientInstance.ItemInstanceMessage("");
 
         for (int i = 0; i < itemInstancesList.Count; i++)
         {
@@ -78,7 +78,7 @@ public class InstanceItemList : MonoBehaviour
 
             //データの描画
             view.Set(data1, data2, data, imagePath);
-            button.onClick.AddListener(() => itemDetailFixedView.Set(data1, data2, data, imagePath));
+            button.onClick.AddListener(() => itemInstanceDetailFixedView.Set(data1, data2, data, imagePath));
         }
     }
 

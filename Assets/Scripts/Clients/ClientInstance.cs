@@ -2,22 +2,25 @@
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.Generic;
+using UnityEngine.UI;
 
 public class ClientInstance : MonoBehaviour
 {
-    [SerializeField] GameObject itemInstanceView;
-    [SerializeField] GameObject itemInstanceDetailView;
-    [SerializeField] GameObject characterInstanceView;
-    [SerializeField] GameObject characterInstanceDetailView;
-
-    [SerializeField] TextMeshProUGUI itemNothingText;
+    [SerializeField] TextMeshProUGUI itemInstanceNothingText;
     [SerializeField] TextMeshProUGUI enhanceItemNothingText;
-    [SerializeField] TextMeshProUGUI CharacterNothingText;
+    [SerializeField] TextMeshProUGUI charaInstanceNothingText;
+
+    [SerializeField] Button itemInstanceOpenButton;
+    [SerializeField] Button itemInstanceCloseButton;
+    [SerializeField] Button charaInstanceOpenButton;
+    [SerializeField] Button charaInstanceCloseButton;
+
+    [SerializeField] GameObject itemInstanceView;
+    [SerializeField] GameObject charaInstanceView;
 
     [SerializeField] EnhanceItemList enhanceItemList;
-    [SerializeField] InstanceCharacterList instanceCharacterList;
-    [SerializeField] InstanceCharacterDetailFixedView instanceCharacterDetailView;
-
+    [SerializeField] InstanceCharacterList charaInstanceList;
+    [SerializeField] InstanceCharacterDetailFixedView charaDetailFixedView;
     private ApiConnect apiConnect;
 
     //キャラクターID取得
@@ -25,7 +28,6 @@ public class ClientInstance : MonoBehaviour
 
     //強化アイテム一覧で選択したアイテムIDとアイテム数量の紐づけ
     private readonly Dictionary<int, int> selectEnhanceItems = new();
-
     private const string column_id = "id";
     private const string column_character_id = "character_id";
 
@@ -34,31 +36,34 @@ public class ClientInstance : MonoBehaviour
         apiConnect = ApiConnect.Instance;
 
         itemInstanceView.SetActive(false);
-        itemInstanceDetailView.SetActive(false);
-        characterInstanceView.SetActive(false);
-        characterInstanceDetailView.SetActive(false);
+        charaInstanceView.SetActive(false);
+
+        itemInstanceOpenButton.onClick.AddListener(() => ItemInstance(true));
+        itemInstanceCloseButton.onClick.AddListener(() => ItemInstance(false));
+        charaInstanceOpenButton.onClick.AddListener(() => CharaInstance(true));
+        charaInstanceCloseButton.onClick.AddListener(() => CharaInstance(false));
     }
 
     //キャラ強化画面を開いた時の選択キャラのキャラクターIDを取得
-    public void SetEnhanceCharacterId(int characterId)
+    public void GetCharacterId(int characterId)
     {
         selectEnhanceCharacterId = characterId;
     }
 
     //強化アイテム一覧で選択されたアイテムIDとアイテム数量を保持
-    public void SetEnhanceItems(int itemId, int amount)
+    public void SaveEnhanceItems(int itemId, int amount)
     {
         selectEnhanceItems[itemId] = amount;
     }
 
     //保持された紐づけをリセット
-    public void ClearSelectEnhanceItems()
+    public void ClearEnhanceItems()
     {
         selectEnhanceItems.Clear();
     }
 
     //強化リクエストの送信処理
-    public void ExecuteEnhance()
+    public void RequestEnhance()
     {
         var usersModel = UsersTable.Select();
 
@@ -78,62 +83,44 @@ public class ClientInstance : MonoBehaviour
             form.Add(new MultipartFormDataSection($"items[{i}][amount]", items[i].Value.ToString()));
         }
 
-        int manageId = usersModel.manage_id;
-
         //リクエスト送信後の成功時レスポンス受け取りコールバック
         StartCoroutine(apiConnect.Send(GameUtility.Const.CHARACTER_ENHANCE_URL, form, (action) =>
         {
-            //最大量で強化確定したアイテムは削除
-            foreach (var item in items)
-            {
-                ItemInstacesTable.DeleteItem(manageId, item.Key, item.Value);
-            }
-            CharacterInstancesModel characterInstancesModel = CharacterInstancesTable.SelectId(selectEnhanceCharacterId);
-            instanceCharacterDetailView.SetLatestLevel(characterInstancesModel.level); //最新レベルを反映
-            enhanceItemList.Refresh();                                //アイテム更新
-            instanceCharacterList.Refresh();                          //キャラクター更新
-            instanceCharacterDetailView.SetEnhanceConfirmView(false); //確認画面閉じる
-            instanceCharacterDetailView.SetEnhanceCompleteView(true); //強化完了画面開く
-            ClearSelectEnhanceItems();
+            CharacterInstancesModel characterInstancesModel = CharacterInstancesTable.SelectCharacterId(selectEnhanceCharacterId);
+            charaDetailFixedView.SetLatestLevel(characterInstancesModel.level); //最新レベルを反映
+            enhanceItemList.Refresh();                                          //アイテム更新
+            charaInstanceList.Refresh();                                        //キャラクター更新
+            charaDetailFixedView.SetEnhanceConfirmView(false);                  //確認画面閉じる
+            charaDetailFixedView.SetEnhanceCompleteView(true);                  //強化完了画面開く
+            ClearEnhanceItems();
         }));
     }
 
-    //アイテム一覧開くボタン
-    public void ItemInstanceButton(bool enabled)
+    //アイテム一覧開閉
+    public void ItemInstance(bool enabled)
     {
         itemInstanceView.SetActive(enabled);
     }
 
-    //キャラクター一覧開くボタン
-    public void CharacterInstanceButton(bool enabled)
+    //キャラ一覧開閉
+    public void CharaInstance(bool enabled)
     {
-        characterInstanceView.SetActive(enabled);
+        charaInstanceView.SetActive(enabled);
     }
 
-    //キャラクター詳細画面開閉ボタン
-    public void CharacterDetailButton(bool enabled)
+    //メッセージ
+    public void ItemInstanceMessage(string text)
     {
-        characterInstanceDetailView.SetActive(enabled);
+        itemInstanceNothingText.text = text;
     }
 
-    //アイテム詳細画面開閉ボタン
-    public void ItemDetailButton(bool enabled)
-    {
-        itemInstanceDetailView.SetActive(enabled);
-    }
-
-    public void NothingItemMessage(string text)
-    {
-        itemNothingText.text = text;
-    }
-
-    public void NothingEnhanceItemMessage(string text)
+    public void EnhanceItemMessage(string text)
     {
         enhanceItemNothingText.text = text;
     }
 
-    public void NothingCharacterMessage(string text)
+    public void CharaInstanceMessage(string text)
     {
-        CharacterNothingText.text = text;
+        charaInstanceNothingText.text = text;
     }
 }

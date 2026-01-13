@@ -4,16 +4,16 @@ using UnityEngine.UI;
 
 public class ShopTemplateView : MonoBehaviour
 {
-    [SerializeField] Image productImage;
-    [SerializeField] TextMeshProUGUI productNameText;
+    [SerializeField] Image image;
+    [SerializeField] TextMeshProUGUI nameText;
     [SerializeField] TextMeshProUGUI priceText;
-    [SerializeField] TextMeshProUGUI productRarityText;
+    [SerializeField] TextMeshProUGUI rarityText;
 
     public void Set(ShopDataModel data1, ItemRaritiesModel data2, string imagePath)
     {
-        if (productImage) productImage.sprite = Resources.Load<Sprite>(imagePath);
-        if (productNameText) productNameText.text = data1.name;
+        if (image) image.sprite = Resources.Load<Sprite>(imagePath);
+        if (nameText) nameText.text = data1.name;
         if (priceText) priceText.text = data1.price.ToString() + GameUtility.Const.SHOW_YEN;
-        if (productRarityText) productRarityText.text = data2.name;
+        if (rarityText) rarityText.text = data2.name;
     }
 }

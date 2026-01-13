@@ -1,27 +1,29 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ClientMasterData : MonoBehaviour
 {
-    [SerializeField] GameObject masterCheckView;
     [SerializeField] TextMeshProUGUI masterCheckText;
-    [SerializeField] GameObject masterCheckButton;
+    [SerializeField] Button masterCheckButton;
+    [SerializeField] GameObject masterCheckView;
+
     [SerializeField] ClientTitle clientTitle;
-
-    private int serverVersion;
-
     private ApiConnect apiConnect;
 
+    private int serverVersion;
     private const string masterData_key = "client_master_version";
 
     private void Start()
     {
         apiConnect = ApiConnect.Instance;
+
         masterCheckView.SetActive(false);
-        masterCheckButton.SetActive(false);
+        masterCheckButton.gameObject.SetActive(false);
+
+        masterCheckButton.onClick.AddListener(() => MasterDataUpdateComplete());
     }
 
     //マスタデータアップデート警告
@@ -29,7 +31,7 @@ public class ClientMasterData : MonoBehaviour
     {
         masterCheckText.text = message;
         masterCheckView.SetActive(true);
-        masterCheckButton.SetActive(true);
+        masterCheckButton.gameObject.SetActive(true);
     }
 
     //1.マスタデータバージョン確認処理
@@ -58,7 +60,7 @@ public class ClientMasterData : MonoBehaviour
         }));
     }
 
-    //2.マスタデータ取得処理(ゲームアップデート)
+    //2.マスタデータ取得処理(バージョンが一致していなければ自動でゲームアップデート)
     public void MasterDataGet()
     {
         clientTitle.StartView.SetActive(false);
@@ -70,7 +72,7 @@ public class ClientMasterData : MonoBehaviour
             //バージョンが一致していない場合は最新のバージョンを保存
             MasterDataManager.SetMasterDataVersion(serverVersion);
             masterCheckText.text = GameUtility.Const.SHOW_MASTER_TEXT_2;
-            masterCheckButton.SetActive(true);
+            masterCheckButton.gameObject.SetActive(true);
         }));
     }
 

@@ -7,28 +7,28 @@ public class EnhanceItemList : MonoBehaviour
     [SerializeField] GameObject templateView;
     [SerializeField] ClientInstance clientInstance;
 
-    private void OnEnable() => RefreshEnhanceList();
+    private void OnEnable() => DataList();
     private void OnDisable() => Clear();
 
     //外部更新用
     public void Refresh()
     {
         Clear();
-        RefreshEnhanceList();
+        DataList();
     }
 
-    public void RefreshEnhanceList()
+    public void DataList()
     {
-        List<ItemInstancesModel> itemInstancesList = ItemInstacesTable.SelectEnhanceItemAll();
+        List<ItemInstancesModel> itemInstancesList = ItemInstancesTable.SelectEnhanceItemAll();
 
         //何もアイテムを所持していなければ
         if (itemInstancesList == null || itemInstancesList.Count == 0)
         {
-            clientInstance.NothingEnhanceItemMessage(GameUtility.Const.SHOW_INSTANCE_ENHANCE_ITEM_NOTHING);
+            clientInstance.EnhanceItemMessage(GameUtility.Const.SHOW_INSTANCE_ENHANCE_ITEM_NOTHING);
             return;
         }
 
-        clientInstance.NothingEnhanceItemMessage("");
+        clientInstance.EnhanceItemMessage("");
 
         for (int i = 0; i < itemInstancesList.Count; i++)
         {

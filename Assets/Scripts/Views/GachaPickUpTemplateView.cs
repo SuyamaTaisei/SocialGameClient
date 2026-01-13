@@ -4,15 +4,15 @@ using UnityEngine.UI;
 
 public class GachaPickUpTemplateView : MonoBehaviour
 {
-    [SerializeField] Image characterImage;
-    [SerializeField] TextMeshProUGUI nameText;
-    [SerializeField] TextMeshProUGUI rarityText;
+    [SerializeField] Image gachaPickUpImage;
+    [SerializeField] TextMeshProUGUI gachaPickUpNameText;
+    [SerializeField] TextMeshProUGUI gachaPickUpRarityText;
 
     public void Set(CharacterDataModel data1, CharacterRaritiesModel data2, string imagePath)
     {
-        nameText.text = data1.name;
-        rarityText.text = data2.name;
-        characterImage.sprite = Resources.Load<Sprite>(imagePath);
-        characterImage.preserveAspect = true;
+        gachaPickUpNameText.text = data1.name;
+        gachaPickUpRarityText.text = data2.name;
+        gachaPickUpImage.sprite = Resources.Load<Sprite>(imagePath);
+        gachaPickUpImage.preserveAspect = true;
     }
 }

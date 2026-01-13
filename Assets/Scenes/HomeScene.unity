@@ -148,10 +148,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children:
-  - {fileID: 2086841817}
-  - {fileID: 1853234963}
   - {fileID: 232727490}
   - {fileID: 1330603454}
+  - {fileID: 2086841817}
+  - {fileID: 1853234963}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &15737424
@@ -303,7 +303,7 @@ GameObject:
   - component: {fileID: 19971436}
   - component: {fileID: 19971435}
   m_Layer: 5
-  m_Name: CharacterDetailImage
+  m_Name: CharaDetailImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -527,7 +527,7 @@ GameObject:
   - component: {fileID: 27162561}
   - component: {fileID: 27162562}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: GachaResultImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -810,7 +810,7 @@ GameObject:
   - component: {fileID: 48881197}
   - component: {fileID: 48881196}
   m_Layer: 0
-  m_Name: CloseText
+  m_Name: EnhanceExecuteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1272,7 +1272,7 @@ GameObject:
   - component: {fileID: 57354131}
   - component: {fileID: 57354133}
   m_Layer: 5
-  m_Name: CharacterInstanceFrameButton
+  m_Name: CharaInstanceDetailOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1378,19 +1378,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 57354131}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: CharacterDetailButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &68859109
 GameObject:
   m_ObjectHideFlags: 0
@@ -1403,7 +1391,7 @@ GameObject:
   - component: {fileID: 68859112}
   - component: {fileID: 68859111}
   m_Layer: 5
-  m_Name: ArrowImage
+  m_Name: CharaDetailArrowImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1634,13 +1622,13 @@ RectTransform:
   - {fileID: 995881883}
   - {fileID: 1817171807}
   - {fileID: 1875579664}
+  - {fileID: 1400259709}
+  - {fileID: 769193378}
+  - {fileID: 1411209986}
   - {fileID: 445234896}
   - {fileID: 1007130450}
   - {fileID: 957532796}
   - {fileID: 197218851}
-  - {fileID: 1400259709}
-  - {fileID: 769193378}
-  - {fileID: 1411209986}
   - {fileID: 1694803494}
   - {fileID: 1685240342}
   - {fileID: 1655090802}
@@ -2048,7 +2036,7 @@ GameObject:
   - component: {fileID: 101283706}
   - component: {fileID: 101283708}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: GachaResultImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2365,7 +2353,7 @@ GameObject:
   - component: {fileID: 114164115}
   - component: {fileID: 114164114}
   m_Layer: 0
-  m_Name: PriceCoinText
+  m_Name: ShopDetailCoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2612,7 +2600,7 @@ GameObject:
   - component: {fileID: 116658502}
   - component: {fileID: 116658501}
   m_Layer: 0
-  m_Name: CoinIcon
+  m_Name: ShopDetailCoinIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3119,7 +3107,7 @@ GameObject:
   - component: {fileID: 138787081}
   - component: {fileID: 138787080}
   m_Layer: 5
-  m_Name: OpenGachaLogButton
+  m_Name: GachaLogOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3188,19 +3176,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 138787081}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenGachaLogButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &138787081
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3537,12 +3513,12 @@ MonoBehaviour:
   enhanceItemImage: {fileID: 1864169180}
   enhanceItemNameText: {fileID: 1818238233}
   enhanceItemRarityText: {fileID: 1167462608}
-  totalAmountText: {fileID: 1735797768}
-  currentAmountText: {fileID: 1578566791}
-  increaseButton: {fileID: 108193009}
-  decreaseButton: {fileID: 850958688}
+  enhanceItemTotalAmountText: {fileID: 1735797768}
+  enhanceItemCurrentAmountText: {fileID: 1578566791}
+  enhanceItemIncreaseButton: {fileID: 108193009}
+  enhanceItemDecreaseButton: {fileID: 850958688}
   clientInstance: {fileID: 1116380503}
-  characterDetailView: {fileID: 2041603146}
+  charaInstanceDetailFixedView: {fileID: 2041603146}
 --- !u!1 &158242672
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,7 +3760,7 @@ GameObject:
   - component: {fileID: 180215904}
   - component: {fileID: 180215905}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: GachaPickUpImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3837,7 +3813,7 @@ GameObject:
   - component: {fileID: 181599465}
   - component: {fileID: 181599464}
   m_Layer: 5
-  m_Name: CloseGachaLogButton
+  m_Name: GachaLogCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3905,19 +3881,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 181599465}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseGachaLogButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &181599465
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4015,11 +3979,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cc46c6a5f3c714444a3f4a801cfe178e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  detailItemImage: {fileID: 423469624}
-  detailItemNameText: {fileID: 980223736}
-  detailItemRarityText: {fileID: 76088012}
-  detailItemDescriptionText: {fileID: 1678213695}
-  detailItemAmountText: {fileID: 1516549253}
+  itemDetailImage: {fileID: 423469624}
+  itemDetailNameText: {fileID: 980223736}
+  itemDetailRarityText: {fileID: 76088012}
+  itemDetailDescriptionText: {fileID: 1678213695}
+  itemDetailAmountText: {fileID: 1516549253}
+  itemDetailCloseButton: {fileID: 1434085540}
+  itemInstanceDetailFixedView: {fileID: 189289191}
 --- !u!1001 &197218850
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4188,7 +4154,7 @@ GameObject:
   - component: {fileID: 198622518}
   - component: {fileID: 198622517}
   m_Layer: 5
-  m_Name: ItemNameText
+  m_Name: GachaSingleRewardNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4667,10 +4633,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f2957990255d141ac63da8e294d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productImage: {fileID: 1955913628}
-  productNameText: {fileID: 1044364959}
+  image: {fileID: 1955913628}
+  nameText: {fileID: 1044364959}
   priceText: {fileID: 0}
-  productRarityText: {fileID: 450088116}
+  rarityText: {fileID: 450088116}
 --- !u!1 &210899808
 GameObject:
   m_ObjectHideFlags: 0
@@ -5132,7 +5098,7 @@ GameObject:
   - component: {fileID: 225567424}
   - component: {fileID: 225567423}
   m_Layer: 5
-  m_Name: ProductDescriptionText
+  m_Name: ShopDetailDescriptionText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5706,7 +5672,7 @@ GameObject:
   - component: {fileID: 240985322}
   - component: {fileID: 240985321}
   m_Layer: 5
-  m_Name: CharacterInstanceLevelTextBG
+  m_Name: CharaInstanceLevelTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5783,7 +5749,7 @@ GameObject:
   - component: {fileID: 242989898}
   - component: {fileID: 242989897}
   m_Layer: 0
-  m_Name: ShopComfirmYesButton
+  m_Name: BuyConfirmExecuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5903,7 +5869,7 @@ GameObject:
   - component: {fileID: 250829201}
   - component: {fileID: 250829200}
   m_Layer: 5
-  m_Name: GachaPeriodFrame2
+  m_Name: GachaPeriodFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5979,7 +5945,7 @@ GameObject:
   - component: {fileID: 253552656}
   - component: {fileID: 253552655}
   m_Layer: 5
-  m_Name: ItemImage
+  m_Name: GachaSingleRewardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6069,7 +6035,7 @@ GameObject:
   - component: {fileID: 257106187}
   - component: {fileID: 257106186}
   m_Layer: 0
-  m_Name: BuyMoneyButton
+  m_Name: ShopDetailMoneyButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6192,7 +6158,7 @@ GameObject:
   - component: {fileID: 257925890}
   - component: {fileID: 257925893}
   m_Layer: 5
-  m_Name: GachaOfferRateListView
+  m_Name: GachaOfferRateList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6301,7 +6267,7 @@ MonoBehaviour:
   content: {fileID: 1190968998}
   templateView: {fileID: 924080637}
   clientGacha: {fileID: 1605318034}
-  gachaOfferRateTemplate: {fileID: 924080639}
+  gachaOfferRateTemplateView: {fileID: 924080639}
   gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &258852210
 GameObject:
@@ -6317,7 +6283,7 @@ GameObject:
   - component: {fileID: 258852213}
   - component: {fileID: 258852216}
   m_Layer: 5
-  m_Name: ItemInstanceListView
+  m_Name: ItemInstanceList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6427,7 +6393,7 @@ MonoBehaviour:
   content: {fileID: 1958544682}
   templateView: {fileID: 1280758908}
   clientInstance: {fileID: 1116380503}
-  itemDetailFixedView: {fileID: 189289193}
+  itemInstanceDetailFixedView: {fileID: 189289193}
   dropDownList: {fileID: 677923900}
 --- !u!1 &282860011
 GameObject:
@@ -6441,7 +6407,7 @@ GameObject:
   - component: {fileID: 282860014}
   - component: {fileID: 282860013}
   m_Layer: 0
-  m_Name: ShopConfirmFrame
+  m_Name: BuyConfirmFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6521,7 +6487,7 @@ GameObject:
   - component: {fileID: 292862455}
   - component: {fileID: 292862454}
   m_Layer: 5
-  m_Name: CharacterNewText
+  m_Name: GachaResultNewText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7563,7 +7529,7 @@ GameObject:
   - component: {fileID: 356031600}
   - component: {fileID: 356031599}
   m_Layer: 5
-  m_Name: CharacterRarityText
+  m_Name: GachaResultRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8044,7 +8010,7 @@ GameObject:
   - component: {fileID: 382553046}
   - component: {fileID: 382553045}
   m_Layer: 0
-  m_Name: CloseProductButton
+  m_Name: ShopDetailCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8112,19 +8078,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 382553046}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: CloseProductInfoButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &382553046
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8250,7 +8204,7 @@ GameObject:
   - component: {fileID: 393053614}
   - component: {fileID: 393053613}
   m_Layer: 5
-  m_Name: EnhanceButtonText
+  m_Name: EnhanceText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -8490,7 +8444,7 @@ GameObject:
   - component: {fileID: 395465824}
   - component: {fileID: 395465827}
   m_Layer: 5
-  m_Name: GachaLogListView
+  m_Name: GachaLogList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9361,7 +9315,6 @@ MonoBehaviour:
   gachaPeriodListText: {fileID: 926252792}
   gachaPeriodTitle: {fileID: 1158041302}
   gachaPeriodText: {fileID: 570081278}
-  gachaOfferRatePeriodText: {fileID: 1824369991}
   gachaSingleCostText: {fileID: 202143063}
   gachaMultiCostText: {fileID: 1250795197}
   gachaSingleText: {fileID: 884497073}
@@ -9625,7 +9578,7 @@ GameObject:
   - component: {fileID: 450088117}
   - component: {fileID: 450088116}
   m_Layer: 0
-  m_Name: ProductRarityText
+  m_Name: ShopItemRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9759,7 +9712,7 @@ GameObject:
   m_Component:
   - component: {fileID: 456120712}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: CharaObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9872,7 +9825,7 @@ GameObject:
   - component: {fileID: 457444896}
   - component: {fileID: 457444895}
   m_Layer: 5
-  m_Name: DetailNameFrame
+  m_Name: CharaDetailNameFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10084,7 +10037,7 @@ GameObject:
   - component: {fileID: 461797158}
   - component: {fileID: 461797160}
   m_Layer: 0
-  m_Name: DecreaseButton
+  m_Name: ShopDetailDecreaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10409,7 +10362,7 @@ GameObject:
   - component: {fileID: 473795532}
   - component: {fileID: 473795531}
   m_Layer: 0
-  m_Name: RecoveryCancelText
+  m_Name: GameMatchCancelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10868,7 +10821,7 @@ GameObject:
   m_Component:
   - component: {fileID: 481103725}
   m_Layer: 5
-  m_Name: DetailObject
+  m_Name: CharaDetailObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10908,7 +10861,7 @@ GameObject:
   - component: {fileID: 485258486}
   - component: {fileID: 485258485}
   m_Layer: 5
-  m_Name: DetailRarityTextFrame
+  m_Name: CharaDetailRarityTextFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10984,7 +10937,7 @@ GameObject:
   - component: {fileID: 487363520}
   - component: {fileID: 487363522}
   m_Layer: 0
-  m_Name: CancelEnhanceButton
+  m_Name: EnhanceCancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11146,15 +11099,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2056056e94004be459d86b3888fc8450, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 101283706}
-  characterNameText: {fileID: 797010334}
-  characterRarityText: {fileID: 356031599}
-  characterNewText: {fileID: 292862454}
-  itemImage: {fileID: 253552656}
-  itemNameText: {fileID: 198622517}
-  itemRarityText: {fileID: 1614425156}
-  itemAmountText: {fileID: 1173844703}
-  itemOtherObject: {fileID: 1170680951}
+  gachaResultImage: {fileID: 101283706}
+  gachaResultNameText: {fileID: 797010334}
+  gachaResultRarityText: {fileID: 356031599}
+  gachaResultNewText: {fileID: 292862454}
+  gachaSingleRewardImage: {fileID: 253552656}
+  gachaSingleRewardNameText: {fileID: 198622517}
+  gachaSingleRewardRarityText: {fileID: 1614425156}
+  gachaSingleRewardAmountText: {fileID: 1173844703}
+  gachaSingleRewardOtherObject: {fileID: 1170680951}
 --- !u!1 &494486122
 GameObject:
   m_ObjectHideFlags: 0
@@ -11236,19 +11189,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 494486125}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &494486125
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11299,7 +11240,7 @@ GameObject:
   - component: {fileID: 494535472}
   - component: {fileID: 494535471}
   m_Layer: 5
-  m_Name: CharacterInstanceLevelText
+  m_Name: CharaInstanceLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11478,9 +11419,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 89f2a42b0dadc354c9421e6e0195a063, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 1176935475}
-  nameText: {fileID: 97559909}
-  rarityText: {fileID: 927953690}
+  gachaPickUpImage: {fileID: 1176935475}
+  gachaPickUpNameText: {fileID: 97559909}
+  gachaPickUpRarityText: {fileID: 927953690}
 --- !u!1 &501014179
 GameObject:
   m_ObjectHideFlags: 0
@@ -11493,7 +11434,7 @@ GameObject:
   - component: {fileID: 501014182}
   - component: {fileID: 501014181}
   m_Layer: 0
-  m_Name: ShopConfirmBG
+  m_Name: BuyConfirmBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11569,7 +11510,7 @@ GameObject:
   - component: {fileID: 502751418}
   - component: {fileID: 502751417}
   m_Layer: 5
-  m_Name: OpenGachaRewardButton
+  m_Name: GachaRewardOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11638,19 +11579,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 502751418}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenGachaRewardButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &502751418
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11838,7 +11767,7 @@ GameObject:
   - component: {fileID: 507750354}
   - component: {fileID: 507750353}
   m_Layer: 5
-  m_Name: GachaSingleButton
+  m_Name: GachaSingleExecuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11908,31 +11837,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 507750354}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaSingleButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenConfirmButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &507750354
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12232,6 +12137,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Line
       objectReference: {fileID: 0}
+    - target: {fileID: 2114255559848614756, guid: 425af977176c6914cbf25c9992f18065, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3379144816150703505, guid: 425af977176c6914cbf25c9992f18065, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -12482,7 +12391,7 @@ GameObject:
   m_Component:
   - component: {fileID: 526249027}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: GachaOfferRateObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12520,7 +12429,7 @@ GameObject:
   - component: {fileID: 532099183}
   - component: {fileID: 532099182}
   m_Layer: 5
-  m_Name: DetailNameText
+  m_Name: CharaDetailNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12777,7 +12686,7 @@ GameObject:
   - component: {fileID: 543979790}
   - component: {fileID: 543979792}
   m_Layer: 5
-  m_Name: CloseGachaOfferRateButton
+  m_Name: GachaOfferRateCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -12883,19 +12792,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 543979790}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseGachaOfferRateButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &551900971
 GameObject:
   m_ObjectHideFlags: 0
@@ -13414,7 +13311,7 @@ GameObject:
   m_Component:
   - component: {fileID: 565704101}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: GachaPickUpObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13586,7 +13483,7 @@ GameObject:
   m_Component:
   - component: {fileID: 581114093}
   m_Layer: 5
-  m_Name: ItemObject
+  m_Name: GachaSingleRewardObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13626,7 +13523,7 @@ GameObject:
   - component: {fileID: 581279428}
   - component: {fileID: 581279431}
   m_Layer: 5
-  m_Name: CharaInstanceListView
+  m_Name: CharaInstanceList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13736,7 +13633,7 @@ MonoBehaviour:
   content: {fileID: 723250606}
   templateView: {fileID: 1407158981}
   clientInstance: {fileID: 1116380503}
-  characterDetailView: {fileID: 2041603146}
+  charaInstanceDetailFixedView: {fileID: 2041603146}
   dropDownList: {fileID: 1533433354}
 --- !u!1 &591015463
 GameObject:
@@ -13932,19 +13829,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 591937359}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &601821598
 GameObject:
   m_ObjectHideFlags: 0
@@ -14227,7 +14112,7 @@ GameObject:
   m_Component:
   - component: {fileID: 609548032}
   m_Layer: 5
-  m_Name: ProductObject
+  m_Name: ShopItemObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14266,7 +14151,7 @@ GameObject:
   - component: {fileID: 612298835}
   - component: {fileID: 612298834}
   m_Layer: 0
-  m_Name: ClosePaymentButton
+  m_Name: PaymentCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14335,19 +14220,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 612298835}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &612298835
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14398,7 +14271,7 @@ GameObject:
   - component: {fileID: 617796249}
   - component: {fileID: 617796248}
   m_Layer: 5
-  m_Name: AfterLevelText
+  m_Name: CharaDetailAfterLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14536,7 +14409,7 @@ GameObject:
   - component: {fileID: 618233853}
   - component: {fileID: 618233856}
   m_Layer: 5
-  m_Name: EnhanceItemListView
+  m_Name: EnhanceItemList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14904,7 +14777,7 @@ GameObject:
   - component: {fileID: 656591220}
   - component: {fileID: 656591221}
   m_Layer: 5
-  m_Name: CharacterDetailImageMask
+  m_Name: CharaDetailImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -14958,7 +14831,7 @@ GameObject:
   - component: {fileID: 659044967}
   - component: {fileID: 659044970}
   m_Layer: 5
-  m_Name: GachaResultListView
+  m_Name: GachaResultList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15414,7 +15287,7 @@ GameObject:
   - component: {fileID: 681280397}
   - component: {fileID: 681280399}
   m_Layer: 0
-  m_Name: IncreaseButton
+  m_Name: ShopDetailIncreaseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15533,7 +15406,7 @@ GameObject:
   - component: {fileID: 715321088}
   - component: {fileID: 715321087}
   m_Layer: 0
-  m_Name: ProductFrame
+  m_Name: ShopGemFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15831,7 +15704,7 @@ GameObject:
   - component: {fileID: 761606752}
   - component: {fileID: 761606751}
   m_Layer: 5
-  m_Name: DetailRarityText
+  m_Name: CharaDetailRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -15969,7 +15842,7 @@ GameObject:
   - component: {fileID: 769193379}
   - component: {fileID: 769193382}
   m_Layer: 5
-  m_Name: GemListView
+  m_Name: ShopGemList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16077,7 +15950,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 1499128405}
   templateView: {fileID: 1894198015}
-  clientShop: {fileID: 2025727311}
+  shopDetailFixedView: {fileID: 1655090803}
   startCount: 0
   maxCount: 3
   productNumber1: 10001
@@ -16772,7 +16645,7 @@ GameObject:
   - component: {fileID: 797010335}
   - component: {fileID: 797010334}
   m_Layer: 5
-  m_Name: CharacterNameText
+  m_Name: GachaResultNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17362,7 +17235,7 @@ GameObject:
   - component: {fileID: 815388649}
   - component: {fileID: 815388648}
   m_Layer: 5
-  m_Name: ItemFrame
+  m_Name: GachaSingleRewardFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17472,7 +17345,7 @@ GameObject:
   - component: {fileID: 824046585}
   - component: {fileID: 824046586}
   m_Layer: 5
-  m_Name: ItemImageMask
+  m_Name: GachaSingleRewardImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17522,7 +17395,7 @@ GameObject:
   m_Component:
   - component: {fileID: 829897669}
   m_Layer: 0
-  m_Name: BuyAmountObject
+  m_Name: ShopDetailAmountObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17563,7 +17436,7 @@ GameObject:
   - component: {fileID: 834035572}
   - component: {fileID: 834035571}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: GachaOfferRateImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17831,7 +17704,7 @@ GameObject:
   - component: {fileID: 837604119}
   - component: {fileID: 837604118}
   m_Layer: 0
-  m_Name: ProductNameText
+  m_Name: ShopGemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18036,19 +17909,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 843832796}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &843832796
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18446,7 +18307,7 @@ GameObject:
   - component: {fileID: 872842084}
   - component: {fileID: 872842083}
   m_Layer: 5
-  m_Name: GachaPeriodFrame1
+  m_Name: GachaPeriodFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18982,14 +18843,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1486ae42dc4608c469c08d15afbcd79c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  categoryIcon: {fileID: 1655187960}
-  categoryText: {fileID: 1253401457}
-  itemListView: {fileID: 1400259708}
-  gemListView: {fileID: 769193377}
-  buyMoneyButton: {fileID: 257106186}
-  buyItemCoinButton: {fileID: 980415271}
-  buyItemGemButton: {fileID: 896128339}
-  buyAmountObject: {fileID: 829897668}
+  shopCategoryIcon: {fileID: 1655187960}
+  shopCategoryText: {fileID: 1253401457}
+  shopDetailMoneyButton: {fileID: 257106186}
+  shopDetailCoinButton: {fileID: 980415271}
+  shopDetailGemButton: {fileID: 896128339}
+  shopItemList: {fileID: 1400259708}
+  shopGemList: {fileID: 769193377}
+  shopDetailAmountObject: {fileID: 829897668}
 --- !u!114 &884381920
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19152,7 +19013,7 @@ GameObject:
   - component: {fileID: 884613457}
   - component: {fileID: 884613460}
   m_Layer: 5
-  m_Name: GachaPickUpListView_Normal
+  m_Name: GachaPickUpList_NormalPeriod
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19493,7 +19354,7 @@ GameObject:
   - component: {fileID: 896128340}
   - component: {fileID: 896128339}
   m_Layer: 0
-  m_Name: BuyItemGemButton
+  m_Name: ShopDetailGemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19614,7 +19475,7 @@ GameObject:
   - component: {fileID: 899910320}
   - component: {fileID: 899910321}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: GachaLogImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19832,7 +19693,7 @@ GameObject:
   - component: {fileID: 910942326}
   - component: {fileID: 910942325}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: CharaImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -19922,7 +19783,7 @@ GameObject:
   - component: {fileID: 914694342}
   - component: {fileID: 914694344}
   m_Layer: 5
-  m_Name: OpenGachaButton
+  m_Name: GachaOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20028,19 +19889,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 914694342}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenGachaButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &916540067
 GameObject:
   m_ObjectHideFlags: 0
@@ -20343,13 +20192,13 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 526249027}
-  - {fileID: 1304129405}
-  - {fileID: 1951198539}
   - {fileID: 1712971540}
   - {fileID: 233566559}
   - {fileID: 2049230345}
   - {fileID: 875215306}
   - {fileID: 504548708}
+  - {fileID: 1304129405}
+  - {fileID: 1951198539}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -20369,10 +20218,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3809e6ab6cee6604e90111b766ac9d71, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 834035572}
-  nameText: {fileID: 2049230346}
-  rarityText: {fileID: 875215307}
-  rateText: {fileID: 504548709}
+  gachaOfferRateImage: {fileID: 834035572}
+  gachaOfferRateNameText: {fileID: 2049230346}
+  gachaOfferRateRarityText: {fileID: 875215307}
+  gachaOfferRateText: {fileID: 504548709}
   gachaOfferRatePeriodTitle: {fileID: 1824369991}
   clientGacha: {fileID: 1605318034}
   gachaPeriodTemplateView: {fileID: 432129394}
@@ -20791,7 +20640,7 @@ GameObject:
   - component: {fileID: 938838757}
   - component: {fileID: 938838756}
   m_Layer: 0
-  m_Name: MoneyIcon
+  m_Name: ShopDetailMoneyIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -20866,7 +20715,7 @@ GameObject:
   - component: {fileID: 938867758}
   - component: {fileID: 938867757}
   m_Layer: 0
-  m_Name: PriceMoneyText
+  m_Name: ShopDetailMoneyText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21111,7 +20960,7 @@ GameObject:
   - component: {fileID: 946292218}
   - component: {fileID: 946292217}
   m_Layer: 5
-  m_Name: OpenGachaOfferRateButton
+  m_Name: GachaOfferRateOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21180,19 +21029,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 946292218}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenGachaOfferRateButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &946292218
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21243,7 +21080,7 @@ GameObject:
   - component: {fileID: 947684181}
   - component: {fileID: 947684180}
   m_Layer: 5
-  m_Name: ProductExplanationTitle
+  m_Name: ShopDetailExplanationTitle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21379,7 +21216,7 @@ GameObject:
   - component: {fileID: 951976162}
   - component: {fileID: 951976161}
   m_Layer: 5
-  m_Name: CharacterInstanceNameFrame
+  m_Name: CharaInstanceNameFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21576,7 +21413,7 @@ GameObject:
   - component: {fileID: 958917730}
   - component: {fileID: 958917729}
   m_Layer: 0
-  m_Name: CloseConfirmButton
+  m_Name: GachaCancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21645,19 +21482,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 958917730}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseConfirmButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &958917730
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -21708,7 +21533,7 @@ GameObject:
   - component: {fileID: 965259535}
   - component: {fileID: 965259534}
   m_Layer: 5
-  m_Name: DetailLevelBeforeText
+  m_Name: CharaDetailLevelBeforeText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -21880,7 +21705,7 @@ GameObject:
   - component: {fileID: 971534765}
   - component: {fileID: 971534764}
   m_Layer: 0
-  m_Name: CloseText
+  m_Name: EnhanceCancelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22228,7 +22053,7 @@ GameObject:
   - component: {fileID: 980415272}
   - component: {fileID: 980415271}
   m_Layer: 0
-  m_Name: BuyItemCoinButton
+  m_Name: ShopDetailCoinButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -22486,7 +22311,7 @@ GameObject:
   - component: {fileID: 985850540}
   - component: {fileID: 985850539}
   m_Layer: 5
-  m_Name: GachaResultFrame1
+  m_Name: GachaResultFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23005,7 +22830,7 @@ GameObject:
   - component: {fileID: 1014642882}
   - component: {fileID: 1014642881}
   m_Layer: 5
-  m_Name: WarningText
+  m_Name: GachaWarningText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23142,7 +22967,7 @@ GameObject:
   - component: {fileID: 1033894072}
   - component: {fileID: 1033894071}
   m_Layer: 5
-  m_Name: GachaMultiButton
+  m_Name: GachaMultiExecuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23212,31 +23037,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1033894072}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: GachaMultiButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: OpenConfirmButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1033894072
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23288,7 +23089,7 @@ GameObject:
   - component: {fileID: 1034172795}
   - component: {fileID: 1034172794}
   m_Layer: 5
-  m_Name: CloseCharaDetailButton
+  m_Name: CharaDetailCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -23356,19 +23157,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1034172795}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: CharacterDetailButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1034172795
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -23732,7 +23521,7 @@ GameObject:
   - component: {fileID: 1044364960}
   - component: {fileID: 1044364959}
   m_Layer: 0
-  m_Name: ProductNameText
+  m_Name: ShopItemNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24415,7 +24204,7 @@ GameObject:
   - component: {fileID: 1089108218}
   - component: {fileID: 1089108217}
   m_Layer: 5
-  m_Name: ItemMultiplyIcon
+  m_Name: MultiplyIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24490,7 +24279,7 @@ GameObject:
   - component: {fileID: 1091141774}
   - component: {fileID: 1091141773}
   m_Layer: 0
-  m_Name: ShopComfirmYesText
+  m_Name: BuyConfirmExecuteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24627,7 +24416,7 @@ GameObject:
   - component: {fileID: 1098161959}
   - component: {fileID: 1098161961}
   m_Layer: 5
-  m_Name: OpenShopButton
+  m_Name: ShopOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24733,19 +24522,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1098161959}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: OpenShopButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!4 &1103397489 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 4521923273895718084, guid: ce90da4511601124ca7a3a823f02015e, type: 3}
@@ -24766,7 +24543,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1112992860}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: GachaResultObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -24913,16 +24690,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 187a964313aeb3545b0f6a7dbf5ffc31, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  itemInstanceView: {fileID: 2146620987}
-  itemInstanceDetailView: {fileID: 189289191}
-  characterInstanceView: {fileID: 778964153}
-  characterInstanceDetailView: {fileID: 2041603144}
-  itemNothingText: {fileID: 2103941123}
+  itemInstanceNothingText: {fileID: 2103941123}
   enhanceItemNothingText: {fileID: 916540070}
-  CharacterNothingText: {fileID: 210899810}
+  charaInstanceNothingText: {fileID: 210899810}
+  itemInstanceOpenButton: {fileID: 1895444180}
+  itemInstanceCloseButton: {fileID: 1420148837}
+  charaInstanceOpenButton: {fileID: 1773812978}
+  charaInstanceCloseButton: {fileID: 1516355234}
+  itemInstanceView: {fileID: 2146620987}
+  charaInstanceView: {fileID: 778964153}
   enhanceItemList: {fileID: 618233856}
-  instanceCharacterList: {fileID: 581279431}
-  instanceCharacterDetailView: {fileID: 2041603146}
+  charaInstanceList: {fileID: 581279431}
+  charaDetailFixedView: {fileID: 2041603146}
 --- !u!1 &1121430405
 GameObject:
   m_ObjectHideFlags: 0
@@ -24936,7 +24715,7 @@ GameObject:
   - component: {fileID: 1121430408}
   - component: {fileID: 1121430407}
   m_Layer: 0
-  m_Name: ShopComfirmNoButton
+  m_Name: BuyConfirmCancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25281,7 +25060,7 @@ GameObject:
   - component: {fileID: 1134917005}
   - component: {fileID: 1134917006}
   m_Layer: 5
-  m_Name: ProductImageMask
+  m_Name: ShopItemImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -25428,6 +25207,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1669178640}
+  - {fileID: 1485899825}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -25730,7 +25510,7 @@ GameObject:
   - component: {fileID: 1151508023}
   - component: {fileID: 1151508022}
   m_Layer: 5
-  m_Name: NothingText
+  m_Name: GachaLogNothingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26138,7 +25918,7 @@ GameObject:
   - component: {fileID: 1165978822}
   - component: {fileID: 1165978823}
   m_Layer: 0
-  m_Name: AmountText
+  m_Name: ShopDetailAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26534,7 +26314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1170680952}
   m_Layer: 5
-  m_Name: ItemOtherObject
+  m_Name: GachaSingleRewardOtherObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26573,7 +26353,7 @@ GameObject:
   - component: {fileID: 1173844704}
   - component: {fileID: 1173844703}
   m_Layer: 5
-  m_Name: ItemAmountText
+  m_Name: GachaSingleRewardAmountText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26710,7 +26490,7 @@ GameObject:
   - component: {fileID: 1176935475}
   - component: {fileID: 1176935474}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: GachaPickUpImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26800,7 +26580,7 @@ GameObject:
   - component: {fileID: 1181137455}
   - component: {fileID: 1181137454}
   m_Layer: 5
-  m_Name: CharacterImage
+  m_Name: GachaLogImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27400,11 +27180,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7602ccc3c5345124391c8ce2238276d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 1181137455}
-  nameText: {fileID: 1984575607}
-  rarityText: {fileID: 1608619001}
-  dateTimeText: {fileID: 1847558817}
-  periodText: {fileID: 983678596}
+  gachaLogImage: {fileID: 1181137455}
+  gachaLogNameText: {fileID: 1984575607}
+  gachaLogRarityText: {fileID: 1608619001}
+  gachaLogDateTimeText: {fileID: 1847558817}
+  gachaLogPeriodText: {fileID: 983678596}
 --- !u!1 &1201007857
 GameObject:
   m_ObjectHideFlags: 0
@@ -27538,7 +27318,7 @@ GameObject:
   - component: {fileID: 1210189726}
   - component: {fileID: 1210189725}
   m_Layer: 0
-  m_Name: ProductImage
+  m_Name: ShopGemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27688,7 +27468,7 @@ GameObject:
   - component: {fileID: 1214821143}
   - component: {fileID: 1214821142}
   m_Layer: 5
-  m_Name: CoinLabel
+  m_Name: ShopDetailCoinLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28292,7 +28072,7 @@ GameObject:
   - component: {fileID: 1255512895}
   - component: {fileID: 1255512894}
   m_Layer: 5
-  m_Name: CharacterDetailFrame
+  m_Name: CharaDetailFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28408,7 +28188,7 @@ GameObject:
   - component: {fileID: 1257927234}
   - component: {fileID: 1257927233}
   m_Layer: 5
-  m_Name: CharacterDetailFrame
+  m_Name: CharaDetailFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28558,7 +28338,7 @@ GameObject:
   - component: {fileID: 1263476500}
   - component: {fileID: 1263476499}
   m_Layer: 5
-  m_Name: DetailLevelAfterText
+  m_Name: CharaDetailLevelAfterText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28692,7 +28472,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1268603644}
   m_Layer: 5
-  m_Name: CharacterObject
+  m_Name: GachaLogObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28731,7 +28511,7 @@ GameObject:
   - component: {fileID: 1273732620}
   - component: {fileID: 1273732619}
   m_Layer: 5
-  m_Name: CloseGachaButton
+  m_Name: GachaCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -28799,19 +28579,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1273732620}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseGachaButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1273732620
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29038,7 +28806,7 @@ GameObject:
   - component: {fileID: 1280758909}
   - component: {fileID: 1280758910}
   m_Layer: 0
-  m_Name: InstanceItemTemplateView
+  m_Name: ItemInstanceTemplateView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29081,9 +28849,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   itemImage: {fileID: 199508430}
-  itemNameText: {fileID: 601821600}
-  itemRarityText: {fileID: 1957719865}
-  itemAmountText: {fileID: 551900973}
+  itemInstanceNameText: {fileID: 601821600}
+  itemInstanceRarityText: {fileID: 1957719865}
+  itemInstanceAmountText: {fileID: 551900973}
+  itemInstanceDetailOpenButton: {fileID: 2091515701}
+  itemDetailFixedView: {fileID: 189289193}
 --- !u!1 &1282777240
 GameObject:
   m_ObjectHideFlags: 0
@@ -29096,7 +28866,7 @@ GameObject:
   - component: {fileID: 1282777242}
   - component: {fileID: 1282777243}
   m_Layer: 5
-  m_Name: ProductRarityText
+  m_Name: ShopDetailRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29521,7 +29291,7 @@ GameObject:
   - component: {fileID: 1290241359}
   - component: {fileID: 1290241358}
   m_Layer: 5
-  m_Name: CharacterInstanceNameTextBG
+  m_Name: CharaInstanceNameTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29598,7 +29368,7 @@ GameObject:
   - component: {fileID: 1295209646}
   - component: {fileID: 1295209645}
   m_Layer: 5
-  m_Name: GemLabel
+  m_Name: ShopDetailGemLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -29923,7 +29693,7 @@ GameObject:
   - component: {fileID: 1320087519}
   - component: {fileID: 1320087518}
   m_Layer: 0
-  m_Name: ShopConfirmBG
+  m_Name: BuyConfirmBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30260,13 +30030,13 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1280081033}
   - {fileID: 794911054}
   - {fileID: 507750352}
   - {fileID: 1033894070}
   - {fileID: 1640061955}
   - {fileID: 142209283}
   - {fileID: 1867080569}
+  - {fileID: 1280081033}
   m_Father: {fileID: 1655934739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -30286,7 +30056,7 @@ GameObject:
   - component: {fileID: 1349828764}
   - component: {fileID: 1349828763}
   m_Layer: 0
-  m_Name: ProductBG
+  m_Name: ShopDetailBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30436,7 +30206,7 @@ GameObject:
   - component: {fileID: 1352017031}
   - component: {fileID: 1352017030}
   m_Layer: 0
-  m_Name: ShopComfirmNoText
+  m_Name: BuyConfirmCancelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30572,7 +30342,7 @@ GameObject:
   - component: {fileID: 1358262228}
   - component: {fileID: 1358262227}
   m_Layer: 0
-  m_Name: CloseText
+  m_Name: EnhanceCloseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30708,7 +30478,7 @@ GameObject:
   - component: {fileID: 1359265858}
   - component: {fileID: 1359265857}
   m_Layer: 5
-  m_Name: CharaInstanceLabel
+  m_Name: ItemInstanceLabel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -30867,9 +30637,9 @@ RectTransform:
   - {fileID: 15737425}
   - {fileID: 1890462555}
   - {fileID: 958917728}
+  - {fileID: 1014642880}
   - {fileID: 393960792}
   - {fileID: 1335050586}
-  - {fileID: 1014642880}
   m_Father: {fileID: 1655934739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -30927,7 +30697,7 @@ GameObject:
   - component: {fileID: 1361476309}
   - component: {fileID: 1361476308}
   m_Layer: 5
-  m_Name: ArrowImage
+  m_Name: CharaDetailArrowImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31156,7 +30926,7 @@ GameObject:
   - component: {fileID: 1396391641}
   - component: {fileID: 1396391640}
   m_Layer: 5
-  m_Name: GachaResultFrame2
+  m_Name: GachaResultFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31233,7 +31003,7 @@ GameObject:
   - component: {fileID: 1400259710}
   - component: {fileID: 1400259713}
   m_Layer: 5
-  m_Name: ItemListView
+  m_Name: ShopItemList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31341,7 +31111,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   content: {fileID: 480185484}
   templateView: {fileID: 202819306}
-  clientShop: {fileID: 2025727311}
+  shopDetailFixedView: {fileID: 1655090803}
   startCount: 4
   maxCount: 7
   productNumber1: 10001
@@ -31378,11 +31148,11 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2126487535}
-  - {fileID: 1996221646}
-  - {fileID: 333564179}
   - {fileID: 1556948026}
   - {fileID: 798372559}
   - {fileID: 603154509}
+  - {fileID: 333564179}
+  - {fileID: 1996221646}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -31402,10 +31172,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c05fd42722b8bbc4fb1d65e71da91781, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rewardImage: {fileID: 1526911475}
-  nameText: {fileID: 1556948027}
-  rarityText: {fileID: 798372560}
-  amountText: {fileID: 603154510}
+  gachaRewardImage: {fileID: 1526911475}
+  gachaRewardNameText: {fileID: 1556948027}
+  gachaRewardRarityText: {fileID: 798372560}
+  gachaRewardAmountText: {fileID: 603154510}
 --- !u!1 &1407158981
 GameObject:
   m_ObjectHideFlags: 0
@@ -31417,7 +31187,7 @@ GameObject:
   - component: {fileID: 1407158982}
   - component: {fileID: 1407158983}
   m_Layer: 5
-  m_Name: InstanceCharaTempleteView
+  m_Name: CharaInstanceTempleteView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31436,7 +31206,6 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 456120712}
-  - {fileID: 2103102503}
   - {fileID: 725016677}
   - {fileID: 1290241357}
   - {fileID: 1972977402}
@@ -31461,10 +31230,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c8df6a2f6dd8df8459d33a185045dd05, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterImage: {fileID: 910942326}
-  characterNameText: {fileID: 1735876218}
-  characterRarityText: {fileID: 1445220656}
-  characterLevelText: {fileID: 494535471}
+  charaImage: {fileID: 910942326}
+  charaInstanceNameText: {fileID: 1735876218}
+  charaInstanceRarityText: {fileID: 1445220656}
+  charaInstanceLevelText: {fileID: 494535471}
+  charaInstanceDetailOpenButton: {fileID: 57354133}
+  charaDetailFixedView: {fileID: 2041603146}
 --- !u!1 &1411107728
 GameObject:
   m_ObjectHideFlags: 0
@@ -31478,7 +31249,7 @@ GameObject:
   - component: {fileID: 1411107731}
   - component: {fileID: 1411107730}
   m_Layer: 5
-  m_Name: ProductImage
+  m_Name: ShopDetailImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31569,7 +31340,7 @@ GameObject:
   - component: {fileID: 1411209988}
   - component: {fileID: 1411209991}
   m_Layer: 5
-  m_Name: ShopCategoryListView
+  m_Name: ShopCategoryList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31692,7 +31463,7 @@ GameObject:
   - component: {fileID: 1411646079}
   - component: {fileID: 1411646078}
   m_Layer: 0
-  m_Name: ExecuteEnhanceButton
+  m_Name: EnhanceExecuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31811,7 +31582,7 @@ GameObject:
   - component: {fileID: 1417886880}
   - component: {fileID: 1417886881}
   m_Layer: 5
-  m_Name: ProductImageMask
+  m_Name: ShopDetailImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -31863,7 +31634,7 @@ GameObject:
   - component: {fileID: 1419917961}
   - component: {fileID: 1419917960}
   m_Layer: 0
-  m_Name: ClosePaymentText
+  m_Name: PaymentCloseText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32000,7 +31771,7 @@ GameObject:
   - component: {fileID: 1420148838}
   - component: {fileID: 1420148837}
   m_Layer: 5
-  m_Name: CloseItemInstanceButton
+  m_Name: ItemInstanceCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32068,19 +31839,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1420148838}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: ItemInstanceButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1420148838
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32236,19 +31995,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1425791824}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1425791824
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32375,7 +32122,7 @@ GameObject:
   - component: {fileID: 1434085541}
   - component: {fileID: 1434085540}
   m_Layer: 5
-  m_Name: CloseItemDetailButton
+  m_Name: ItemDetailCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32443,19 +32190,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1434085541}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: ItemDetailButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1434085541
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -32579,7 +32314,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1443803623}
   m_Layer: 5
-  m_Name: GachaResultList
+  m_Name: GachaResult
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32620,7 +32355,7 @@ GameObject:
   - component: {fileID: 1445220657}
   - component: {fileID: 1445220656}
   m_Layer: 5
-  m_Name: CharacterInstanceRarityText
+  m_Name: CharaInstanceRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32892,7 +32627,7 @@ GameObject:
   - component: {fileID: 1449413259}
   - component: {fileID: 1449413258}
   m_Layer: 5
-  m_Name: ArrowImage
+  m_Name: CharaDetailArrowImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33044,7 +32779,7 @@ GameObject:
   - component: {fileID: 1462229717}
   - component: {fileID: 1462229716}
   m_Layer: 0
-  m_Name: RecoveryCancelText
+  m_Name: StaminaRecoveryCancelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33180,7 +32915,7 @@ GameObject:
   - component: {fileID: 1471439168}
   - component: {fileID: 1471439167}
   m_Layer: 0
-  m_Name: RecoveryExecuteText
+  m_Name: GameMatchExecuteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33474,6 +33209,126 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1481411764}
   m_CullTransparentMesh: 1
+--- !u!1 &1485899824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1485899825}
+  - component: {fileID: 1485899828}
+  - component: {fileID: 1485899827}
+  - component: {fileID: 1485899826}
+  m_Layer: 5
+  m_Name: GameMatchButton
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1485899825
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485899824}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1138398369}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 400, y: 200}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1485899826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485899824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_WrapAround: 0
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_SelectedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_SelectedTrigger: Selected
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1485899827}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+--- !u!114 &1485899827
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485899824}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: a0da870ed3b0a414598ead7a8a32c0e6, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1485899828
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1485899824}
+  m_CullTransparentMesh: 1
 --- !u!1 &1493400210
 GameObject:
   m_ObjectHideFlags: 0
@@ -33639,7 +33494,7 @@ GameObject:
   - component: {fileID: 1516355235}
   - component: {fileID: 1516355234}
   m_Layer: 5
-  m_Name: CloseCharaInstanceButton
+  m_Name: CharaInstanceCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -33707,19 +33562,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1516355235}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: CharacterInstanceButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1516355235
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34018,7 +33861,7 @@ GameObject:
   - component: {fileID: 1526911475}
   - component: {fileID: 1526911474}
   m_Layer: 5
-  m_Name: RewardImage
+  m_Name: GachaRewardImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35033,7 +34876,7 @@ GameObject:
   - component: {fileID: 1581128997}
   - component: {fileID: 1581128996}
   m_Layer: 0
-  m_Name: ProductTextFrame
+  m_Name: ShopItemTextFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35352,21 +35195,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc94a2f17c010f2478c5d1eac637555c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  gachaOfferRateTotalText: {fileID: 1184428914}
+  gachaConfirmText: {fileID: 15737426}
+  coinText: {fileID: 1009487290}
+  gemFreeText: {fileID: 33144344}
+  gemPaidText: {fileID: 33144343}
+  gachaWarningText: {fileID: 1014642881}
+  gachaLogNothingText: {fileID: 1151508022}
+  gachaExecuteButton: {fileID: 1890462556}
+  gachaCancelButton: {fileID: 958917729}
+  gachaSingleExecuteButton: {fileID: 507750353}
+  gachaMultiExecuteButton: {fileID: 1033894071}
+  gachaOpenButton: {fileID: 914694344}
+  gachaRewardOpenButton: {fileID: 502751417}
+  gachaLogOpenButton: {fileID: 138787080}
+  gachaOfferRateOpenButton: {fileID: 946292217}
+  gachaCloseButton: {fileID: 1273732619}
+  gachaLogCloseButton: {fileID: 181599464}
+  gachaOfferRateCloseButton: {fileID: 543979792}
+  gachaRewardCloseButton: {fileID: 1962120557}
+  gachaResultCloseButton: {fileID: 1978471380}
   gachaView: {fileID: 1655934738}
   gachaConfirmView: {fileID: 1361025735}
   gachaResultView: {fileID: 340842833}
   gachaRewardView: {fileID: 783824676}
   gachaOfferRateView: {fileID: 1903894518}
   gachaLogView: {fileID: 1710633597}
-  gachaOfferRateTotalText: {fileID: 1184428914}
-  gachaConfirmText: {fileID: 15737426}
-  coinText: {fileID: 1009487290}
-  gemFreeText: {fileID: 33144344}
-  gemPaidText: {fileID: 33144343}
-  gachaExecuteButton: {fileID: 1890462556}
-  openGachaRewardButton: {fileID: 502751417}
-  warningText: {fileID: 1014642881}
-  nothingTextGachaLog: {fileID: 1151508022}
   clientHome: {fileID: 2134605330}
   gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &1605412725
@@ -35381,7 +35235,7 @@ GameObject:
   - component: {fileID: 1605412728}
   - component: {fileID: 1605412727}
   m_Layer: 5
-  m_Name: BeforeLevelText
+  m_Name: CharaDetailBeforeLevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35653,7 +35507,7 @@ GameObject:
   - component: {fileID: 1611703990}
   - component: {fileID: 1611703989}
   m_Layer: 5
-  m_Name: DetailRarityTextBG
+  m_Name: CharaDetailRarityTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35730,7 +35584,7 @@ GameObject:
   - component: {fileID: 1614425157}
   - component: {fileID: 1614425156}
   m_Layer: 5
-  m_Name: ItemRarityText
+  m_Name: GachaSingleRewardRarityText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35864,7 +35718,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1632232014}
   m_Layer: 0
-  m_Name: ShopConfirmView
+  m_Name: BuyConfirmView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35990,7 +35844,7 @@ GameObject:
   - component: {fileID: 1653300513}
   - component: {fileID: 1653300512}
   m_Layer: 5
-  m_Name: ProductNameText
+  m_Name: ShopDetailNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36123,8 +35977,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1655090802}
+  - component: {fileID: 1655090803}
   m_Layer: 0
-  m_Name: ProductInfoView
+  m_Name: ShopDetailFixedView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36149,14 +36004,14 @@ RectTransform:
   - {fileID: 1282777241}
   - {fileID: 947684179}
   - {fileID: 225567422}
+  - {fileID: 382553044}
+  - {fileID: 2134832374}
   - {fileID: 257106185}
   - {fileID: 980415270}
   - {fileID: 896128338}
-  - {fileID: 382553044}
-  - {fileID: 2134832374}
+  - {fileID: 829897669}
   - {fileID: 2039632325}
   - {fileID: 283517415}
-  - {fileID: 829897669}
   - {fileID: 1632232014}
   m_Father: {fileID: 84480099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -36165,6 +36020,42 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1655090803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1655090801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4b272da4f35b804d96deb273d56c4d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  shopDetailView: {fileID: 1655090801}
+  shopDetailImage: {fileID: 1411107731}
+  shopDetailNameText: {fileID: 1653300512}
+  shopDetailRarityText: {fileID: 1282777243}
+  shopDetailDescriptionText: {fileID: 225567423}
+  shopDetailCloseButton: {fileID: 382553045}
+  shopDetailMoneyText: {fileID: 938867757}
+  shopDetailCoinText: {fileID: 114164114}
+  shopDetailGemText: {fileID: 1684634507}
+  shopDetailAmountText: {fileID: 1165978823}
+  shopDetailIncreaseButton: {fileID: 681280399}
+  shopDetailDecreaseButton: {fileID: 461797160}
+  shopDetailMoneyButton: {fileID: 257106186}
+  shopDetailCoinButton: {fileID: 980415271}
+  shopDetailGemButton: {fileID: 896128339}
+  buyConfirmView: {fileID: 1632232013}
+  buyConfirmText: {fileID: 1864895498}
+  walletStateText: {fileID: 781881643}
+  buyConfirmExecuteButton: {fileID: 242989897}
+  buyConfirmCancelButton: {fileID: 1121430407}
+  paymentCompleteView: {fileID: 1475781999}
+  paymentCloseButton: {fileID: 612298834}
+  clientShop: {fileID: 2025727311}
+  shopCategoryTemplateView: {fileID: 884381919}
 --- !u!1 &1655187958
 GameObject:
   m_ObjectHideFlags: 0
@@ -36269,12 +36160,12 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 202664985}
-  - {fileID: 1908336312}
-  - {fileID: 1163708527}
   - {fileID: 1742529611}
-  - {fileID: 1273732618}
   - {fileID: 1009487289}
   - {fileID: 33144342}
+  - {fileID: 1908336312}
+  - {fileID: 1163708527}
+  - {fileID: 1273732618}
   - {fileID: 1341376278}
   - {fileID: 946292216}
   - {fileID: 138787079}
@@ -36689,7 +36580,7 @@ GameObject:
   - component: {fileID: 1670079445}
   - component: {fileID: 1670079446}
   m_Layer: 5
-  m_Name: RewardImageMask
+  m_Name: GachaRewardImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -36965,7 +36856,7 @@ GameObject:
   - component: {fileID: 1684634508}
   - component: {fileID: 1684634507}
   m_Layer: 0
-  m_Name: PriceGemText
+  m_Name: ShopDetailGemText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37327,9 +37218,9 @@ RectTransform:
   - {fileID: 52907291}
   - {fileID: 395465822}
   - {fileID: 181599463}
+  - {fileID: 1151508021}
   - {fileID: 376321502}
   - {fileID: 1952884550}
-  - {fileID: 1151508021}
   m_Father: {fileID: 1655934739}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -37460,7 +37351,7 @@ GameObject:
   - component: {fileID: 1714475449}
   - component: {fileID: 1714475448}
   m_Layer: 0
-  m_Name: RecoveryExecuteText
+  m_Name: StaminaRecoveryExecuteText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -37868,7 +37759,7 @@ GameObject:
   - component: {fileID: 1735876219}
   - component: {fileID: 1735876218}
   m_Layer: 5
-  m_Name: CharacterInstanceNameText
+  m_Name: CharaInstanceNameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38005,7 +37896,7 @@ GameObject:
   - component: {fileID: 1740015963}
   - component: {fileID: 1740015962}
   m_Layer: 0
-  m_Name: ProductButton
+  m_Name: ShopGemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38602,7 +38493,7 @@ GameObject:
   - component: {fileID: 1773812979}
   - component: {fileID: 1773812978}
   m_Layer: 5
-  m_Name: OpenCharaInstanceButton
+  m_Name: CharaInstanceOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38670,19 +38561,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1773812979}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: CharacterInstanceButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1773812979
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -38890,7 +38769,6 @@ RectTransform:
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 1860623664}
   - {fileID: 1894198016}
   - {fileID: 202819307}
   - {fileID: 884381911}
@@ -38903,6 +38781,7 @@ RectTransform:
   - {fileID: 1280758909}
   - {fileID: 1407158982}
   - {fileID: 152003496}
+  - {fileID: 1860623664}
   - {fileID: 1138398369}
   - {fileID: 1677431783}
   - {fileID: 1363279269}
@@ -38936,7 +38815,7 @@ GameObject:
   - component: {fileID: 1790553149}
   - component: {fileID: 1790553148}
   m_Layer: 0
-  m_Name: GemIcon
+  m_Name: ShopDetailGemIcon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39011,7 +38890,7 @@ GameObject:
   - component: {fileID: 1794500870}
   - component: {fileID: 1794500869}
   m_Layer: 0
-  m_Name: ProductTextBG
+  m_Name: ShopItemTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39085,7 +38964,7 @@ GameObject:
   - component: {fileID: 1804790877}
   - component: {fileID: 1804790878}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: CharaImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39138,7 +39017,7 @@ GameObject:
   - component: {fileID: 1808533088}
   - component: {fileID: 1808533087}
   m_Layer: 0
-  m_Name: CloseProductBGButton
+  m_Name: ShopDetailBGCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -39206,19 +39085,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1808533088}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: CloseProductInfoButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1808533088
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -39954,7 +39821,7 @@ GameObject:
   - component: {fileID: 1842921611}
   - component: {fileID: 1842921610}
   m_Layer: 0
-  m_Name: EnhanceCompleteButton
+  m_Name: EnhanceCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40210,7 +40077,7 @@ GameObject:
   - component: {fileID: 1847146753}
   - component: {fileID: 1847146752}
   m_Layer: 5
-  m_Name: CloseConfirmText
+  m_Name: GachaCancelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40757,7 +40624,7 @@ GameObject:
   - component: {fileID: 1864895499}
   - component: {fileID: 1864895498}
   m_Layer: 5
-  m_Name: ShopConfirmText
+  m_Name: BuyConfirmText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -40894,7 +40761,7 @@ GameObject:
   - component: {fileID: 1865711876}
   - component: {fileID: 1865711875}
   m_Layer: 0
-  m_Name: ProductButton
+  m_Name: ShopItemButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41015,7 +40882,7 @@ GameObject:
   - component: {fileID: 1867080571}
   - component: {fileID: 1867080574}
   m_Layer: 5
-  m_Name: GachaPeriodListView
+  m_Name: GachaPeriodList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41205,19 +41072,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1873032813}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: PaymentComplete
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1873032813
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41269,7 +41124,7 @@ GameObject:
   - component: {fileID: 1875579666}
   - component: {fileID: 1875579665}
   m_Layer: 5
-  m_Name: CloseShopButton
+  m_Name: ShopCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41338,19 +41193,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1875579666}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 2025727311}
-        m_TargetAssemblyTypeName: ClientShop, Assembly-CSharp
-        m_MethodName: CloseShopButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1875579666
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41401,7 +41244,7 @@ GameObject:
   - component: {fileID: 1879994207}
   - component: {fileID: 1879994206}
   m_Layer: 0
-  m_Name: ProductFrame
+  m_Name: ShopItemFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41712,10 +41555,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88f2957990255d141ac63da8e294d759, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  productImage: {fileID: 1210189725}
-  productNameText: {fileID: 837604118}
+  image: {fileID: 1210189725}
+  nameText: {fileID: 837604118}
   priceText: {fileID: 213088843}
-  productRarityText: {fileID: 0}
+  rarityText: {fileID: 0}
 --- !u!1 &1895444178
 GameObject:
   m_ObjectHideFlags: 0
@@ -41729,7 +41572,7 @@ GameObject:
   - component: {fileID: 1895444181}
   - component: {fileID: 1895444180}
   m_Layer: 5
-  m_Name: OpenCharaInstanceButton
+  m_Name: ItemInstanceOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41797,19 +41640,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1895444181}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: ItemInstanceButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1895444181
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -41860,7 +41691,7 @@ GameObject:
   - component: {fileID: 1898551643}
   - component: {fileID: 1898551642}
   m_Layer: 5
-  m_Name: GachaRewardText
+  m_Name: GachaRewardOpenText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -41996,7 +41827,7 @@ GameObject:
   - component: {fileID: 1901158296}
   - component: {fileID: 1901158295}
   m_Layer: 0
-  m_Name: ProductFrame
+  m_Name: ShopDetailFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42820,7 +42651,7 @@ GameObject:
   - component: {fileID: 1955913628}
   - component: {fileID: 1955913627}
   m_Layer: 5
-  m_Name: ProductImage
+  m_Name: ShopItemImage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43121,7 +42952,7 @@ GameObject:
   - component: {fileID: 1962120558}
   - component: {fileID: 1962120557}
   m_Layer: 5
-  m_Name: CloseGachaRewardButton
+  m_Name: GachaRewardCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43190,19 +43021,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1962120558}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1605318034}
-        m_TargetAssemblyTypeName: ClientGacha, Assembly-CSharp
-        m_MethodName: CloseGachaRewardButton
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
 --- !u!114 &1962120558
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -43253,7 +43072,7 @@ GameObject:
   - component: {fileID: 1972977404}
   - component: {fileID: 1972977403}
   m_Layer: 5
-  m_Name: CharacterInstanceRarityTextBG
+  m_Name: CharaInstanceRarityTextBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43331,7 +43150,7 @@ GameObject:
   - component: {fileID: 1978471381}
   - component: {fileID: 1978471380}
   m_Layer: 5
-  m_Name: CloseGachaResultButton
+  m_Name: GachaResultCloseButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44080,35 +43899,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08a46f0bc5c744d438da63a34bed3514, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shopView: {fileID: 84480098}
-  itemListView: {fileID: 1400259708}
-  gemListView: {fileID: 769193377}
-  shopConfirmView: {fileID: 1655090801}
   coinText: {fileID: 957532797}
   gemFreeText: {fileID: 197218853}
   gemPaidText: {fileID: 197218852}
-  productNameText: {fileID: 1653300512}
-  productRarityText: {fileID: 1282777243}
-  productDescriptionText: {fileID: 225567423}
-  productImage: {fileID: 1411107731}
-  priceMoneyText: {fileID: 938867757}
-  priceCoinText: {fileID: 114164114}
-  priceGemText: {fileID: 1684634507}
-  amountText: {fileID: 1165978823}
-  increaseButton: {fileID: 681280399}
-  decreaseButton: {fileID: 461797160}
-  buyMoneyButton: {fileID: 257106186}
-  buyItemCoinButton: {fileID: 980415271}
-  buyItemGemButton: {fileID: 896128339}
-  paymentConfirmView: {fileID: 1632232013}
-  paymentConfirmText: {fileID: 1864895498}
-  walletStateText: {fileID: 781881643}
-  yesButton: {fileID: 242989897}
-  noButton: {fileID: 1121430407}
-  paymentCompleteView: {fileID: 1475781999}
-  warningText: {fileID: 2103633098}
+  buyConfirmWarningText: {fileID: 2103633098}
+  shopOpenButton: {fileID: 1098161961}
+  shopCloseButton: {fileID: 1875579665}
+  shopView: {fileID: 84480098}
   clientHome: {fileID: 2134605330}
-  shopCategoryTemplateView: {fileID: 884381919}
+  shopDetailFixedView: {fileID: 1655090803}
 --- !u!1001 &2039632324
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44241,21 +44040,21 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 2104444282}
+  - {fileID: 136786938}
+  - {fileID: 357880259}
   - {fileID: 481103725}
   - {fileID: 457444894}
   - {fileID: 532099181}
   - {fileID: 1611703988}
   - {fileID: 965259533}
   - {fileID: 1263476498}
+  - {fileID: 1034172793}
   - {fileID: 1605412726}
   - {fileID: 617796247}
   - {fileID: 1449413257}
   - {fileID: 89288022}
   - {fileID: 618233851}
   - {fileID: 916540068}
-  - {fileID: 1034172793}
-  - {fileID: 136786938}
-  - {fileID: 357880259}
   - {fileID: 467343881}
   - {fileID: 88261309}
   m_Father: {fileID: 778964154}
@@ -44277,18 +44076,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4a1123dcac6ce948b071e357dd71a54, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  characterDetailImage: {fileID: 19971436}
-  characterDetailNameText: {fileID: 532099182}
-  characterDetailRarityText: {fileID: 761606751}
-  characterDetailLevelBeforeText: {fileID: 965259534}
-  characterDetailLevelAfterText: {fileID: 1263476499}
+  charaDetailImage: {fileID: 19971436}
+  charaDetailNameText: {fileID: 532099182}
+  charaDetailRarityText: {fileID: 761606751}
+  charaDetailLevelBeforeText: {fileID: 965259534}
+  charaDetailLevelAfterText: {fileID: 1263476499}
+  enhanceText: {fileID: 393053613}
   enhanceButton: {fileID: 89288023}
-  executeEnhanceButton: {fileID: 1411646078}
-  cancelEnhanceButton: {fileID: 487363522}
-  enhanceCompleteButton: {fileID: 1842921610}
-  enhanceButtonText: {fileID: 393053613}
+  enhanceExecuteButton: {fileID: 1411646078}
+  enhanceCancelButton: {fileID: 487363522}
+  enhanceCloseButton: {fileID: 1842921610}
+  charaDetailCloseButton: {fileID: 1034172794}
   enhanceConfirmView: {fileID: 467343880}
   enhanceCompleteView: {fileID: 88261308}
+  charaInstanceDetailFixedView: {fileID: 2041603144}
   clientInstance: {fileID: 1116380503}
 --- !u!1 &2046237490
 GameObject:
@@ -44528,7 +44329,7 @@ GameObject:
   - component: {fileID: 2069804218}
   - component: {fileID: 2069804217}
   m_Layer: 5
-  m_Name: CharacterInstanceRarityTextFrame
+  m_Name: CharaInstanceRarityTextFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44605,7 +44406,7 @@ GameObject:
   - component: {fileID: 2069872099}
   - component: {fileID: 2069872098}
   m_Layer: 5
-  m_Name: GachaRewardListView
+  m_Name: GachaRewardList
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44808,7 +44609,7 @@ GameObject:
   - component: {fileID: 2091515699}
   - component: {fileID: 2091515701}
   m_Layer: 0
-  m_Name: ItemInstanceImageFrameButton
+  m_Name: ItemInstanceDetailOpenButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -44914,19 +44715,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2091515699}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1116380503}
-        m_TargetAssemblyTypeName: ClientInstance, Assembly-CSharp
-        m_MethodName: ItemDetailButton
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 1
-        m_CallState: 2
+      m_Calls: []
 --- !u!1 &2094080356
 GameObject:
   m_ObjectHideFlags: 0
@@ -45181,136 +44970,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098797210}
   m_CullTransparentMesh: 1
---- !u!1001 &2103102502
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 1407158982}
-    m_Modifications:
-    - target: {fileID: 3112684395101273390, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 3112684395101273390, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 3112684395101273390, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: -50
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_Pivot.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_Pivot.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_AnchorMax.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_AnchorMax.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_AnchorMin.x
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_AnchorMin.y
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: 280.00012
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007295873641478285, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_Name
-      value: HorizontalLine
-      objectReference: {fileID: 0}
-    - target: {fileID: 6007295873641478285, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7032365867728809746, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_SizeDelta.x
-      value: 100
-      objectReference: {fileID: 0}
-    - target: {fileID: 7032365867728809746, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_SizeDelta.y
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 7032365867728809746, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-      propertyPath: m_AnchoredPosition.x
-      value: 50
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
---- !u!224 &2103102503 stripped
-RectTransform:
-  m_CorrespondingSourceObject: {fileID: 4769664457642535613, guid: 9f43e3b0105071f4698d66f0e2ac3091, type: 3}
-  m_PrefabInstance: {fileID: 2103102502}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &2103556515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -45437,7 +45096,7 @@ GameObject:
   - component: {fileID: 2103633099}
   - component: {fileID: 2103633098}
   m_Layer: 5
-  m_Name: ShopComfirmWarningText
+  m_Name: BuyConfirmWarningText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45709,7 +45368,7 @@ GameObject:
   - component: {fileID: 2104444284}
   - component: {fileID: 2104444283}
   m_Layer: 5
-  m_Name: DetailBG
+  m_Name: CharaDetailBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45857,7 +45516,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2126487535}
   m_Layer: 5
-  m_Name: RewardObject
+  m_Name: GachaRewardObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45894,7 +45553,7 @@ GameObject:
   - component: {fileID: 2128144034}
   - component: {fileID: 2128144035}
   m_Layer: 5
-  m_Name: CharacterImageMask
+  m_Name: GachaOfferRateImageMask
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -45969,16 +45628,16 @@ MonoBehaviour:
   userNameText: {fileID: 1330603455}
   staminaGauge: {fileID: 1351143447}
   staminaValueText: {fileID: 424427461}
+  staminaRecoveryConfirmText: {fileID: 1996555300}
   staminaRecoveryButton: {fileID: 849911984}
-  gameMatchButton: {fileID: 1138398370}
-  recoveryConfirmText: {fileID: 1996555300}
+  staminaRecoveryExecuteButton: {fileID: 1233943237}
+  staminaRecoveryCancelButton: {fileID: 1034396963}
+  staminaRecoveryConfirmView: {fileID: 732227044}
   gameMatchConfirmText: {fileID: 923161611}
-  recoveryConfirmView: {fileID: 732227044}
-  gameMatchConfirmView: {fileID: 937980293}
-  recoveryExecuteButton: {fileID: 1233943237}
+  gameMatchButton: {fileID: 1485899826}
   gameMatchExecuteButton: {fileID: 1201007859}
-  recoveryCancelButton: {fileID: 1034396963}
   gameMatchCancelButton: {fileID: 791073838}
+  gameMatchConfirmView: {fileID: 937980293}
 --- !u!4 &2134605331
 Transform:
   m_ObjectHideFlags: 0
@@ -46004,7 +45663,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2134832374}
   m_Layer: 5
-  m_Name: ProductObject
+  m_Name: ShopDetailObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

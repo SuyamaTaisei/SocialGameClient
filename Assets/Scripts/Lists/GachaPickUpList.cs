@@ -13,7 +13,7 @@ public class GachaPickUpList : MonoBehaviour
 
     private void Start()
     {
-        //データ実体の生成
+        //データの生成
         for (int i = startCount; i <= maxCount; i++)
         {
             GameObject item = Instantiate(templateView, content);
@@ -26,7 +26,7 @@ public class GachaPickUpList : MonoBehaviour
             {
                 if (list.character_id == index)
                 {
-                    //一致するデータの取得
+                    //データの取得
                     var characterDataModel = CharacterDataTable.SelectId(index);
                     var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
                     string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{index}";

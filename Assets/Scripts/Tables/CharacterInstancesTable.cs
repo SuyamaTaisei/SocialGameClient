@@ -74,7 +74,8 @@ public class CharacterInstancesTable
         return result;
     }
 
-    public static CharacterInstancesModel SelectId(int characterId)
+    //キャラクターIDが一致したデータを取得
+    public static CharacterInstancesModel SelectCharacterId(int characterId)
     {
         string query = "select * from character_Instances where character_id = " + characterId;
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);

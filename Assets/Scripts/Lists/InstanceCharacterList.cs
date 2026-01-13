@@ -8,7 +8,7 @@ public class InstanceCharacterList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientInstance clientInstance;
-    [SerializeField] InstanceCharacterDetailFixedView characterDetailView;
+    [SerializeField] InstanceCharacterDetailFixedView charaInstanceDetailFixedView;
     [SerializeField] TMP_Dropdown dropDownList;
 
     //標準ソート。最後に選ばれたソートを保持
@@ -58,17 +58,16 @@ public class InstanceCharacterList : MonoBehaviour
         DataList(characterInstancesList);
     }
 
-    //データの生成・取得・描画
     public void DataList(List<CharacterInstancesModel> characterInstancesList)
     {
         //何もキャラを所持していなければ
         if (characterInstancesList == null || characterInstancesList.Count == 0)
         {
-            clientInstance.NothingCharacterMessage(GameUtility.Const.SHOW_INSTANCE_CHARA_NOTHING);
+            clientInstance.CharaInstanceMessage(GameUtility.Const.SHOW_INSTANCE_CHARA_NOTHING);
             return;
         }
 
-        clientInstance.NothingCharacterMessage("");
+        clientInstance.CharaInstanceMessage("");
 
         for (int i = 0; i < characterInstancesList.Count; i++)
         {
@@ -86,7 +85,7 @@ public class InstanceCharacterList : MonoBehaviour
 
             //データの描画
             view.Set(data1, data2, data, imagePath);
-            button.onClick.AddListener(() => characterDetailView.Set(data1, data2, data, imagePath));
+            button.onClick.AddListener(() => charaInstanceDetailFixedView.Set(data1, data2, data, imagePath));
         }
     }
 

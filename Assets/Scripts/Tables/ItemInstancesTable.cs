@@ -10,12 +10,12 @@ public class ItemInstancesModel
     public int amount;
 }
 
-public class ItemInstacesTable
+public class ItemInstancesTable
 {
     //テーブル作成
     public static void CreateTable()
     {
-        string query = "create table if not exists item_Instances(" +
+        string query = "create table if not exists item_instances(" +
             "id int," +
             "manage_id int," +
             "item_id int," +
@@ -30,7 +30,7 @@ public class ItemInstacesTable
     {
         foreach (ItemInstancesModel item in itemInstancesModel)
         {
-            string query = "insert or replace into item_Instances (" +
+            string query = "insert or replace into item_instances (" +
                 "id," +
                 "manage_id," +
                 "item_id," +
@@ -50,8 +50,8 @@ public class ItemInstacesTable
         //カラム名単位でSQLクエリを呼び出し
         switch (column)
         {
-            case "amount": query = $"select * from item_Instances order by {column} {sort}"; break;
-            case "rarity_id": query = $"select ii.* from item_Instances as ii inner join item_data as id on id.id = ii.item_id order by id.{column} {sort}"; break;
+            case "amount": query = $"select * from item_instances order by {column} {sort}"; break;
+            case "rarity_id": query = $"select ii.* from item_instances as ii inner join item_data as id on id.id = ii.item_id order by id.{column} {sort}"; break;
         }
 
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
@@ -76,7 +76,7 @@ public class ItemInstacesTable
     //所持している強化アイテムだけ全て取得
     public static List<ItemInstancesModel> SelectEnhanceItemAll()
     {
-        string query = $"select ii.* from item_Instances as ii inner join item_data as id on id.id = ii.item_id where id.item_category = {GameUtility.Const.ITEM_CATEGORY_ENHANCES} order by id.id Asc";
+        string query = $"select ii.* from item_instances as ii inner join item_data as id on id.id = ii.item_id where id.item_category = {GameUtility.Const.ITEM_CATEGORY_ENHANCES} order by id.id Asc";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
 
@@ -96,11 +96,23 @@ public class ItemInstacesTable
         return result;
     }
 
-    //管理ID、アイテムID、最大数量で一致した時のみレコードを削除
-    public static void DeleteItem(int manageId, int itemId, int amount)
+    //一度全削除してから直後にレコード全挿入
+    public static void InsertFromDelete(int manageId, ItemInstancesModel[] itemInstancesModel)
     {
-        string query = $"delete from item_instances where manage_id = {manageId} and item_id = {itemId} and amount = {amount}";
+        string query = $"delete from item_instances where manage_id = {manageId}";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         sqlDB.ExecuteNonQuery(query);
+
+        foreach (ItemInstancesModel item in itemInstancesModel)
+        {
+            string itemQuery = "insert or replace into item_instances (" +
+                "id," +
+                "manage_id," +
+                "item_id," +
+                "amount" +
+                ")" +
+                "values (" + item.id + ", " + item.manage_id + ", " + item.item_id + ", " + item.amount + ")";
+            sqlDB.ExecuteNonQuery(itemQuery);
+        }
     }
 }

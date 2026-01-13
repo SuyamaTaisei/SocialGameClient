@@ -38,6 +38,7 @@ public class ResponseObjects
 public class ResponseManager : MonoBehaviour
 {
     private ClientShop clientShop;
+    private ShopDetailFixedView shopConfirmFixedView;
     private ClientGacha clientGacha;
     private GachaResultList gachaResultList;
     private GachaRewardList gachaRewardList;
@@ -98,7 +99,7 @@ public class ResponseManager : MonoBehaviour
             }
             if (responseObjects.item_instances != null)
             {
-                ItemInstacesTable.Insert(responseObjects.item_instances);
+                ItemInstancesTable.Insert(responseObjects.item_instances);
             }
             if (responseObjects.character_instances != null)
             {
@@ -117,19 +118,19 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("ガチャ実行完了");
             CharacterInstancesTable.Insert(responseObjects.character_instances);
-            ItemInstacesTable.Insert(responseObjects.item_instances);
+            ItemInstancesTable.Insert(responseObjects.item_instances);
 
             //ガチャ結果の表示(非アクティブ状態でも取得)
             gachaResultList = FindAnyObjectByType<GachaResultList>(FindObjectsInactive.Include);
             gachaRewardList = FindAnyObjectByType<GachaRewardList>(FindObjectsInactive.Include);
             if(gachaResultList != null && responseObjects.gacha_results != null)
             {
-                gachaResultList.ShowGachaResult(responseObjects.gacha_results, responseObjects.new_characters, responseObjects.single_exchange_items);
+                gachaResultList.DataList(responseObjects.gacha_results, responseObjects.new_characters, responseObjects.single_exchange_items);
             }
             //変換されたガチャ報酬の表示
             if(gachaRewardList != null && responseObjects.total_exchange_items != null)
             {
-                gachaRewardList.ShowGachaReward(responseObjects.total_exchange_items);
+                gachaRewardList.DataList(responseObjects.total_exchange_items);
             }
             //ガチャログ実行
             if (responseObjects.gacha_logs != null)
@@ -141,6 +142,34 @@ public class ResponseManager : MonoBehaviour
         else
         {
             Debug.LogError("ガチャ実行できなかった");
+        }
+    }
+
+    public void ExecuteEnhance(ResponseObjects responseObjects)
+    {
+        if (!string.IsNullOrEmpty(responseObjects.users.id))
+        {
+            Debug.Log("強化完了");
+            if (responseObjects.users != null)
+            {
+                UsersTable.Insert(responseObjects.users);
+            }
+            if (responseObjects.wallets != null)
+            {
+                WalletsTable.Insert(responseObjects.wallets);
+            }
+            if (responseObjects.item_instances != null)
+            {
+                ItemInstancesTable.InsertFromDelete(responseObjects.users.manage_id, responseObjects.item_instances);
+            }
+            if (responseObjects.character_instances != null)
+            {
+                CharacterInstancesTable.Insert(responseObjects.character_instances);
+            }
+        }
+        else
+        {
+            Debug.LogError("強化できなかった");
         }
     }
 
@@ -210,6 +239,7 @@ public class ResponseManager : MonoBehaviour
     {
         clientShop = FindAnyObjectByType<ClientShop>();
         clientGacha = FindAnyObjectByType<ClientGacha>();        
+        shopConfirmFixedView = FindAnyObjectByType<ShopDetailFixedView>(FindObjectsInactive.Include);
 
         if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_NOT_PAYMENT))
         {
@@ -227,11 +257,11 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("支払い完了");
             clientShop.WarningMessage("");
-            clientShop.CloseProductInfoButton();
-            clientShop.CloseConfirmButton();
-            clientShop.PaymentComplete(true);
+            shopConfirmFixedView.SetShopDetailClose();
+            shopConfirmFixedView.SetBuyConfirmClose();
+            shopConfirmFixedView.SetPaymentComplete(true);
             clientGacha.WarningMessage("");
-            clientGacha.CloseConfirmButton();
+            clientGacha.GachaConfirmClose();
         }
     }
 
@@ -261,7 +291,7 @@ public class ResponseManager : MonoBehaviour
                 ExecutePayment(responseObjects);
                 break;
             case GameUtility.Const.CHARACTER_ENHANCE_URL:
-                ExecuteHome(responseObjects);
+                ExecuteEnhance(responseObjects);
                 break;
             case GameUtility.Const.STAMINA_DECREASE_URL:
                 ExecuteHome(responseObjects);

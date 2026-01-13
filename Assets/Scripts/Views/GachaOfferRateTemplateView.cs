@@ -4,11 +4,12 @@ using UnityEngine.UI;
 
 public class GachaOfferRateTemplateView : MonoBehaviour
 {
-    [SerializeField] Image characterImage;
-    [SerializeField] TextMeshProUGUI nameText;
-    [SerializeField] TextMeshProUGUI rarityText;
-    [SerializeField] TextMeshProUGUI rateText;
+    [SerializeField] Image gachaOfferRateImage;
+    [SerializeField] TextMeshProUGUI gachaOfferRateNameText;
+    [SerializeField] TextMeshProUGUI gachaOfferRateRarityText;
+    [SerializeField] TextMeshProUGUI gachaOfferRateText;
     [SerializeField] TextMeshProUGUI gachaOfferRatePeriodTitle;
+
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
 
@@ -22,11 +23,11 @@ public class GachaOfferRateTemplateView : MonoBehaviour
     //各ガチャ提供割合表記
     public void Set(GachaDataModel data, CharacterDataModel data1, CharacterRaritiesModel data2, float rate, string imagePath)
     {
-        nameText.text = data1.name;
-        rarityText.text = data2.name;
-        rateText.text = rate.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT;
-        characterImage.sprite = Resources.Load<Sprite>(imagePath);
-        characterImage.preserveAspect = true;
+        gachaOfferRateNameText.text = data1.name;
+        gachaOfferRateRarityText.text = data2.name;
+        gachaOfferRateText.text = rate.ToString(GameUtility.Const.SHOW_GACHA_RATE_DECIMAL) + GameUtility.Const.SHOW_GACHA_RATE_PERCENT;
+        gachaOfferRateImage.sprite = Resources.Load<Sprite>(imagePath);
+        gachaOfferRateImage.preserveAspect = true;
     }
 
     //レアリティごとの合計排出率の表記計算

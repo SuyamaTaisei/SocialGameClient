@@ -4,37 +4,37 @@ using UnityEngine.UI;
 
 public class GachaResultTemplateView : MonoBehaviour
 {
-    [SerializeField] Image characterImage;
-    [SerializeField] TextMeshProUGUI characterNameText;
-    [SerializeField] TextMeshProUGUI characterRarityText;
-    [SerializeField] TextMeshProUGUI characterNewText;
+    [SerializeField] Image gachaResultImage;
+    [SerializeField] TextMeshProUGUI gachaResultNameText;
+    [SerializeField] TextMeshProUGUI gachaResultRarityText;
+    [SerializeField] TextMeshProUGUI gachaResultNewText;
 
-    [SerializeField] Image itemImage;
-    [SerializeField] TextMeshProUGUI itemNameText;
-    [SerializeField] TextMeshProUGUI itemRarityText;
-    [SerializeField] TextMeshProUGUI itemAmountText;
-    [SerializeField] GameObject itemOtherObject;
+    [SerializeField] Image gachaSingleRewardImage;
+    [SerializeField] TextMeshProUGUI gachaSingleRewardNameText;
+    [SerializeField] TextMeshProUGUI gachaSingleRewardRarityText;
+    [SerializeField] TextMeshProUGUI gachaSingleRewardAmountText;
+    [SerializeField] GameObject gachaSingleRewardOtherObject;
 
     //ガチャ結果表記
     public void SetGachaResult(GachaResultTemplateView view, CharacterDataModel data1, CharacterRaritiesModel data2, string imagePath)
     {
-        view.characterNameText.text = data1.name;
-        view.characterRarityText.text = data2.name;
-        view.characterImage.sprite = Resources.Load<Sprite>(imagePath);
-        view.characterImage.preserveAspect = true;
+        view.gachaResultNameText.text = data1.name;
+        view.gachaResultRarityText.text = data2.name;
+        view.gachaResultImage.sprite = Resources.Load<Sprite>(imagePath);
+        view.gachaResultImage.preserveAspect = true;
     }
 
     //ガチャ単一報酬表記
     public void SetSingleGachaReward(bool isNew, GachaResultTemplateView view, GachaResultsModel[] singleExchangeItems, ref int singleExchangeIndex)
     {
         //新規ガチャならガチャ報酬は空文字、既存ガチャで被ればガチャ報酬表示
-        view.characterNewText.text = isNew ? GameUtility.Const.SHOW_GACHA_NEW : string.Empty;
+        view.gachaResultNewText.text = isNew ? GameUtility.Const.SHOW_GACHA_NEW : string.Empty;
 
-        view.itemNameText.text = string.Empty;
-        view.itemRarityText.text = string.Empty;
-        view.itemAmountText.text = string.Empty;
-        view.itemOtherObject.SetActive(false);
-        view.itemImage.gameObject.SetActive(false);
+        view.gachaSingleRewardNameText.text = string.Empty;
+        view.gachaSingleRewardRarityText.text = string.Empty;
+        view.gachaSingleRewardAmountText.text = string.Empty;
+        view.gachaSingleRewardOtherObject.SetActive(false);
+        view.gachaSingleRewardImage.gameObject.SetActive(false);
 
         if (isNew)
         {
@@ -53,20 +53,20 @@ public class GachaResultTemplateView : MonoBehaviour
         string itemImagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{exchange.item_id}";
 
         //表記
-        view.itemNameText.text = itemDataModel.name;
-        view.itemRarityText.text = itemRaritiesModel.name;
-        view.itemAmountText.text = exchange.amount.ToString();
-        view.itemOtherObject.SetActive(true);
-        view.itemImage.gameObject.SetActive(true);
-        view.itemImage.sprite = Resources.Load<Sprite>(itemImagePath);
-        view.itemImage.preserveAspect = true;
+        view.gachaSingleRewardNameText.text = itemDataModel.name;
+        view.gachaSingleRewardRarityText.text = itemRaritiesModel.name;
+        view.gachaSingleRewardAmountText.text = exchange.amount.ToString();
+        view.gachaSingleRewardOtherObject.SetActive(true);
+        view.gachaSingleRewardImage.gameObject.SetActive(true);
+        view.gachaSingleRewardImage.sprite = Resources.Load<Sprite>(itemImagePath);
+        view.gachaSingleRewardImage.preserveAspect = true;
     }
 
     //新規と所持済みで透明度を変更
     public void SetColorChange(GachaResultTemplateView view, float value)
     {
-        var color = view.characterImage.color;
+        var color = view.gachaResultImage.color;
         color.a = value;
-        view.characterImage.color = color;
+        view.gachaResultImage.color = color;
     }
 }

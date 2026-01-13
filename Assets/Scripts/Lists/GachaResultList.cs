@@ -12,7 +12,7 @@ public class GachaResultList : MonoBehaviour
     private void OnDisable() => Clear();
 
     //ガチャ結果表示処理
-    public void ShowGachaResult(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
+    public void DataList(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
     {
         clientGacha.GachaResultView.SetActive(true);
 
@@ -26,7 +26,7 @@ public class GachaResultList : MonoBehaviour
             //ガチャ回数分全てを取得
             var gachaResult = gachaResults[i];
 
-            //データ実体の生成
+            //データの生成
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaResultTemplateView>();
 

@@ -1,33 +1,34 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.IO;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
+using UnityEngine.UI;
 
 public class ClientTitle : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI userNameText;
+    [SerializeField] TextMeshProUGUI idText;
+
+    [SerializeField] Button registerSendButton;
+    [SerializeField] Button startButton;
+    [SerializeField] Button registerCompleteButton;
+
     [SerializeField] GameObject startView;
     [SerializeField] GameObject registerView;
     [SerializeField] GameObject registerCompleteView;
 
-    [SerializeField] TextMeshProUGUI userNameText;
-    [SerializeField] TextMeshProUGUI idText;
-
-    [SerializeField] TMP_InputField inputUserTextName;
-    [SerializeField] TextMeshProUGUI warningText;
+    [SerializeField] TMP_InputField registerInputNameText;
+    [SerializeField] TextMeshProUGUI registerWarningText;
 
     [SerializeField] ClientMasterData clientMasterData;
-
-    public GameObject StartView => startView;
-
     private ApiConnect apiConnect;
+    private UsersModel usersModel;
 
     private const string column_UserName = "user_name";
     private const string column_id = "id";
 
-    //DBモデル
-    private UsersModel usersModel;
+    public GameObject StartView => startView;
 
     private void Awake()
     {
@@ -44,11 +45,16 @@ public class ClientTitle : MonoBehaviour
     void Start()
     {
         apiConnect = ApiConnect.Instance;
+
+        ShowUserInfo();
+
         StartView.SetActive(true);
         registerView.SetActive(false);
         registerCompleteView.SetActive(false);
 
-        ShowUserInfo();
+        registerSendButton.onClick.AddListener(() => Register());
+        startButton.onClick.AddListener(() => GameStart());
+        registerCompleteButton.onClick.AddListener(() => RegisterCompleteExecute());
     }
 
     private void Update()
@@ -57,23 +63,23 @@ public class ClientTitle : MonoBehaviour
     }
 
     //アカウント登録ボタン
-    public void RegisterButton()
+    public void Register()
     {
-        if (string.IsNullOrEmpty(inputUserTextName.text))
+        if (string.IsNullOrEmpty(registerInputNameText.text))
         {
             //ユーザ名未入力
-            warningText.text = GameUtility.Const.ERROR_VALIDATE_1;
+            registerWarningText.text = GameUtility.Const.ERROR_VALIDATE_1;
         }
-        else if (inputUserTextName.text.Length <= GameUtility.Const.NUMBER_VALIDATE_1)
+        else if (registerInputNameText.text.Length <= GameUtility.Const.NUMBER_VALIDATE_1)
         {
             //ユーザ名が指定文字数以上の場合
-            warningText.text = GameUtility.Const.ERROR_VALIDATE_2;
+            registerWarningText.text = GameUtility.Const.ERROR_VALIDATE_2;
         }
         else
         {
             registerView.SetActive(false);
 
-            string userName = inputUserTextName.text;
+            string userName = registerInputNameText.text;
             List<IMultipartFormSection> form = new() //POST送信用のフォームを作成
             {
                 new MultipartFormDataSection(column_UserName, userName)
@@ -86,7 +92,7 @@ public class ClientTitle : MonoBehaviour
     }
 
     //スタートボタン
-    public void StartButton()
+    public void GameStart()
     {
         //ユーザー情報の取得
         usersModel = UsersTable.Select();
@@ -115,7 +121,7 @@ public class ClientTitle : MonoBehaviour
     }
 
     //アカウント登録完了ボタン
-    public void RegisterCompleteButton()
+    public void RegisterCompleteExecute()
     {
         StartView.SetActive(true);
         RegisterComplete(false);
@@ -148,7 +154,7 @@ public class ClientTitle : MonoBehaviour
         UsersTable.CreateTable();
         WalletsTable.CreateTable();
         CharacterInstancesTable.CreateTable();
-        ItemInstacesTable.CreateTable();
+        ItemInstancesTable.CreateTable();
 
         ShopCategoriesTable.CreateTable();
         ShopDataTable.CreateTable();

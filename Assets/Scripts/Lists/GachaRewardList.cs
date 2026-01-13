@@ -9,21 +9,21 @@ public class GachaRewardList : MonoBehaviour
 
     public Transform Content => content;
 
-    public void ShowGachaReward(GachaResultsModel[] totalExchangeItems)
+    public void DataList(GachaResultsModel[] totalExchangeItems)
     {
         //何もガチャ報酬がなければボタンを押せない
         if (totalExchangeItems == null || totalExchangeItems.Length == 0)
         {
-            clientGacha.NothingRewardMessage(false);
+            clientGacha.GachaRewardMessage(false);
             return;
         }
 
-        clientGacha.NothingRewardMessage(true);
+        clientGacha.GachaRewardMessage(true);
 
         //変換された個数分走査
         for (int i = 0; i < totalExchangeItems.Length; i++)
         {
-            //データ実体の生成
+            //データの生成
             var exchange = totalExchangeItems[i];
             GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaRewardTemplateView>();

@@ -7,24 +7,27 @@ using System.Collections;
 
 public class ClientHome : MonoBehaviour
 {
+    //ウォレット
     [SerializeField] TextMeshProUGUI coinText;
     [SerializeField] TextMeshProUGUI gemFreeText;
     [SerializeField] TextMeshProUGUI gemPaidText;
     [SerializeField] TextMeshProUGUI userNameText;
 
+    //スタミナ
     [SerializeField] Image staminaGauge;
     [SerializeField] TextMeshProUGUI staminaValueText;
+    [SerializeField] TextMeshProUGUI staminaRecoveryConfirmText;
     [SerializeField] Button staminaRecoveryButton;
-    [SerializeField] Button gameMatchButton;
+    [SerializeField] Button staminaRecoveryExecuteButton;
+    [SerializeField] Button staminaRecoveryCancelButton;
+    [SerializeField] GameObject staminaRecoveryConfirmView;
 
-    [SerializeField] TextMeshProUGUI recoveryConfirmText;
+    //対戦
     [SerializeField] TextMeshProUGUI gameMatchConfirmText;
-    [SerializeField] GameObject recoveryConfirmView;
-    [SerializeField] GameObject gameMatchConfirmView;
-    [SerializeField] Button recoveryExecuteButton;
+    [SerializeField] Button gameMatchButton;
     [SerializeField] Button gameMatchExecuteButton;
-    [SerializeField] Button recoveryCancelButton;
     [SerializeField] Button gameMatchCancelButton;
+    [SerializeField] GameObject gameMatchConfirmView;
 
     private ApiConnect apiConnect;
 
@@ -44,23 +47,23 @@ public class ClientHome : MonoBehaviour
         staminaValueText.text = usersModel.last_stamina.ToString() + "/" + GameUtility.Const.STAMINA_MOST_VALUE;
         staminaGauge.fillAmount = (float)usersModel.last_stamina / GameUtility.Const.STAMINA_MOST_VALUE;
 
-        recoveryConfirmText.text = GameUtility.Const.STAMINA_GEM_VALUE + GameUtility.Const.SHOW_STAMINA_RECOVERY_CONFIRM;
+        staminaRecoveryConfirmText.text = GameUtility.Const.STAMINA_GEM_VALUE + GameUtility.Const.SHOW_STAMINA_RECOVERY_CONFIRM;
         gameMatchConfirmText.text = GameUtility.Const.STAMINA_DECREASE_VALUE + GameUtility.Const.SHOW_STAMINA_DECREASE_CONFIRM;
 
-        recoveryConfirmView.SetActive(false);
+        staminaRecoveryConfirmView.SetActive(false);
         gameMatchConfirmView.SetActive(false);
 
-        staminaRecoveryButton.onClick.AddListener(()  => { recoveryConfirmView.SetActive(true); });
+        staminaRecoveryButton.onClick.AddListener(()  => { staminaRecoveryConfirmView.SetActive(true); });
         gameMatchButton.onClick.AddListener(()        => { gameMatchConfirmView.SetActive(true); });
-        recoveryExecuteButton.onClick.AddListener(()  => {
+        staminaRecoveryExecuteButton.onClick.AddListener(()  => {
             RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL);
-            recoveryConfirmView.SetActive(false);
+            staminaRecoveryConfirmView.SetActive(false);
         });
         gameMatchExecuteButton.onClick.AddListener(() => {
             RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL);
             gameMatchConfirmView.SetActive(false);
         });
-        recoveryCancelButton.onClick.AddListener(() => { recoveryConfirmView.SetActive(false); });
+        staminaRecoveryCancelButton.onClick.AddListener(() => { staminaRecoveryConfirmView.SetActive(false); });
         gameMatchCancelButton.onClick.AddListener(() => { gameMatchConfirmView.SetActive(false); });
     }
 

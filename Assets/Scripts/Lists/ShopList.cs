@@ -6,7 +6,7 @@ public class ShopList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
-    [SerializeField] ClientShop clientShop;
+    [SerializeField] ShopDetailFixedView shopDetailFixedView;
 
     [SerializeField] int startCount;
     [SerializeField] int maxCount;
@@ -15,6 +15,7 @@ public class ShopList : MonoBehaviour
 
     [SerializeField] string imageFolderName;
     [SerializeField] int imageNumber;
+
     int itemId = GameUtility.Const.SHOP_ITEM_ID;
 
     private void Start()
@@ -38,7 +39,7 @@ public class ShopList : MonoBehaviour
 
             //データの描画
             view.Set(shopList[i], data2, imagePath);
-            button.onClick.AddListener(() => clientShop.OpenProductInfoButton(index1, index2, imageindex, data2));
+            button.onClick.AddListener(() => shopDetailFixedView.SetShopDetailOpen(index1, index2, imageindex, data2));
             imageNumber++;
             itemId++;
         }

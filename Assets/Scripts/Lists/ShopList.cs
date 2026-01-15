@@ -16,6 +16,8 @@ public class ShopList : MonoBehaviour
     [SerializeField] string imageFolderName;
     [SerializeField] int imageNumber;
 
+    [SerializeField] bool isShopDetail;
+
     int itemId = GameUtility.Const.SHOP_ITEM_ID;
 
     private void Start()
@@ -39,7 +41,17 @@ public class ShopList : MonoBehaviour
 
             //データの描画
             view.Set(shopList[i], data2, imagePath);
-            button.onClick.AddListener(() => shopDetailFixedView.SetShopDetailOpen(index1, index2, imageindex, data2));
+
+            //ショップリストに応じて確認導線を変更
+            if (isShopDetail)
+            {
+                button.onClick.AddListener(() => shopDetailFixedView.SetShopDetailOpen(index1, index2, imageindex, data2));
+            }
+            else
+            {
+                button.onClick.AddListener(() => shopDetailFixedView.SetBuyConfirmOpen(index1, GameUtility.Const.SHOW_YEN));
+            }
+
             imageNumber++;
             itemId++;
         }

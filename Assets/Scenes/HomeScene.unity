@@ -1632,6 +1632,7 @@ RectTransform:
   - {fileID: 1694803494}
   - {fileID: 1685240342}
   - {fileID: 1655090802}
+  - {fileID: 1632232014}
   - {fileID: 1475782000}
   m_Father: {fileID: 1778367105}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -15957,6 +15958,7 @@ MonoBehaviour:
   productNumber2: 10005
   imageFolderName: Gems
   imageNumber: 10001
+  isShopDetail: 0
 --- !u!1 &774233341
 GameObject:
   m_ObjectHideFlags: 0
@@ -31118,6 +31120,7 @@ MonoBehaviour:
   productNumber2: 10005
   imageFolderName: Items
   imageNumber: 1001
+  isShopDetail: 1
 --- !u!1 &1406646910
 GameObject:
   m_ObjectHideFlags: 0
@@ -35731,7 +35734,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1632232013}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -35746,7 +35749,7 @@ RectTransform:
   - {fileID: 158242673}
   - {fileID: 1759699121}
   - {fileID: 555166552}
-  m_Father: {fileID: 1655090802}
+  m_Father: {fileID: 84480099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -36012,7 +36015,6 @@ RectTransform:
   - {fileID: 829897669}
   - {fileID: 2039632325}
   - {fileID: 283517415}
-  - {fileID: 1632232014}
   m_Father: {fileID: 84480099}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}

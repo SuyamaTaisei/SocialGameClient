@@ -111,7 +111,7 @@ public class ClientHome : MonoBehaviour
     {
         var usersModel = UsersTable.Select();
         var walletsModel = WalletsTable.Select();
-        staminaRecoveryButton.interactable = usersModel.last_stamina < GameUtility.Const.STAMINA_MAX_VALUE && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= GameUtility.Const.STAMINA_GEM_VALUE;
+        staminaRecoveryButton.interactable = usersModel.last_stamina < GameUtility.Const.STAMINA_MOST_VALUE && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= GameUtility.Const.STAMINA_GEM_VALUE;
         gameMatchButton.interactable = usersModel.last_stamina >= GameUtility.Const.STAMINA_DECREASE_VALUE;
     }
 

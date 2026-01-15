@@ -99,9 +99,9 @@ namespace GameUtility
         //スタミナ数値
         public const int STAMINA_MAX_VALUE = 199;
         public const int STAMINA_MOST_VALUE = 100;
-        public const int STAMINA_DECREASE_VALUE = 5;
         public const int STAMINA_EVERY_MINUTE = 60;
         public const int STAMINA_GEM_VALUE = 50;
+        public const int STAMINA_DECREASE_VALUE = 5;
 
         //ショップカテゴリ数値
         public const int SHOP_GEMS = 1001;

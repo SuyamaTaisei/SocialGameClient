@@ -22,13 +22,7 @@ public class ClientHome : MonoBehaviour
     [SerializeField] Button staminaRecoveryCancelButton;
     [SerializeField] GameObject staminaRecoveryConfirmView;
 
-    //対戦
-    [SerializeField] TextMeshProUGUI gameMatchConfirmText;
-    [SerializeField] Button gameMatchButton;
-    [SerializeField] Button gameMatchExecuteButton;
-    [SerializeField] Button gameMatchCancelButton;
-    [SerializeField] GameObject gameMatchConfirmView;
-
+    [SerializeField] GameMatchFixedView gameMatchFixedView;
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
@@ -46,25 +40,16 @@ public class ClientHome : MonoBehaviour
         userNameText.text = usersModel.user_name;
         staminaValueText.text = usersModel.last_stamina.ToString() + "/" + GameUtility.Const.STAMINA_MOST_VALUE;
         staminaGauge.fillAmount = (float)usersModel.last_stamina / GameUtility.Const.STAMINA_MOST_VALUE;
-
         staminaRecoveryConfirmText.text = GameUtility.Const.STAMINA_GEM_VALUE + GameUtility.Const.SHOW_STAMINA_RECOVERY_CONFIRM;
-        gameMatchConfirmText.text = GameUtility.Const.STAMINA_DECREASE_VALUE + GameUtility.Const.SHOW_STAMINA_DECREASE_CONFIRM;
 
         staminaRecoveryConfirmView.SetActive(false);
-        gameMatchConfirmView.SetActive(false);
 
         staminaRecoveryButton.onClick.AddListener(()  => { staminaRecoveryConfirmView.SetActive(true); });
-        gameMatchButton.onClick.AddListener(()        => { gameMatchConfirmView.SetActive(true); });
         staminaRecoveryExecuteButton.onClick.AddListener(()  => {
             RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL);
             staminaRecoveryConfirmView.SetActive(false);
         });
-        gameMatchExecuteButton.onClick.AddListener(() => {
-            RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL);
-            gameMatchConfirmView.SetActive(false);
-        });
         staminaRecoveryCancelButton.onClick.AddListener(() => { staminaRecoveryConfirmView.SetActive(false); });
-        gameMatchCancelButton.onClick.AddListener(() => { gameMatchConfirmView.SetActive(false); });
     }
 
     private void Update()
@@ -112,7 +97,7 @@ public class ClientHome : MonoBehaviour
         var usersModel = UsersTable.Select();
         var walletsModel = WalletsTable.Select();
         staminaRecoveryButton.interactable = usersModel.last_stamina < GameUtility.Const.STAMINA_MOST_VALUE && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= GameUtility.Const.STAMINA_GEM_VALUE;
-        gameMatchButton.interactable = usersModel.last_stamina >= GameUtility.Const.STAMINA_DECREASE_VALUE;
+        gameMatchFixedView.GameMatchButton.interactable = usersModel.last_stamina >= GameUtility.Const.STAMINA_DECREASE_VALUE;
     }
 
     //スタミナ自然回復処理。1分毎に1回復。最大値の場合はスキップ (基本はホームにいる時のみ実行。ゲームプレイ時などは差分計算で増やして負荷軽減)

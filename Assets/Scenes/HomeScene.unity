@@ -33749,6 +33749,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1519787489}
+  - component: {fileID: 1519787490}
   m_Layer: 5
   m_Name: GameMatchView
   m_TagString: Untagged
@@ -33776,6 +33777,24 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1519787490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1519787488}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 73444111c61d0314bae61a05bef87c4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameMatchConfirmText: {fileID: 923161611}
+  gameMatchButton: {fileID: 1485899826}
+  gameMatchExecuteButton: {fileID: 1201007859}
+  gameMatchCancelButton: {fileID: 791073838}
+  gameMatchConfirmView: {fileID: 937980293}
+  clientHome: {fileID: 2134605330}
 --- !u!1 &1523666966
 GameObject:
   m_ObjectHideFlags: 0
@@ -45635,11 +45654,7 @@ MonoBehaviour:
   staminaRecoveryExecuteButton: {fileID: 1233943237}
   staminaRecoveryCancelButton: {fileID: 1034396963}
   staminaRecoveryConfirmView: {fileID: 732227044}
-  gameMatchConfirmText: {fileID: 923161611}
-  gameMatchButton: {fileID: 1485899826}
-  gameMatchExecuteButton: {fileID: 1201007859}
-  gameMatchCancelButton: {fileID: 791073838}
-  gameMatchConfirmView: {fileID: 937980293}
+  gameMatchFixedView: {fileID: 1519787490}
 --- !u!4 &2134605331
 Transform:
   m_ObjectHideFlags: 0

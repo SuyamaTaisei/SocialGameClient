@@ -15055,6 +15055,7 @@ MonoBehaviour:
   content: {fileID: 127755025}
   templateView: {fileID: 494383125}
   clientGacha: {fileID: 1605318034}
+  gachaFixedView: {fileID: 1655934740}
   gachaResultTemplateView: {fileID: 494383128}
   gachaRewardList: {fileID: 2069872098}
 --- !u!1 &668136371
@@ -35798,16 +35799,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gachaOfferRateTotalText: {fileID: 1184428914}
-  gachaConfirmText: {fileID: 15737426}
   coinText: {fileID: 1009487290}
   gemFreeText: {fileID: 33144344}
   gemPaidText: {fileID: 33144343}
   gachaWarningText: {fileID: 1014642881}
   gachaLogNothingText: {fileID: 1151508022}
-  gachaExecuteButton: {fileID: 1890462556}
-  gachaCancelButton: {fileID: 958917729}
-  gachaSingleExecuteButton: {fileID: 507750353}
-  gachaMultiExecuteButton: {fileID: 1033894071}
   gachaOpenButton: {fileID: 914694344}
   gachaRewardOpenButton: {fileID: 502751417}
   gachaLogOpenButton: {fileID: 138787080}
@@ -35818,13 +35814,11 @@ MonoBehaviour:
   gachaRewardCloseButton: {fileID: 1962120557}
   gachaResultCloseButton: {fileID: 1978471380}
   gachaView: {fileID: 1655934738}
-  gachaConfirmView: {fileID: 1361025735}
   gachaResultView: {fileID: 340842833}
   gachaRewardView: {fileID: 783824676}
   gachaOfferRateView: {fileID: 1903894518}
   gachaLogView: {fileID: 1710633597}
   clientHome: {fileID: 2134605330}
-  gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &1605412725
 GameObject:
   m_ObjectHideFlags: 0
@@ -36801,6 +36795,14 @@ MonoBehaviour:
   gachaMultiCostText: {fileID: 1250795197}
   gachaSingleText: {fileID: 884497073}
   gachaMultiText: {fileID: 1446986335}
+  gachaConfirmText: {fileID: 15737426}
+  gachaExecuteButton: {fileID: 1890462556}
+  gachaCancelButton: {fileID: 958917729}
+  gachaSingleExecuteButton: {fileID: 507750353}
+  gachaMultiExecuteButton: {fileID: 1033894071}
+  gachaConfirmView: {fileID: 1361025735}
+  clientGacha: {fileID: 1605318034}
+  gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &1656818012
 GameObject:
   m_ObjectHideFlags: 0

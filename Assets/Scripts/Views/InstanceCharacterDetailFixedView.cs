@@ -24,6 +24,7 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
 
     [SerializeField] ClientInstance clientInstance;
 
+    private int max = int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX);
     private int beforeLevel;
     private int afterLevel;
 
@@ -83,10 +84,23 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     //強化ボタン押下制御
     private void SetCtrlEnhanceButton()
     {
-        enhanceButton.interactable = (afterLevel != beforeLevel) && (afterLevel <= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX));
+        enhanceButton.interactable = (afterLevel != beforeLevel) && (afterLevel <= max);
 
-        bool isMaxLevel = beforeLevel >= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX);
+        bool isMaxLevel = beforeLevel >= max;
         enhanceText.text = isMaxLevel ? GameUtility.Const.SHOW_INSTANCE_MAX : GameUtility.Const.SHOW_INSTANCE_ENHANCE;
+
+        //全ての強化アイテムの増減ボタンを制御
+        var items = FindObjectsByType<EnhanceItemTemplateView>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var item in items)
+        {
+            item.SetRefreshAmount();
+        }
+    }
+
+    //増減ボタン制御
+    public bool SetCanAddLevel(int addValue)
+    {
+        return afterLevel + addValue <= max;
     }
 
     //キャラ詳細画面開閉

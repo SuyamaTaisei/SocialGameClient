@@ -47,7 +47,6 @@ public class ResponseManager : MonoBehaviour
 
     private void Awake()
     {
-        //ゲーム内に一つだけ存在
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);

@@ -3,9 +3,6 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-/// <summary>
-/// シーン遷移用簡易フェードクラス
-/// </summary>
 public class LoadingManager : MonoBehaviour
 {
     private static Canvas canvas;

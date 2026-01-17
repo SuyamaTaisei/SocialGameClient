@@ -8719,7 +8719,7 @@ GameObject:
   - component: {fileID: 404913652}
   - component: {fileID: 404913651}
   m_Layer: 0
-  m_Name: GameMatchBGButton
+  m_Name: GameMatchResultBGButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -16641,7 +16641,7 @@ GameObject:
   - component: {fileID: 781738356}
   - component: {fileID: 781738355}
   m_Layer: 0
-  m_Name: GameMatchFrame
+  m_Name: GameMatchConfirmFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17030,7 +17030,7 @@ GameObject:
   - component: {fileID: 791073839}
   - component: {fileID: 791073838}
   m_Layer: 0
-  m_Name: GameMatchCancelButton
+  m_Name: GameMatchConfirmCancelButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18382,7 +18382,7 @@ GameObject:
   - component: {fileID: 843832796}
   - component: {fileID: 843832795}
   m_Layer: 0
-  m_Name: GameMatchBGButton
+  m_Name: GameMatchConfirmBGButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -26857,7 +26857,7 @@ GameObject:
   - component: {fileID: 1169755545}
   - component: {fileID: 1169755544}
   m_Layer: 0
-  m_Name: GameMatchBG
+  m_Name: GameMatchResultBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27814,7 +27814,7 @@ GameObject:
   - component: {fileID: 1201007860}
   - component: {fileID: 1201007859}
   m_Layer: 0
-  m_Name: GameMatchExecuteButton
+  m_Name: GameMatchConfirmExecuteButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -34447,8 +34447,8 @@ MonoBehaviour:
   gameMatchConfirmText: {fileID: 923161611}
   gameMatchResultText: {fileID: 758250339}
   gameMatchOpenButton: {fileID: 1485899826}
-  gameMatchExecuteButton: {fileID: 1201007859}
-  gameMatchCancelButton: {fileID: 791073838}
+  gameMatchConfirmExecuteButton: {fileID: 1201007859}
+  gameMatchConfirmCancelButton: {fileID: 791073838}
   gameMatchResultCloseButton: {fileID: 1941294706}
   gameMatchConfirmView: {fileID: 937980293}
   gameMatchResultView: {fileID: 1325896244}
@@ -34465,7 +34465,7 @@ GameObject:
   - component: {fileID: 1523666969}
   - component: {fileID: 1523666968}
   m_Layer: 0
-  m_Name: GameMatchBG
+  m_Name: GameMatchConfirmBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -35632,7 +35632,7 @@ GameObject:
   - component: {fileID: 1582582468}
   - component: {fileID: 1582582467}
   m_Layer: 0
-  m_Name: GameMatchFrame
+  m_Name: GameMatchResultFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

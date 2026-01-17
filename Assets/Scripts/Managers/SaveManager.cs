@@ -18,7 +18,6 @@ public class SaveManager : MonoBehaviour
 
     private void Awake()
     {
-        //シングルトン
         if (Instance == null)
         {
             Instance = this;

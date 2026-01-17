@@ -1,5 +1,5 @@
 ﻿#define ENV_LOCAL
-#define ENV_SERVER
+//#define ENV_DEV
 
 namespace GameUtility
 {
@@ -8,7 +8,7 @@ namespace GameUtility
     {
         #if ENV_LOCAL
             private const string BASE_URL = "http://localhost/";
-        #elif ENV_SERVER
+        #elif ENV_DEV
             private const string BASE_URL = "http://example.com/";
         #endif
 

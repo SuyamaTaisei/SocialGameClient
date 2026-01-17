@@ -8,12 +8,10 @@ using UnityEngine.Networking;
 public class ApiConnect : MonoBehaviour
 {
     private ResponseManager responseManager;
-    private ClientMasterData clientMasterData;
     public static ApiConnect Instance { get; private set; }
 
     private void Awake()
     {
-        //ゲーム内に一つだけ存在
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -26,7 +24,6 @@ public class ApiConnect : MonoBehaviour
     private void Start()
     {
         responseManager = ResponseManager.Instance;
-        clientMasterData = FindFirstObjectByType<ClientMasterData>();
     }
 
     public IEnumerator Send(string endPoint, List<IMultipartFormSection> form = null, Action<ResponseObjects> action = null, int timeOut = 10)

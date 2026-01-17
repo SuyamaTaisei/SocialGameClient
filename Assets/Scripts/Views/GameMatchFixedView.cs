@@ -8,8 +8,8 @@ public class GameMatchFixedView : MonoBehaviour
     [SerializeField] TextMeshProUGUI gameMatchResultText;
 
     [SerializeField] Button gameMatchOpenButton;
-    [SerializeField] Button gameMatchExecuteButton;
-    [SerializeField] Button gameMatchCancelButton;
+    [SerializeField] Button gameMatchConfirmExecuteButton;
+    [SerializeField] Button gameMatchConfirmCancelButton;
     [SerializeField] Button gameMatchResultCloseButton;
 
     [SerializeField] GameObject gameMatchConfirmView;
@@ -28,12 +28,12 @@ public class GameMatchFixedView : MonoBehaviour
         SetResult(false);
 
         gameMatchOpenButton.onClick.AddListener(() => { SetConfirm(true); });
-        gameMatchExecuteButton.onClick.AddListener(() => {
+        gameMatchConfirmExecuteButton.onClick.AddListener(() => {
             clientHome.RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL);
             SetConfirm(false);
             SetResult(true);
         });
-        gameMatchCancelButton.onClick.AddListener(() => { SetConfirm(false); });
+        gameMatchConfirmCancelButton.onClick.AddListener(() => { SetConfirm(false); });
         gameMatchResultCloseButton.onClick.AddListener(() => { SetResult(false); });
     }
 

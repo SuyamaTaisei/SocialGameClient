@@ -21,6 +21,7 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     [SerializeField] GameObject enhanceConfirmView;
     [SerializeField] GameObject enhanceCompleteView;
     [SerializeField] GameObject charaInstanceDetailFixedView;
+    [SerializeField] GameObject enhanceConnectingCover;
 
     [SerializeField] ClientInstance clientInstance;
 
@@ -30,13 +31,28 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
 
     private void Start()
     {
+        SetEnhanceConnectingCover(false);
         enhanceConfirmView.SetActive(false);
         enhanceCompleteView.SetActive(false);
         charaInstanceDetailFixedView.SetActive(false);
 
-        enhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(true));
-        enhanceExecuteButton.onClick.AddListener(() => clientInstance.RequestEnhance()); //強化リクエスト送信
-        enhanceCancelButton.onClick.AddListener(() => SetEnhanceConfirmView(false));
+        enhanceButton.onClick.AddListener(() =>
+        {
+            enhanceButton.gameObject.SetActive(false);
+            SetEnhanceConfirmView(true);
+        });
+        enhanceExecuteButton.onClick.AddListener(() =>
+        {
+            SetEnhanceConnectingCover(true);
+            enhanceButton.gameObject.SetActive(true);
+            SetEnhanceConfirmView(false);
+            clientInstance.RequestEnhance(); //強化リクエスト送信
+        });
+        enhanceCancelButton.onClick.AddListener(() =>
+        {
+            enhanceButton.gameObject.SetActive(true);
+            SetEnhanceConfirmView(false);
+        });
         enhanceCloseButton.onClick.AddListener(() => SetEnhanceCompleteView(false));
         charaDetailCloseButton.onClick.AddListener(() => SetCharaInstanceDetail(false));
     }
@@ -119,5 +135,11 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     public void SetEnhanceCompleteView(bool enabled)
     {
         enhanceCompleteView.SetActive(enabled);
+    }
+
+    //強化通信中の画面カバー
+    public void SetEnhanceConnectingCover(bool enabled)
+    {
+        enhanceConnectingCover.SetActive(enabled);
     }
 }

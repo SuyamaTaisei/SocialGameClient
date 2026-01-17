@@ -24,10 +24,22 @@ public class EnhanceItemTemplateView : MonoBehaviour
 
     public void Set(ItemDataModel data1, ItemRaritiesModel data2, ItemInstancesModel data3, string imagePath)
     {
-        if (enhanceItemImage) enhanceItemImage.sprite = Resources.Load<Sprite>(imagePath);
-        if (enhanceItemNameText) enhanceItemNameText.text = data1.name;
-        if (enhanceItemRarityText) enhanceItemRarityText.text = data2.name;
-        if (enhanceItemTotalAmountText) enhanceItemTotalAmountText.text = data3.amount.ToString();
+        if (enhanceItemImage)
+        {
+            enhanceItemImage.sprite = Resources.Load<Sprite>(imagePath);
+        }
+        if (enhanceItemNameText)
+        {
+            enhanceItemNameText.text = data1.name;
+        }
+        if (enhanceItemRarityText)
+        {
+            enhanceItemRarityText.text = data2.name;
+        }
+        if (enhanceItemTotalAmountText)
+        {
+            enhanceItemTotalAmountText.text = data3.amount.ToString();
+        }
 
         //二重登録防止
         enhanceItemIncreaseButton.onClick.RemoveAllListeners();

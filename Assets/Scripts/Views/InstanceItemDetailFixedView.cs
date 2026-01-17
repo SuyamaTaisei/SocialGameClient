@@ -20,11 +20,26 @@ public class InstanceItemDetailFixedView : MonoBehaviour
 
     public void Set(ItemDataModel data1, ItemRaritiesModel data2, ItemInstancesModel data3, string imagePath)
     {
-        if (itemDetailImage) itemDetailImage.sprite = Resources.Load<Sprite>(imagePath);
-        if (itemDetailNameText) itemDetailNameText.text = data1.name;
-        if (itemDetailRarityText) itemDetailRarityText.text = data2.name;
-        if (itemDetailDescriptionText) itemDetailDescriptionText.text = data1.description;
-        if (itemDetailAmountText) itemDetailAmountText.text = data3.amount + GameUtility.Const.SHOW_AMOUNT + GameUtility.Const.SHOW_POSSESSION;
+        if (itemDetailImage)
+        {
+            itemDetailImage.sprite = Resources.Load<Sprite>(imagePath);
+        }
+        if (itemDetailNameText)
+        {
+            itemDetailNameText.text = data1.name;
+        }
+        if (itemDetailRarityText)
+        {
+            itemDetailRarityText.text = data2.name;
+        }
+        if (itemDetailDescriptionText)
+        {
+            itemDetailDescriptionText.text = data1.description;
+        }
+        if (itemDetailAmountText)
+        {
+            itemDetailAmountText.text = data3.amount + GameUtility.Const.SHOW_AMOUNT + GameUtility.Const.SHOW_POSSESSION;
+        }
     }
 
     //アイテム詳細画面開閉

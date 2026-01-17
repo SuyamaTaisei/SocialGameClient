@@ -59,19 +59,34 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
 
     public void Set(CharacterDataModel data1, CharacterRaritiesModel data2, CharacterInstancesModel data3, string imagePath)
     {
-        if (charaDetailImage) charaDetailImage.sprite = Resources.Load<Sprite>(imagePath);
-        if (charaDetailNameText) charaDetailNameText.text = data1.name;
-        if (charaDetailRarityText) charaDetailRarityText.text = data2.name;
+        if (charaDetailImage)
+        {
+            charaDetailImage.sprite = Resources.Load<Sprite>(imagePath);
+        }
+        if (charaDetailNameText)
+        {
+            charaDetailNameText.text = data1.name;
+        }
+        if (charaDetailRarityText)
+        {
+            charaDetailRarityText.text = data2.name;
+        }
 
         //強化対象となるキャラの更新
         clientInstance.GetCharacterId(data3.character_id);
         clientInstance.ClearEnhanceItems();
 
         beforeLevel = data3.level;
-        if (charaDetailLevelBeforeText) charaDetailLevelBeforeText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + data3.level.ToString();
+        if (charaDetailLevelBeforeText)
+        {
+            charaDetailLevelBeforeText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + data3.level.ToString();
+        }
 
         afterLevel = beforeLevel;
-        if (charaDetailLevelAfterText) charaDetailLevelAfterText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + afterLevel;
+        if (charaDetailLevelAfterText)
+        {
+            charaDetailLevelAfterText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + afterLevel;
+        }
 
         SetCtrlEnhanceButton();
     }

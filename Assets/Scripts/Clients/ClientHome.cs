@@ -100,7 +100,7 @@ public class ClientHome : MonoBehaviour
         gameMatchFixedView.GameMatchOpenButton.interactable = usersModel.last_stamina >= GameUtility.Const.STAMINA_DECREASE_VALUE;
     }
 
-    //スタミナ自然回復処理。1分毎に1回復。最大値の場合はスキップ (基本はホームにいる時のみ実行。ゲームプレイ時などは差分計算で増やして負荷軽減)
+    //スタミナ自然回復処理。1分毎に1回復。上限値の場合はスキップ (基本はホームにいる時のみ実行。ゲームプレイ時などは差分計算で増やして負荷軽減)
     private IEnumerator StaminaAutoIncrease()
     {
         while (true)

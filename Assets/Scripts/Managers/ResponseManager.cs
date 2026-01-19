@@ -11,6 +11,7 @@ public class ResponseObjects
     public WalletsModel wallets;
     public CharacterInstancesModel[] character_instances;
     public ItemInstancesModel[] item_instances;
+    public PresentInstancesModel[] present_instances;
 
     public ShopCategoriesModel[] shop_categories;
     public ShopDataModel[] shop_data;
@@ -106,6 +107,10 @@ public class ResponseManager : MonoBehaviour
             if (responseObjects.character_instances != null)
             {
                 CharacterInstancesTable.Insert(responseObjects.character_instances);
+            }
+            if (responseObjects.present_instances != null)
+            {
+                PresentInstancesTable.Insert(responseObjects.present_instances);
             }
         }
         else

@@ -155,6 +155,7 @@ public class ClientTitle : MonoBehaviour
         WalletsTable.CreateTable();
         CharacterInstancesTable.CreateTable();
         ItemInstancesTable.CreateTable();
+        PresentInstancesTable.CreateTable();
 
         ShopCategoriesTable.CreateTable();
         ShopDataTable.CreateTable();

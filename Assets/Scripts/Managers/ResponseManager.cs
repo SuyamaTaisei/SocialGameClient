@@ -27,6 +27,8 @@ public class ResponseObjects
     public GachaPeriodsModel[] gacha_periods;
     public GachaDataModel[] gacha_data;
 
+    public PresentCategoriesModel[] present_categories;
+
     public GachaResultsModel[] gacha_results;
     public GachaResultsModel[] new_characters;
     public GachaResultsModel[] total_exchange_items;
@@ -232,6 +234,12 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("マスタデータ更新完了(ガチャデータ)");
             GachaDataTable.Insert(responseObjects.gacha_data);
+        }
+
+        if (responseObjects.present_categories != null)
+        {
+            Debug.Log("マスターデータ更新完了(プレゼントカテゴリ)");
+            PresentCategoriseTable.Insert(responseObjects.present_categories);
         }
     }
 

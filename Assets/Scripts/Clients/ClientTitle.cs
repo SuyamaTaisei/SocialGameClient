@@ -171,6 +171,8 @@ public class ClientTitle : MonoBehaviour
         GachaPeriodsTable.CreateTable();
         GachaDataTable.CreateTable();
 
+        PresentCategoriseTable.CreateTable();
+
         GachaLogsTable.CreateTable();
     }
 }

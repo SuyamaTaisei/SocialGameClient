@@ -21,40 +21,72 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     [SerializeField] GameObject enhanceConfirmView;
     [SerializeField] GameObject enhanceCompleteView;
     [SerializeField] GameObject charaInstanceDetailFixedView;
+    [SerializeField] GameObject enhanceConnectingCover;
 
     [SerializeField] ClientInstance clientInstance;
 
+    private int max = int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX);
     private int beforeLevel;
     private int afterLevel;
 
     private void Start()
     {
+        SetEnhanceConnectingCover(false);
         enhanceConfirmView.SetActive(false);
         enhanceCompleteView.SetActive(false);
         charaInstanceDetailFixedView.SetActive(false);
 
-        enhanceButton.onClick.AddListener(() => SetEnhanceConfirmView(true));
-        enhanceExecuteButton.onClick.AddListener(() => clientInstance.RequestEnhance()); //強化リクエスト送信
-        enhanceCancelButton.onClick.AddListener(() => SetEnhanceConfirmView(false));
+        enhanceButton.onClick.AddListener(() =>
+        {
+            enhanceButton.gameObject.SetActive(false);
+            SetEnhanceConfirmView(true);
+        });
+        enhanceExecuteButton.onClick.AddListener(() =>
+        {
+            SetEnhanceConnectingCover(true);
+            enhanceButton.gameObject.SetActive(true);
+            SetEnhanceConfirmView(false);
+            clientInstance.RequestEnhance(); //強化リクエスト送信
+        });
+        enhanceCancelButton.onClick.AddListener(() =>
+        {
+            enhanceButton.gameObject.SetActive(true);
+            SetEnhanceConfirmView(false);
+        });
         enhanceCloseButton.onClick.AddListener(() => SetEnhanceCompleteView(false));
         charaDetailCloseButton.onClick.AddListener(() => SetCharaInstanceDetail(false));
     }
 
     public void Set(CharacterDataModel data1, CharacterRaritiesModel data2, CharacterInstancesModel data3, string imagePath)
     {
-        if (charaDetailImage) charaDetailImage.sprite = Resources.Load<Sprite>(imagePath);
-        if (charaDetailNameText) charaDetailNameText.text = data1.name;
-        if (charaDetailRarityText) charaDetailRarityText.text = data2.name;
+        if (charaDetailImage)
+        {
+            charaDetailImage.sprite = Resources.Load<Sprite>(imagePath);
+        }
+        if (charaDetailNameText)
+        {
+            charaDetailNameText.text = data1.name;
+        }
+        if (charaDetailRarityText)
+        {
+            charaDetailRarityText.text = data2.name;
+        }
 
         //強化対象となるキャラの更新
         clientInstance.GetCharacterId(data3.character_id);
         clientInstance.ClearEnhanceItems();
 
         beforeLevel = data3.level;
-        if (charaDetailLevelBeforeText) charaDetailLevelBeforeText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + data3.level.ToString();
+        if (charaDetailLevelBeforeText)
+        {
+            charaDetailLevelBeforeText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + data3.level.ToString();
+        }
 
         afterLevel = beforeLevel;
-        if (charaDetailLevelAfterText) charaDetailLevelAfterText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + afterLevel;
+        if (charaDetailLevelAfterText)
+        {
+            charaDetailLevelAfterText.text = GameUtility.Const.SHOW_INSTANCE_LEVEL + afterLevel;
+        }
 
         SetCtrlEnhanceButton();
     }
@@ -83,10 +115,23 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     //強化ボタン押下制御
     private void SetCtrlEnhanceButton()
     {
-        enhanceButton.interactable = (afterLevel != beforeLevel) && (afterLevel <= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX));
+        enhanceButton.interactable = (afterLevel != beforeLevel) && (afterLevel <= max);
 
-        bool isMaxLevel = beforeLevel >= int.Parse(GameUtility.Const.SHOW_INSTANCE_LEVEL_MAX);
+        bool isMaxLevel = beforeLevel >= max;
         enhanceText.text = isMaxLevel ? GameUtility.Const.SHOW_INSTANCE_MAX : GameUtility.Const.SHOW_INSTANCE_ENHANCE;
+
+        //全ての強化アイテムの増減ボタンを制御
+        var items = FindObjectsByType<EnhanceItemTemplateView>(FindObjectsInactive.Include, FindObjectsSortMode.None);
+        foreach (var item in items)
+        {
+            item.SetRefreshAmount();
+        }
+    }
+
+    //増減ボタン制御
+    public bool SetCanAddLevel(int addValue)
+    {
+        return afterLevel + addValue <= max;
     }
 
     //キャラ詳細画面開閉
@@ -105,5 +150,11 @@ public class InstanceCharacterDetailFixedView : MonoBehaviour
     public void SetEnhanceCompleteView(bool enabled)
     {
         enhanceCompleteView.SetActive(enabled);
+    }
+
+    //強化通信中の画面カバー
+    public void SetEnhanceConnectingCover(bool enabled)
+    {
+        enhanceConnectingCover.SetActive(enabled);
     }
 }

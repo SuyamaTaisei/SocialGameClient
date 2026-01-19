@@ -6,6 +6,7 @@ public class GachaResultList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
+    [SerializeField] GachaFixedView gachaFixedView;
     [SerializeField] GachaResultTemplateView gachaResultTemplateView;
     [SerializeField] GachaRewardList gachaRewardList;
 
@@ -21,7 +22,7 @@ public class GachaResultList : MonoBehaviour
 
         int singleExchangeIndex = 0;
 
-        for (int i = 0; i < clientGacha.GachaCount; i++)
+        for (int i = 0; i < gachaFixedView.GachaCount; i++)
         {
             //ガチャ回数分全てを取得
             var gachaResult = gachaResults[i];

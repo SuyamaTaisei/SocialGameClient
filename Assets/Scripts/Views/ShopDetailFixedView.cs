@@ -107,9 +107,9 @@ public class ShopDetailFixedView : MonoBehaviour
         //購入数増減処理
         shopDetailIncreaseButton.onClick.AddListener(() => SetAmount(amountValue + GameUtility.Const.SHOP_AMOUNT_MIN));
         shopDetailDecreaseButton.onClick.AddListener(() => SetAmount(amountValue - GameUtility.Const.SHOP_AMOUNT_MIN));
-        shopDetailMoneyButton.onClick.AddListener(() => SetBuyConfirmOpen(index1, GameUtility.Const.SHOP_AMOUNT_MIN, GameUtility.Const.SHOW_YEN));
-        shopDetailCoinButton.onClick.AddListener(() => SetBuyConfirmOpen(index1, amountValue, GameUtility.Const.SHOW_COIN));
-        shopDetailGemButton.onClick.AddListener(() => SetBuyConfirmOpen(index2, amountValue, GameUtility.Const.SHOW_GEM));
+        shopDetailMoneyButton.onClick.AddListener(() => SetBuyConfirmOpen(index1, GameUtility.Const.SHOW_YEN, GameUtility.Const.SHOP_AMOUNT_MIN));
+        shopDetailCoinButton.onClick.AddListener(() => SetBuyConfirmOpen(index1, GameUtility.Const.SHOW_COIN, amountValue));
+        shopDetailGemButton.onClick.AddListener(() => SetBuyConfirmOpen(index2, GameUtility.Const.SHOW_GEM, amountValue));
 
         shopDetailView.SetActive(true);
         SetAmount(GameUtility.Const.SHOP_AMOUNT_MIN); //再度開いたら常に1に設定
@@ -124,7 +124,7 @@ public class ShopDetailFixedView : MonoBehaviour
     }
 
     //購入確認画面開く
-    private void SetBuyConfirmOpen(int productId, int amount, string currency)
+    public void SetBuyConfirmOpen(int productId, string currency, int amount = 0)
     {
         buyConfirmExecuteButton.onClick.RemoveAllListeners();
         buyConfirmCancelButton.onClick.RemoveAllListeners();
@@ -132,11 +132,16 @@ public class ShopDetailFixedView : MonoBehaviour
         ShopDataModel data = ShopDataTable.SelectProductId(productId);
         WalletsModel walletsModel = WalletsTable.Select();
 
-        //購入情報表記
-        buyConfirmText.text =
-            GameUtility.Const.SHOW_PRODUCT_NAME + "\n" +
-            data.name + "\n\n" +
-            amount + GameUtility.Const.SHOW_AMOUNT + " " + data.price * amount + currency + " " + GameUtility.Const.SHOW_BUY;
+        string gem = GameUtility.Const.SHOW_PRODUCT_NAME + "\n" +
+                     data.name + "\n\n" +
+                     data.price * GameUtility.Const.SHOP_AMOUNT_MIN + currency + " " + GameUtility.Const.SHOW_BUY;
+
+        string general = GameUtility.Const.SHOW_PRODUCT_NAME + "\n" +
+                         data.name + "\n\n" +
+                         amount + GameUtility.Const.SHOW_AMOUNT + " " + data.price * amount + currency + " " + GameUtility.Const.SHOW_BUY;
+
+        //ショップリストに応じて購入情報表記を変更
+        buyConfirmText.text = amount == 0 ? gem : general;
 
         //現在ウォレット残高表記
         walletStateText.text =

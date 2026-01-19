@@ -6,10 +6,8 @@ using UnityEngine.UI;
 
 public class ClientGacha : MonoBehaviour
 {
-
     //ガチャ画面テキスト
     [SerializeField] TextMeshProUGUI gachaOfferRateTotalText;
-    [SerializeField] TextMeshProUGUI gachaConfirmText;
 
     //ウォレット表示
     [SerializeField] TextMeshProUGUI coinText;
@@ -21,16 +19,10 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] TextMeshProUGUI gachaLogNothingText;
 
     //ボタン
-    [SerializeField] Button gachaExecuteButton;
-    [SerializeField] Button gachaCancelButton;
-    [SerializeField] Button gachaSingleExecuteButton;
-    [SerializeField] Button gachaMultiExecuteButton;
-
     [SerializeField] Button gachaOpenButton;
     [SerializeField] Button gachaRewardOpenButton;
     [SerializeField] Button gachaLogOpenButton;
     [SerializeField] Button gachaOfferRateOpenButton;
-
     [SerializeField] Button gachaCloseButton;
     [SerializeField] Button gachaLogCloseButton;
     [SerializeField] Button gachaOfferRateCloseButton;
@@ -39,22 +31,18 @@ public class ClientGacha : MonoBehaviour
 
     //ガチャ画面表示
     [SerializeField] GameObject gachaView;
-    [SerializeField] GameObject gachaConfirmView;
     [SerializeField] GameObject gachaResultView;
     [SerializeField] GameObject gachaRewardView;
     [SerializeField] GameObject gachaOfferRateView;
     [SerializeField] GameObject gachaLogView;
 
     [SerializeField] ClientHome clientHome;
-    [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
     private ApiConnect apiConnect;
 
-    private int gacha_count;
     private const string column_id = "id";
     private const string column_gacha_id = "gacha_id";
     private const string key_gacha_count = "gacha_count";
 
-    public int GachaCount => gacha_count;
     public TextMeshProUGUI GachaOfferRateTotalText => gachaOfferRateTotalText;
     public GameObject GachaResultView => gachaResultView;
 
@@ -65,22 +53,11 @@ public class ClientGacha : MonoBehaviour
         WarningMessage("");
 
         gachaView.SetActive(false);
-        gachaConfirmView.SetActive(false);
         gachaResultView.SetActive(false);
         gachaRewardView.SetActive(false);
         gachaOfferRateView.SetActive(false);
         gachaLogView.SetActive(false);
 
-        gachaExecuteButton.onClick.AddListener(() => RequestGacha(gachaPeriodTemplateView.GachaId, gacha_count));
-        gachaCancelButton.onClick.AddListener(() => GachaConfirmClose());
-        gachaSingleExecuteButton.onClick.AddListener(() => {
-            GachaSingle();
-            GachaConfirmOpen();
-        });
-        gachaMultiExecuteButton.onClick.AddListener(() => {
-            GachaMulti();
-            GachaConfirmOpen();
-        });
         gachaOpenButton.onClick.AddListener(() => GachaOpen());
         gachaRewardOpenButton.onClick.AddListener(() => GachaRewardOpen());
         gachaLogOpenButton.onClick.AddListener(() => GachaLogOpen());
@@ -117,22 +94,6 @@ public class ClientGacha : MonoBehaviour
         gachaResultView.SetActive(false);
     }
 
-    //単発
-    public void GachaSingle()
-    {
-        var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
-        gacha_count = gachaPeriodsModel.single_count;
-        gachaConfirmText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
-    }
-
-    //連発
-    public void GachaMulti()
-    {
-        var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaPeriodTemplateView.GachaId);
-        gacha_count = gachaPeriodsModel.multi_count;
-        gachaConfirmText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GACHA_CONFIRM_TEXT;
-    }
-
     //ガチャ画面開く
     public void GachaOpen()
     {
@@ -143,20 +104,6 @@ public class ClientGacha : MonoBehaviour
     public void GachaClose()
     {
         gachaView.SetActive(false);
-    }
-
-    //ガチャ実行確認画面開く
-    public void GachaConfirmOpen()
-    {
-        gachaConfirmView.SetActive(true);
-        WarningMessage("");
-    }
-
-    //ガチャ実行確認画面閉じる
-    public void GachaConfirmClose()
-    {
-        gachaConfirmView.SetActive(false);
-        WarningMessage("");
     }
 
     //ガチャ報酬開く

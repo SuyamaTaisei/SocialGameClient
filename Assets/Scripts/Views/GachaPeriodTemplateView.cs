@@ -6,14 +6,8 @@ public class GachaPeriodTemplateView : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI gachaPeriodListTitle;
     [SerializeField] TextMeshProUGUI gachaPeriodListText;
-    [SerializeField] TextMeshProUGUI gachaPeriodTitle;
-    [SerializeField] TextMeshProUGUI gachaPeriodText;
-    [SerializeField] TextMeshProUGUI gachaSingleCostText;
-    [SerializeField] TextMeshProUGUI gachaMultiCostText;
-    [SerializeField] TextMeshProUGUI gachaSingleText;
-    [SerializeField] TextMeshProUGUI gachaMultiText;
 
-    [SerializeField] ClientGacha clientGacha;
+    [SerializeField] GachaFixedView gachaFixedView;
 
     private int gacha_id;
 
@@ -21,11 +15,11 @@ public class GachaPeriodTemplateView : MonoBehaviour
 
     private void Awake()
     {
-        SetList(0);
+        Set(0);
     }
 
     //ガチャ期間リスト
-    public void SetList(int index)
+    public void Set(int index)
     {
         //データの取得
         List<GachaPeriodsModel> gachaDataList = GachaPeriodsTable.SelectAll();
@@ -39,11 +33,6 @@ public class GachaPeriodTemplateView : MonoBehaviour
         gachaPeriodListText.text = periodEnd;
 
         //ガチャ期間内の表記
-        gachaPeriodTitle.text = gachaPeriodsModel.name;
-        gachaPeriodText.text = periodEnd;
-        gachaSingleCostText.text = gachaPeriodsModel.single_cost.ToString() + GameUtility.Const.SHOW_GEM;
-        gachaMultiCostText.text = gachaPeriodsModel.multi_cost.ToString() + GameUtility.Const.SHOW_GEM;
-        gachaSingleText.text = gachaPeriodsModel.single_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
-        gachaMultiText.text = gachaPeriodsModel.multi_count.ToString() + GameUtility.Const.SHOW_GACHA_COUNT;
+        gachaFixedView.Set(gachaPeriodsModel, periodEnd);
     }
 }

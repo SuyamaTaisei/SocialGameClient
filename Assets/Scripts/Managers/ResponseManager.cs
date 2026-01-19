@@ -39,6 +39,7 @@ public class ResponseManager : MonoBehaviour
 {
     private ClientShop clientShop;
     private ShopDetailFixedView shopConfirmFixedView;
+    private GachaFixedView gachaFixedView;
     private ClientGacha clientGacha;
     private GachaResultList gachaResultList;
     private GachaRewardList gachaRewardList;
@@ -46,7 +47,6 @@ public class ResponseManager : MonoBehaviour
 
     private void Awake()
     {
-        //ゲーム内に一つだけ存在
         if (Instance != null && Instance != this)
         {
             Destroy(gameObject);
@@ -240,6 +240,7 @@ public class ResponseManager : MonoBehaviour
         clientShop = FindAnyObjectByType<ClientShop>();
         clientGacha = FindAnyObjectByType<ClientGacha>();        
         shopConfirmFixedView = FindAnyObjectByType<ShopDetailFixedView>(FindObjectsInactive.Include);
+        gachaFixedView = FindFirstObjectByType<GachaFixedView>(FindObjectsInactive.Include);
 
         if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_NOT_PAYMENT))
         {
@@ -261,7 +262,7 @@ public class ResponseManager : MonoBehaviour
             shopConfirmFixedView.SetBuyConfirmClose();
             shopConfirmFixedView.SetPaymentComplete(true);
             clientGacha.WarningMessage("");
-            clientGacha.GachaConfirmClose();
+            gachaFixedView.SetGachaConfirmClose();
         }
     }
 

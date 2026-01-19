@@ -22,8 +22,8 @@ public class GachaPeriodList : MonoBehaviour
             int index = i;
 
             //データの描画
-            gachaPeriodTemplateView.SetList(index);
-            button.onClick.AddListener(() => gachaPeriodTemplateView.SetList(index));
+            gachaPeriodTemplateView.Set(index);
+            button.onClick.AddListener(() => gachaPeriodTemplateView.Set(index));
         }
     }
 }

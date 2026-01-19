@@ -90,7 +90,7 @@ public class ClientInstance : MonoBehaviour
             charaDetailFixedView.SetLatestLevel(characterInstancesModel.level); //最新レベルを反映
             enhanceItemList.Refresh();                                          //アイテム更新
             charaInstanceList.Refresh();                                        //キャラクター更新
-            charaDetailFixedView.SetEnhanceConfirmView(false);                  //確認画面閉じる
+            charaDetailFixedView.SetEnhanceConnectingCover(false);              //画面カバー非表示
             charaDetailFixedView.SetEnhanceCompleteView(true);                  //強化完了画面開く
             ClearEnhanceItems();
         }));

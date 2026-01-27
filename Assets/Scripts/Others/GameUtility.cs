@@ -102,6 +102,7 @@ namespace GameUtility
         public const string SHOW_INSTANCE_PRESENT_NOTHING = "プレゼントがありません";
         public const string SHOW_RECEIVED_PERIOD = "残り";
         public const string SHOW_DAY = "日";
+        public const string SHOW_TIME = "時間";
 
         //スタミナ数値
         public const int STAMINA_MAX_VALUE = 199;

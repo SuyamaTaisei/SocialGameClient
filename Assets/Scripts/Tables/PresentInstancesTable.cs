@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class PresentInstancesModel
@@ -57,5 +58,34 @@ public class PresentInstancesTable
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
             sqlDB.ExecuteNonQuery(query);
         }
+    }
+
+    //受取済みの有無で全レコード取得
+    public static List<PresentInstancesModel> SelectAll(int received)
+    {
+        string query = "select * from present_instances where received = " + received;
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<PresentInstancesModel> result = new List<PresentInstancesModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            PresentInstancesModel presentInstancesModel = new PresentInstancesModel();
+            presentInstancesModel.id = int.Parse(record["id"].ToString());
+            presentInstancesModel.manage_id = int.Parse(record["manage_id"].ToString());
+            presentInstancesModel.present_category = int.Parse(record["present_category"].ToString());
+            presentInstancesModel.present_name = record["present_name"].ToString();
+            presentInstancesModel.content = int.Parse(record["content"].ToString());
+            presentInstancesModel.amount = int.Parse(record["amount"].ToString());
+            presentInstancesModel.received = int.Parse(record["received"].ToString());
+            presentInstancesModel.period = record["period"].ToString();
+            presentInstancesModel.created_at = record["created_at"].ToString();
+            presentInstancesModel.updated_at = record["updated_at"].ToString();
+
+            result.Add(presentInstancesModel);
+        }
+
+        return result;
     }
 }

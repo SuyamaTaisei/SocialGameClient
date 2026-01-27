@@ -99,6 +99,10 @@ namespace GameUtility
         public const string SHOW_INSTANCE_ENHANCE = "強化する";
         public const string SHOW_POSSESSION = "所持";
 
+        public const string SHOW_INSTANCE_PRESENT_NOTHING = "プレゼントがありません";
+        public const string SHOW_RECEIVED_PERIOD = "残り";
+        public const string SHOW_DAY = "日";
+
         //スタミナ数値
         public const int STAMINA_MAX_VALUE = 199;
         public const int STAMINA_MOST_VALUE = 100;

@@ -64,9 +64,16 @@ public class InstancePresentList : MonoBehaviour
             {
                 button.onClick.AddListener(() =>
                 {
-                    Refresh(); //一括、単一時のプレゼント確認リストの更新用
-                    clientPresent.GetPresentId(data.id);
-                    clientPresent.SavePresent(data.present_category, data.content, data.amount);
+                    //辞書データをクリア
+                    clientPresent.ClearPresent();
+
+                    //キャプチャしてから渡す(複数同値レコード取得阻止)
+                    int instanceId = data.id;
+                    int category = data.present_category;
+                    int content = data.content;
+                    int amount = data.amount;
+
+                    clientPresent.SavePresent(instanceId, category, content, amount);
                     instancePresentFixedView.SetConfirm(true); //プレゼント確認画面表示
                 });
             }

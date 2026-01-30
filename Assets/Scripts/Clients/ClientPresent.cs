@@ -15,13 +15,9 @@ public class ClientPresent : MonoBehaviour
     [SerializeField] InstancePresentFixedView instancePresentFixedView;
     private ApiConnect apiConnect;
 
-    //プレゼントインスタンスID取得
-    private int instanceId;
-
-    //プレゼントインスタンス一覧で選択したカテゴリ、内容、数量の紐づけ
-    private readonly Dictionary<int, (int, int)> savePresents = new();
+    //プレゼントインスタンスidをキーにしたカテゴリ、内容、数量の値をタプルで紐づけ
+    private readonly Dictionary<int, (int, int, int)> savePresents = new();
     private const string column_id = "id";
-    private const string column_instance_id = "instance_id";
 
     private void Start()
     {
@@ -32,16 +28,10 @@ public class ClientPresent : MonoBehaviour
         presentInstanceCloseButton.onClick.AddListener(() => presentInstanceView.SetActive(false));    
     }
 
-    //プレゼントインスタンスIDを取得
-    public void GetPresentId(int presentId)
+    //プレゼントのid、カテゴリ、内容、数量を保持
+    public void SavePresent(int id, int category, int content, int amount)
     {
-        instanceId = presentId;
-    }
-
-    //プレゼントのカテゴリ、内容、数量を保持
-    public void SavePresent(int category, int content, int amount)
-    {
-        savePresents[category] = (content, amount);
+        savePresents[id] = (category, content, amount);
     }
 
     //保持された紐づけをリセット
@@ -58,18 +48,21 @@ public class ClientPresent : MonoBehaviour
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(column_id, usersModel.id),
-            new MultipartFormDataSection(column_instance_id, instanceId.ToString()),
         };
 
-        //保持したカテゴリ、内容、数量でペアを生成
-        var presents = new List<KeyValuePair<int, (int, int)>>(savePresents);
+        //保持したid、カテゴリ、内容、数量でペアを生成
+        var presents = new List<KeyValuePair<int, (int, int, int)>>(savePresents);
 
-        //カテゴリ、内容、数量をペアで送信して、URLの末尾に追加
+        //id、カテゴリ、内容、数量をペアで送信して、URLの末尾に追加
         for (int i = 0; i < presents.Count; i++)
         {
-            form.Add(new MultipartFormDataSection($"presents[{i}][category]", presents[i].Key.ToString()));
-            form.Add(new MultipartFormDataSection($"presents[{i}][content]", presents[i].Value.ToString()));
-            form.Add(new MultipartFormDataSection($"presents[{i}][amount]", presents[i].Value.ToString()));
+            //値となるタプルの取り出し
+            var (category, content, amount) = presents[i].Value;
+
+            form.Add(new MultipartFormDataSection($"presents[{i}][instance_id]", presents[i].Key.ToString()));
+            form.Add(new MultipartFormDataSection($"presents[{i}][category]", category.ToString()));
+            form.Add(new MultipartFormDataSection($"presents[{i}][content]", content.ToString()));
+            form.Add(new MultipartFormDataSection($"presents[{i}][amount]", amount.ToString()));
         }
 
         //リクエスト送信後の成功時レスポンス受け取りコールバック

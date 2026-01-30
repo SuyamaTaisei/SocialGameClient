@@ -24,6 +24,7 @@ namespace GameUtility
         public const string STAMINA_DECREASE_URL  = BASE_URL + "api/stamina_decrease";
         public const string STAMINA_INCREASE_URL  = BASE_URL + "api/stamina_increase";
         public const string STAMINA_AUTO_INCREASE_URL = BASE_URL + "api/stamina_auto_increase";
+        public const string PRESENT_RECEIVED_URL = BASE_URL + "api/present_received";
 
         //DB
         public const string SQLITE_DB_NAME = "SocialGameServer.db";

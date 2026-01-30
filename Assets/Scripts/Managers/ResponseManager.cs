@@ -317,6 +317,9 @@ public class ResponseManager : MonoBehaviour
             case GameUtility.Const.STAMINA_AUTO_INCREASE_URL:
                 ExecuteHome(responseObjects);
                 break;
+            case GameUtility.Const.PRESENT_RECEIVED_URL:
+                ExecuteHome(responseObjects);
+                break;
         }
     }
 }

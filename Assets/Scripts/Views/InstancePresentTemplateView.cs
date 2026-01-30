@@ -18,23 +18,47 @@ public class InstancePresentTemplateView : MonoBehaviour
 
     public void Set(ItemDataModel data1, ItemRaritiesModel data2, PresentInstancesModel data3, string imagePath)
     {
-        Image.sprite = Resources.Load<Sprite>(imagePath);
-        nameText.text = data1.name;
-        rarityText.text = data2.name;
-        amountText.text = data3.amount.ToString() + GameUtility.Const.SHOW_AMOUNT + GameUtility.Const.SHOW_POSSESSION;
-        descriptionText.text = data1.description;
-
-        //受取期限から現在時刻の差分計算 (デバイス依存なのでサーバー時間で統一した方がいい)
-        int day = (DateTime.Parse(data3.period) - DateTime.Now).Days;
-        periodText.text = GameUtility.Const.SHOW_RECEIVED_PERIOD + day.ToString() + GameUtility.Const.SHOW_DAY;
-
-        receivedTimeText.text = data3.updated_at.ToString();
+        if (Image)
+        {
+            Image.sprite = Resources.Load<Sprite>(imagePath);
+        }
+        if (nameText)
+        {
+            nameText.text = data1.name;
+        }
+        if (rarityText)
+        {
+            rarityText.text = data2.name;
+        }
+        if (amountText)
+        {
+            amountText.text = data3.amount.ToString() + GameUtility.Const.SHOW_AMOUNT + GameUtility.Const.SHOW_POSSESSION;
+        }
+        if (descriptionText)
+        {
+            descriptionText.text = data1.description;
+        }
+        if (periodText)
+        {
+            int day = (DateTime.Parse(data3.period) - DateTime.Now).Days;
+            periodText.text = GameUtility.Const.SHOW_RECEIVED_PERIOD + day.ToString() + GameUtility.Const.SHOW_DAY;
+        }
+        if (receivedTimeText)
+        {
+            receivedTimeText.text = data3.updated_at.ToString();
+        }
     }
 
     //受取一覧と履歴で表示する内容を変更
     public void SetShowReceived(bool showSet1, bool showSet2)
     {
-        presentInstanceSetNotReceived.SetActive(showSet1);
-        presentInstanceSetReceived.SetActive(showSet2);
+        if (presentInstanceSetNotReceived)
+        {
+            presentInstanceSetNotReceived.SetActive(showSet1);
+        }
+        if (presentInstanceSetReceived)
+        {
+            presentInstanceSetReceived.SetActive(showSet2);
+        }
     }
 }

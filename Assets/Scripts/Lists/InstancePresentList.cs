@@ -9,6 +9,7 @@ public class InstancePresentList : MonoBehaviour
     [SerializeField] ClientPresent clientPresent;
     [SerializeField] InstancePresentFixedView instancePresentFixedView;
     [SerializeField] InstancePresentTemplateView instancePresentTemplateView;
+    [SerializeField] InstancePresentConfirmList instancePresentConfirmList;
     [SerializeField] int received;
 
     private void OnEnable() => DataList();
@@ -74,6 +75,7 @@ public class InstancePresentList : MonoBehaviour
                     int amount = data.amount;
 
                     clientPresent.SavePresent(instanceId, category, content, amount);
+                    instancePresentConfirmList.DataList(instanceId, category, content, amount);
                     instancePresentFixedView.SetConfirm(true); //プレゼント確認画面表示
                 });
             }

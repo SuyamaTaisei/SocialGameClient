@@ -24870,7 +24870,6 @@ GameObject:
   - component: {fileID: 934062041}
   - component: {fileID: 934062040}
   - component: {fileID: 934062039}
-  - component: {fileID: 934062042}
   m_Layer: 5
   m_Name: PresentInstanceAllReceivedOpenButton
   m_TagString: Untagged
@@ -24980,18 +24979,6 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 934062037}
   m_CullTransparentMesh: 1
---- !u!114 &934062042
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 934062037}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81e4648ae7745a54c95f6a24383c9a37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &936077078
 GameObject:
   m_ObjectHideFlags: 0
@@ -49263,6 +49250,7 @@ MonoBehaviour:
   clientPresent: {fileID: 175419110}
   instancePresentFixedView: {fileID: 1206666254}
   instancePresentTemplateView: {fileID: 374920925}
+  instancePresentConfirmList: {fileID: 1951595378}
   received: 0
 --- !u!1 &1875579663
 GameObject:
@@ -51005,6 +50993,7 @@ MonoBehaviour:
   clientPresent: {fileID: 175419110}
   instancePresentFixedView: {fileID: 1206666254}
   instancePresentTemplateView: {fileID: 374920925}
+  instancePresentConfirmList: {fileID: 1951595378}
   received: 1
 --- !u!1001 &1951198538
 PrefabInstance:
@@ -51250,15 +51239,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 1951595372}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ece28d9fe09e57a4fad144aca508f3f7, type: 3}
+  m_Script: {fileID: 11500000, guid: b351a7725789605459df9deb446aef40, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1458570938}
   templateView: {fileID: 200163449}
-  clientPresent: {fileID: 175419110}
-  instancePresentFixedView: {fileID: 1206666254}
-  instancePresentTemplateView: {fileID: 200163451}
-  received: 0
 --- !u!1001 &1952884549
 PrefabInstance:
   m_ObjectHideFlags: 0

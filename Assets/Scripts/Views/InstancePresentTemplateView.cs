@@ -16,6 +16,8 @@ public class InstancePresentTemplateView : MonoBehaviour
     [SerializeField] GameObject presentInstanceSetNotReceived;
     [SerializeField] GameObject presentInstanceSetReceived;
 
+    [SerializeField] bool isShowText;
+
     public void Set(ItemDataModel data1, ItemRaritiesModel data2, PresentInstancesModel data3, string imagePath)
     {
         if (Image)
@@ -32,7 +34,8 @@ public class InstancePresentTemplateView : MonoBehaviour
         }
         if (amountText)
         {
-            amountText.text = data3.amount.ToString() + GameUtility.Const.SHOW_AMOUNT + GameUtility.Const.SHOW_POSSESSION;
+            string text = data3.amount.ToString() + GameUtility.Const.SHOW_AMOUNT;
+            amountText.text = isShowText ? text + GameUtility.Const.SHOW_POSSESSION : text;
         }
         if (descriptionText)
         {

@@ -24,7 +24,11 @@ public class ClientPresent : MonoBehaviour
         apiConnect = ApiConnect.Instance;
 
         presentInstanceView.SetActive(false);
-        presentInstanceOpenButton.onClick.AddListener(() => presentInstanceView.SetActive(true));    
+        presentInstanceOpenButton.onClick.AddListener(() =>
+        {
+            instancePresentFixedView.SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
+            presentInstanceView.SetActive(true);
+        });
         presentInstanceCloseButton.onClick.AddListener(() => presentInstanceView.SetActive(false));    
     }
 
@@ -69,6 +73,7 @@ public class ClientPresent : MonoBehaviour
         StartCoroutine(apiConnect.Send(GameUtility.Const.PRESENT_RECEIVED_URL, form, (action) =>
         {
             instancePresentList.Refresh();
+            instancePresentFixedView.SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
             instancePresentFixedView.SetConfirm(false); //確認画面閉じる
             instancePresentFixedView.SetComplete(true); //プレゼント受取完了画面表示
             ClearPresent();

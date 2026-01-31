@@ -11,6 +11,8 @@ public class InstancePresentFixedView : MonoBehaviour
     [SerializeField] Button presentInstanceConfirmCancelButton;
     [SerializeField] Button presentInstanceCompleteCloseButton;
 
+    [SerializeField] Button presentInstanceAllReceivedOpenButton;
+
     [SerializeField] GameObject presentInstanceCommonList;
     [SerializeField] GameObject presentInstancePersonalList;
     [SerializeField] GameObject presentInstanceLogList;
@@ -19,6 +21,7 @@ public class InstancePresentFixedView : MonoBehaviour
     [SerializeField] GameObject presentInstanceCompleteView;
 
     [SerializeField] ClientPresent clientPresent;
+    [SerializeField] InstancePresentConfirmList instancePresentConfirmList;
 
     private void Start()
     {
@@ -33,6 +36,24 @@ public class InstancePresentFixedView : MonoBehaviour
         presentInstanceConfirmExecuteButton.onClick.AddListener(() => clientPresent.RequestPresentReceived()); //プレゼント受け取りリクエスト
         presentInstanceConfirmCancelButton.onClick.AddListener(() => SetConfirm(false));
         presentInstanceCompleteCloseButton.onClick.AddListener(() => SetComplete(false));
+
+        //一括受取ボタン
+        presentInstanceAllReceivedOpenButton.onClick.AddListener(() =>
+        {
+            //辞書データをクリア
+            clientPresent.ClearPresent();
+
+            //未受取プレゼントインスタンス全件取得
+            var allData = PresentInstancesTable.SelectAll(0);
+
+            //プレゼント確認画面表示＆データセット
+            foreach (var all in allData)
+            {
+                clientPresent.SavePresent(all.id, all.present_category, all.content, all.amount);
+            }
+            instancePresentConfirmList.AllDataList(allData);
+            SetConfirm(true);
+        });
     }
 
     //項目表示の切り替え
@@ -41,6 +62,14 @@ public class InstancePresentFixedView : MonoBehaviour
         presentInstanceCommonList.SetActive(common);
         presentInstancePersonalList.SetActive(personal);
         presentInstanceLogList.SetActive(log);
+        SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
+    }
+
+    //一括受取ボタン押下制御
+    public void SetCtrlAllReceivedButton()
+    {
+        var allData = PresentInstancesTable.SelectAll(0);
+        presentInstanceAllReceivedOpenButton.interactable = allData.Count > 0;
     }
 
     //受け取り確認画面

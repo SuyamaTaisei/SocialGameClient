@@ -89,6 +89,7 @@ public class PresentInstancesTable
         return result;
     }
 
+    //一致したプレゼントだけを取得
     public static List<PresentInstancesModel> SelectId(int InstanceId, int category, int content, int amount)
     {
         string query = $"select * from present_instances where id = {InstanceId} and present_category = {category} and content = {content} and amount = {amount}";

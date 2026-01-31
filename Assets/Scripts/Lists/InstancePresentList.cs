@@ -61,6 +61,8 @@ public class InstancePresentList : MonoBehaviour
 
             //データの描画
             view.Set(data1, data2, data, imagePath);
+
+            //単一受取ボタン
             if (button)
             {
                 button.onClick.AddListener(() =>
@@ -74,9 +76,10 @@ public class InstancePresentList : MonoBehaviour
                     int content = data.content;
                     int amount = data.amount;
 
+                    //プレゼント確認画面表示＆データセット
                     clientPresent.SavePresent(instanceId, category, content, amount);
-                    instancePresentConfirmList.DataList(instanceId, category, content, amount);
-                    instancePresentFixedView.SetConfirm(true); //プレゼント確認画面表示
+                    instancePresentConfirmList.SingleDataList(instanceId, category, content, amount);
+                    instancePresentFixedView.SetConfirm(true);
                 });
             }
         }

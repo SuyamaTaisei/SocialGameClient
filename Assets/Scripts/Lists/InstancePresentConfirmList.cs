@@ -8,14 +8,15 @@ public class InstancePresentConfirmList : MonoBehaviour
 
     private void OnDisable() => Clear();
 
-    public void DataList(int instanceId, int category, int content, int amount)
+    //一括受取の場合
+    public void AllDataList(List<PresentInstancesModel> presentInstancesList)
     {
-        List<PresentInstancesModel> presentInstancesList = PresentInstancesTable.SelectId(instanceId, category, content, amount);
+        Clear();
 
         for (int i = 0; i < presentInstancesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, this.content);
+            GameObject item = Instantiate(templateView, content);
             var view = item.GetComponent<InstancePresentTemplateView>();
 
             //データの取得
@@ -28,6 +29,13 @@ public class InstancePresentConfirmList : MonoBehaviour
             //データの描画
             view.Set(data1, data2, data, imagePath);
         }
+    }
+
+    //単一受取の場合
+    public void SingleDataList(int instanceId, int category, int content, int amount)
+    {
+        var presentInstancesList = PresentInstancesTable.SelectId(instanceId, category, content, amount);
+        AllDataList(presentInstancesList);
     }
 
     //閉じてリセット

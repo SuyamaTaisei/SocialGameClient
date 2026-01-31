@@ -24916,10 +24916,10 @@ MonoBehaviour:
     m_SelectOnDown: {fileID: 0}
     m_SelectOnLeft: {fileID: 0}
     m_SelectOnRight: {fileID: 0}
-  m_Transition: 2
+  m_Transition: 1
   m_Colors:
     m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
+    m_HighlightedColor: {r: 1, g: 0, b: 0, a: 1}
     m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
     m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
     m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
@@ -32688,12 +32688,14 @@ MonoBehaviour:
   presentInstanceConfirmExecuteButton: {fileID: 391830962}
   presentInstanceConfirmCancelButton: {fileID: 746734826}
   presentInstanceCompleteCloseButton: {fileID: 687631204}
+  presentInstanceAllReceivedOpenButton: {fileID: 934062039}
   presentInstanceCommonList: {fileID: 436869783}
   presentInstancePersonalList: {fileID: 1873059204}
   presentInstanceLogList: {fileID: 1951035571}
   presentInstanceConfirmView: {fileID: 2091207409}
   presentInstanceCompleteView: {fileID: 854179715}
   clientPresent: {fileID: 175419110}
+  instancePresentConfirmList: {fileID: 1951595378}
 --- !u!1 &1210189723
 GameObject:
   m_ObjectHideFlags: 0

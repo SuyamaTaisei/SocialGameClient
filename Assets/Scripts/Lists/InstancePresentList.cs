@@ -24,7 +24,7 @@ public class InstancePresentList : MonoBehaviour
 
     public void DataList()
     {
-        List<PresentInstancesModel> presentInstancesList = PresentInstancesTable.SelectAll(received);
+        List<PresentInstancesModel> presentInstancesList = PresentInstancesTable.SelectAll(received, GameUtility.Const.LOG_PRESENT_LIMIT);
 
         //何もアイテムを所持していなければ
         if (presentInstancesList == null || presentInstancesList.Count == 0)

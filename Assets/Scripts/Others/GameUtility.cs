@@ -142,6 +142,7 @@ namespace GameUtility
 
         //ログ数値
         public const int LOG_GACHA_LIMIT = 150;
+        public const int LOG_PRESENT_LIMIT = 100;
 
         //フォルダ名
         public const string FOLDER_NAME_IMAGES = "Images";

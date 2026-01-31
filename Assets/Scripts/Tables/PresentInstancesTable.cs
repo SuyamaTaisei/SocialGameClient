@@ -61,9 +61,9 @@ public class PresentInstancesTable
     }
 
     //受取済みの有無で全レコード取得
-    public static List<PresentInstancesModel> SelectAll(int received)
+    public static List<PresentInstancesModel> SelectAll(int received, int limit)
     {
-        string query = "select * from present_instances where received = " + received;
+        string query = $"select * from present_instances where received = {received} order by id desc limit {limit}";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
 

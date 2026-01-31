@@ -44,7 +44,7 @@ public class InstancePresentFixedView : MonoBehaviour
             clientPresent.ClearPresent();
 
             //未受取プレゼントインスタンス全件取得
-            var allData = PresentInstancesTable.SelectAll(0);
+            var allData = PresentInstancesTable.SelectAll(0, GameUtility.Const.LOG_PRESENT_LIMIT);
 
             //プレゼント確認画面表示＆データセット
             foreach (var all in allData)
@@ -68,7 +68,7 @@ public class InstancePresentFixedView : MonoBehaviour
     //一括受取ボタン押下制御
     public void SetCtrlAllReceivedButton()
     {
-        var allData = PresentInstancesTable.SelectAll(0);
+        var allData = PresentInstancesTable.SelectAll(0, GameUtility.Const.LOG_PRESENT_LIMIT);
         presentInstanceAllReceivedOpenButton.interactable = allData.Count > 0;
     }
 

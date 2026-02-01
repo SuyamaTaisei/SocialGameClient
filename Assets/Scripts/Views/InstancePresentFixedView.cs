@@ -1,8 +1,11 @@
 ﻿using UnityEngine;
+using TMPro;
 using UnityEngine.UI;
 
 public class InstancePresentFixedView : MonoBehaviour
 {
+    [SerializeField] TextMeshProUGUI presentInstanceCompleteText;
+
     [SerializeField] Button presentInstanceCommonOpenButton;
     [SerializeField] Button presentInstancePersonalOpenButton;
     [SerializeField] Button presentInstanceLogOpenButton;
@@ -82,5 +85,11 @@ public class InstancePresentFixedView : MonoBehaviour
     public void SetComplete(bool enabled)
     {
         presentInstanceCompleteView.SetActive(enabled);
+    }
+
+    //完了画面文字変更
+    public void SetCompleteText(string text)
+    {
+        presentInstanceCompleteText.text = text;
     }
 }

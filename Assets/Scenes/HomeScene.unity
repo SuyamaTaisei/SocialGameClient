@@ -32615,6 +32615,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 924a07bc161c6dc4da6844668835e168, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  presentInstanceCompleteText: {fileID: 1436352471}
   presentInstanceCommonOpenButton: {fileID: 428672309}
   presentInstancePersonalOpenButton: {fileID: 1436441494}
   presentInstanceLogOpenButton: {fileID: 629443019}

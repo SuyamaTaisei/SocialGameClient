@@ -46,6 +46,7 @@ public class ResponseManager : MonoBehaviour
     private ClientGacha clientGacha;
     private GachaResultList gachaResultList;
     private GachaRewardList gachaRewardList;
+    private InstancePresentFixedView instancePresentFixedView;
     public static ResponseManager Instance { get; private set; }
 
     private void Awake()
@@ -110,7 +111,7 @@ public class ResponseManager : MonoBehaviour
             }
             if (responseObjects.present_instances != null)
             {
-                PresentInstancesTable.Insert(responseObjects.present_instances);
+                PresentInstancesTable.InsertFromDelete(responseObjects.users.manage_id, responseObjects.present_instances);
             }
         }
         else
@@ -279,6 +280,22 @@ public class ResponseManager : MonoBehaviour
         }
     }
 
+    public void ExecutePresent(ResponseObjects responseObjects)
+    {
+        instancePresentFixedView = FindFirstObjectByType<InstancePresentFixedView>(FindObjectsInactive.Include);
+
+        if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_PRESENT_RECEIVED))
+        {
+            Debug.Log("プレゼント受取期限を過ぎた内容が含まれている");
+            instancePresentFixedView.SetCompleteText(GameUtility.Const.ERROR_PRESENT_RECEIVED);
+        }
+        else
+        {
+            Debug.Log("プレゼントを受け取った");
+            instancePresentFixedView.SetCompleteText(GameUtility.Const.SHOW_PRESENT_RECEIVED);
+        }
+    }
+
     public void ExecuteObjects(string endPoint, ResponseObjects responseObjects)
     {
         switch (endPoint)
@@ -319,6 +336,7 @@ public class ResponseManager : MonoBehaviour
                 break;
             case GameUtility.Const.PRESENT_RECEIVED_URL:
                 ExecuteHome(responseObjects);
+                ExecutePresent(responseObjects);
                 break;
         }
     }

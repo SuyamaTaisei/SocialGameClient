@@ -38,6 +38,7 @@ namespace GameUtility
         public const string ERRCODE_MASTER_DATA_UPDATE = "0";
         public const string ERRCODE_NOT_PAYMENT = "510";
         public const string ERRCODE_LIMIT_WALLETS = "511";
+        public const string ERRCODE_PRESENT_RECEIVED = "520";
 
         //アカウント登録時バリデーションエラー
         public const string ERROR_VALIDATE_1 = "正しく入力してください";
@@ -47,6 +48,9 @@ namespace GameUtility
         //支払い時エラー
         public const string ERROR_PAYMENT_1 = "残高が不足しています";
         public const string ERROR_PAYMENT_2 = "ウォレット上限に達しました";
+
+        //プレゼント受取エラー
+        public const string ERROR_PRESENT_RECEIVED = "受取時にエラーが発生しました";
 
         //ログイン表記
         public const string SHOW_USER = "ユーザー：";
@@ -100,10 +104,12 @@ namespace GameUtility
         public const string SHOW_INSTANCE_ENHANCE = "強化する";
         public const string SHOW_POSSESSION = "所持";
 
+        //プレゼント表記
         public const string SHOW_INSTANCE_PRESENT_NOTHING = "プレゼントがありません";
         public const string SHOW_RECEIVED_PERIOD = "残り";
         public const string SHOW_DAY = "日";
         public const string SHOW_TIME = "時間";
+        public const string SHOW_PRESENT_RECEIVED = "受取を完了しました";
 
         //スタミナ数値
         public const int STAMINA_MAX_VALUE = 199;

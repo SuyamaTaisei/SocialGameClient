@@ -124,4 +124,30 @@ public class PresentInstancesTable
 
         return result;
     }
+
+    //一度全削除してから直後にレコード全挿入
+    public static void InsertFromDelete(int manageId, PresentInstancesModel[] presentInstancesModel)
+    {
+        string query = $"delete from present_instances where manage_id = {manageId}";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        sqlDB.ExecuteNonQuery(query);
+
+        foreach (PresentInstancesModel item in presentInstancesModel)
+        {
+            string presentQuery = "insert or replace into present_instances (" +
+                "id," +
+                "manage_id," +
+                "present_category," +
+                "present_name," +
+                "content," +
+                "amount," +
+                "received," +
+                "period," +
+                "created_at," +
+                "updated_at" +
+                ")" +
+                "values (" + item.id + ", " + item.manage_id + ", " + item.present_category + ", \"" + item.present_name + "\", " + item.content + ", " + item.amount + ", " + item.received + ", \"" + item.period + "\", \"" + item.created_at + "\", \"" + item.updated_at + "\")";
+            sqlDB.ExecuteNonQuery(presentQuery);
+        }
+    }
 }

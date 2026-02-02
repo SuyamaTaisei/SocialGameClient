@@ -25,6 +25,7 @@ public class InstancePresentFixedView : MonoBehaviour
 
     [SerializeField] ClientPresent clientPresent;
     [SerializeField] InstancePresentConfirmList instancePresentConfirmList;
+    [SerializeField] ButtonEffect buttonEffect;
 
     private void Start()
     {
@@ -65,14 +66,15 @@ public class InstancePresentFixedView : MonoBehaviour
         presentInstanceCommonList.SetActive(common);
         presentInstancePersonalList.SetActive(personal);
         presentInstanceLogList.SetActive(log);
-        SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
+        SetCtrlAllReceivedButton(personal); //一括受取ボタン押下制御
     }
 
     //一括受取ボタン押下制御
-    public void SetCtrlAllReceivedButton()
+    public void SetCtrlAllReceivedButton(bool enabled = true)
     {
         var allData = PresentInstancesTable.SelectAll(0, GameUtility.Const.LOG_PRESENT_LIMIT);
-        presentInstanceAllReceivedOpenButton.interactable = allData.Count > 0;
+        bool canPressed = allData.Count > 0 && enabled;
+        buttonEffect.ButtonTextOpacityEffect(canPressed, presentInstanceAllReceivedOpenButton);
     }
 
     //受け取り確認画面

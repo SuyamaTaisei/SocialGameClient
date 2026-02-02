@@ -6,9 +6,7 @@ public class InstancePresentFixedView : MonoBehaviour
 {
     [SerializeField] TextMeshProUGUI presentInstanceCompleteText;
 
-    [SerializeField] Button presentInstanceCommonOpenButton;
-    [SerializeField] Button presentInstancePersonalOpenButton;
-    [SerializeField] Button presentInstanceLogOpenButton;
+    [SerializeField] Toggle[] presentTabList;
 
     [SerializeField] Button presentInstanceConfirmExecuteButton;
     [SerializeField] Button presentInstanceConfirmCancelButton;
@@ -33,9 +31,9 @@ public class InstancePresentFixedView : MonoBehaviour
         SetConfirm(false);        
         SetComplete(false);
 
-        presentInstanceCommonOpenButton.onClick.AddListener(()   => Set(true, false, false));
-        presentInstancePersonalOpenButton.onClick.AddListener(() => Set(false, true, false));
-        presentInstanceLogOpenButton.onClick.AddListener(()      => Set(false, false, true));
+        presentTabList[0].onValueChanged.AddListener(action => { Set(true, false, false); });
+        presentTabList[1].onValueChanged.AddListener(action => { Set(false, true, false); });
+        presentTabList[2].onValueChanged.AddListener(action => { Set(false, false, true); });
 
         presentInstanceConfirmExecuteButton.onClick.AddListener(() => clientPresent.RequestPresentReceived()); //プレゼント受け取りリクエスト
         presentInstanceConfirmCancelButton.onClick.AddListener(() => SetConfirm(false));
@@ -73,7 +71,8 @@ public class InstancePresentFixedView : MonoBehaviour
     public void SetCtrlAllReceivedButton(bool enabled = true)
     {
         var allData = PresentInstancesTable.SelectAll(0, GameUtility.Const.LOG_PRESENT_LIMIT);
-        bool canPressed = allData.Count > 0 && enabled;
+        bool canTab = !presentTabList[1].isOn ? false : enabled;
+        bool canPressed = allData.Count > 0 && canTab;
         buttonEffect.ButtonTextOpacityEffect(canPressed, presentInstanceAllReceivedOpenButton);
     }
 

@@ -44,6 +44,7 @@ public class ClientGacha : MonoBehaviour
     private const string key_gacha_count = "gacha_count";
 
     public TextMeshProUGUI GachaOfferRateTotalText => gachaOfferRateTotalText;
+    public Button GachaRewardOpenButton => gachaRewardOpenButton;
     public GameObject GachaResultView => gachaResultView;
 
     void Start()
@@ -140,18 +141,6 @@ public class ClientGacha : MonoBehaviour
     public void GachaLogClose()
     {
         gachaLogView.SetActive(false);
-    }
-
-    //ガチャ報酬無し警告
-    public void GachaRewardMessage(bool enabled)
-    {
-        gachaRewardOpenButton.interactable = enabled;
-        var color = gachaRewardOpenButton.image.color;
-        color.a = enabled ? 1 : 0.07f;
-        gachaRewardOpenButton.image.color = color;
-
-        var text = gachaRewardOpenButton.GetComponentInChildren<TextMeshProUGUI>();
-        text.color = color;
     }
 
     //ガチャ履歴無し警告

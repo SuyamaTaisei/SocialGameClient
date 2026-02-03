@@ -156,6 +156,7 @@ public class ClientTitle : MonoBehaviour
         CharacterInstancesTable.CreateTable();
         ItemInstancesTable.CreateTable();
         PresentInstancesTable.CreateTable();
+        MissionInstancesTable.CreateTable();
 
         ShopCategoriesTable.CreateTable();
         ShopDataTable.CreateTable();
@@ -173,6 +174,9 @@ public class ClientTitle : MonoBehaviour
         GachaDataTable.CreateTable();
 
         PresentCategoriseTable.CreateTable();
+
+        MissionCategoriesTable.CreateTable();
+        MissionDataTable.CreateTable();
 
         GachaLogsTable.CreateTable();
     }

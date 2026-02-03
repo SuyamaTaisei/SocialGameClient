@@ -12,6 +12,7 @@ public class ResponseObjects
     public CharacterInstancesModel[] character_instances;
     public ItemInstancesModel[] item_instances;
     public PresentInstancesModel[] present_instances;
+    public MissionInstancesModel[] mission_instances;
 
     public ShopCategoriesModel[] shop_categories;
     public ShopDataModel[] shop_data;
@@ -29,6 +30,9 @@ public class ResponseObjects
     public GachaDataModel[] gacha_data;
 
     public PresentCategoriesModel[] present_categories;
+
+    public MissionCategoriesModel[] mission_categories;
+    public MissionDataModel[] mission_data;
 
     public GachaResultsModel[] gacha_results;
     public GachaResultsModel[] new_characters;
@@ -112,6 +116,10 @@ public class ResponseManager : MonoBehaviour
             if (responseObjects.present_instances != null)
             {
                 PresentInstancesTable.InsertFromDelete(responseObjects.users.manage_id, responseObjects.present_instances);
+            }
+            if (responseObjects.mission_instances != null)
+            {
+                MissionInstancesTable.Insert(responseObjects.mission_instances);
             }
         }
         else
@@ -246,6 +254,17 @@ public class ResponseManager : MonoBehaviour
         {
             Debug.Log("マスターデータ更新完了(プレゼントカテゴリ)");
             PresentCategoriseTable.Insert(responseObjects.present_categories);
+        }
+
+        if (responseObjects.mission_categories != null)
+        {
+            Debug.Log("マスタデータ更新完了(ミッションカテゴリ)");
+            MissionCategoriesTable.Insert(responseObjects.mission_categories);
+        }
+        if (responseObjects.mission_data != null)
+        {
+            Debug.Log("マスタデータ更新完了(ミッションデータ)");
+            MissionDataTable.Insert(responseObjects.mission_data);
         }
     }
 

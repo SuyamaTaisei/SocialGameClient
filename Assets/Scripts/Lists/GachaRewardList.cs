@@ -6,6 +6,7 @@ public class GachaRewardList : MonoBehaviour
     [SerializeField] GameObject templateView;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaRewardTemplateView gachaRewardTemplateView;
+    [SerializeField] ButtonEffect buttonEffect;
 
     public Transform Content => content;
 
@@ -14,11 +15,11 @@ public class GachaRewardList : MonoBehaviour
         //何もガチャ報酬がなければボタンを押せない
         if (totalExchangeItems == null || totalExchangeItems.Length == 0)
         {
-            clientGacha.GachaRewardMessage(false);
+            buttonEffect.ButtonTextOpacityEffect(false, clientGacha.GachaRewardOpenButton);
             return;
         }
 
-        clientGacha.GachaRewardMessage(true);
+        buttonEffect.ButtonTextOpacityEffect(true, clientGacha.GachaRewardOpenButton);
 
         //変換された個数分走査
         for (int i = 0; i < totalExchangeItems.Length; i++)

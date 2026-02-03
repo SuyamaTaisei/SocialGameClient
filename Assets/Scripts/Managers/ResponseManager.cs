@@ -11,6 +11,7 @@ public class ResponseObjects
     public WalletsModel wallets;
     public CharacterInstancesModel[] character_instances;
     public ItemInstancesModel[] item_instances;
+    public PresentInstancesModel[] present_instances;
 
     public ShopCategoriesModel[] shop_categories;
     public ShopDataModel[] shop_data;
@@ -26,6 +27,8 @@ public class ResponseObjects
 
     public GachaPeriodsModel[] gacha_periods;
     public GachaDataModel[] gacha_data;
+
+    public PresentCategoriesModel[] present_categories;
 
     public GachaResultsModel[] gacha_results;
     public GachaResultsModel[] new_characters;
@@ -43,6 +46,7 @@ public class ResponseManager : MonoBehaviour
     private ClientGacha clientGacha;
     private GachaResultList gachaResultList;
     private GachaRewardList gachaRewardList;
+    private InstancePresentFixedView instancePresentFixedView;
     public static ResponseManager Instance { get; private set; }
 
     private void Awake()
@@ -104,6 +108,10 @@ public class ResponseManager : MonoBehaviour
             if (responseObjects.character_instances != null)
             {
                 CharacterInstancesTable.Insert(responseObjects.character_instances);
+            }
+            if (responseObjects.present_instances != null)
+            {
+                PresentInstancesTable.InsertFromDelete(responseObjects.users.manage_id, responseObjects.present_instances);
             }
         }
         else
@@ -233,6 +241,12 @@ public class ResponseManager : MonoBehaviour
             Debug.Log("マスタデータ更新完了(ガチャデータ)");
             GachaDataTable.Insert(responseObjects.gacha_data);
         }
+
+        if (responseObjects.present_categories != null)
+        {
+            Debug.Log("マスターデータ更新完了(プレゼントカテゴリ)");
+            PresentCategoriseTable.Insert(responseObjects.present_categories);
+        }
     }
 
     public void ExecutePayment(ResponseObjects responseObjects)
@@ -263,6 +277,22 @@ public class ResponseManager : MonoBehaviour
             shopConfirmFixedView.SetPaymentComplete(true);
             clientGacha.WarningMessage("");
             gachaFixedView.SetGachaConfirmClose();
+        }
+    }
+
+    public void ExecutePresent(ResponseObjects responseObjects)
+    {
+        instancePresentFixedView = FindFirstObjectByType<InstancePresentFixedView>(FindObjectsInactive.Include);
+
+        if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_PRESENT_RECEIVED))
+        {
+            Debug.Log("プレゼント受取期限を過ぎた内容が含まれている");
+            instancePresentFixedView.SetCompleteText(GameUtility.Const.ERROR_PRESENT_RECEIVED);
+        }
+        else
+        {
+            Debug.Log("プレゼントを受け取った");
+            instancePresentFixedView.SetCompleteText(GameUtility.Const.SHOW_PRESENT_RECEIVED);
         }
     }
 
@@ -303,6 +333,10 @@ public class ResponseManager : MonoBehaviour
                 break;
             case GameUtility.Const.STAMINA_AUTO_INCREASE_URL:
                 ExecuteHome(responseObjects);
+                break;
+            case GameUtility.Const.PRESENT_RECEIVED_URL:
+                ExecuteHome(responseObjects);
+                ExecutePresent(responseObjects);
                 break;
         }
     }

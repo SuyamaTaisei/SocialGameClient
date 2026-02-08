@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class MissionInstancesModel
@@ -54,5 +55,95 @@ public class MissionInstancesTable
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
             sqlDB.ExecuteNonQuery(query);
         }
+    }
+
+    //受取済みの有無で全レコード取得
+    public static List<MissionInstancesModel> SelectAll(int received, int limit)
+    {
+        string query = "";
+
+        switch (received)
+        {
+            case 0: query = $"select * from mission_instances where received = {received} order by id desc limit {limit}"; break;
+            case 1: query = $"select * from mission_instances where received = {received} order by updated_at desc limit {limit}"; break;
+        }
+
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<MissionInstancesModel> result = new List<MissionInstancesModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            MissionInstancesModel missionInstancesModel = new MissionInstancesModel();
+            missionInstancesModel.id = int.Parse(record["id"].ToString());
+            missionInstancesModel.manage_id = int.Parse(record["manage_id"].ToString());
+            missionInstancesModel.mission_id = int.Parse(record["mission_id"].ToString());
+            missionInstancesModel.mission_category = int.Parse(record["mission_category"].ToString());
+            missionInstancesModel.progress = int.Parse(record["progress"].ToString());
+            missionInstancesModel.cleared = int.Parse(record["cleared"].ToString());
+            missionInstancesModel.received = int.Parse(record["received"].ToString());
+            missionInstancesModel.created_at = record["created_at"].ToString();
+            missionInstancesModel.updated_at = record["updated_at"].ToString();
+
+            result.Add(missionInstancesModel);
+        }
+
+        return result;
+    }
+
+    //一致したミッションインスタンスだけを取得
+    public static MissionInstancesModel SelectId(int missionId, int category)
+    {
+        string query = $"select * from mission_instances where mission_id = {missionId} and mission_category = {category}";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        MissionInstancesModel missionInstancesModel = null;
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            missionInstancesModel = new MissionInstancesModel();
+            missionInstancesModel.id = int.Parse(record["id"].ToString());
+            missionInstancesModel.manage_id = int.Parse(record["manage_id"].ToString());
+            missionInstancesModel.mission_id = int.Parse(record["mission_id"].ToString());
+            missionInstancesModel.mission_category = int.Parse(record["mission_category"].ToString());
+            missionInstancesModel.progress = int.Parse(record["progress"].ToString());
+            missionInstancesModel.cleared = int.Parse(record["cleared"].ToString());
+            missionInstancesModel.received = int.Parse(record["received"].ToString());
+            missionInstancesModel.created_at = record["created_at"].ToString();
+            missionInstancesModel.updated_at = record["updated_at"].ToString();
+            break;
+        }
+
+        return missionInstancesModel;
+    }
+
+    //全件分一致したミッションインスタンスだけを取得
+    public static List<MissionInstancesModel> SelectIdAll(int missionId, int category)
+    {
+        string query = $"select * from mission_instances where mission_id = {missionId} and mission_category = {category}";
+        SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
+        DataTable dataTable = sqlDB.ExecuteQuery(query);
+
+        List<MissionInstancesModel> result = new List<MissionInstancesModel>();
+
+        foreach (DataRow record in dataTable.Rows)
+        {
+            MissionInstancesModel missionInstancesModel = new MissionInstancesModel();
+            missionInstancesModel.id = int.Parse(record["id"].ToString());
+            missionInstancesModel.manage_id = int.Parse(record["manage_id"].ToString());
+            missionInstancesModel.mission_id = int.Parse(record["mission_id"].ToString());
+            missionInstancesModel.mission_category = int.Parse(record["mission_category"].ToString());
+            missionInstancesModel.progress = int.Parse(record["progress"].ToString());
+            missionInstancesModel.cleared = int.Parse(record["cleared"].ToString());
+            missionInstancesModel.received = int.Parse(record["received"].ToString());
+            missionInstancesModel.created_at = record["created_at"].ToString();
+            missionInstancesModel.updated_at = record["updated_at"].ToString();
+
+            result.Add(missionInstancesModel);
+        }
+
+        return result;
     }
 }

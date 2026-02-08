@@ -40,6 +40,7 @@ public class ClientGacha : MonoBehaviour
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
+    private const string column_mission_id = "mission_id";
     private const string column_gacha_id = "gacha_id";
     private const string key_gacha_count = "gacha_count";
 
@@ -83,6 +84,7 @@ public class ClientGacha : MonoBehaviour
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(column_id, usersModel.id),
+            new MultipartFormDataSection(column_mission_id, "1003"),
             new MultipartFormDataSection(column_gacha_id, gacha_id.ToString()),
             new MultipartFormDataSection(key_gacha_count, gacha_count.ToString())
         };

@@ -29,6 +29,7 @@ public class ClientInstance : MonoBehaviour
     //強化アイテム一覧で選択したアイテムIDとアイテム数量の紐づけ
     private readonly Dictionary<int, int> selectEnhanceItems = new();
     private const string column_id = "id";
+    private const string column_mission_id = "mission_id";
     private const string column_character_id = "character_id";
 
     private void Start()
@@ -70,6 +71,7 @@ public class ClientInstance : MonoBehaviour
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(column_id, usersModel.id),
+            new MultipartFormDataSection(column_mission_id, "1002"),
             new MultipartFormDataSection(column_character_id, selectEnhanceCharacterId.ToString()),
         };
 

@@ -26,13 +26,14 @@ public class ClientHome : MonoBehaviour
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
+    private const string column_mission_id = "mission_id";
 
     private void Start()
     {
         apiConnect = ApiConnect.Instance;
         var usersModel = UsersTable.Select();
 
-        RequestHome(usersModel, GameUtility.Const.HOME_URL);
+        RequestHome(usersModel, GameUtility.Const.HOME_URL, false);
         WalletApply(coinText, gemFreeText, gemPaidText);
         StartCoroutine(StaminaAutoIncrease());
         StaminaButtonCtrl();
@@ -46,7 +47,7 @@ public class ClientHome : MonoBehaviour
 
         staminaRecoveryButton.onClick.AddListener(()  => { staminaRecoveryConfirmView.SetActive(true); });
         staminaRecoveryExecuteButton.onClick.AddListener(()  => {
-            RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL);
+            RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL, true, "1004");
             staminaRecoveryConfirmView.SetActive(false);
         });
         staminaRecoveryCancelButton.onClick.AddListener(() => { staminaRecoveryConfirmView.SetActive(false); });
@@ -58,7 +59,7 @@ public class ClientHome : MonoBehaviour
     }
 
     //リクエスト送信処理
-    public void RequestHome(UsersModel usersModel, string endPoint)
+    public void RequestHome(UsersModel usersModel, string endPoint, bool addForm, string value = null)
     {
         if (!string.IsNullOrEmpty(usersModel.id))
         {
@@ -67,6 +68,11 @@ public class ClientHome : MonoBehaviour
             {
                 new MultipartFormDataSection(column_id, id)
             };
+            if (addForm)
+            {
+                form.Add(new MultipartFormDataSection(column_mission_id, value));
+            }
+    
             StartCoroutine(apiConnect.Send(endPoint, form, (action) => {
                 StaminaApply();
                 StaminaButtonCtrl();
@@ -113,7 +119,7 @@ public class ClientHome : MonoBehaviour
                 continue;
             }
 
-            RequestHome(usersModel, GameUtility.Const.STAMINA_AUTO_INCREASE_URL);
+            RequestHome(usersModel, GameUtility.Const.STAMINA_AUTO_INCREASE_URL, false);
         }
     }
 }

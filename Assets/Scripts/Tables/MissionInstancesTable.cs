@@ -57,17 +57,10 @@ public class MissionInstancesTable
         }
     }
 
-    //受取済みの有無で全レコード取得
+    //受取の有無 かつ 進捗が完了している全レコード取得
     public static List<MissionInstancesModel> SelectAll(int received, int limit)
     {
-        string query = "";
-
-        switch (received)
-        {
-            case 0: query = $"select * from mission_instances where received = {received} order by id desc limit {limit}"; break;
-            case 1: query = $"select * from mission_instances where received = {received} order by updated_at desc limit {limit}"; break;
-        }
-
+        string query = $"select mi.* from mission_instances as mi inner join mission_data as md on md.id = mi.mission_id where mi.received = {received} and mi.progress >= md.goal order by mi.id desc limit {limit}";
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
         DataTable dataTable = sqlDB.ExecuteQuery(query);
 

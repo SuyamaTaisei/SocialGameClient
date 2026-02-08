@@ -43,24 +43,27 @@ public class InstanceMissionTemplateView : MonoBehaviour
             progressValueText.text = progressValue.ToString() + "/" + data.goal.ToString();
         }
 
-        //各ミッションが未受取 かつ 進捗が目標値以下の場合
-        if (received == 0 && progressValue <= data.goal)
+        if (receivedText && receivedButton)
         {
-            receivedText.text = GameUtility.Const.SHOW_MISSION_RECEIVE;
-            receivedButton.interactable = false;
-            buttonEffect.ButtonTextOpacityEffect(false, receivedButton);
-        }
-        else if (received == 0 && progressValue >= data.goal)
-        {
-            receivedText.text = GameUtility.Const.SHOW_MISSION_RECEIVE;
-            receivedButton.interactable = true;
-            buttonEffect.ButtonTextOpacityEffect(true, receivedButton);
-        }
-        else if(received == 1 && progressValue >= data.goal)
-        {
-            receivedText.text = GameUtility.Const.SHOW_MISSION_RECEIVED;
-            receivedButton.interactable = false;
-            buttonEffect.ButtonTextOpacityEffect(false, receivedButton);
+            //各ミッションが未受取 かつ 進捗が目標値以下の場合
+            if (received == 0 && progressValue < data.goal)
+            {
+                receivedText.text = GameUtility.Const.SHOW_MISSION_RECEIVE;
+                receivedButton.interactable = false;
+                buttonEffect.ButtonTextOpacityEffect(false, receivedButton);
+            }
+            else if (received == 0 && progressValue >= data.goal)
+            {
+                receivedText.text = GameUtility.Const.SHOW_MISSION_RECEIVE;
+                receivedButton.interactable = true;
+                buttonEffect.ButtonTextOpacityEffect(true, receivedButton);
+            }
+            else if (received == 1 && progressValue >= data.goal)
+            {
+                receivedText.text = GameUtility.Const.SHOW_MISSION_RECEIVED;
+                receivedButton.interactable = false;
+                buttonEffect.ButtonTextOpacityEffect(false, receivedButton);
+            }
         }
     }
 }

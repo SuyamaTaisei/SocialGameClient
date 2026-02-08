@@ -182,6 +182,10 @@ public class ResponseManager : MonoBehaviour
             {
                 CharacterInstancesTable.Insert(responseObjects.character_instances);
             }
+            if (responseObjects.mission_instances != null)
+            {
+                MissionInstancesTable.Insert(responseObjects.mission_instances);
+            }
         }
         else
         {
@@ -356,6 +360,9 @@ public class ResponseManager : MonoBehaviour
             case GameUtility.Const.PRESENT_RECEIVED_URL:
                 ExecuteHome(responseObjects);
                 ExecutePresent(responseObjects);
+                break;
+            case GameUtility.Const.MISSION_RECEIVED_URL:
+                ExecuteHome(responseObjects);
                 break;
         }
     }

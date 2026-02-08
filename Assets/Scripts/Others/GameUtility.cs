@@ -25,6 +25,7 @@ namespace GameUtility
         public const string STAMINA_INCREASE_URL  = BASE_URL + "api/stamina_increase";
         public const string STAMINA_AUTO_INCREASE_URL = BASE_URL + "api/stamina_auto_increase";
         public const string PRESENT_RECEIVED_URL = BASE_URL + "api/present_received";
+        public const string MISSION_RECEIVED_URL = BASE_URL + "api/mission_received";
 
         //DB
         public const string SQLITE_DB_NAME = "SocialGameServer.db";
@@ -111,6 +112,10 @@ namespace GameUtility
         public const string SHOW_TIME = "時間";
         public const string SHOW_PRESENT_RECEIVED = "受取を完了しました";
 
+        //ミッション表記
+        public const string SHOW_MISSION_RECEIVE = "受け取る";
+        public const string SHOW_MISSION_RECEIVED = "受取済み";
+
         //スタミナ数値
         public const int STAMINA_MAX_VALUE = 199;
         public const int STAMINA_MOST_VALUE = 100;
@@ -149,6 +154,7 @@ namespace GameUtility
         //ログ数値
         public const int LOG_GACHA_LIMIT = 150;
         public const int LOG_PRESENT_LIMIT = 100;
+        public const int LOG_MISSION_LIMIT = 10;
 
         //フォルダ名
         public const string FOLDER_NAME_IMAGES = "Images";

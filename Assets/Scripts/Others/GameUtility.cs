@@ -113,6 +113,7 @@ namespace GameUtility
         public const string SHOW_PRESENT_RECEIVED = "受取を完了しました";
 
         //ミッション表記
+        public const string SHOW_REWARD = "報酬 ";
         public const string SHOW_MISSION_RECEIVE = "受け取る";
         public const string SHOW_MISSION_RECEIVED = "受取済み";
 
@@ -160,6 +161,7 @@ namespace GameUtility
         public const string FOLDER_NAME_IMAGES = "Images";
         public const string FOLDER_NAME_CHARACTERS = "Characters";
         public const string FOLDER_NAME_GEMS = "Gems";
+        public const string FOLDER_NAME_COINS = "Coins";
         public const string FOLDER_NAME_ITEMS = "Items";
 
         //シーン名

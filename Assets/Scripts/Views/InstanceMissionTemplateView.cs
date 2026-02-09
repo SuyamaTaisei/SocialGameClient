@@ -23,8 +23,8 @@ public class InstanceMissionTemplateView : MonoBehaviour
         {
             switch (data.reward_category)
             {
-                case 1001: nameText.text = data.reward_value + GameUtility.Const.SHOW_GEM; break;
-                case 1002: nameText.text = data.reward_value + GameUtility.Const.SHOW_COIN; break;
+                case 1001: nameText.text = GameUtility.Const.SHOW_REWARD + data.reward_value + GameUtility.Const.SHOW_GEM; break;
+                case 1002: nameText.text = GameUtility.Const.SHOW_REWARD + data.reward_value + GameUtility.Const.SHOW_COIN; break;
             }
         }
         if (descriptionText)

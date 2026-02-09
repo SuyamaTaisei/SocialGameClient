@@ -22,8 +22,13 @@ public class InstanceMissionConfirmList : MonoBehaviour
 
             //データの取得
             var data = missionInstancesList[i];
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_GEMS}/{imageIndex}";
             var data1 = MissionDataTable.SelectId(data.mission_id);
+            string imagePath = "";
+            switch (data1.reward_category)
+            {
+                case 1001: imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_GEMS}/{imageIndex}"; break;
+                case 1002: imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_COINS}/{imageIndex}"; break;
+            }
 
             //データの描画
             view.Set(data1, data, imagePath);

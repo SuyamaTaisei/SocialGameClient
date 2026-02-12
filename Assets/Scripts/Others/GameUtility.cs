@@ -170,5 +170,8 @@ namespace GameUtility
         //SQLクエリ
         public const string ASC = "Asc";
         public const string DESC = "Desc";
+
+        //サウンド名
+        public const string SE_OPEN_1 = "SE_Open_1";
     }
 }

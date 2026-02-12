@@ -12,6 +12,10 @@ public class SaveManager : MonoBehaviour
     //セーブデータのデフォルト値
     static readonly int DefaultVersion = 0;
 
+    const float DefaultVolumeMaster = 0.5f;
+    const float DefaultVolumeBgm = 0.5f;
+    const float DefaultVolumeSe = 0.5f;
+
     FileStream file;
     BinaryFormatter bf;
     string filePath;
@@ -57,7 +61,7 @@ public class SaveManager : MonoBehaviour
     }
 
     //ファイルクローズ処理
-    void Closefile()
+    void CloseFile()
     {
         file.Close();
         file = null;
@@ -71,6 +75,29 @@ public class SaveManager : MonoBehaviour
         return false;
     }
 
+    //共通の全体ロード
+    private SaveData LoadAllData()
+    {
+        SaveData data = null;
+        if (SaveDataCheck())
+        {
+            try
+            {
+                InitFileLoad();
+                data = bf.Deserialize(file) as SaveData;
+            }
+            catch (IOException)
+            {
+                Debug.LogError("failed to open file");
+            }
+            finally
+            {
+                if (file != null) { CloseFile(); }
+            }
+        }
+        return data;
+    }
+
     //新規データ生成
     public void CreateSaveData()
     {
@@ -81,6 +108,10 @@ public class SaveManager : MonoBehaviour
             //セーブデータを生成
             SaveData data = new();
             data.version = DefaultVersion;
+            data.volumeMaster = DefaultVolumeMaster;
+            data.volumeBgm = DefaultVolumeBgm;
+            data.volumeSe = DefaultVolumeSe;
+
             bf.Serialize(file, data);
         }
         catch (IOException)
@@ -136,5 +167,52 @@ public class SaveManager : MonoBehaviour
             if (file != null) { file.Close(); }
         }
         return version;
+    }
+
+    //音量セーブ
+    public void SaveSoundVolume(float vm, float vb, float vs)
+    {
+        try
+        {
+            SaveData data = LoadAllData();
+            data.volumeMaster = vm;
+            data.volumeBgm = vb;
+            data.volumeSe = vs;
+
+            //シリアライズ化のためのバイナリ形式を用意
+            InitFileSave();
+            bf.Serialize(file, data);
+        }
+        catch (IOException)
+        {
+            Debug.LogError("failed to open file");
+        }
+        finally
+        {
+            if (file != null) { CloseFile(); }
+        }
+    }
+
+    //音量ロード
+    public void LoadSoundVolume(ref float vm, ref float vb, ref float vs)
+    {
+        try
+        {
+            InitFileLoad();
+
+            // セーブデータを読み込み
+            SaveData data = bf.Deserialize(file) as SaveData;
+            vm = data.volumeMaster;
+            vb = data.volumeBgm;
+            vs = data.volumeSe;
+        }
+        catch (IOException)
+        {
+            Debug.LogError("failed to open file");
+        }
+        finally
+        {
+            if (file != null) { CloseFile(); }
+        }
     }
 }

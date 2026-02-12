@@ -18,6 +18,7 @@ public class ClientPresent : MonoBehaviour
     //プレゼントインスタンスidをキーにしたカテゴリ、内容、数量の値をタプルで紐づけ
     private readonly Dictionary<int, (int, int, int)> savePresents = new();
     private const string column_id = "id";
+    private const string column_mission_id = "mission_id";
 
     private void Start()
     {
@@ -52,6 +53,7 @@ public class ClientPresent : MonoBehaviour
         List<IMultipartFormSection> form = new()
         {
             new MultipartFormDataSection(column_id, usersModel.id),
+            new MultipartFormDataSection(column_mission_id, "1005"),
         };
 
         //保持したid、カテゴリ、内容、数量でペアを生成

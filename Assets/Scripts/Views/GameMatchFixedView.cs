@@ -29,7 +29,7 @@ public class GameMatchFixedView : MonoBehaviour
 
         gameMatchOpenButton.onClick.AddListener(() => { SetConfirm(true); });
         gameMatchConfirmExecuteButton.onClick.AddListener(() => {
-            clientHome.RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL);
+            clientHome.RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL, true, "1001");
             SetConfirm(false);
             SetResult(true);
         });

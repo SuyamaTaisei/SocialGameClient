@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using SoundSystem;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -62,6 +63,7 @@ public class ClientShop : MonoBehaviour
     {
         shopDetailFixedView.SetPaymentComplete(false);
         shopView.SetActive(true);
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_OPEN_1);
     }
 
     //ショップ閉じる

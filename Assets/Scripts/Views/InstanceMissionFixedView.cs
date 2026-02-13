@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using SoundSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,12 +21,16 @@ public class InstanceMissionFixedView : MonoBehaviour
 
     private void Start()
     {
-        SetConfirm(false);
-        SetComplete(false);
+        missionInstanceConfirmView.SetActive(false);
+        missionInstanceCompleteView.SetActive(false);
 
         missionInstanceConfirmExecuteButton.onClick.AddListener(() => clientMission.RequestMissionReceived()); //ミッション受け取りリクエスト
         missionInstanceConfirmCancelButton.onClick.AddListener(() => SetConfirm(false));
-        missionInstanceCompleteCloseButton.onClick.AddListener(() => SetComplete(false));
+        missionInstanceCompleteCloseButton.onClick.AddListener(() =>
+        {
+            SetComplete(false);
+            SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_CLOSE);
+        });
 
         //一括受取ボタン
         missionInstanceAllReceivedOpenButton.onClick.AddListener(() =>
@@ -58,6 +63,8 @@ public class InstanceMissionFixedView : MonoBehaviour
     public void SetConfirm(bool enabled)
     {
         missionInstanceConfirmView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
     //受け取り完了画面

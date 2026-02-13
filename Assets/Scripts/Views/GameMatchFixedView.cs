@@ -25,14 +25,14 @@ public class GameMatchFixedView : MonoBehaviour
         var usersModel = UsersTable.Select();
         gameMatchConfirmText.text = GameUtility.Const.STAMINA_DECREASE_VALUE + GameUtility.Const.SHOW_STAMINA_DECREASE_CONFIRM;
 
-        SetConfirm(false);
+        gameMatchConfirmView.SetActive(false);
         SetResult(false);
 
         gameMatchOpenButton.onClick.AddListener(() => { SetConfirm(true); });
         gameMatchConfirmExecuteButton.onClick.AddListener(() => {
             clientHome.RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL, true, "1001");
             SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
-            SetConfirm(false);
+            gameMatchConfirmView.SetActive(false);
             SetResult(true);
         });
         gameMatchConfirmCancelButton.onClick.AddListener(() => { SetConfirm(false); });
@@ -43,6 +43,8 @@ public class GameMatchFixedView : MonoBehaviour
     private void SetConfirm(bool enabled)
     {
         gameMatchConfirmView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
     //対戦結果画面

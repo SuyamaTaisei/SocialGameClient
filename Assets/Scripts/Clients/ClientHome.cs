@@ -50,7 +50,7 @@ public class ClientHome : MonoBehaviour
         staminaRecoveryExecuteButton.onClick.AddListener(()  => {
             SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
             RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL, true, "1004");
-            StaminaOpenClose(false);
+            staminaRecoveryConfirmView.SetActive(false);
         });
         staminaRecoveryCancelButton.onClick.AddListener(() => { StaminaOpenClose(false); });
     }

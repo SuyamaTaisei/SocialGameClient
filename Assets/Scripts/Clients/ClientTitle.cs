@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SoundSystem;
 using System.IO;
 using TMPro;
 using UnityEngine;
@@ -94,6 +95,7 @@ public class ClientTitle : MonoBehaviour
     //スタートボタン
     public void GameStart()
     {
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_GAMESTART);
         //ユーザー情報の取得
         usersModel = UsersTable.Select();
         if (!string.IsNullOrEmpty(usersModel.id))
@@ -125,10 +127,14 @@ public class ClientTitle : MonoBehaviour
     {
         StartView.SetActive(true);
         RegisterComplete(false);
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
     }
 
     //アカウント登録完了画面
-    public void RegisterComplete(bool enabled) => registerCompleteView.SetActive(enabled);
+    public void RegisterComplete(bool enabled)
+    {
+        registerCompleteView.SetActive(enabled);
+    }
 
     //ユーザー情報表示
     public void ShowUserInfo()

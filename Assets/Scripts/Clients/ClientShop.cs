@@ -44,6 +44,7 @@ public class ClientShop : MonoBehaviour
     //購入処理
     public void RequestPayment(int index, int amount)
     {
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
         var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {
@@ -70,6 +71,7 @@ public class ClientShop : MonoBehaviour
     public void ShopClose()
     {
         shopView.SetActive(false);
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_CLOSE);
     }
 
     //購入警告

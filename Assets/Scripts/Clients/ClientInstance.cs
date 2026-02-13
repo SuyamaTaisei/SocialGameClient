@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using SoundSystem;
 using UnityEngine;
 using UnityEngine.Networking;
 using System.Collections.Generic;
@@ -66,6 +67,7 @@ public class ClientInstance : MonoBehaviour
     //強化リクエストの送信処理
     public void RequestEnhance()
     {
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
         var usersModel = UsersTable.Select();
 
         List<IMultipartFormSection> form = new()
@@ -102,12 +104,16 @@ public class ClientInstance : MonoBehaviour
     public void ItemInstance(bool enabled)
     {
         itemInstanceView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
     //キャラ一覧開閉
     public void CharaInstance(bool enabled)
     {
         charaInstanceView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
     //メッセージ

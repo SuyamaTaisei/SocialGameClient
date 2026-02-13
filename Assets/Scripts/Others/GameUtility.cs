@@ -172,6 +172,11 @@ namespace GameUtility
         public const string DESC = "Desc";
 
         //サウンド名
+        public const string SE_CLOSE = "SE_Close";
+        public const string SE_DECISION = "SE_Decision";
+        public const string SE_GAMESTART = "SE_GameStart";
         public const string SE_OPEN_1 = "SE_Open_1";
+        public const string SE_OPEN_2 = "SE_Open_2";
+        public const string SE_SELECT = "SE_Select";
     }
 }

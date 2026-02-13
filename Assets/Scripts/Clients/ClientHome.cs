@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SoundSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -45,12 +46,12 @@ public class ClientHome : MonoBehaviour
 
         staminaRecoveryConfirmView.SetActive(false);
 
-        staminaRecoveryButton.onClick.AddListener(()  => { staminaRecoveryConfirmView.SetActive(true); });
+        staminaRecoveryButton.onClick.AddListener(() => { StaminaOpenClose(true); });
         staminaRecoveryExecuteButton.onClick.AddListener(()  => {
             RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL, true, "1004");
-            staminaRecoveryConfirmView.SetActive(false);
+            StaminaOpenClose(false);
         });
-        staminaRecoveryCancelButton.onClick.AddListener(() => { staminaRecoveryConfirmView.SetActive(false); });
+        staminaRecoveryCancelButton.onClick.AddListener(() => { StaminaOpenClose(false); });
     }
 
     private void Update()
@@ -121,5 +122,13 @@ public class ClientHome : MonoBehaviour
 
             RequestHome(usersModel, GameUtility.Const.STAMINA_AUTO_INCREASE_URL, false);
         }
+    }
+
+    //スタミナ確認画面開閉
+    public void StaminaOpenClose(bool enabled)
+    {
+        staminaRecoveryConfirmView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 }

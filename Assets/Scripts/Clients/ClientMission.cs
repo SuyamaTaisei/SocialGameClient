@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SoundSystem;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -45,6 +46,7 @@ public class ClientMission : MonoBehaviour
     //ミッション受取の送信処理
     public void RequestMissionReceived()
     {
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
         var usersModel = UsersTable.Select();
 
         List<IMultipartFormSection> form = new()

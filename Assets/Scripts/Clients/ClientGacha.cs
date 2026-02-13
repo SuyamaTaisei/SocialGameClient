@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TMPro;
+using SoundSystem;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -60,14 +61,14 @@ public class ClientGacha : MonoBehaviour
         gachaOfferRateView.SetActive(false);
         gachaLogView.SetActive(false);
 
-        gachaOpenButton.onClick.AddListener(() => GachaOpen());
-        gachaRewardOpenButton.onClick.AddListener(() => GachaRewardOpen());
-        gachaLogOpenButton.onClick.AddListener(() => GachaLogOpen());
-        gachaOfferRateOpenButton.onClick.AddListener(() => GachaOfferRateOpen());
-        gachaCloseButton.onClick.AddListener(() => GachaClose());
-        gachaLogCloseButton.onClick.AddListener(() => GachaLogClose());
-        gachaOfferRateCloseButton.onClick.AddListener(() => GachaOfferRateClose());
-        gachaRewardCloseButton.onClick.AddListener(() => GachaRewardClose());
+        gachaOpenButton.onClick.AddListener(() => GachaOpenClose(true));
+        gachaRewardOpenButton.onClick.AddListener(() => GachaRewardOpenClose(true));
+        gachaLogOpenButton.onClick.AddListener(() => GachaLogOpenClose(true));
+        gachaOfferRateOpenButton.onClick.AddListener(() => GachaOfferRateOpenClose(true));
+        gachaCloseButton.onClick.AddListener(() => GachaOpenClose(false));
+        gachaLogCloseButton.onClick.AddListener(() => GachaLogOpenClose(false));
+        gachaOfferRateCloseButton.onClick.AddListener(() => GachaOfferRateOpenClose(false));
+        gachaRewardCloseButton.onClick.AddListener(() => GachaRewardOpenClose(false));
         gachaResultCloseButton.onClick.AddListener(() => GachaResultClose());
     }
 
@@ -95,54 +96,39 @@ public class ClientGacha : MonoBehaviour
     public void GachaResultClose()
     {
         gachaResultView.SetActive(false);
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_CLOSE);
     }
 
-    //ガチャ画面開く
-    public void GachaOpen()
+    //ガチャ画面開閉
+    public void GachaOpenClose(bool enabled)
     {
-        gachaView.SetActive(true);
+        gachaView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
-    //ガチャ画面閉じる
-    public void GachaClose()
+    //ガチャ報酬開閉
+    public void GachaRewardOpenClose(bool enabled)
     {
-        gachaView.SetActive(false);
+        gachaRewardView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
-    //ガチャ報酬開く
-    public void GachaRewardOpen()
+    //ガチャ提供割合開閉
+    public void GachaOfferRateOpenClose(bool enabled)
     {
-        gachaRewardView.SetActive(true);
+        gachaOfferRateView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
-    //ガチャ報酬閉じる
-    public void GachaRewardClose()
+    //ガチャ履歴書開閉
+    public void GachaLogOpenClose(bool enabled)
     {
-        gachaRewardView.SetActive(false);
-    }
-
-    //ガチャ提供割合開く
-    public void GachaOfferRateOpen()
-    {
-        gachaOfferRateView.SetActive(true);
-    }
-
-    //ガチャ提供割合閉じる
-    public void GachaOfferRateClose()
-    {
-        gachaOfferRateView.SetActive(false);
-    }
-
-    //ガチャ履歴開く
-    public void GachaLogOpen()
-    {
-        gachaLogView.SetActive(true);
-    }
-
-    //ガチャ履歴閉じる
-    public void GachaLogClose()
-    {
-        gachaLogView.SetActive(false);
+        gachaLogView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
     //ガチャ履歴無し警告

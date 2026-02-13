@@ -81,6 +81,7 @@ public class ClientGacha : MonoBehaviour
     //ガチャリクエスト送信
     public void RequestGacha(int gacha_id, int gacha_count)
     {
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
         var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {

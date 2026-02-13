@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using SoundSystem;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -30,6 +31,7 @@ public class GameMatchFixedView : MonoBehaviour
         gameMatchOpenButton.onClick.AddListener(() => { SetConfirm(true); });
         gameMatchConfirmExecuteButton.onClick.AddListener(() => {
             clientHome.RequestHome(usersModel, GameUtility.Const.STAMINA_DECREASE_URL, true, "1001");
+            SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
             SetConfirm(false);
             SetResult(true);
         });

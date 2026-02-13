@@ -172,6 +172,7 @@ namespace GameUtility
         public const string DESC = "Desc";
 
         //サウンド名
+        public const string BGM_MAIN = "BGM_Main";
         public const string SE_CLOSE = "SE_Close";
         public const string SE_DECISION = "SE_Decision";
         public const string SE_GAMESTART = "SE_GameStart";

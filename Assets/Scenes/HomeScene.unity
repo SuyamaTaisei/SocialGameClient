@@ -461,7 +461,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 4
-  m_AspectRatio: 1
+  m_AspectRatio: 0.8
 --- !u!114 &19971436
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -482,7 +482,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89425b56c3e40c04b8df732970e71e64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ecf8d5e0a01c1f488e7aba8ad0b2316, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2650,7 +2650,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89425b56c3e40c04b8df732970e71e64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ecf8d5e0a01c1f488e7aba8ad0b2316, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2681,7 +2681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 4
-  m_AspectRatio: 1
+  m_AspectRatio: 0.8
 --- !u!1 &104802555
 GameObject:
   m_ObjectHideFlags: 0
@@ -24766,7 +24766,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 4
-  m_AspectRatio: 1
+  m_AspectRatio: 0.8
 --- !u!114 &834035572
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -24787,7 +24787,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89425b56c3e40c04b8df732970e71e64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ecf8d5e0a01c1f488e7aba8ad0b2316, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -27622,7 +27622,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 4
-  m_AspectRatio: 1
+  m_AspectRatio: 0.8
 --- !u!114 &910942326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -27643,7 +27643,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89425b56c3e40c04b8df732970e71e64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ecf8d5e0a01c1f488e7aba8ad0b2316, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36843,7 +36843,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AspectMode: 4
-  m_AspectRatio: 1
+  m_AspectRatio: 0.8
 --- !u!114 &1176935475
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -36864,7 +36864,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 89425b56c3e40c04b8df732970e71e64, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ecf8d5e0a01c1f488e7aba8ad0b2316, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -36954,7 +36954,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 21300000, guid: 68bb42122730d034faf37f94de56392b, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 5ecf8d5e0a01c1f488e7aba8ad0b2316, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1

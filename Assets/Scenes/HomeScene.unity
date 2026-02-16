@@ -36525,7 +36525,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: "\u500B\u4EBA"
+  m_text: "\u53D7\u53D6\u4E00\u89A7"
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 0e7bb128add24e34e97f17b3af808510, type: 2}
   m_sharedMaterial: {fileID: -1288660633788971515, guid: 0e7bb128add24e34e97f17b3af808510, type: 2}
@@ -64448,7 +64448,6 @@ MonoBehaviour:
   staminaRecoveryExecuteButton: {fileID: 1233943237}
   staminaRecoveryCancelButton: {fileID: 1034396963}
   staminaRecoveryConfirmView: {fileID: 732227044}
-  gameMatchFixedView: {fileID: 1519787490}
 --- !u!4 &2134605331
 Transform:
   m_ObjectHideFlags: 0

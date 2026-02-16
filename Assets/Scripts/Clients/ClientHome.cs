@@ -23,7 +23,6 @@ public class ClientHome : MonoBehaviour
     [SerializeField] Button staminaRecoveryCancelButton;
     [SerializeField] GameObject staminaRecoveryConfirmView;
 
-    [SerializeField] GameMatchFixedView gameMatchFixedView;
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
@@ -105,7 +104,6 @@ public class ClientHome : MonoBehaviour
         var usersModel = UsersTable.Select();
         var walletsModel = WalletsTable.Select();
         staminaRecoveryButton.interactable = usersModel.last_stamina < GameUtility.Const.STAMINA_MOST_VALUE && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= GameUtility.Const.STAMINA_GEM_VALUE;
-        gameMatchFixedView.GameMatchOpenButton.interactable = usersModel.last_stamina >= GameUtility.Const.STAMINA_DECREASE_VALUE;
     }
 
     //スタミナ自然回復処理。1分毎に1回復。上限値の場合はスキップ (基本はホームにいる時のみ実行。ゲームプレイ時などは差分計算で増やして負荷軽減)

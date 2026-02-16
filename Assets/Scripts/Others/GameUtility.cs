@@ -63,11 +63,12 @@ namespace GameUtility
         public const string SHOW_GEM = "ジェム";
 
         //対戦表記
-        public const string SHOW_GAMEMATCH_RESULT = "ジェムを獲得しました";
+        public const string SHOW_GAMEMATCH_RESULT = "コインを獲得しました";
 
         //スタミナ表記
         public const string SHOW_STAMINA_RECOVERY_CONFIRM = "ジェムでスタミナを回復しますか？";
         public const string SHOW_STAMINA_DECREASE_CONFIRM = "スタミナを消費して対戦しますか？";
+        public const string SHOW_STAMINA_RECOVERY = "スタミナ回復しました";
 
         //ショップ表記
         public const string SHOW_PRODUCT_NAME = "商品名";

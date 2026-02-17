@@ -72,6 +72,8 @@ namespace SoundSystem
 
         private void Start()
         {
+            PlayBGMWithFadeIn(GameUtility.Const.BGM_MAIN);
+
             if (SaveManager.Instance != null)
             {
                 float vm = MasterVolume,

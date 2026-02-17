@@ -20,8 +20,8 @@ public class InstanceMissionFixedView : MonoBehaviour
 
     private void Start()
     {
-        SetConfirm(false);
-        SetComplete(false);
+        missionInstanceConfirmView.SetActive(false);
+        missionInstanceCompleteView.SetActive(false);
 
         missionInstanceConfirmExecuteButton.onClick.AddListener(() => clientMission.RequestMissionReceived()); //ミッション受け取りリクエスト
         missionInstanceConfirmCancelButton.onClick.AddListener(() => SetConfirm(false));

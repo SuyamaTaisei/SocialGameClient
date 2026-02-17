@@ -36,8 +36,6 @@ public class ApiConnect : MonoBehaviour
         //レスポンスが成功したら
         if (request.result == UnityWebRequest.Result.Success)
         {
-            Debug.Log("レスポンス完了");
-
             //サーバーエラーチェック
             string serverData = request.downloadHandler.text;
             if (serverData.All(char.IsNumber))
@@ -53,7 +51,6 @@ public class ApiConnect : MonoBehaviour
                 }
                 yield break;
             }
-            Debug.Log(serverData);
 
             //SQLiteへ保存。JSONデータをオブジェクトに変換
             ResponseObjects responseObjects = JsonUtility.FromJson<ResponseObjects>(serverData);

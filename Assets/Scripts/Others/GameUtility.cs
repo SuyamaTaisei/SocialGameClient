@@ -63,11 +63,12 @@ namespace GameUtility
         public const string SHOW_GEM = "ジェム";
 
         //対戦表記
-        public const string SHOW_GAMEMATCH_RESULT = "ジェムを獲得しました";
+        public const string SHOW_GAMEMATCH_RESULT = "コインを獲得しました";
 
         //スタミナ表記
         public const string SHOW_STAMINA_RECOVERY_CONFIRM = "ジェムでスタミナを回復しますか？";
         public const string SHOW_STAMINA_DECREASE_CONFIRM = "スタミナを消費して対戦しますか？";
+        public const string SHOW_STAMINA_RECOVERY = "スタミナ回復しました";
 
         //ショップ表記
         public const string SHOW_PRODUCT_NAME = "商品名";
@@ -111,6 +112,7 @@ namespace GameUtility
         public const string SHOW_DAY = "日";
         public const string SHOW_TIME = "時間";
         public const string SHOW_PRESENT_RECEIVED = "受取を完了しました";
+        public const string SHOW_ADD_PRESENT = "一部のアイテムがプレゼントボックスに送られました";
 
         //ミッション表記
         public const string SHOW_REWARD = "報酬 ";
@@ -172,6 +174,12 @@ namespace GameUtility
         public const string DESC = "Desc";
 
         //サウンド名
+        public const string BGM_MAIN = "BGM_Main";
+        public const string SE_CLOSE = "SE_Close";
+        public const string SE_DECISION = "SE_Decision";
+        public const string SE_GAMESTART = "SE_GameStart";
         public const string SE_OPEN_1 = "SE_Open_1";
+        public const string SE_OPEN_2 = "SE_Open_2";
+        public const string SE_SELECT = "SE_Select";
     }
 }

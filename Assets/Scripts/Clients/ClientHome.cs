@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SoundSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -22,7 +23,6 @@ public class ClientHome : MonoBehaviour
     [SerializeField] Button staminaRecoveryCancelButton;
     [SerializeField] GameObject staminaRecoveryConfirmView;
 
-    [SerializeField] GameMatchFixedView gameMatchFixedView;
     private ApiConnect apiConnect;
 
     private const string column_id = "id";
@@ -45,12 +45,13 @@ public class ClientHome : MonoBehaviour
 
         staminaRecoveryConfirmView.SetActive(false);
 
-        staminaRecoveryButton.onClick.AddListener(()  => { staminaRecoveryConfirmView.SetActive(true); });
+        staminaRecoveryButton.onClick.AddListener(() => { StaminaOpenClose(true); });
         staminaRecoveryExecuteButton.onClick.AddListener(()  => {
+            SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
             RequestHome(usersModel, GameUtility.Const.STAMINA_INCREASE_URL, true, "1004");
             staminaRecoveryConfirmView.SetActive(false);
         });
-        staminaRecoveryCancelButton.onClick.AddListener(() => { staminaRecoveryConfirmView.SetActive(false); });
+        staminaRecoveryCancelButton.onClick.AddListener(() => { StaminaOpenClose(false); });
     }
 
     private void Update()
@@ -103,7 +104,6 @@ public class ClientHome : MonoBehaviour
         var usersModel = UsersTable.Select();
         var walletsModel = WalletsTable.Select();
         staminaRecoveryButton.interactable = usersModel.last_stamina < GameUtility.Const.STAMINA_MOST_VALUE && walletsModel.gem_paid_amount + walletsModel.gem_free_amount >= GameUtility.Const.STAMINA_GEM_VALUE;
-        gameMatchFixedView.GameMatchOpenButton.interactable = usersModel.last_stamina >= GameUtility.Const.STAMINA_DECREASE_VALUE;
     }
 
     //スタミナ自然回復処理。1分毎に1回復。上限値の場合はスキップ (基本はホームにいる時のみ実行。ゲームプレイ時などは差分計算で増やして負荷軽減)
@@ -114,12 +114,20 @@ public class ClientHome : MonoBehaviour
             yield return new WaitForSecondsRealtime(GameUtility.Const.STAMINA_EVERY_MINUTE);
             var usersModel = UsersTable.Select();
 
-            if (usersModel.last_stamina >= GameUtility.Const.STAMINA_MAX_VALUE)
+            if (usersModel.last_stamina >= GameUtility.Const.STAMINA_MOST_VALUE)
             {
                 continue;
             }
 
             RequestHome(usersModel, GameUtility.Const.STAMINA_AUTO_INCREASE_URL, false);
         }
+    }
+
+    //スタミナ確認画面開閉
+    public void StaminaOpenClose(bool enabled)
+    {
+        staminaRecoveryConfirmView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 }

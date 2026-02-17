@@ -51,8 +51,8 @@ public class CharacterInstancesTable
         switch(column)
         {
             case "id":
-            case "level": query = $"select * from character_Instances order by {column} {sort}"; break;
-            case "rarity_id": query = $"select ci.* from character_Instances as ci inner join character_data as cd on cd.id = ci.character_id order by cd.{column} {sort}"; break;
+            case "level": query = $"select * from character_Instances order by {column} {sort}, id desc"; break;
+            case "rarity_id": query = $"select ci.* from character_Instances as ci inner join character_data as cd on cd.id = ci.character_id order by cd.{column} {sort}, ci.id desc"; break;
         }
 
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);

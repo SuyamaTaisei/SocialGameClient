@@ -5035,7 +5035,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bgmAudioClipList:
-  - {fileID: 8300000, guid: 58a196096e924744b8c7a72673a731b9, type: 3}
+  - {fileID: 8300000, guid: cf851a74c8ab718489785034e81c4704, type: 3}
   seAudioClipList:
   - {fileID: 8300000, guid: 5726b90733cdf3e42b0dfd811f96bf60, type: 3}
   - {fileID: 8300000, guid: b88619f4a7e69564b97fab793e971833, type: 3}

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using SoundSystem;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -22,12 +23,8 @@ public class ClientMission : MonoBehaviour
         apiConnect = ApiConnect.Instance;
 
         missionInstanceView.SetActive(false);
-        missionInstanceOpenButton.onClick.AddListener(() =>
-        {
-            instanceMissionFixedView.SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
-            missionInstanceView.SetActive(true);
-        });
-        missionInstanceCloseButton.onClick.AddListener(() => missionInstanceView.SetActive(false));
+        missionInstanceOpenButton.onClick.AddListener(() => MissionOpenClose(true));
+        missionInstanceCloseButton.onClick.AddListener(() => MissionOpenClose(false));
     }
 
     //ミッションid、カテゴリを保持
@@ -45,6 +42,7 @@ public class ClientMission : MonoBehaviour
     //ミッション受取の送信処理
     public void RequestMissionReceived()
     {
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
         var usersModel = UsersTable.Select();
 
         List<IMultipartFormSection> form = new()
@@ -74,5 +72,14 @@ public class ClientMission : MonoBehaviour
             instanceMissionFixedView.SetComplete(true);          //受取完了画面表示
             ClearMission();
         }));
+    }
+
+    //ミッション画面開閉
+    public void MissionOpenClose(bool enabled)
+    {
+        instanceMissionFixedView.SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
+        missionInstanceView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 }

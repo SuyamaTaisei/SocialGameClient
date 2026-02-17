@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using TMPro;
+using SoundSystem;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
@@ -17,6 +18,7 @@ public class ClientGacha : MonoBehaviour
     //メッセージ
     [SerializeField] TextMeshProUGUI gachaWarningText;
     [SerializeField] TextMeshProUGUI gachaLogNothingText;
+    [SerializeField] TextMeshProUGUI gachaNoticeAddPresentText;
 
     //ボタン
     [SerializeField] Button gachaOpenButton;
@@ -39,6 +41,7 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] ClientHome clientHome;
     private ApiConnect apiConnect;
 
+    private int beforePresentTotal;
     private const string column_id = "id";
     private const string column_mission_id = "mission_id";
     private const string column_gacha_id = "gacha_id";
@@ -60,14 +63,14 @@ public class ClientGacha : MonoBehaviour
         gachaOfferRateView.SetActive(false);
         gachaLogView.SetActive(false);
 
-        gachaOpenButton.onClick.AddListener(() => GachaOpen());
-        gachaRewardOpenButton.onClick.AddListener(() => GachaRewardOpen());
-        gachaLogOpenButton.onClick.AddListener(() => GachaLogOpen());
-        gachaOfferRateOpenButton.onClick.AddListener(() => GachaOfferRateOpen());
-        gachaCloseButton.onClick.AddListener(() => GachaClose());
-        gachaLogCloseButton.onClick.AddListener(() => GachaLogClose());
-        gachaOfferRateCloseButton.onClick.AddListener(() => GachaOfferRateClose());
-        gachaRewardCloseButton.onClick.AddListener(() => GachaRewardClose());
+        gachaOpenButton.onClick.AddListener(() => GachaOpenClose(true));
+        gachaRewardOpenButton.onClick.AddListener(() => GachaRewardOpenClose(true));
+        gachaLogOpenButton.onClick.AddListener(() => GachaLogOpenClose(true));
+        gachaOfferRateOpenButton.onClick.AddListener(() => GachaOfferRateOpenClose(true));
+        gachaCloseButton.onClick.AddListener(() => GachaOpenClose(false));
+        gachaLogCloseButton.onClick.AddListener(() => GachaLogOpenClose(false));
+        gachaOfferRateCloseButton.onClick.AddListener(() => GachaOfferRateOpenClose(false));
+        gachaRewardCloseButton.onClick.AddListener(() => GachaRewardOpenClose(false));
         gachaResultCloseButton.onClick.AddListener(() => GachaResultClose());
     }
 
@@ -80,6 +83,12 @@ public class ClientGacha : MonoBehaviour
     //ガチャリクエスト送信
     public void RequestGacha(int gacha_id, int gacha_count)
     {
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
+
+        //前回値の保持
+        NoticeAddPresentMessage("");
+        beforePresentTotal = GetPresentTotal();
+
         var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {
@@ -88,61 +97,71 @@ public class ClientGacha : MonoBehaviour
             new MultipartFormDataSection(column_gacha_id, gacha_id.ToString()),
             new MultipartFormDataSection(key_gacha_count, gacha_count.ToString())
         };
-        StartCoroutine(apiConnect.Send(GameUtility.Const.GACHA_EXECUTE_URL, form));
+        StartCoroutine(apiConnect.Send(GameUtility.Const.GACHA_EXECUTE_URL, form, action =>
+        {
+            CheckPresentTotal();
+        }));
+    }
+
+    //現在のプレゼント総数を取得(負荷軽減のために、ガチャに変換されるアイテムカテゴリに限定する)
+    private int GetPresentTotal()
+    {
+        int total = 0;
+        var present = PresentInstancesTable.SelectAll(0, int.MaxValue);
+
+        foreach (var all in present)
+        {
+            total += all.amount;
+        }
+        return total;
+    }
+
+    //現在値のプレゼント総数が、前回値のプレゼント総数より大きければ
+    private void CheckPresentTotal()
+    {
+        if (GetPresentTotal() > beforePresentTotal)
+        {
+            NoticeAddPresentMessage(GameUtility.Const.SHOW_ADD_PRESENT);
+        }
     }
 
     //ガチャ結果、ガチャ報酬表示リセット
     public void GachaResultClose()
     {
         gachaResultView.SetActive(false);
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_CLOSE);
     }
 
-    //ガチャ画面開く
-    public void GachaOpen()
+    //ガチャ画面開閉
+    public void GachaOpenClose(bool enabled)
     {
-        gachaView.SetActive(true);
+        gachaView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
-    //ガチャ画面閉じる
-    public void GachaClose()
+    //ガチャ報酬開閉
+    public void GachaRewardOpenClose(bool enabled)
     {
-        gachaView.SetActive(false);
+        gachaRewardView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
-    //ガチャ報酬開く
-    public void GachaRewardOpen()
+    //ガチャ提供割合開閉
+    public void GachaOfferRateOpenClose(bool enabled)
     {
-        gachaRewardView.SetActive(true);
+        gachaOfferRateView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
-    //ガチャ報酬閉じる
-    public void GachaRewardClose()
+    //ガチャ履歴書開閉
+    public void GachaLogOpenClose(bool enabled)
     {
-        gachaRewardView.SetActive(false);
-    }
-
-    //ガチャ提供割合開く
-    public void GachaOfferRateOpen()
-    {
-        gachaOfferRateView.SetActive(true);
-    }
-
-    //ガチャ提供割合閉じる
-    public void GachaOfferRateClose()
-    {
-        gachaOfferRateView.SetActive(false);
-    }
-
-    //ガチャ履歴開く
-    public void GachaLogOpen()
-    {
-        gachaLogView.SetActive(true);
-    }
-
-    //ガチャ履歴閉じる
-    public void GachaLogClose()
-    {
-        gachaLogView.SetActive(false);
+        gachaLogView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
     //ガチャ履歴無し警告
@@ -155,5 +174,11 @@ public class ClientGacha : MonoBehaviour
     public void WarningMessage(string message)
     {
         gachaWarningText.text = message;
+    }
+
+    //変換アイテムのプレゼント通知文
+    private void NoticeAddPresentMessage(string message)
+    {
+        gachaNoticeAddPresentText.text = message;
     }
 }

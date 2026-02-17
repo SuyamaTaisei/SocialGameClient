@@ -68,13 +68,8 @@ public class ResponseManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("アカウント登録完了");
             UsersTable.Insert(responseObjects.users);
             WalletsTable.Insert(responseObjects.wallets);
-        }
-        else
-        {
-            Debug.LogError("アカウント登録できなかった");
         }
     }
 
@@ -82,13 +77,8 @@ public class ResponseManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("ログイン完了");
             UsersTable.Insert(responseObjects.users);
             GachaLogsTable.Insert(responseObjects.gacha_logs);
-        }
-        else
-        {
-            Debug.LogError("ログインできなかった");
         }
     }
 
@@ -96,7 +86,6 @@ public class ResponseManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("ホーム更新完了");
             if (responseObjects.users != null)
             {
                 UsersTable.Insert(responseObjects.users);
@@ -122,17 +111,12 @@ public class ResponseManager : MonoBehaviour
                 MissionInstancesTable.Insert(responseObjects.mission_instances);
             }
         }
-        else
-        {
-            Debug.LogError("ホーム更新できなかった");
-        }
     }
 
     public void ExecuteGacha(ResponseObjects responseObjects)
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("ガチャ実行完了");
             CharacterInstancesTable.Insert(responseObjects.character_instances);
             ItemInstancesTable.Insert(responseObjects.item_instances);
 
@@ -151,13 +135,8 @@ public class ResponseManager : MonoBehaviour
             //ガチャログ実行
             if (responseObjects.gacha_logs != null)
             {
-                Debug.Log("ガチャログ実行完了");
                 GachaLogsTable.Insert(responseObjects.gacha_logs);
             }
-        }
-        else
-        {
-            Debug.LogError("ガチャ実行できなかった");
         }
     }
 
@@ -165,7 +144,6 @@ public class ResponseManager : MonoBehaviour
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
-            Debug.Log("強化完了");
             if (responseObjects.users != null)
             {
                 UsersTable.Insert(responseObjects.users);
@@ -187,87 +165,69 @@ public class ResponseManager : MonoBehaviour
                 MissionInstancesTable.Insert(responseObjects.mission_instances);
             }
         }
-        else
-        {
-            Debug.LogError("強化できなかった");
-        }
     }
 
     public void ExecuteMasterData(ResponseObjects responseObjects)
     {
         if (responseObjects.shop_categories != null)
         {
-            Debug.Log("マスタデータ更新完了(ショップカテゴリ)");
             ShopCategoriesTable.Insert(responseObjects.shop_categories);
         }
         if (responseObjects.shop_data != null)
         {
-            Debug.Log("マスタデータ更新完了(ショップデータ)");
             ShopDataTable.Insert(responseObjects.shop_data);
         }
         if (responseObjects.shop_rewards != null)
         {
-            Debug.Log("マスタデータ更新完了(ショップ提供報酬)");
             ShopRewardsTable.Insert(responseObjects.shop_rewards);
         }
 
         if (responseObjects.character_categories != null)
         {
-            Debug.Log("マスタデータ更新完了(キャラクターカテゴリ)");
             CharacterCategoriesTable.Insert(responseObjects.character_categories);
         }
         if (responseObjects.character_data != null)
         {
-            Debug.Log("マスタデータ更新完了(キャラクターデータ)");
             CharacterDataTable.Insert(responseObjects.character_data);
         }
         if (responseObjects.character_rarities != null)
         {
-            Debug.Log("マスタデータ更新完了(キャラクターレアリティ)");
             CharacterRaritiesTable.Insert(responseObjects.character_rarities);
         }
 
         if (responseObjects.item_categories != null)
         {
-            Debug.Log("マスタデータ更新完了(アイテムカテゴリ)");
             ItemCategoriesTable.Insert(responseObjects.item_categories);
         }
         if (responseObjects.item_data != null)
         {
-            Debug.Log("マスタデータ更新完了(アイテムデータ)");
             ItemDataTable.Insert(responseObjects.item_data);
         }
         if (responseObjects.item_rarities != null)
         {
-            Debug.Log("マスタデータ更新完了(アイテムレアリティ)");
             ItemRaritiesTable.Insert(responseObjects.item_rarities);
         }
 
         if (responseObjects.gacha_periods != null)
         {
-            Debug.Log("マスタデータ更新完了(ガチャ期間)");
             GachaPeriodsTable.Insert(responseObjects.gacha_periods);
         }
         if (responseObjects.gacha_data != null)
         {
-            Debug.Log("マスタデータ更新完了(ガチャデータ)");
             GachaDataTable.Insert(responseObjects.gacha_data);
         }
 
         if (responseObjects.present_categories != null)
         {
-            Debug.Log("マスターデータ更新完了(プレゼントカテゴリ)");
             PresentCategoriseTable.Insert(responseObjects.present_categories);
         }
 
         if (responseObjects.mission_categories != null)
         {
-            Debug.Log("マスタデータ更新完了(ミッションカテゴリ)");
             MissionCategoriesTable.Insert(responseObjects.mission_categories);
         }
         if (responseObjects.mission_data != null)
         {
-            Debug.Log("マスタデータ更新完了(ミッションデータ)");
             MissionDataTable.Insert(responseObjects.mission_data);
         }
     }
@@ -281,19 +241,16 @@ public class ResponseManager : MonoBehaviour
 
         if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_NOT_PAYMENT))
         {
-            Debug.LogError("残高不足");
             clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_1);
             clientGacha.WarningMessage(GameUtility.Const.ERROR_PAYMENT_1);
         }
         else if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_LIMIT_WALLETS))
         {
-            Debug.Log("これ以上ウォレットを増やせない");
             clientShop.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
             clientGacha.WarningMessage(GameUtility.Const.ERROR_PAYMENT_2);
         }
         else
         {
-            Debug.Log("支払い完了");
             clientShop.WarningMessage("");
             shopConfirmFixedView.SetShopDetailClose();
             shopConfirmFixedView.SetBuyConfirmClose();
@@ -309,12 +266,10 @@ public class ResponseManager : MonoBehaviour
 
         if (responseObjects.errcode == int.Parse(GameUtility.Const.ERRCODE_PRESENT_RECEIVED))
         {
-            Debug.Log("プレゼント受取期限を過ぎた内容が含まれている");
             instancePresentFixedView.SetCompleteText(GameUtility.Const.ERROR_PRESENT_RECEIVED);
         }
         else
         {
-            Debug.Log("プレゼントを受け取った");
             instancePresentFixedView.SetCompleteText(GameUtility.Const.SHOW_PRESENT_RECEIVED);
         }
     }

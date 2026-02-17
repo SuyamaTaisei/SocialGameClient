@@ -31,9 +31,9 @@ public class InstancePresentFixedView : MonoBehaviour
         SetConfirm(false);        
         SetComplete(false);
 
-        presentTabList[0].onValueChanged.AddListener(action => { Set(true, false, false); });
-        presentTabList[1].onValueChanged.AddListener(action => { Set(false, true, false); });
-        presentTabList[2].onValueChanged.AddListener(action => { Set(false, false, true); });
+        presentTabList[0].onValueChanged.AddListener(action => { if(action) Set(true, false, false); });
+        presentTabList[1].onValueChanged.AddListener(action => { if(action) Set(false, true, false); });
+        presentTabList[2].onValueChanged.AddListener(action => { if(action) Set(false, false, true); });
 
         presentInstanceConfirmExecuteButton.onClick.AddListener(() => clientPresent.RequestPresentReceived()); //プレゼント受け取りリクエスト
         presentInstanceConfirmCancelButton.onClick.AddListener(() => SetConfirm(false));
@@ -56,6 +56,15 @@ public class InstancePresentFixedView : MonoBehaviour
             instancePresentConfirmList.AllDataList(allData);
             SetConfirm(true);
         });
+    }
+
+    //標準項目の表示用
+    public void SetDefaultTab()
+    {
+        presentTabList[0].SetIsOnWithoutNotify(false);
+        presentTabList[1].SetIsOnWithoutNotify(true);
+        presentTabList[2].SetIsOnWithoutNotify(false);
+        Set(false, true, false);
     }
 
     //項目表示の切り替え

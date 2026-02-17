@@ -1,4 +1,5 @@
 ﻿using TMPro;
+using SoundSystem;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Networking;
@@ -27,10 +28,10 @@ public class ClientPresent : MonoBehaviour
         presentInstanceView.SetActive(false);
         presentInstanceOpenButton.onClick.AddListener(() =>
         {
-            instancePresentFixedView.SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
-            presentInstanceView.SetActive(true);
+            instancePresentFixedView.SetDefaultTab(); //常に標準項目を表示
+            PresentOpenClose(true);
         });
-        presentInstanceCloseButton.onClick.AddListener(() => presentInstanceView.SetActive(false));    
+        presentInstanceCloseButton.onClick.AddListener(() => PresentOpenClose(false));    
     }
 
     //プレゼントのid、カテゴリ、内容、数量を保持
@@ -48,6 +49,7 @@ public class ClientPresent : MonoBehaviour
     //プレゼント受取の送信処理
     public void RequestPresentReceived()
     {
+        SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
         var usersModel = UsersTable.Select();
 
         List<IMultipartFormSection> form = new()
@@ -80,6 +82,14 @@ public class ClientPresent : MonoBehaviour
             instancePresentFixedView.SetComplete(true); //プレゼント受取完了画面表示
             ClearPresent();
         }));
+    }
+
+    //プレゼントインスタンス開閉
+    public void PresentOpenClose(bool enabled)
+    {
+        presentInstanceView.SetActive(enabled);
+        string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
+        SoundManager.Instance.PlaySeOneShot(soundName);
     }
 
     //警告表示

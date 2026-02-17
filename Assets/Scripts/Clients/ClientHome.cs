@@ -114,7 +114,7 @@ public class ClientHome : MonoBehaviour
             yield return new WaitForSecondsRealtime(GameUtility.Const.STAMINA_EVERY_MINUTE);
             var usersModel = UsersTable.Select();
 
-            if (usersModel.last_stamina >= GameUtility.Const.STAMINA_MAX_VALUE)
+            if (usersModel.last_stamina >= GameUtility.Const.STAMINA_MOST_VALUE)
             {
                 continue;
             }

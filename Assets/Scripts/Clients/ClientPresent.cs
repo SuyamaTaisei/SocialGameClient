@@ -28,7 +28,7 @@ public class ClientPresent : MonoBehaviour
         presentInstanceView.SetActive(false);
         presentInstanceOpenButton.onClick.AddListener(() =>
         {
-            instancePresentFixedView.SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
+            instancePresentFixedView.SetDefaultTab(); //常に標準項目を表示
             PresentOpenClose(true);
         });
         presentInstanceCloseButton.onClick.AddListener(() => PresentOpenClose(false));    

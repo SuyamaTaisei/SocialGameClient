@@ -18,6 +18,7 @@ public class ClientGacha : MonoBehaviour
     //メッセージ
     [SerializeField] TextMeshProUGUI gachaWarningText;
     [SerializeField] TextMeshProUGUI gachaLogNothingText;
+    [SerializeField] TextMeshProUGUI gachaNoticeAddPresentText;
 
     //ボタン
     [SerializeField] Button gachaOpenButton;
@@ -40,6 +41,7 @@ public class ClientGacha : MonoBehaviour
     [SerializeField] ClientHome clientHome;
     private ApiConnect apiConnect;
 
+    private int beforePresentTotal;
     private const string column_id = "id";
     private const string column_mission_id = "mission_id";
     private const string column_gacha_id = "gacha_id";
@@ -82,6 +84,11 @@ public class ClientGacha : MonoBehaviour
     public void RequestGacha(int gacha_id, int gacha_count)
     {
         SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_DECISION);
+
+        //前回値の保持
+        NoticeAddPresentMessage("");
+        beforePresentTotal = GetPresentTotal();
+
         var usersModel = UsersTable.Select();
         List<IMultipartFormSection> form = new()
         {
@@ -90,7 +97,32 @@ public class ClientGacha : MonoBehaviour
             new MultipartFormDataSection(column_gacha_id, gacha_id.ToString()),
             new MultipartFormDataSection(key_gacha_count, gacha_count.ToString())
         };
-        StartCoroutine(apiConnect.Send(GameUtility.Const.GACHA_EXECUTE_URL, form));
+        StartCoroutine(apiConnect.Send(GameUtility.Const.GACHA_EXECUTE_URL, form, action =>
+        {
+            CheckPresentTotal();
+        }));
+    }
+
+    //現在のプレゼント総数を取得(負荷軽減のために、ガチャに変換されるアイテムカテゴリに限定する)
+    private int GetPresentTotal()
+    {
+        int total = 0;
+        var present = PresentInstancesTable.SelectAll(0, int.MaxValue);
+
+        foreach (var all in present)
+        {
+            total += all.amount;
+        }
+        return total;
+    }
+
+    //現在値のプレゼント総数が、前回値のプレゼント総数より大きければ
+    private void CheckPresentTotal()
+    {
+        if (GetPresentTotal() > beforePresentTotal)
+        {
+            NoticeAddPresentMessage(GameUtility.Const.SHOW_ADD_PRESENT);
+        }
     }
 
     //ガチャ結果、ガチャ報酬表示リセット
@@ -142,5 +174,11 @@ public class ClientGacha : MonoBehaviour
     public void WarningMessage(string message)
     {
         gachaWarningText.text = message;
+    }
+
+    //変換アイテムのプレゼント通知文
+    private void NoticeAddPresentMessage(string message)
+    {
+        gachaNoticeAddPresentText.text = message;
     }
 }

@@ -112,6 +112,7 @@ namespace GameUtility
         public const string SHOW_DAY = "日";
         public const string SHOW_TIME = "時間";
         public const string SHOW_PRESENT_RECEIVED = "受取を完了しました";
+        public const string SHOW_ADD_PRESENT = "一部のアイテムがプレゼントボックスに送られました";
 
         //ミッション表記
         public const string SHOW_REWARD = "報酬 ";

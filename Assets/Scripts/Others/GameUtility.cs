@@ -9,7 +9,7 @@ namespace GameUtility
         #if ENV_LOCAL
             private const string BASE_URL = "http://localhost/";
         #elif ENV_DEV
-            private const string BASE_URL = "http://example.com/";
+            private const string BASE_URL = "http://ec2-18-181-239-38.ap-northeast-1.compute.amazonaws.com/";
         #endif
 
         //エンドポイント

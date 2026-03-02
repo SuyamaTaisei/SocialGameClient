@@ -33,15 +33,14 @@ public class EnhanceItemList : MonoBehaviour
         for (int i = 0; i < itemInstancesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
+            var item = Instantiate(templateView, content);
             var view = item.GetComponent<EnhanceItemTemplateView>();
 
             //データの取得
-            int index = i;
-            var data = itemInstancesList[index];
+            var data = itemInstancesList[i];
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{data.item_id}";
-            ItemDataModel data1 = ItemDataTable.SelectId(data.item_id);
-            ItemRaritiesModel data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
+            var data1 = ItemDataTable.SelectId(data.item_id);
+            var data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
 
             //データの描画
             view.Set(data1, data2, data, imagePath);

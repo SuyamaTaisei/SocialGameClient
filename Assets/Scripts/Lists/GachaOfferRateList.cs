@@ -18,7 +18,7 @@ public class GachaOfferRateList : MonoBehaviour
         for (int i = 0; i < gachaDataList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
+            var item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaOfferRateTemplateView>();
 
             //データの取得

@@ -15,8 +15,8 @@ public class GachaPeriodList : MonoBehaviour
         for (int i = 0; i < gachaPeriodsList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            Button button = item.GetComponentInChildren<Button>();
+            var item = Instantiate(templateView, content);
+            var button = item.GetComponentInChildren<Button>();
 
             //データの取得
             int index = i;

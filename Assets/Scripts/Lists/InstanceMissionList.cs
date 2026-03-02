@@ -28,9 +28,9 @@ public class InstanceMissionList : MonoBehaviour
         for (int i = 0; i < missionDataList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            Button button = item.GetComponentInChildren<Button>();
+            var item = Instantiate(templateView, content);
             var view = item.GetComponent<InstanceMissionTemplateView>();
+            var button = item.GetComponentInChildren<Button>();
 
             //データの取得
             var data = missionDataList[i];

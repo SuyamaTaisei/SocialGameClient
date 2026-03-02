@@ -28,7 +28,7 @@ public class GachaResultList : MonoBehaviour
             var gachaResult = gachaResults[i];
 
             //データの生成
-            GameObject item = Instantiate(templateView, content);
+            var item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaResultTemplateView>();
 
             //ガチャ回数分の内、新規で出たキャラクターIDのみ
@@ -47,14 +47,14 @@ public class GachaResultList : MonoBehaviour
             //新規入手
             if (isNew)
             {
-                gachaResultTemplateView.SetColorChange(view, GameUtility.Const.GACHA_COLOR_NEW);
-                gachaResultTemplateView.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
+                view.SetColorChange(view, GameUtility.Const.GACHA_COLOR_NEW);
+                view.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
             }
             //所持済み
             else
             {
-                gachaResultTemplateView.SetColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
-                gachaResultTemplateView.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
+                view.SetColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
+                view.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
             }
 
             //データの取得
@@ -63,7 +63,7 @@ public class GachaResultList : MonoBehaviour
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaResult.character_id}";
 
             //データの描画
-            gachaResultTemplateView.SetGachaResult(view, characterDataModel, characterRaritiesModel, imagePath);
+            view.SetGachaResult(view, characterDataModel, characterRaritiesModel, imagePath);
         }
     }
 

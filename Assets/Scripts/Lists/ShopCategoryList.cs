@@ -16,8 +16,8 @@ public class ShopCategoryList : MonoBehaviour
         for (int i = 0; i < shopCategoriesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            Button button = item.GetComponentInChildren<Button>();
+            var item = Instantiate(templateView, content);
+            var button = item.GetComponentInChildren<Button>();
             var view = item.GetComponent<ShopCategoryTemplateView>();
 
             //データの取得
@@ -27,7 +27,7 @@ public class ShopCategoryList : MonoBehaviour
             var category = data.category;
 
             //データの描画
-            shopCategoryTemplateView.Set(view, shopCategoriesList[i], imagePath);
+            view.Set(view, shopCategoriesList[i], imagePath);
             button.onClick.AddListener(() => shopCategoryTemplateView.SetCategory(category));
         }
     }

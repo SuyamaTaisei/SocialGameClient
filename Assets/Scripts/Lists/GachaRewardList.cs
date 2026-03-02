@@ -26,7 +26,7 @@ public class GachaRewardList : MonoBehaviour
         {
             //データの生成
             var exchange = totalExchangeItems[i];
-            GameObject item = Instantiate(templateView, content);
+            var item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaRewardTemplateView>();
 
             //データの取得
@@ -35,7 +35,7 @@ public class GachaRewardList : MonoBehaviour
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{exchange.item_id}";
 
             //データの描画
-            gachaRewardTemplateView.Set(view, itemDataModel, itemRaritiesModel, exchange, imagePath);
+            view.Set(view, itemDataModel, itemRaritiesModel, exchange, imagePath);
         }
     }
 }

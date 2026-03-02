@@ -48,16 +48,15 @@ public class InstancePresentList : MonoBehaviour
         for (int i = 0; i < presentInstancesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            Button button = item.GetComponentInChildren<Button>();
+            var item = Instantiate(templateView, content);
             var view = item.GetComponent<InstancePresentTemplateView>();
+            var button = item.GetComponentInChildren<Button>();
 
             //データの取得
-            int index = i;
-            var data = presentInstancesList[index];
+            var data = presentInstancesList[i];
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{data.content}";
-            ItemDataModel data1 = ItemDataTable.SelectId(data.content);
-            ItemRaritiesModel data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
+            var data1 = ItemDataTable.SelectId(data.content);
+            var data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
 
             //データの描画
             view.Set(data1, data2, data, imagePath);

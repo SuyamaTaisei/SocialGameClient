@@ -72,16 +72,15 @@ public class InstanceCharacterList : MonoBehaviour
         for (int i = 0; i < characterInstancesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            Button button = item.GetComponentInChildren<Button>();
+            var item = Instantiate(templateView, content);
+            var button = item.GetComponentInChildren<Button>();
             var view = item.GetComponent<InstanceCharacterTemplateView>();
 
             //データの取得
-            int index = i;
-            var data = characterInstancesList[index];
+            var data = characterInstancesList[i];
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
-            CharacterDataModel data1 = CharacterDataTable.SelectId(data.character_id);
-            CharacterRaritiesModel data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
+            var data1 = CharacterDataTable.SelectId(data.character_id);
+            var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
 
             //データの描画
             view.Set(data1, data2, data, imagePath);

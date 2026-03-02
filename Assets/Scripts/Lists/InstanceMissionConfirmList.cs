@@ -17,7 +17,7 @@ public class InstanceMissionConfirmList : MonoBehaviour
         for (int i = 0; i < missionInstancesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
+            var item = Instantiate(templateView, content);
             var view = item.GetComponent<InstanceMissionTemplateView>();
 
             //データの取得

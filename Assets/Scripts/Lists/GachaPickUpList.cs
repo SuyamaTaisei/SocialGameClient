@@ -16,9 +16,9 @@ public class GachaPickUpList : MonoBehaviour
         //データの生成
         for (int i = startCount; i <= maxCount; i++)
         {
-            GameObject item = Instantiate(templateView, content);
-            int index = pickUpNumber + i;
+            var item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaPickUpTemplateView>();
+            int index = pickUpNumber + i;
 
             List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gachaPeriodTemplateView.GachaId);
 

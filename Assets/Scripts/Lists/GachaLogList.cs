@@ -31,9 +31,9 @@ public class GachaLogList : MonoBehaviour
             //データの生成
             var item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaLogTemplateView>();
-            int index = i;
 
             //データの取得
+            int index = i;
             var characterDataModel = CharacterDataTable.SelectId(gachaLogsList[index].character_id);
             var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
             var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaLogsList[index].gacha_id);

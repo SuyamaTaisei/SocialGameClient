@@ -25,11 +25,11 @@ public class GachaRewardList : MonoBehaviour
         for (int i = 0; i < totalExchangeItems.Length; i++)
         {
             //データの生成
-            var exchange = totalExchangeItems[i];
             var item = Instantiate(templateView, content);
             var view = item.GetComponent<GachaRewardTemplateView>();
 
             //データの取得
+            var exchange = totalExchangeItems[i];
             var itemDataModel = ItemDataTable.SelectId(exchange.item_id);
             var itemRaritiesModel = ItemRaritiesTable.SelectId(itemDataModel.rarity_id);
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{exchange.item_id}";

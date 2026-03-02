@@ -17,18 +17,17 @@ public class ShopCategoryList : MonoBehaviour
         {
             //データの生成
             var item = Instantiate(templateView, content);
-            var button = item.GetComponentInChildren<Button>();
             var view = item.GetComponent<ShopCategoryTemplateView>();
+            var button = item.GetComponentInChildren<Button>();
 
             //データの取得
             int index = i;
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{index}";
             var data = shopCategoriesList[index];
-            var category = data.category;
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{index}";
 
             //データの描画
             view.Set(view, shopCategoriesList[i], imagePath);
-            button.onClick.AddListener(() => shopCategoryTemplateView.SetCategory(category));
+            button.onClick.AddListener(() => shopCategoryTemplateView.SetCategory(data.category));
         }
     }
 }

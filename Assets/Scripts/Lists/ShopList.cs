@@ -28,16 +28,16 @@ public class ShopList : MonoBehaviour
         {
             //データの生成
             var item = Instantiate(templateView, content);
-            var button = item.GetComponentInChildren<Button>();
             var view = item.GetComponent<ShopTemplateView>();
+            var button = item.GetComponentInChildren<Button>();
 
             //データの取得
             int index1 = productNumber1 + i;
             int index2 = productNumber2 + i;
             int imageindex = imageNumber;
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{imageindex}";
             var data1 = ItemDataTable.SelectId(itemId);
             var data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{imageFolderName}/{imageindex}";
 
             //データの描画
             view.Set(shopList[i], data2, imagePath);

@@ -4,6 +4,7 @@ public class GachaRewardList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaRewardTemplateView gachaRewardTemplateView;
     [SerializeField] ButtonEffect buttonEffect;
@@ -30,9 +31,7 @@ public class GachaRewardList : MonoBehaviour
 
             //データの取得
             var data = totalExchangeItems[i];
-            var data1 = ItemDataTable.SelectId(data.item_id);
-            var data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{data.item_id}";
+            var (data1, data2, imagePath) = dataGetManager.GetItemData(data.item_id);
 
             //データの描画
             view.Set(view, data1, data2, data, imagePath);

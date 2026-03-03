@@ -5,6 +5,7 @@ public class GachaResultList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaFixedView gachaFixedView;
     [SerializeField] GachaResultTemplateView gachaResultTemplateView;
@@ -58,9 +59,7 @@ public class GachaResultList : MonoBehaviour
             }
 
             //データの取得
-            var data1 = CharacterDataTable.SelectId(gachaResult.character_id);
-            var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaResult.character_id}";
+            var (data1, data2, imagePath) = dataGetManager.GetCharacterData(gachaResult.character_id);
 
             //データの描画
             view.SetGachaResult(view, data1, data2, imagePath);

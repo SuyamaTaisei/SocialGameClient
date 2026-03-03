@@ -5,6 +5,7 @@ public class InstanceMissionConfirmList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] DataGetManager dataGetManager;
 
     private void OnDisable() => Clear();
 
@@ -22,13 +23,8 @@ public class InstanceMissionConfirmList : MonoBehaviour
 
             //データの取得
             var data = missionInstancesList[i];
-            var data1 = MissionDataTable.SelectId(data.mission_id);
-            string imagePath = "";
-            switch (data1.reward_category)
-            {
-                case 1001: imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_GEMS}/{imageIndex}"; break;
-                case 1002: imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_COINS}/{imageIndex}"; break;
-            }
+            var data1 = dataGetManager.GetMissionData(data.mission_id);
+            string imagePath = dataGetManager.GetMissionReward(data1.reward_category, imageIndex);
 
             //データの描画
             view.Set(data1, data, imagePath);

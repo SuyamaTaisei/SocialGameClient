@@ -7,6 +7,7 @@ public class InstanceCharacterList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientInstance clientInstance;
     [SerializeField] InstanceCharacterDetailFixedView charaInstanceDetailFixedView;
     [SerializeField] TMP_Dropdown dropDownList;
@@ -78,9 +79,7 @@ public class InstanceCharacterList : MonoBehaviour
 
             //データの取得
             var data = characterInstancesList[i];
-            var data1 = CharacterDataTable.SelectId(data.character_id);
-            var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
+            var (data1, data2, imagePath) = dataGetManager.GetCharacterData(data.character_id);
 
             //データの描画
             view.Set(data1, data2, data, imagePath);

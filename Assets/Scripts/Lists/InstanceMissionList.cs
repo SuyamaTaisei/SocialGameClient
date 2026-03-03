@@ -5,6 +5,7 @@ public class InstanceMissionList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientMission clientMission;
     [SerializeField] InstanceMissionFixedView instanceMissionFixedView;
     [SerializeField] InstanceMissionTemplateView instanceMissionTemplateView;
@@ -34,13 +35,8 @@ public class InstanceMissionList : MonoBehaviour
 
             //データの取得
             var data = missionDataList[i];
-            var data1 = MissionInstancesTable.SelectId(data.id, data.mission_category);
-            string imagePath = "";
-            switch(data.reward_category)
-            {
-                case 1001: imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_GEMS}/{imageIndex}"; break;
-                case 1002: imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_COINS}/{imageIndex}"; break;
-            }
+            var data1 = dataGetManager.GetMissionInstanceData(data.id, data.mission_category);
+            string imagePath = dataGetManager.GetMissionReward(data.reward_category, imageIndex);
 
             //データの描画
             view.Set(data, data1, imagePath);

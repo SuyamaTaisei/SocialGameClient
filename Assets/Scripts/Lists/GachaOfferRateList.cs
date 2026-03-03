@@ -5,6 +5,7 @@ public class GachaOfferRateList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaOfferRateTemplateView gachaOfferRateTemplateView;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
@@ -23,9 +24,7 @@ public class GachaOfferRateList : MonoBehaviour
 
             //データの取得
             var data = gachaDataList[i];
-            var data1 = CharacterDataTable.SelectId(data.character_id);
-            var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
+            var (data1, data2, imagePath) = dataGetManager.GetCharacterData(data.character_id);
             float rate = data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
 
             //データの描画

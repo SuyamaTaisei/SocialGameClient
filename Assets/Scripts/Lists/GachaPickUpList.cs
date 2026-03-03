@@ -6,6 +6,7 @@ public class GachaPickUpList : MonoBehaviour
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
+    [SerializeField] DataGetManager dataGetManager;
 
     [SerializeField] int startCount;
     [SerializeField] int maxCount;
@@ -27,9 +28,7 @@ public class GachaPickUpList : MonoBehaviour
                 if (list.character_id == index)
                 {
                     //データの取得
-                    var data1 = CharacterDataTable.SelectId(index);
-                    var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
-                    string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{index}";
+                    var (data1, data2, imagePath) = dataGetManager.GetCharacterData(index);
 
                     //データの描画
                     view.Set(data1, data2, imagePath);

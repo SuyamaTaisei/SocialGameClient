@@ -5,6 +5,7 @@ public class GachaLogList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaLogTemplateView gachaLogTemplateView;
 
@@ -34,10 +35,8 @@ public class GachaLogList : MonoBehaviour
 
             //データの取得
             int index = i;
-            var data1 = CharacterDataTable.SelectId(gachaLogsList[index].character_id);
-            var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
-            var data3 = GachaPeriodsTable.SelectId(gachaLogsList[index].gacha_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaLogsList[index].character_id}";
+            var (data1, data2, imagePath) = dataGetManager.GetCharacterData(gachaLogsList[index].character_id);
+            var data3 = dataGetManager.GetGachaPeriodData(gachaLogsList[index].gacha_id);
 
             //データの描画
             view.Set(view, data1, data2, gachaLogsList[i], data3, imagePath);

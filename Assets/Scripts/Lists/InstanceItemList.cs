@@ -7,6 +7,7 @@ public class InstanceItemList : MonoBehaviour
 {
     [SerializeField] Transform content;
     [SerializeField] GameObject templateView;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientInstance clientInstance;
     [SerializeField] InstanceItemDetailFixedView itemInstanceDetailFixedView;
     [SerializeField] TMP_Dropdown dropDownList;
@@ -71,9 +72,7 @@ public class InstanceItemList : MonoBehaviour
 
             //データの取得
             var data = itemInstancesList[i];
-            var data1 = ItemDataTable.SelectId(data.item_id);
-            var data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{data.item_id}";
+            var (data1, data2, imagePath) = dataGetManager.GetItemData(data.item_id);
 
             //データの描画
             view.Set(data1, data2, data, imagePath);

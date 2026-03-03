@@ -29,13 +29,13 @@ public class GachaRewardList : MonoBehaviour
             var view = item.GetComponent<GachaRewardTemplateView>();
 
             //データの取得
-            var exchange = totalExchangeItems[i];
-            var itemDataModel = ItemDataTable.SelectId(exchange.item_id);
-            var itemRaritiesModel = ItemRaritiesTable.SelectId(itemDataModel.rarity_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{exchange.item_id}";
+            var data = totalExchangeItems[i];
+            var data1 = ItemDataTable.SelectId(data.item_id);
+            var data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
+            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{data.item_id}";
 
             //データの描画
-            view.Set(view, itemDataModel, itemRaritiesModel, exchange, imagePath);
+            view.Set(view, data1, data2, data, imagePath);
         }
     }
 }

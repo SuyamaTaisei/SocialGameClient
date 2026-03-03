@@ -58,12 +58,12 @@ public class GachaResultList : MonoBehaviour
             }
 
             //データの取得
-            var characterDataModel = CharacterDataTable.SelectId(gachaResult.character_id);
-            var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+            var data1 = CharacterDataTable.SelectId(gachaResult.character_id);
+            var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaResult.character_id}";
 
             //データの描画
-            view.SetGachaResult(view, characterDataModel, characterRaritiesModel, imagePath);
+            view.SetGachaResult(view, data1, data2, imagePath);
         }
     }
 

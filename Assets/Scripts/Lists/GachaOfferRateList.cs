@@ -23,13 +23,13 @@ public class GachaOfferRateList : MonoBehaviour
 
             //データの取得
             var data = gachaDataList[i];
-            var characterDataModel = CharacterDataTable.SelectId(data.character_id);
-            var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+            var data1 = CharacterDataTable.SelectId(data.character_id);
+            var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
             string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
             float rate = data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
 
             //データの描画
-            view.Set(data, characterDataModel, characterRaritiesModel, rate, imagePath);
+            view.Set(data, data1, data2, rate, imagePath);
             view.SetCalculate(data, ref rateN, ref rateR, ref rateSR, ref rateSSR);
         }
 

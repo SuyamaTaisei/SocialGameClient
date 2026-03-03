@@ -27,12 +27,12 @@ public class GachaPickUpList : MonoBehaviour
                 if (list.character_id == index)
                 {
                     //データの取得
-                    var characterDataModel = CharacterDataTable.SelectId(index);
-                    var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
+                    var data1 = CharacterDataTable.SelectId(index);
+                    var data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
                     string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{index}";
 
                     //データの描画
-                    view.Set(characterDataModel, characterRaritiesModel, imagePath);
+                    view.Set(data1, data2, imagePath);
                 }
             }
         }

@@ -4,7 +4,8 @@ using UnityEngine;
 public class GachaLogList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaLogTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaLogTemplateView gachaLogTemplateView;
@@ -30,8 +31,7 @@ public class GachaLogList : MonoBehaviour
         for (int i = 0; i < gachaLogsList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaLogTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
             int index = i;

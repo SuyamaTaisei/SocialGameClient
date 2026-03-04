@@ -4,7 +4,8 @@ using UnityEngine;
 public class GachaPickUpList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaPickUpTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
     [SerializeField] DataGetManager dataGetManager;
 
@@ -17,8 +18,7 @@ public class GachaPickUpList : MonoBehaviour
         //データの生成
         for (int i = startCount; i <= maxCount; i++)
         {
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaPickUpTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
             int index = pickUpNumber + i;
 
             List<GachaDataModel> gachaDataModel = GachaDataTable.SelectAllGachaId(gachaPeriodTemplateView.GachaId);

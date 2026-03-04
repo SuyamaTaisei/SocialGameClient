@@ -4,7 +4,8 @@ using UnityEngine.UI;
 public class InstanceMissionList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] InstanceMissionTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientMission clientMission;
     [SerializeField] InstanceMissionFixedView instanceMissionFixedView;
@@ -29,9 +30,7 @@ public class InstanceMissionList : MonoBehaviour
         for (int i = 0; i < missionDataList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<InstanceMissionTemplateView>();
-            var button = item.GetComponentInChildren<Button>();
+            var (view, button) = dataListManager.CreateDataListSync(templateView, content, true, true);
 
             //データの取得
             var data = missionDataList[i];

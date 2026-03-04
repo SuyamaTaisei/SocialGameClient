@@ -4,7 +4,8 @@ using UnityEngine;
 public class InstancePresentConfirmList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] InstancePresentTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
 
     private void OnDisable() => Clear();
@@ -17,8 +18,7 @@ public class InstancePresentConfirmList : MonoBehaviour
         for (int i = 0; i < presentInstancesList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<InstancePresentTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
             var data = presentInstancesList[i];

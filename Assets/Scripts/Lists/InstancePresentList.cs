@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class InstancePresentList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] InstancePresentTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientPresent clientPresent;
     [SerializeField] InstancePresentFixedView instancePresentFixedView;
@@ -49,9 +50,7 @@ public class InstancePresentList : MonoBehaviour
         for (int i = 0; i < presentInstancesList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<InstancePresentTemplateView>();
-            var button = item.GetComponentInChildren<Button>();
+            var (view, button) = dataListManager.CreateDataListSync(templateView, content, true, true);
 
             //データの取得
             var data = presentInstancesList[i];

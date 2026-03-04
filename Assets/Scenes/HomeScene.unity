@@ -8227,7 +8227,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1190968998}
-  templateView: {fileID: 924080637}
+  templateView: {fileID: 924080639}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientGacha: {fileID: 1605318034}
   gachaOfferRateTemplateView: {fileID: 924080639}
@@ -8354,7 +8355,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1958544682}
-  templateView: {fileID: 1280758908}
+  templateView: {fileID: 1280758910}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientInstance: {fileID: 1116380503}
   itemInstanceDetailFixedView: {fileID: 189289193}
@@ -11601,7 +11603,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 2138505027}
-  templateView: {fileID: 1195476528}
+  templateView: {fileID: 1195476530}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientGacha: {fileID: 1605318034}
   gachaLogTemplateView: {fileID: 1195476530}
@@ -18426,7 +18429,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 723250606}
-  templateView: {fileID: 1407158981}
+  templateView: {fileID: 1407158983}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientInstance: {fileID: 1116380503}
   charaInstanceDetailFixedView: {fileID: 2041603146}
@@ -19512,7 +19516,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1907616389}
-  templateView: {fileID: 152003495}
+  templateView: {fileID: 152003497}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientInstance: {fileID: 1116380503}
 --- !u!1 &625701801
@@ -20285,7 +20290,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 127755025}
-  templateView: {fileID: 494383125}
+  templateView: {fileID: 494383128}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientGacha: {fileID: 1605318034}
   gachaFixedView: {fileID: 1655934740}
@@ -22528,7 +22534,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1499128405}
-  templateView: {fileID: 1894198015}
+  templateView: {fileID: 1894198017}
+  dataListManager: {fileID: 1092661864}
   shopDetailFixedView: {fileID: 1655090803}
   startCount: 0
   maxCount: 3
@@ -22734,7 +22741,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1922301707}
-  templateView: {fileID: 509953789}
+  templateView: {fileID: 509953791}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientMission: {fileID: 1579078846}
   instanceMissionFixedView: {fileID: 1549123394}
@@ -26823,7 +26831,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 408295781}
-  templateView: {fileID: 500671914}
+  templateView: {fileID: 500671916}
+  dataListManager: {fileID: 1092661864}
   gachaPeriodTemplateView: {fileID: 432129394}
   dataGetManager: {fileID: 1801360459}
   startCount: 0
@@ -34009,6 +34018,50 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1091141771}
   m_CullTransparentMesh: 1
+--- !u!1 &1092661863
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1092661865}
+  - component: {fileID: 1092661864}
+  m_Layer: 0
+  m_Name: DataListManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1092661864
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092661863}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a12c731cd876cdf47883f5978c1371b6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!4 &1092661865
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1092661863}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1098161957
 GameObject:
   m_ObjectHideFlags: 0
@@ -43333,7 +43386,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 480185484}
-  templateView: {fileID: 202819306}
+  templateView: {fileID: 202819308}
+  dataListManager: {fileID: 1092661864}
   shopDetailFixedView: {fileID: 1655090803}
   startCount: 4
   maxCount: 7
@@ -43808,7 +43862,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1114424207}
-  templateView: {fileID: 884381910}
+  templateView: {fileID: 884381919}
+  dataListManager: {fileID: 1092661864}
   clientShop: {fileID: 2025727311}
   shopCategoryTemplateView: {fileID: 884381919}
 --- !u!1 &1411646076
@@ -56739,7 +56794,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 834725412}
-  templateView: {fileID: 432129392}
+  templateView: {fileID: 432129394}
+  dataListManager: {fileID: 1092661864}
   gachaPeriodTemplateView: {fileID: 432129394}
 --- !u!1 &1867832600
 GameObject:
@@ -57179,7 +57235,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1725525958}
-  templateView: {fileID: 374920923}
+  templateView: {fileID: 374920925}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientPresent: {fileID: 175419110}
   instancePresentFixedView: {fileID: 1206666254}
@@ -59384,7 +59441,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1586036315}
-  templateView: {fileID: 374920923}
+  templateView: {fileID: 374920925}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientPresent: {fileID: 175419110}
   instancePresentFixedView: {fileID: 1206666254}
@@ -59639,7 +59697,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1458570938}
-  templateView: {fileID: 200163449}
+  templateView: {fileID: 200163451}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
 --- !u!1001 &1952884549
 PrefabInstance:
@@ -61602,7 +61661,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1171184240}
-  templateView: {fileID: 868934295}
+  templateView: {fileID: 868934297}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
 --- !u!1 &2033414370
 GameObject:
@@ -62880,7 +62940,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   content: {fileID: 1953414044}
-  templateView: {fileID: 1406646910}
+  templateView: {fileID: 1406646912}
+  dataListManager: {fileID: 1092661864}
   dataGetManager: {fileID: 1801360459}
   clientGacha: {fileID: 1605318034}
   gachaRewardTemplateView: {fileID: 1406646912}
@@ -66023,4 +66084,5 @@ SceneRoots:
   - {fileID: 1579078845}
   - {fileID: 2013086743}
   - {fileID: 1801360458}
+  - {fileID: 1092661865}
   - {fileID: 168599268}

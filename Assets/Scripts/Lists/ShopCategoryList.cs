@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class ShopCategoryList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] ShopCategoryTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] ClientShop clientShop;
     [SerializeField] ShopCategoryTemplateView shopCategoryTemplateView;
 
@@ -16,9 +17,7 @@ public class ShopCategoryList : MonoBehaviour
         for (int i = 0; i < shopCategoriesList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<ShopCategoryTemplateView>();
-            var button = item.GetComponentInChildren<Button>();
+            var (view, button) = dataListManager.CreateDataListSync(templateView, content, true, true);
 
             //データの取得
             int index = i;

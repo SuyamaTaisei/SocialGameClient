@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class GachaOfferRateList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaOfferRateTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaOfferRateTemplateView gachaOfferRateTemplateView;
@@ -19,8 +20,7 @@ public class GachaOfferRateList : MonoBehaviour
         for (int i = 0; i < gachaDataList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaOfferRateTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
             var data = gachaDataList[i];

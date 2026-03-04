@@ -3,7 +3,8 @@
 public class GachaRewardList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaRewardTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaRewardTemplateView gachaRewardTemplateView;
@@ -26,8 +27,7 @@ public class GachaRewardList : MonoBehaviour
         for (int i = 0; i < totalExchangeItems.Length; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaRewardTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
             var data = totalExchangeItems[i];

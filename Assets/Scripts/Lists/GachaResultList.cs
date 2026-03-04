@@ -4,7 +4,8 @@ using System.Collections.Generic;
 public class GachaResultList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaResultTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaFixedView gachaFixedView;
@@ -29,8 +30,7 @@ public class GachaResultList : MonoBehaviour
             var gachaResult = gachaResults[i];
 
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaResultTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //ガチャ回数分の内、新規で出たキャラクターIDのみ
             bool isNew = false;

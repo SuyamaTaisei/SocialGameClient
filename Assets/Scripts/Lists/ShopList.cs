@@ -5,7 +5,8 @@ using UnityEngine.UI;
 public class ShopList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] ShopTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] ShopDetailFixedView shopDetailFixedView;
 
     [SerializeField] int startCount;
@@ -27,9 +28,7 @@ public class ShopList : MonoBehaviour
         for (int i = startCount; i <= maxCount; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<ShopTemplateView>();
-            var button = item.GetComponentInChildren<Button>();
+            var (view, button) = dataListManager.CreateDataListSync(templateView, content, true, true);
 
             //データの取得
             int index1 = productNumber1 + i;

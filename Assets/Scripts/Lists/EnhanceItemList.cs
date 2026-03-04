@@ -4,7 +4,8 @@ using UnityEngine;
 public class EnhanceItemList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] EnhanceItemTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientInstance clientInstance;
 
@@ -34,8 +35,7 @@ public class EnhanceItemList : MonoBehaviour
         for (int i = 0; i < itemInstancesList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<EnhanceItemTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
             var data = itemInstancesList[i];

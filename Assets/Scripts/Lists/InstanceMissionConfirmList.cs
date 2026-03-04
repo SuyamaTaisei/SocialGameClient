@@ -4,7 +4,8 @@ using UnityEngine;
 public class InstanceMissionConfirmList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] InstanceMissionTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
 
     private void OnDisable() => Clear();
@@ -18,8 +19,7 @@ public class InstanceMissionConfirmList : MonoBehaviour
         for (int i = 0; i < missionInstancesList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<InstanceMissionTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
             var data = missionInstancesList[i];

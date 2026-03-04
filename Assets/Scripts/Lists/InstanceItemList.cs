@@ -6,7 +6,8 @@ using UnityEngine.UI;
 public class InstanceItemList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] InstanceItemTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientInstance clientInstance;
     [SerializeField] InstanceItemDetailFixedView itemInstanceDetailFixedView;
@@ -66,9 +67,7 @@ public class InstanceItemList : MonoBehaviour
         for (int i = 0; i < itemInstancesList.Count; i++)
         {
             //データの生成
-            var item = Instantiate(templateView, content);
-            var view = item.GetComponent<InstanceItemTemplateView>();
-            var button = item.GetComponentInChildren<Button>();
+            var (view, button) = dataListManager.CreateDataListSync(templateView, content, true, true);
 
             //データの取得
             var data = itemInstancesList[i];

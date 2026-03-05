@@ -12,4 +12,15 @@ public class DataListManager : MonoBehaviour
         var button = isButton ? item.GetComponentInChildren<Button>() : null;
         return (view, button);
     }
+
+    //リスト生成処理(非同期)
+    public async Task<(T, Button)> CreateDataListAsync<T>(T template, Transform content, bool isItem = true, bool isButton = false) where T : Component
+    {
+        var data = InstantiateAsync(template, content);
+        await data;
+        var item = data.Result[0];
+        var view   = isItem ? item.GetComponent<T>() : null;
+        var button = isButton ? item.GetComponentInChildren<Button>() : null;
+        return (view, button);
+    }
 }

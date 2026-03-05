@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 public class GachaResultList : MonoBehaviour
@@ -15,7 +16,7 @@ public class GachaResultList : MonoBehaviour
     private void OnDisable() => Clear();
 
     //ガチャ結果表示処理
-    public void DataList(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
+    public async Task DataList(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
     {
         clientGacha.GachaResultView.SetActive(true);
 
@@ -30,7 +31,7 @@ public class GachaResultList : MonoBehaviour
             var gachaResult = gachaResults[i];
 
             //データの生成
-            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
+            var (view, _) = await dataListManager.CreateDataListAsync(templateView, content);
 
             //ガチャ回数分の内、新規で出たキャラクターIDのみ
             bool isNew = false;

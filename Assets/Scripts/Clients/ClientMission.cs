@@ -1,17 +1,25 @@
 ﻿using System.Collections.Generic;
 using SoundSystem;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
 
 public class ClientMission : MonoBehaviour
 {
+    //ウォレット表示
+    [SerializeField] TextMeshProUGUI coinText;
+    [SerializeField] TextMeshProUGUI gemFreeText;
+    [SerializeField] TextMeshProUGUI gemPaidText;
+
     [SerializeField] Button missionInstanceOpenButton;
     [SerializeField] Button missionInstanceCloseButton;
     [SerializeField] GameObject missionInstanceView;
 
     [SerializeField] InstanceMissionList instanceMissionList;
     [SerializeField] InstanceMissionFixedView instanceMissionFixedView;
+
+    [SerializeField] ClientHome clientHome;
     private ApiConnect apiConnect;
 
     //ミッションidをキーにしたカテゴリを紐づけ
@@ -70,6 +78,7 @@ public class ClientMission : MonoBehaviour
             instanceMissionFixedView.SetCtrlAllReceivedButton(); //一括受取ボタン押下制御
             instanceMissionFixedView.SetConfirm(false);          //確認画面閉じる
             instanceMissionFixedView.SetComplete(true);          //受取完了画面表示
+            clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
             ClearMission();
         }));
     }
@@ -81,5 +90,7 @@ public class ClientMission : MonoBehaviour
         missionInstanceView.SetActive(enabled);
         string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
         SoundManager.Instance.PlaySeOneShot(soundName);
+        clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
+        clientHome.RefreshHomeWallet();
     }
 }

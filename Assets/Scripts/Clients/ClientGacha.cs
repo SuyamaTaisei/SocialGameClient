@@ -74,12 +74,6 @@ public class ClientGacha : MonoBehaviour
         gachaResultCloseButton.onClick.AddListener(() => GachaResultClose());
     }
 
-    //表記リアルタイム更新
-    private void Update()
-    {
-        clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
-    }
-
     //ガチャリクエスト送信
     public void RequestGacha(int gacha_id, int gacha_count)
     {
@@ -100,6 +94,7 @@ public class ClientGacha : MonoBehaviour
         StartCoroutine(apiConnect.Send(GameUtility.Const.GACHA_EXECUTE_URL, form, action =>
         {
             CheckPresentTotal();
+            clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
         }));
     }
 
@@ -138,6 +133,8 @@ public class ClientGacha : MonoBehaviour
         gachaView.SetActive(enabled);
         string soundName = enabled ? GameUtility.Const.SE_OPEN_1 : GameUtility.Const.SE_CLOSE;
         SoundManager.Instance.PlaySeOneShot(soundName);
+        clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
+        clientHome.RefreshHomeWallet();
     }
 
     //ガチャ報酬開閉

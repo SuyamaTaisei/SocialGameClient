@@ -48,9 +48,20 @@ public static class ShopDataTable
                 "coin_currency," +
                 "price" +
                 ")" +
-                "values (" + item.product_id + ", " + item.shop_category + ", \"" + item.type + "\", \"" + item.name + "\", " + item.paid_currency + ", " + item.free_currency + ", " + item.coin_currency + ", " + item.price + ")";
+                "values (@product_id, @shop_category, @type, @name, @paid_currency, @free_currency, @coin_currency, @price)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@product_id", item.product_id },
+                {"@shop_category", item.shop_category },
+                {"@type", item.type },
+                {"@name", item.name },
+                {"@paid_currency", item.paid_currency },
+                {"@free_currency", item.free_currency },
+                {"@coin_currency", item.coin_currency },
+                {"@price", item.price },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

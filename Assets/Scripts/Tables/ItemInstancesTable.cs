@@ -36,9 +36,16 @@ public class ItemInstancesTable
                 "item_id," +
                 "amount" +
                 ")" +
-                "values (" + item.id + ", " + item.manage_id + ", " + item.item_id + ", " + item.amount + ")";
+                "values (@id, @manage_id, @item_id, @amount)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@manage_id", item.manage_id },
+                {"@item_id", item.item_id },
+                {"@amount", item.amount },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 
@@ -111,8 +118,15 @@ public class ItemInstancesTable
                 "item_id," +
                 "amount" +
                 ")" +
-                "values (" + item.id + ", " + item.manage_id + ", " + item.item_id + ", " + item.amount + ")";
-            sqlDB.ExecuteNonQuery(itemQuery);
+                "values (@id, @manage_id, @item_id, @amount)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@manage_id", item.manage_id },
+                {"@item_id", item.item_id },
+                {"@amount", item.amount },
+            };
+            sqlDB.ExecuteNonQuery(itemQuery, param);
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class WalletsModel
@@ -33,9 +34,16 @@ public static class WalletsTable
             "gem_free_amount," +
             "gem_paid_amount" +
             ")" +
-            "values (" + walletsModel.manage_id + ", " + walletsModel.coin_amount + ", " + walletsModel.gem_free_amount + ", " + walletsModel.gem_paid_amount + ")";
+            "values (@manage_id, @coin_amount, @gem_free_amount, @gem_paid_amount)";
+        Dictionary<string, object> param = new Dictionary<string, object>()
+        {
+            {"@manage_id", walletsModel.manage_id },
+            {"@coin_amount", walletsModel.coin_amount },
+            {"@gem_free_amount", walletsModel.gem_free_amount },
+            {"@gem_paid_amount", walletsModel.gem_paid_amount },
+        };
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-        sqlDB.ExecuteNonQuery(query);
+        sqlDB.ExecuteNonQuery(query, param);
     }
 
     //レコード取得

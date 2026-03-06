@@ -42,9 +42,18 @@ public class MissionDataTable
                 "reward_category," +
                 "reward_value" +
                 ")" +
-                "values (" + item.id + ", " + item.mission_category + ", " + item.goal + ", \"" + item.description + "\", " + item.reward_category + ", \"" + item.reward_value + "\")";
+                "values (@id, @mission_category, @goal, @description, @reward_category, @reward_value)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@mission_category", item.mission_category },
+                {"@goal", item.goal },
+                {"@description", item.description },
+                {"@reward_category", item.reward_category },
+                {"@reward_value", item.reward_value },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

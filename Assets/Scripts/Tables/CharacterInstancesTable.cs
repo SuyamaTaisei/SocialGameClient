@@ -36,9 +36,16 @@ public class CharacterInstancesTable
                 "character_id," +
                 "level" +
                 ")" +
-                "values (" + item.id + ", " + item.manage_id + ", " + item.character_id + ", " + item.level + ")";
+                "values (@id, @manage_id, @character_id, @level)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@manage_id", item.manage_id },
+                {"@character_id", item.character_id },
+                {"@level", item.level },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

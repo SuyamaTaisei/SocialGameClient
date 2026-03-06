@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class PresentCategoriesModel
@@ -29,9 +30,14 @@ public class PresentCategoriseTable
                 "category," +
                 "name" +
                 ")" +
-                "values (" + item.category + ", \"" + item.name + "\")";
+                "values (@category, @name)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@category", item.category },
+                {"@name", item.name },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 }

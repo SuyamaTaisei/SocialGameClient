@@ -33,9 +33,15 @@ public class GachaDataTable
                 "character_id," +
                 "weight" +
                 ")" +
-                "values (" + item.gacha_id + ", " + item.character_id + ", " + item.weight + ")";
+                "values (@gacha_id, @character_id, @weight)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@gacha_id", item.gacha_id },
+                {"@character_id", item.character_id },
+                {"@weight", item.weight },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

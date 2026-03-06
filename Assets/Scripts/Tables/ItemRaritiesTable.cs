@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class ItemRaritiesModel
@@ -29,9 +30,14 @@ public class ItemRaritiesTable
                 "id," +
                 "name" +
                 ")" +
-                "values (" + item.id + ", \"" + item.name + "\")";
+                "values (@id, @name)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@name", item.name },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

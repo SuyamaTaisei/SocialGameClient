@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class UsersModel
@@ -42,9 +43,19 @@ public static class UsersTable
             "stamina_updated," +
             "last_login" +
             ")" +
-            "values (" + usersModel.manage_id + ", \"" + usersModel.id + "\", \"" + usersModel.user_name + "\", " + usersModel.max_stamina + ", " + usersModel.last_stamina + ", \"" + usersModel.stamina_updated + "\", \"" + usersModel.last_login + "\")";
+            "values (@manage_id, @id, @user_name, @max_stamina, @last_stamina, @stamina_updated, @last_login)";
+        Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@manage_id", usersModel.manage_id },
+                {"@id", usersModel.id },
+                {"@user_name", usersModel.user_name },
+                {"@max_stamina", usersModel.max_stamina },
+                {"@last_stamina", usersModel.last_stamina },
+                {"@stamina_updated", usersModel.stamina_updated },
+                {"@last_login", usersModel.last_login },
+            };
         SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-        sqlDB.ExecuteNonQuery(query);
+        sqlDB.ExecuteNonQuery(query, param);
     }
 
     //レコード取得

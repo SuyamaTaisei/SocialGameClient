@@ -113,7 +113,7 @@ public class ResponseManager : MonoBehaviour
         }
     }
 
-    public void ExecuteGacha(ResponseObjects responseObjects)
+    public async void ExecuteGacha(ResponseObjects responseObjects)
     {
         if (!string.IsNullOrEmpty(responseObjects.users.id))
         {
@@ -125,7 +125,7 @@ public class ResponseManager : MonoBehaviour
             gachaRewardList = FindAnyObjectByType<GachaRewardList>(FindObjectsInactive.Include);
             if(gachaResultList != null && responseObjects.gacha_results != null)
             {
-                gachaResultList.DataList(responseObjects.gacha_results, responseObjects.new_characters, responseObjects.single_exchange_items);
+                await gachaResultList.DataList(responseObjects.gacha_results, responseObjects.new_characters, responseObjects.single_exchange_items);
             }
             //変換されたガチャ報酬の表示
             if(gachaRewardList != null && responseObjects.total_exchange_items != null)

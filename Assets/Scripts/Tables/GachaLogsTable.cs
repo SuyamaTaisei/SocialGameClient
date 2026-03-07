@@ -39,9 +39,17 @@ public class GachaLogsTable
                 "character_id," +
                 "created_at" +
                 ")" +
-                "values (" + item.id + ", " + item.manage_id + ", " + item.gacha_id + ", " + item.character_id + ", \"" + item.created_at + "\")";
+                "values (@id, @manage_id, @gacha_id, @character_id, @created_at)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@manage_id", item.manage_id },
+                {"@gacha_id", item.gacha_id },
+                {"@character_id", item.character_id },
+                {"@created_at", item.created_at },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

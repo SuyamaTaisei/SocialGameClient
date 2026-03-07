@@ -4,7 +4,9 @@ using UnityEngine;
 public class GachaLogList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaLogTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaLogTemplateView gachaLogTemplateView;
 
@@ -29,18 +31,15 @@ public class GachaLogList : MonoBehaviour
         for (int i = 0; i < gachaLogsList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaLogTemplateView>();
-            int index = i;
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
-            var characterDataModel = CharacterDataTable.SelectId(gachaLogsList[index].character_id);
-            var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-            var gachaPeriodsModel = GachaPeriodsTable.SelectId(gachaLogsList[index].gacha_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaLogsList[index].character_id}";
+            int index = i;
+            var (data1, data2, imagePath) = dataGetManager.GetCharacterData(gachaLogsList[index].character_id);
+            var data3 = dataGetManager.GetGachaPeriodData(gachaLogsList[index].gacha_id);
 
             //データの描画
-            gachaLogTemplateView.Set(view, characterDataModel, characterRaritiesModel, gachaLogsList[i], gachaPeriodsModel, imagePath);
+            view.Set(view, data1, data2, gachaLogsList[i], data3, imagePath);
         }
     }
 

@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
+using System.Threading.Tasks;
 using System.Collections.Generic;
 
 public class GachaResultList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaResultTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaFixedView gachaFixedView;
     [SerializeField] GachaResultTemplateView gachaResultTemplateView;
@@ -13,7 +16,7 @@ public class GachaResultList : MonoBehaviour
     private void OnDisable() => Clear();
 
     //ガチャ結果表示処理
-    public void DataList(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
+    public async Task DataList(GachaResultsModel[] gachaResults, GachaResultsModel[] newGachaResults, GachaResultsModel[] singleExchangeItems)
     {
         clientGacha.GachaResultView.SetActive(true);
 
@@ -28,8 +31,7 @@ public class GachaResultList : MonoBehaviour
             var gachaResult = gachaResults[i];
 
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaResultTemplateView>();
+            var (view, _) = await dataListManager.CreateDataListAsync(templateView, content);
 
             //ガチャ回数分の内、新規で出たキャラクターIDのみ
             bool isNew = false;
@@ -47,23 +49,21 @@ public class GachaResultList : MonoBehaviour
             //新規入手
             if (isNew)
             {
-                gachaResultTemplateView.SetColorChange(view, GameUtility.Const.GACHA_COLOR_NEW);
-                gachaResultTemplateView.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
+                view.SetColorChange(view, GameUtility.Const.GACHA_COLOR_NEW);
+                view.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
             }
             //所持済み
             else
             {
-                gachaResultTemplateView.SetColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
-                gachaResultTemplateView.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
+                view.SetColorChange(view, GameUtility.Const.GACHA_COLOR_EXIST);
+                view.SetSingleGachaReward(isNew, view, singleExchangeItems, ref singleExchangeIndex);
             }
 
             //データの取得
-            var characterDataModel = CharacterDataTable.SelectId(gachaResult.character_id);
-            var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{gachaResult.character_id}";
+            var (data1, data2, imagePath) = dataGetManager.GetCharacterData(gachaResult.character_id);
 
             //データの描画
-            gachaResultTemplateView.SetGachaResult(view, characterDataModel, characterRaritiesModel, imagePath);
+            view.SetGachaResult(view, data1, data2, imagePath);
         }
     }
 

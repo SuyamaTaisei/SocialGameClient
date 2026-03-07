@@ -54,9 +54,22 @@ public class PresentInstancesTable
                 "created_at," +
                 "updated_at" +
                 ")" +
-                "values (" + item.id + ", " + item.manage_id + ", " + item.present_category + ", \"" + item.present_name + "\", " + item.content + ", " + item.amount + ", " + item.received + ", \"" + item.period + "\", \"" + item.created_at + "\", \"" + item.updated_at + "\")";
+                "values (@id, @manage_id, @present_category, @present_name, @content, @amount, @received, @period, @created_at, @updated_at)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@manage_id", item.manage_id },
+                {"@present_category", item.present_category },
+                {"@present_name", item.present_name },
+                {"@content", item.content },
+                {"@amount", item.amount },
+                {"@received", item.received },
+                {"@period", item.period },
+                {"@created_at", item.created_at },
+                {"@updated_at", item.updated_at },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 
@@ -146,8 +159,21 @@ public class PresentInstancesTable
                 "created_at," +
                 "updated_at" +
                 ")" +
-                "values (" + item.id + ", " + item.manage_id + ", " + item.present_category + ", \"" + item.present_name + "\", " + item.content + ", " + item.amount + ", " + item.received + ", \"" + item.period + "\", \"" + item.created_at + "\", \"" + item.updated_at + "\")";
-            sqlDB.ExecuteNonQuery(presentQuery);
+                "values (@id, @manage_id, @present_category, @present_name, @content, @amount, @received, @period, @created_at, @updated_at)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@manage_id", item.manage_id },
+                {"@present_category", item.present_category },
+                {"@present_name", item.present_name },
+                {"@content", item.content },
+                {"@amount", item.amount },
+                {"@received", item.received },
+                {"@period", item.period },
+                {"@created_at", item.created_at },
+                {"@updated_at", item.updated_at },
+            };
+            sqlDB.ExecuteNonQuery(presentQuery, param);
         }
     }
 }

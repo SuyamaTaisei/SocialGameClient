@@ -35,12 +35,6 @@ public class ClientShop : MonoBehaviour
         shopCloseButton.onClick.AddListener(() => ShopClose());
     }
 
-    //表記のリアルタイム更新
-    private void Update()
-    {
-        clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
-    }
-
     //購入処理
     public void RequestPayment(int index, int amount)
     {
@@ -56,6 +50,7 @@ public class ClientShop : MonoBehaviour
         {
             clientHome.StaminaApply();
             clientHome.StaminaButtonCtrl();
+            clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
         }));
     }
 
@@ -65,6 +60,7 @@ public class ClientShop : MonoBehaviour
         shopDetailFixedView.SetPaymentComplete(false);
         shopView.SetActive(true);
         SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_OPEN_1);
+        clientHome.WalletApply(coinText, gemFreeText, gemPaidText);
     }
 
     //ショップ閉じる
@@ -72,6 +68,7 @@ public class ClientShop : MonoBehaviour
     {
         shopView.SetActive(false);
         SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_CLOSE);
+        clientHome.RefreshHomeWallet();
     }
 
     //購入警告

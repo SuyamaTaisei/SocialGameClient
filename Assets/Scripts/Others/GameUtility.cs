@@ -1,5 +1,5 @@
-﻿#define ENV_LOCAL
-//#define ENV_DEV
+﻿//#define ENV_LOCAL
+#define ENV_DEV
 
 namespace GameUtility
 {
@@ -9,7 +9,7 @@ namespace GameUtility
         #if ENV_LOCAL
             private const string BASE_URL = "http://localhost/";
         #elif ENV_DEV
-            private const string BASE_URL = "http://example.com/";
+            private const string BASE_URL = "https://taisei-games.com/";
         #endif
 
         //エンドポイント
@@ -32,14 +32,19 @@ namespace GameUtility
 
         //マスタデータ
         public const string MASTER_DATA_VERSION = "1";
-        public const string SHOW_MASTER_TEXT_1 = "ゲームを更新中...";
-        public const string SHOW_MASTER_TEXT_2 = "ゲームを更新しました";
+        public const string SHOW_MASTER_CONFIRMING = "ゲームデータを確認中...";
+        public const string SHOW_MASTER_UPDATING = "ゲームデータを更新中...";
+        public const string SHOW_MASTER_UPDATE_COMPLETE = "ゲームデータを更新しました";
 
         //エラーコード
         public const string ERRCODE_MASTER_DATA_UPDATE = "0";
         public const string ERRCODE_NOT_PAYMENT = "510";
         public const string ERRCODE_LIMIT_WALLETS = "511";
         public const string ERRCODE_PRESENT_RECEIVED = "520";
+
+        //ユーザー認証
+        public const string SHOW_CONNECTING_ACCOUNT = "アカウント作成中...";
+        public const string SHOW_CONNECTING_LOGIN = "ログイン中...";
 
         //アカウント登録時バリデーションエラー
         public const string ERROR_VALIDATE_1 = "正しく入力してください";

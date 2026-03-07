@@ -51,9 +51,21 @@ public class MissionInstancesTable
                 "created_at," +
                 "updated_at" +
                 ")" +
-                "values (" + item.id + ", " + item.manage_id + ", " + item.mission_id + ", " + item.mission_category + ", " + item.progress + ", " + item.cleared + ", " + item.received + ", \"" + item.created_at + "\", \"" + item.updated_at + "\")";
+                "values (@id, @manage_id, @mission_id, @mission_category, @progress, @cleared, @received, @created_at, @updated_at)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@manage_id", item.manage_id },
+                {"@mission_id", item.mission_id },
+                {"@mission_category", item.mission_category },
+                {"@progress", item.progress },
+                {"@cleared", item.cleared },
+                {"@received", item.received },
+                {"@created_at", item.created_at },
+                {"@updated_at", item.updated_at },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

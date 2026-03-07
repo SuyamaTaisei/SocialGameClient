@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class InstanceCharacterList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] InstanceCharacterTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientInstance clientInstance;
     [SerializeField] InstanceCharacterDetailFixedView charaInstanceDetailFixedView;
     [SerializeField] TMP_Dropdown dropDownList;
@@ -72,16 +74,11 @@ public class InstanceCharacterList : MonoBehaviour
         for (int i = 0; i < characterInstancesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            Button button = item.GetComponentInChildren<Button>();
-            var view = item.GetComponent<InstanceCharacterTemplateView>();
+            var (view, button) = dataListManager.CreateDataListSync(templateView, content, true, true);
 
             //データの取得
-            int index = i;
-            var data = characterInstancesList[index];
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
-            CharacterDataModel data1 = CharacterDataTable.SelectId(data.character_id);
-            CharacterRaritiesModel data2 = CharacterRaritiesTable.SelectId(data1.rarity_id);
+            var data = characterInstancesList[i];
+            var (data1, data2, imagePath) = dataGetManager.GetCharacterData(data.character_id);
 
             //データの描画
             view.Set(data1, data2, data, imagePath);

@@ -5,7 +5,8 @@ using System.Collections.Generic;
 public class GachaPeriodList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaPeriodTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
 
     private void Start()
@@ -15,8 +16,7 @@ public class GachaPeriodList : MonoBehaviour
         for (int i = 0; i < gachaPeriodsList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            Button button = item.GetComponentInChildren<Button>();
+            var (_, button) = dataListManager.CreateDataListSync(templateView, content, false, true);
 
             //データの取得
             int index = i;

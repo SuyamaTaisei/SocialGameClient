@@ -48,9 +48,20 @@ public class GachaPeriodsTable
                 "start," +
                 "end" +
                 ")" +
-                "values (" + item.id + ", \"" + item.name + "\", " + item.single_count + ", " + item.multi_count + ", " + item.single_cost + ", " + item.multi_cost + ", \"" + item.start + "\", \"" + item.end + "\")";
+                "values (@id, @name, @single_count, @multi_count, @single_cost, @multi_cost, @start, @end)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@name", item.name },
+                {"@single_count", item.single_count},
+                {"@multi_count", item.multi_count },
+                {"@single_cost", item.single_cost },
+                {"@multi_cost", item.multi_cost },
+                {"@start", item.start },
+                {"@end", item.end },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

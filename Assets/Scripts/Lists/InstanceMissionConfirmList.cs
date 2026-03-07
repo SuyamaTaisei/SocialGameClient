@@ -4,7 +4,9 @@ using UnityEngine;
 public class InstanceMissionConfirmList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] InstanceMissionTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
+    [SerializeField] DataGetManager dataGetManager;
 
     private void OnDisable() => Clear();
 
@@ -17,18 +19,12 @@ public class InstanceMissionConfirmList : MonoBehaviour
         for (int i = 0; i < missionInstancesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            var view = item.GetComponent<InstanceMissionTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
             var data = missionInstancesList[i];
-            var data1 = MissionDataTable.SelectId(data.mission_id);
-            string imagePath = "";
-            switch (data1.reward_category)
-            {
-                case 1001: imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_GEMS}/{imageIndex}"; break;
-                case 1002: imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_COINS}/{imageIndex}"; break;
-            }
+            var data1 = dataGetManager.GetMissionData(data.mission_id);
+            string imagePath = dataGetManager.GetMissionReward(data1.reward_category, imageIndex);
 
             //データの描画
             view.Set(data1, data, imagePath);

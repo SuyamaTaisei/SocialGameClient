@@ -54,11 +54,6 @@ public class ClientHome : MonoBehaviour
         staminaRecoveryCancelButton.onClick.AddListener(() => { StaminaOpenClose(false); });
     }
 
-    private void Update()
-    {
-        WalletApply(coinText, gemFreeText, gemPaidText);
-    }
-
     //リクエスト送信処理
     public void RequestHome(UsersModel usersModel, string endPoint, bool addForm, string value = null)
     {
@@ -77,8 +72,15 @@ public class ClientHome : MonoBehaviour
             StartCoroutine(apiConnect.Send(endPoint, form, (action) => {
                 StaminaApply();
                 StaminaButtonCtrl();
+                WalletApply(coinText, gemFreeText, gemPaidText);
             }));
         }
+    }
+
+    //外部更新用ウォレット
+    public void RefreshHomeWallet()
+    {
+        WalletApply(coinText, gemFreeText, gemPaidText);
     }
 
     //ウォレット反映処理

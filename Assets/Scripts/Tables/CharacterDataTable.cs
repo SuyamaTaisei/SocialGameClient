@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class CharacterDataModel
@@ -35,9 +36,16 @@ public class CharacterDataTable
                 "character_category," +
                 "name" +
                 ")" +
-                "values (" + item.id + ", " + item.rarity_id + ", " + item.character_category + ", \"" + item.name + "\")";
+                "values (@id, @rarity_id, @character_category, @name)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@rarity_id", item.rarity_id },
+                {"@character_category", item.character_category },
+                {"@name", item.name },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Runtime.InteropServices;
+using System.Text;
 using UnityEngine;
 using UnityEngine.Networking;
 
@@ -74,6 +76,18 @@ public class SqliteDatabase
 
     [DllImport("sqlite3", EntryPoint = "sqlite3_column_bytes")]
     private static extern int sqlite3_column_bytes(IntPtr stmHandle, int iCol);
+
+    [DllImport("sqlite3", EntryPoint = "sqlite3_bind_parameter_index")]
+    private static extern int sqlite3_bind_parameter_index(IntPtr stmHandle, string key);
+
+    [DllImport("sqlite3", EntryPoint = "sqlite3_bind_null")]
+    private static extern int sqlite3_bind_null(IntPtr stmHandle, int index);
+
+    [DllImport("sqlite3", EntryPoint = "sqlite3_bind_int")]
+    private static extern int sqlite3_bind_int(IntPtr stmHandle, int index, int value);
+
+    [DllImport("sqlite3", EntryPoint = "sqlite3_bind_text")]
+    private static extern int sqlite3_bind_text(IntPtr stmHandle, int index, byte[] value, int length, IntPtr destructor);
 
     private IntPtr _connection;
 
@@ -183,7 +197,7 @@ public class SqliteDatabase
     /// <exception cref='SqliteException'>
     /// Is thrown when the sqlite exception.
     /// </exception>
-    public void ExecuteNonQuery(string query)
+    public void ExecuteNonQuery(string query, Dictionary<string, object> param = null)
     {
         if (!CanExQuery)
         {
@@ -198,6 +212,7 @@ public class SqliteDatabase
         }
 
         IntPtr stmHandle = Prepare(query);
+        BindParameters(stmHandle, param);
 
         if (sqlite3_step(stmHandle) != SQLITE_DONE)
         {
@@ -220,7 +235,7 @@ public class SqliteDatabase
     /// <exception cref='SqliteException'>
     /// Is thrown when the sqlite exception.
     /// </exception>
-    public DataTable ExecuteQuery(string query)
+    public DataTable ExecuteQuery(string query, Dictionary<string, object> param = null)
     {
         if (!CanExQuery)
         {
@@ -235,6 +250,7 @@ public class SqliteDatabase
         }
 
         IntPtr stmHandle = Prepare(query);
+        BindParameters(stmHandle, param);
 
         int columnCount = sqlite3_column_count(stmHandle);
 
@@ -287,6 +303,42 @@ public class SqliteDatabase
         Finalize(stmHandle);
         this.Close();
         return dataTable;
+    }
+
+    //バインド処理
+    private void BindParameters(IntPtr stmHandle, Dictionary<string, object> param)
+    {
+        if (param == null)
+        {
+            return;
+        }
+
+        foreach (var p in param)
+        {
+            int index = sqlite3_bind_parameter_index(stmHandle, p.Key);
+            if (index == 0)
+            {
+                throw new SqliteException("Parameter not found: " + p.Key);
+            }
+
+            if (p.Value == null)
+            {
+                sqlite3_bind_null(stmHandle, index);
+            }
+            else if (p.Value is int intValue)
+            {
+                sqlite3_bind_int(stmHandle, index, intValue);
+            }
+            else if (p.Value is string stringValue)
+            {
+                byte[] bytes = Encoding.UTF8.GetBytes(stringValue);
+                sqlite3_bind_text(stmHandle, index, bytes, bytes.Length, new IntPtr(-1));
+            }
+            else
+            {
+                throw new SqliteException("Unsupported parameter type: " + p.Value.GetType());
+            }
+        }
     }
 
     public void ExecuteScript(string script)

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 public class GachaOfferRateList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] GachaOfferRateTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientGacha clientGacha;
     [SerializeField] GachaOfferRateTemplateView gachaOfferRateTemplateView;
     [SerializeField] GachaPeriodTemplateView gachaPeriodTemplateView;
@@ -18,18 +20,15 @@ public class GachaOfferRateList : MonoBehaviour
         for (int i = 0; i < gachaDataList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            var view = item.GetComponent<GachaOfferRateTemplateView>();
+            var (view, _) = dataListManager.CreateDataListSync(templateView, content);
 
             //データの取得
             var data = gachaDataList[i];
-            var characterDataModel = CharacterDataTable.SelectId(data.character_id);
-            var characterRaritiesModel = CharacterRaritiesTable.SelectId(characterDataModel.rarity_id);
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_CHARACTERS}/{data.character_id}";
+            var (data1, data2, imagePath) = dataGetManager.GetCharacterData(data.character_id);
             float rate = data.weight / GameUtility.Const.GACHA_TOTAL_RATE;
 
             //データの描画
-            view.Set(data, characterDataModel, characterRaritiesModel, rate, imagePath);
+            view.Set(data, data1, data2, rate, imagePath);
             view.SetCalculate(data, ref rateN, ref rateR, ref rateSR, ref rateSSR);
         }
 

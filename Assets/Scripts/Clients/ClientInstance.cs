@@ -55,6 +55,12 @@ public class ClientInstance : MonoBehaviour
     //強化アイテム一覧で選択されたアイテムIDとアイテム数量を保持
     public void SaveEnhanceItems(int itemId, int amount)
     {
+        //数量が0以下の強化アイテムは送信フォームから削除
+        if (amount <= 0)
+        {
+            selectEnhanceItems.Remove(itemId);
+            return;
+        }
         selectEnhanceItems[itemId] = amount;
     }
 

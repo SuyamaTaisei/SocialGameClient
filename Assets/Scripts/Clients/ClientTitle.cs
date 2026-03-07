@@ -49,6 +49,8 @@ public class ClientTitle : MonoBehaviour
 
         ShowUserInfo();
 
+        startButton.interactable = true;
+
         StartView.SetActive(true);
         registerView.SetActive(false);
         registerCompleteView.SetActive(false);
@@ -56,11 +58,6 @@ public class ClientTitle : MonoBehaviour
         registerSendButton.onClick.AddListener(() => Register());
         startButton.onClick.AddListener(() => GameStart());
         registerCompleteButton.onClick.AddListener(() => RegisterCompleteExecute());
-    }
-
-    private void Update()
-    {
-        ShowUserInfo();
     }
 
     //アカウント登録ボタン
@@ -79,6 +76,7 @@ public class ClientTitle : MonoBehaviour
         else
         {
             registerView.SetActive(false);
+            clientMasterData.ConnectingView(true, GameUtility.Const.SHOW_CONNECTING_ACCOUNT);
 
             string userName = registerInputNameText.text;
             List<IMultipartFormSection> form = new() //POST送信用のフォームを作成
@@ -87,6 +85,9 @@ public class ClientTitle : MonoBehaviour
             };
             StartCoroutine(apiConnect.Send(GameUtility.Const.REGISTER_URL, form, (action) =>
             {
+                startButton.interactable = true;
+                ShowUserInfo();
+                clientMasterData.ConnectingView(false, "");
                 RegisterComplete(true);
             }));
         }
@@ -96,10 +97,14 @@ public class ClientTitle : MonoBehaviour
     public void GameStart()
     {
         SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_GAMESTART);
+        startButton.interactable = false;
+
         //ユーザー情報の取得
         usersModel = UsersTable.Select();
         if (!string.IsNullOrEmpty(usersModel.id))
         {
+            clientMasterData.ConnectingView(true, GameUtility.Const.SHOW_CONNECTING_LOGIN);
+
             //そのままログイン
             string id = usersModel.id;
             List<IMultipartFormSection> form = new()
@@ -108,6 +113,7 @@ public class ClientTitle : MonoBehaviour
             };
             StartCoroutine(apiConnect.Send(GameUtility.Const.LOGIN_URL, form, (action) =>
             {
+                clientMasterData.ConnectingView(false, "");
                 clientMasterData.MasterDataCheck();
             }));
 

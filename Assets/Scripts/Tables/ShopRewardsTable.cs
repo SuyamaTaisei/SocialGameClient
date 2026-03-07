@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class ShopRewardsModel
@@ -35,9 +36,16 @@ public class ShopRewardsTable
                 "item_id," +
                 "amount" +
                 ")" +
-                "values (" + item.id + ", " + item.product_id + ", " + item.item_id + ", " + item.amount + ")";
+                "values (@id, @product_id, @item_id, @amount)";
+            Dictionary<string, object> param = new Dictionary<string, object>()
+            {
+                {"@id", item.id },
+                {"@product_id", item.product_id },
+                {"@item_id", item.item_id },
+                {"@amount", item.amount },
+            };
             SqliteDatabase sqlDB = new SqliteDatabase(GameUtility.Const.SQLITE_DB_NAME);
-            sqlDB.ExecuteNonQuery(query);
+            sqlDB.ExecuteNonQuery(query, param);
         }
     }
 }

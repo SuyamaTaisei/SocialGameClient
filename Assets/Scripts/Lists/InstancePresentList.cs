@@ -5,7 +5,9 @@ using UnityEngine.UI;
 public class InstancePresentList : MonoBehaviour
 {
     [SerializeField] Transform content;
-    [SerializeField] GameObject templateView;
+    [SerializeField] InstancePresentTemplateView templateView;
+    [SerializeField] DataListManager dataListManager;
+    [SerializeField] DataGetManager dataGetManager;
     [SerializeField] ClientPresent clientPresent;
     [SerializeField] InstancePresentFixedView instancePresentFixedView;
     [SerializeField] InstancePresentTemplateView instancePresentTemplateView;
@@ -48,16 +50,11 @@ public class InstancePresentList : MonoBehaviour
         for (int i = 0; i < presentInstancesList.Count; i++)
         {
             //データの生成
-            GameObject item = Instantiate(templateView, content);
-            Button button = item.GetComponentInChildren<Button>();
-            var view = item.GetComponent<InstancePresentTemplateView>();
+            var (view, button) = dataListManager.CreateDataListSync(templateView, content, true, true);
 
             //データの取得
-            int index = i;
-            var data = presentInstancesList[index];
-            string imagePath = $"{GameUtility.Const.FOLDER_NAME_IMAGES}/{GameUtility.Const.FOLDER_NAME_ITEMS}/{data.content}";
-            ItemDataModel data1 = ItemDataTable.SelectId(data.content);
-            ItemRaritiesModel data2 = ItemRaritiesTable.SelectId(data1.rarity_id);
+            var data = presentInstancesList[i];
+            var (data1, data2, imagePath) = dataGetManager.GetItemData(data.content);
 
             //データの描画
             view.Set(data1, data2, data, imagePath);

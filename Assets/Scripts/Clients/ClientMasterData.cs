@@ -6,9 +6,9 @@ using UnityEngine.UI;
 
 public class ClientMasterData : MonoBehaviour
 {
-    [SerializeField] TextMeshProUGUI masterCheckText;
+    [SerializeField] TextMeshProUGUI connectingText;
     [SerializeField] Button masterCheckButton;
-    [SerializeField] GameObject masterCheckView;
+    [SerializeField] GameObject connectingView;
 
     [SerializeField] ClientTitle clientTitle;
     private ApiConnect apiConnect;
@@ -20,18 +20,17 @@ public class ClientMasterData : MonoBehaviour
     {
         apiConnect = ApiConnect.Instance;
 
-        masterCheckView.SetActive(false);
         masterCheckButton.gameObject.SetActive(false);
+        ConnectingView(false, "");
 
         masterCheckButton.onClick.AddListener(() => MasterDataUpdateComplete());
     }
 
-    //マスタデータアップデート警告
-    public void MasterDataWarningUpdate(string message)
+    //通信中表記用
+    public void ConnectingView(bool enabled, string text)
     {
-        masterCheckText.text = message;
-        masterCheckView.SetActive(true);
-        masterCheckButton.gameObject.SetActive(true);
+        connectingView.SetActive(enabled);
+        connectingText.text = text;
     }
 
     //1.マスタデータバージョン確認処理
@@ -41,9 +40,12 @@ public class ClientMasterData : MonoBehaviour
         {
             new MultipartFormDataSection(masterData_key, GameUtility.Const.MASTER_DATA_VERSION)
         };
+        ConnectingView(true, GameUtility.Const.SHOW_MASTER_CONFIRMING);
 
         StartCoroutine(apiConnect.Send(GameUtility.Const.MASTER_DATA_CHECK_URL, form, (action) =>
         {
+            ConnectingView(false, "");
+
             //現在のローカルバージョン、最新のサーバーバージョンを取得
             int localVersion = MasterDataManager.GetMasterDataVersion();
             serverVersion = action.master_data_version;
@@ -64,14 +66,13 @@ public class ClientMasterData : MonoBehaviour
     public void MasterDataGet()
     {
         clientTitle.StartView.SetActive(false);
-        masterCheckView.SetActive(true);
-        masterCheckText.text = GameUtility.Const.SHOW_MASTER_TEXT_1;
+        ConnectingView(true, GameUtility.Const.SHOW_MASTER_UPDATING);
 
         StartCoroutine(apiConnect.Send(GameUtility.Const.MASTER_DATA_GET_URL, null, (action) =>
         {
             //バージョンが一致していない場合は最新のバージョンを保存
             MasterDataManager.SetMasterDataVersion(serverVersion);
-            masterCheckText.text = GameUtility.Const.SHOW_MASTER_TEXT_2;
+            ConnectingView(true, GameUtility.Const.SHOW_MASTER_UPDATE_COMPLETE);
             masterCheckButton.gameObject.SetActive(true);
         }));
     }
@@ -83,7 +84,7 @@ public class ClientMasterData : MonoBehaviour
         int localVersion = MasterDataManager.GetMasterDataVersion();
         if (localVersion == serverVersion)
         {
-            masterCheckView.SetActive(false);
+            ConnectingView(false, "");
             LoadingManager.Instance.LoadScene(GameUtility.Const.SCENE_NAME_HOMESCENE);
         }
     }

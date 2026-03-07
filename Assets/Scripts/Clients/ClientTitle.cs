@@ -49,6 +49,8 @@ public class ClientTitle : MonoBehaviour
 
         ShowUserInfo();
 
+        startButton.interactable = true;
+
         StartView.SetActive(true);
         registerView.SetActive(false);
         registerCompleteView.SetActive(false);
@@ -56,11 +58,6 @@ public class ClientTitle : MonoBehaviour
         registerSendButton.onClick.AddListener(() => Register());
         startButton.onClick.AddListener(() => GameStart());
         registerCompleteButton.onClick.AddListener(() => RegisterCompleteExecute());
-    }
-
-    private void Update()
-    {
-        ShowUserInfo();
     }
 
     //アカウント登録ボタン
@@ -87,6 +84,8 @@ public class ClientTitle : MonoBehaviour
             };
             StartCoroutine(apiConnect.Send(GameUtility.Const.REGISTER_URL, form, (action) =>
             {
+                startButton.interactable = true;
+                ShowUserInfo();
                 RegisterComplete(true);
             }));
         }
@@ -96,6 +95,8 @@ public class ClientTitle : MonoBehaviour
     public void GameStart()
     {
         SoundManager.Instance.PlaySeOneShot(GameUtility.Const.SE_GAMESTART);
+        startButton.interactable = false;
+
         //ユーザー情報の取得
         usersModel = UsersTable.Select();
         if (!string.IsNullOrEmpty(usersModel.id))

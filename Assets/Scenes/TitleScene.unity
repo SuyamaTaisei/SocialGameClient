@@ -214,6 +214,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -322,7 +323,7 @@ GameObject:
   - component: {fileID: 46824314}
   - component: {fileID: 46824313}
   m_Layer: 0
-  m_Name: MasterCheckBG
+  m_Name: ConnectingBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -935,7 +936,7 @@ GameObject:
   - component: {fileID: 348663148}
   - component: {fileID: 348663147}
   m_Layer: 5
-  m_Name: MasterCheckText
+  m_Name: ConnectingText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1018,6 +1019,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -1147,7 +1149,7 @@ GameObject:
   - component: {fileID: 465215904}
   - component: {fileID: 465215903}
   m_Layer: 5
-  m_Name: MasterCheckButton
+  m_Name: ConnectingButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1444,7 +1446,7 @@ GameObject:
   - component: {fileID: 639622628}
   - component: {fileID: 639622627}
   m_Layer: 0
-  m_Name: MasterCheckFrame
+  m_Name: ConnectingFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1626,9 +1628,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 36e21c85eb0db574badafa4d0815c846, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  masterCheckText: {fileID: 348663147}
+  connectingText: {fileID: 348663147}
   masterCheckButton: {fileID: 465215903}
-  masterCheckView: {fileID: 2014884467}
+  connectingView: {fileID: 2014884467}
   clientTitle: {fileID: 46352197}
 --- !u!1 &742941499
 GameObject:
@@ -1800,6 +1802,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2013,6 +2016,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2149,6 +2153,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -2488,7 +2493,7 @@ GameObject:
   - component: {fileID: 1031471027}
   - component: {fileID: 1031471026}
   m_Layer: 5
-  m_Name: MasterCheckBG
+  m_Name: ConnectingBG
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2829,7 +2834,7 @@ GameObject:
   - component: {fileID: 1180233733}
   - component: {fileID: 1180233732}
   m_Layer: 5
-  m_Name: MasterCheckFrame
+  m_Name: ConnectingFrame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3422,6 +3427,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3861,6 +3867,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -3989,7 +3996,7 @@ GameObject:
   - component: {fileID: 1854792018}
   - component: {fileID: 1854792017}
   m_Layer: 5
-  m_Name: MasterCheckText
+  m_Name: ConnectingButtonText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4072,6 +4079,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4283,6 +4291,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4427,6 +4436,7 @@ MonoBehaviour:
   m_VerticalAlignment: 256
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4651,6 +4661,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4702,7 +4713,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2014884468}
   m_Layer: 0
-  m_Name: MasterCheckView
+  m_Name: ConnectingView
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4828,6 +4839,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0
@@ -4964,6 +4976,7 @@ MonoBehaviour:
   m_VerticalAlignment: 512
   m_textAlignment: 65535
   m_characterSpacing: 0
+  m_characterHorizontalScale: 1
   m_wordSpacing: 0
   m_lineSpacing: 0
   m_lineSpacingMax: 0

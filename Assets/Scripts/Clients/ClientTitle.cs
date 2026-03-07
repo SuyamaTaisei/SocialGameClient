@@ -76,6 +76,7 @@ public class ClientTitle : MonoBehaviour
         else
         {
             registerView.SetActive(false);
+            clientMasterData.ConnectingView(true, GameUtility.Const.SHOW_CONNECTING_ACCOUNT);
 
             string userName = registerInputNameText.text;
             List<IMultipartFormSection> form = new() //POST送信用のフォームを作成
@@ -86,6 +87,7 @@ public class ClientTitle : MonoBehaviour
             {
                 startButton.interactable = true;
                 ShowUserInfo();
+                clientMasterData.ConnectingView(false, "");
                 RegisterComplete(true);
             }));
         }
@@ -101,6 +103,8 @@ public class ClientTitle : MonoBehaviour
         usersModel = UsersTable.Select();
         if (!string.IsNullOrEmpty(usersModel.id))
         {
+            clientMasterData.ConnectingView(true, GameUtility.Const.SHOW_CONNECTING_LOGIN);
+
             //そのままログイン
             string id = usersModel.id;
             List<IMultipartFormSection> form = new()
@@ -109,6 +113,7 @@ public class ClientTitle : MonoBehaviour
             };
             StartCoroutine(apiConnect.Send(GameUtility.Const.LOGIN_URL, form, (action) =>
             {
+                clientMasterData.ConnectingView(false, "");
                 clientMasterData.MasterDataCheck();
             }));
 
